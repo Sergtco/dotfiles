@@ -13,7 +13,7 @@ vim.g.coq_settings = {
             weight_adjust = 1
         },
         tabnine = {
-            enabled = false,
+            enabled = true,
         },
         snippets = {
             weight_adjust = 2

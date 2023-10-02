@@ -18,9 +18,12 @@ lualine.setup {
         globalstatus = true,
     },
     sections = {
-        lualine_c = { 'filename' },
-        lualine_y = { 'progress' },
-        lualine_z = { 'location' }
+        lualine_a = { 'mode' },
+        lualine_b = { 'filename', 'encoding' },
+        lualine_c = { 'progress' },
+        lualine_x = { },
+        lualine_y = { 'diff', 'branch' },
+        lualine_z = { }
     },
 }
 
