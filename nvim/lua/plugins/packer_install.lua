@@ -39,8 +39,6 @@ return require('packer').startup(function(use)
     }
     --LspStatus
     use { 'nvim-lua/lsp-status.nvim' }
-    --Jupyter
-    use { "meatballs/notebook.nvim" }
     --rust-tools
     use 'simrat39/rust-tools.nvim'
     -- markdown
