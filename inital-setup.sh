@@ -24,7 +24,7 @@ _needed_packages="fish neovim firefox ttf-jetbrains-mono-nerd \
 dunst nwg-look wf-recorder wlogout wlsunset"
 
 ## Hyprland Stuff
-paru -S $_needed_packages
+paru -S --needed $_needed_packages
 
 
 ################################
