@@ -20,7 +20,7 @@ fi
 ################################
 
 _needed_packages="fish neovim firefox ttf-jetbrains-mono-nerd \
-    hyprland-git hyprpicker-git waybar-git \
+    hyprpicker-git waybar-git \
 dunst nwg-look wf-recorder wlogout wlsunset"
 
 ## Hyprland Stuff
@@ -32,4 +32,4 @@ paru -S $_needed_packages
 ################################
 echo /usr/bin/fish | sudo tee -a /etc/shells
 >chsh -s /usr/local/bin/fish
-curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+# curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
