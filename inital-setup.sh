@@ -19,12 +19,9 @@ fi
 #Installation of packages
 ################################
 
-_needed_packages=(
-    "fish",
-    "neovim",
-    "firefox"
-    "ttf-jetbrains-mono-nerd",
-)
+_needed_packages="fish neovim firefox ttf-jetbrains-mono-nerd"
+
+paru -S $_needed_packages
 
 
 ################################
