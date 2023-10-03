@@ -9,7 +9,7 @@
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 files=""    # list of files to symlink in homedir
-conf_folders="kitty/ nvim/" # list of folders to symlink in homedir
+conf_folders="kitty/ nvim/ fish/ omf/" # list of folders to symlink in homedir
 
 ##########
 
