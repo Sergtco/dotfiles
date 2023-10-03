@@ -31,5 +31,5 @@ paru -S $_needed_packages
 # Configuring fish
 ################################
 echo /usr/bin/fish | sudo tee -a /etc/shells
->chsh -s /usr/local/bin/fish
+chsh -s /usr/local/bin/fish
 # curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
