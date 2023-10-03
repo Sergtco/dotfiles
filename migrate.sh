@@ -12,6 +12,12 @@ files=""    # list of files to symlink in homedir
 conf_folders="kitty/ nvim/ fish/ omf/" # list of folders to symlink in homedir
 
 ##########
+#
+
+
+#Hyprland
+rm -r ~/.config/hypr/hyprland.conf
+ln -s $dir/hyprland.conf ~/.config/hypr/hyprland.conf
 
 # create dotfiles_old in homedir
 echo "Creating $olddir for backup of any existing dotfiles in ~"
