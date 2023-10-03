@@ -14,3 +14,22 @@ else
     cd ..
     clear
 fi
+
+################################
+#Installation of packages
+################################
+
+_needed_packages=(
+    "fish",
+    "neovim",
+    "firefox"
+    "ttf-jetbrains-mono-nerd",
+)
+
+
+################################
+# Configuring fish
+################################
+echo /usr/bin/fish | sudo tee -a /etc/shells
+>chsh -s /usr/local/bin/fish
+curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
