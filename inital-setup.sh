@@ -13,3 +13,4 @@ else
     makepkg -si
     cd ..
     clear
+fi
