@@ -16,8 +16,19 @@ conf_folders="kitty/ nvim/ fish/ omf/" # list of folders to symlink in homedir
 
 
 #Hyprland
-rm -r ~/.config/hypr/hyprland.conf
-ln -s $dir/hyprland.conf ~/.config/hypr/hyprland.conf
+while true; do
+    read -p "Hyprland? (Yy/Nn): " yn
+    case $yn in
+        [Yy]* )
+            rm -r ~/.config/hypr/hyprland.conf
+            ln -s $dir/hyprland.conf ~/.config/hypr/hyprland.conf
+        break;;
+        [Nn]* ) 
+            exit;
+        break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
 
 # create dotfiles_old in homedir
 echo "Creating $olddir for backup of any existing dotfiles in ~"
