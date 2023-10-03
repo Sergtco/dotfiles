@@ -19,8 +19,11 @@ fi
 #Installation of packages
 ################################
 
-_needed_packages="fish neovim firefox ttf-jetbrains-mono-nerd"
+_needed_packages="fish neovim firefox ttf-jetbrains-mono-nerd \
+    hyprland-git hyprpicker-git waybar-git \
+dunst nwg-look wf-recorder wlogout wlsunset"
 
+## Hyprland Stuff
 paru -S $_needed_packages
 
 
