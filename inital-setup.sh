@@ -32,7 +32,7 @@ while true; do
     read -p "Hyprland? (Yy/Nn): " yn
     case $yn in
         [Yy]* )
-            _needed_packages="&_needed_packages&_hypr_packages"
+            _needed_packages="$_needed_packages$_hypr_packages"
         break;;
         [Nn]* ) 
             exit;
