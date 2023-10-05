@@ -20,7 +20,8 @@ fi
 ################################
 
 _needed_packages="fish neovim firefox ttf-jetbrains-mono-nerd"
-_hypr_packages=" hyprpicker-git waybar-git \
+_hypr_packages="udiskie libappindicator-gtk3 \
+hyprpicker-git waybar-git \
 dunst nwg-look wf-recorder wlogout wlsunset \
 colord ffmpegthumbnailer gnome-keyring grimblast-git gtk-engine-murrine \
 imagemagick kvantum pamixer playerctl polkit-kde-agent qt5-quickcontrols        \
