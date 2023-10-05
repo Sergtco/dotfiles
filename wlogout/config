@@ -1,6 +1,6 @@
 {
     "label" : "lock",
-    "action" : "",
+    "action" : "swaylock -fn",
     "text" : "Lock"
 }
 
