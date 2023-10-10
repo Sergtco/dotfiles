@@ -154,11 +154,6 @@ _G.packer_plugins = {
     path = "/home/sergtco/.local/share/nvim/site/pack/packer/start/noice.nvim",
     url = "https://github.com/folke/noice.nvim"
   },
-  ["notebook.nvim"] = {
-    loaded = true,
-    path = "/home/sergtco/.local/share/nvim/site/pack/packer/start/notebook.nvim",
-    url = "https://github.com/meatballs/notebook.nvim"
-  },
   ["nui.nvim"] = {
     loaded = true,
     path = "/home/sergtco/.local/share/nvim/site/pack/packer/start/nui.nvim",

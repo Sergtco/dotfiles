@@ -1,6 +1,7 @@
 * {
   border: none;
   border-radius: 0;
+  opacity: 0.9;
   min-height: 0;
   margin: 0;
   padding: 0;
@@ -37,6 +38,7 @@
 #custom-updates,
 #custom-notification
 #network
+#bluetooth,
 #custom-player {
   padding: 4px 8px;
   background-color: #303643;
@@ -69,6 +71,14 @@
 
 #custom-updates {
   color: #1788e4;
+}
+#bluetooth{
+      padding: 4px 8px;
+  background-color: #303643;
+  border-radius: 30px;
+  margin: 6px 4px;
+
+
 }
 
 #custom-powermenu {
