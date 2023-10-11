@@ -41,10 +41,8 @@ return require('packer').startup(function(use)
     use { 'nvim-lua/lsp-status.nvim' }
     --Jdtls
     use 'mfussenegger/nvim-jdtls'
-    --rust-tools
-    use 'simrat39/rust-tools.nvim'
     -- markdown
-    use({ 'toppair/peek.nvim', run = 'deno task --quiet build:fast' })
+    use({ 'saimo/peek.nvim', run = 'deno task --quiet build:fast' })
     --chadtree
     use { 'ms-jpq/chadtree', branch = 'chad' }
 
@@ -60,7 +58,6 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope.nvim', tag = '0.1.1',
         requires = { 'nvim-lua/plenary.nvim', "nvim-lua/popup.nvim" }
     }
-    use   'sudormrfbin/cheatsheet.nvim'
     --lualine
     use {
         'nvim-lualine/lualine.nvim',
