@@ -4,6 +4,7 @@
     "margin-bottom": 0,
     "modules-left": [
       "clock",
+      "idle_inhibitor",
       "hyprland/workspaces",
       "tray",
       ],
@@ -111,6 +112,13 @@
         "on-scroll-down": "playerctl previous",
         "exec": "~/.config/waybar/mediaplayer.py 2> /dev/null", // Script in resources/custom_modules folder
     },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
     "wireplumber": {
       "format": "{volume}% {icon}",
       "format-bluetooth": "{volume}% {icon}",
@@ -124,7 +132,7 @@
           "car": "",
           "default": ["", ""]
       },
-      "interval": 1,
+      "restart-interval": 1,
       "scroll-step": 1,
       "on-click": "pavucontrol"
     },

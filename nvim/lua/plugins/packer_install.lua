@@ -39,6 +39,8 @@ return require('packer').startup(function(use)
     }
     --LspStatus
     use { 'nvim-lua/lsp-status.nvim' }
+    --Jdtls
+    use 'mfussenegger/nvim-jdtls'
     --rust-tools
     use 'simrat39/rust-tools.nvim'
     -- markdown

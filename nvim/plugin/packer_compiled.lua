@@ -169,6 +169,11 @@ _G.packer_plugins = {
     path = "/home/sergtco/.local/share/nvim/site/pack/packer/start/nvim-cokeline",
     url = "https://github.com/willothy/nvim-cokeline"
   },
+  ["nvim-jdtls"] = {
+    loaded = true,
+    path = "/home/sergtco/.local/share/nvim/site/pack/packer/start/nvim-jdtls",
+    url = "https://github.com/mfussenegger/nvim-jdtls"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/sergtco/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
