@@ -13,11 +13,11 @@
       "custom/player",
       ],
     "modules-right": [
-      "custom/notification",
       "network",
       "hyprland/language",
       "wireplumber",
       "bluetooth",
+      "battery",
       "custom/powermenu",
     ],
     "tray": {
@@ -28,7 +28,7 @@
     "format": "Lang: {}",
     "format-en": "Burger",
     "format-ru": "Пельмени",
-    "keyboard-name": "usb-dongle"
+    "keyboard-name": "at-translated-set-2-keyboard"
     },
     "hyprland/window": {
       "format": "{}",
@@ -80,6 +80,21 @@
       "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
       "critical-threshold": 80,
       "format-icons": ["", "", ""]
+    },
+    "battery": {
+        "bat": "BAT1",
+        "states": {
+            //"good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}",
+        "format-charging": "{capacity}% 󰚥",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{capacity}% {icon}",
+         //"format-good": "", // An empty format will hide the module
+        "format-full": "",
+        "format-icons": ["", "", "", "", ""]
     },
     "memory": {
       "format": " {}%",
