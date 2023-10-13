@@ -119,41 +119,21 @@ mason_lspconfig.setup_handlers {
         }))
     end,
     ["jdtls"] = function()
-    end
+    end,
+    ["rust_analyzer"] = function()
+        require("rust-tools").setup(coq.lsp_ensure_capabilities({
+            server = {
+                on_attach = on_attach;
+            },
+            dap = {
+                adapter = {
+                    type = "executable",
+                    comamand = "$HOME/.local/share/nvim/mason/bin/codelldb",
+                    name = "rt_lldb",
+                }
+            }
+        }))
+    end,
 
 }
---
--- local languages = {
---     ["="] = { misspell },
---     vim = { vint },
---     lua = { stylua, luacheck },
---     go = { staticcheck, goimports, go_vet },
---     python = { autopep8, flake8 },
---     typescript = { prettier, eslint },
---     javascript = { prettier, eslint },
---     typescriptreact = { prettier, eslint },
---     javascriptreact = { prettier, eslint },
---     yaml = { prettier },
---     json = { prettier },
---     html = { prettier },
---     scss = { prettier },
---     css = { prettier },
---     markdown = { prettier, cbfmt },
---     org = { cbfmt },
---     sh = { shellcheck, shfmt },
---     terraform = { terraform },
---     rego = { opa },
--- }
--- require("lspconfig").efm.setup(coq.lsp_ensure_capabilities({
---     cmd = { "/home/sergtco/go/bin/efm-langserver" },
---     on_attach = on_attach,
---     init_options = { documentFormatting = true },
---     root_dir = vim.loop.cwd,
---     filetypes = vim.tbl_keys(languages),
---     settings = {
---         lintDebounce = 100,
---         -- logLevel = 5,
---         languages = languages
---     },
--- }))
 vim.diagnostic.config(config)

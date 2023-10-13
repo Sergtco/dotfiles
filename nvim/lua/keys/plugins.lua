@@ -43,6 +43,13 @@ remap('i', '<c-c>', [[pumvisible() ? "<c-e><c-c>" : "<c-c>"]], { expr = true, no
 remap('i', '<tab>', [[pumvisible() ? "<c-n>" : "<tab>"]], { expr = true, noremap = true })
 remap('i', '<s-tab>', [[pumvisible() ? "<c-p>" : "<bs>"]], { expr = true, noremap = true })
 
+--dap
+vim.keymap.set('n', '<leader>dk', function() require('dap').continue() end)
+vim.keymap.set('n', '<leader>dl', function() require('dap').run_last() end)
+vim.keymap.set('n', '<leader>b', function() require('dap').toggle_breakpoint() end)
+vim.keymap.set('n', '<leader>du', function() require('dapui').toggle() end)
+
+
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')

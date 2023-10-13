@@ -33,6 +33,9 @@ return require('packer').startup(function(use)
     use {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
+        "mfussenegger/nvim-dap",
+        "rcarriga/nvim-dap-ui",
+        "jay-babu/mason-nvim-dap.nvim",
         "neovim/nvim-lspconfig",
         "lukas-reineke/lsp-format.nvim",
         'linrongbin16/lsp-progress.nvim',
@@ -41,6 +44,8 @@ return require('packer').startup(function(use)
     use { 'nvim-lua/lsp-status.nvim' }
     --Jdtls
     use 'mfussenegger/nvim-jdtls'
+    --Rust-tools
+    use 'simrat39/rust-tools.nvim'
     -- markdown
     use({ 'saimo/peek.nvim', run = 'deno task --quiet build:fast' })
     --chadtree
@@ -92,7 +97,7 @@ return require('packer').startup(function(use)
     use { "Pocco81/auto-save.nvim", }
     --notify
     use { "folke/noice.nvim",
-        requires = {"MunifTanjim/nui.nvim", 'rcarriga/nvim-notify' },
+        requires = { "MunifTanjim/nui.nvim", 'rcarriga/nvim-notify' },
     }
     --ZenMode
     use "folke/zen-mode.nvim"

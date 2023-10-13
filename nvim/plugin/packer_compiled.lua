@@ -139,6 +139,11 @@ _G.packer_plugins = {
     path = "/home/sergtco/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
     url = "https://github.com/williamboman/mason-lspconfig.nvim"
   },
+  ["mason-nvim-dap.nvim"] = {
+    loaded = true,
+    path = "/home/sergtco/.local/share/nvim/site/pack/packer/start/mason-nvim-dap.nvim",
+    url = "https://github.com/jay-babu/mason-nvim-dap.nvim"
+  },
   ["mason.nvim"] = {
     loaded = true,
     path = "/home/sergtco/.local/share/nvim/site/pack/packer/start/mason.nvim",
@@ -163,6 +168,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sergtco/.local/share/nvim/site/pack/packer/start/nvim-cokeline",
     url = "https://github.com/willothy/nvim-cokeline"
+  },
+  ["nvim-dap"] = {
+    loaded = true,
+    path = "/home/sergtco/.local/share/nvim/site/pack/packer/start/nvim-dap",
+    url = "https://github.com/mfussenegger/nvim-dap"
+  },
+  ["nvim-dap-ui"] = {
+    loaded = true,
+    path = "/home/sergtco/.local/share/nvim/site/pack/packer/start/nvim-dap-ui",
+    url = "https://github.com/rcarriga/nvim-dap-ui"
   },
   ["nvim-jdtls"] = {
     loaded = true,
@@ -213,6 +228,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sergtco/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
+  },
+  ["rust-tools.nvim"] = {
+    loaded = true,
+    path = "/home/sergtco/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
+    url = "https://github.com/simrat39/rust-tools.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,

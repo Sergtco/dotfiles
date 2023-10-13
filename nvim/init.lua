@@ -19,6 +19,7 @@ local plugins = {
     'treesitter',
     'coq',
     'lsp/mason',
+    'lsp/dap',
     'noice',
     'autopairs',
     'autosave',
