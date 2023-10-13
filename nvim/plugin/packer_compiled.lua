@@ -94,11 +94,6 @@ _G.packer_plugins = {
     path = "/home/sergtco/.local/share/nvim/site/pack/packer/start/chadtree",
     url = "https://github.com/ms-jpq/chadtree"
   },
-  ["cheatsheet.nvim"] = {
-    loaded = true,
-    path = "/home/sergtco/.local/share/nvim/site/pack/packer/start/cheatsheet.nvim",
-    url = "https://github.com/sudormrfbin/cheatsheet.nvim"
-  },
   ["coq.artifacts"] = {
     loaded = true,
     path = "/home/sergtco/.local/share/nvim/site/pack/packer/start/coq.artifacts",
@@ -207,7 +202,7 @@ _G.packer_plugins = {
   ["peek.nvim"] = {
     loaded = true,
     path = "/home/sergtco/.local/share/nvim/site/pack/packer/start/peek.nvim",
-    url = "https://github.com/toppair/peek.nvim"
+    url = "https://github.com/saimo/peek.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
@@ -218,11 +213,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sergtco/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
-  },
-  ["rust-tools.nvim"] = {
-    loaded = true,
-    path = "/home/sergtco/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
-    url = "https://github.com/simrat39/rust-tools.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,

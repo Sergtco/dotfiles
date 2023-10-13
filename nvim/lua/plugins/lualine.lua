@@ -4,10 +4,12 @@ if not ok then
     return
 end
 
-local lsp_status = function()
-    return require
+function lsp_progress()
+    return require("lsp-progress").progress({ max_size = 50 })
 end
+
 lualine.setup {
+    extensions = { 'chadtree' },
     options = {
         icons_enabled = true,
         theme = 'tokyonight',
@@ -20,15 +22,16 @@ lualine.setup {
     sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'filename', 'encoding' },
-        lualine_c = { 'progress' },
-        lualine_x = { },
+        lualine_c = { 'progress',},
+        lualine_x = {lsp_progress},
         lualine_y = { 'diff', 'branch' },
-        lualine_z = { }
+        lualine_z = {}
     },
 }
 
 vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
-vim.api.nvim_create_autocmd("User LspProgressStatusUpdated", {
+vim.api.nvim_create_autocmd("User", {
     group = "lualine_augroup",
+    pattern = "LspProgressStatusUpdated",
     callback = require("lualine").refresh,
 })

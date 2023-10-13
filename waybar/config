@@ -1,6 +1,7 @@
 {
   "layer": "top",
     "position": "top",
+    "height": "40",
     "margin-bottom": 0,
     "modules-left": [
       "clock",

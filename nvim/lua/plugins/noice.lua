@@ -6,7 +6,7 @@ require("noice").setup({
             ["vim.lsp.util.stylize_markdown"] = true,
             ["cmp.entry.get_documentation"] = true,
         },
-        progress = { enabled = true, view = 'mini' },
+        progress = { enabled = false, view = 'mini' },
         hover = { enabled = false },
         signature = { enabled = false },
     },
@@ -14,6 +14,16 @@ require("noice").setup({
         {
             view = "popup",
             filter = {find = "Code actions"}
+        },
+        {
+            view = "mini",
+            filter = {
+                any = {
+                    {find = "change"},
+                    {find = "less"},
+                    {find = "more"},
+                }
+            }
         },
 
     },
