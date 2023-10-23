@@ -22,8 +22,8 @@ lualine.setup {
     sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'filename', 'encoding' },
-        lualine_c = { 'progress',},
-        lualine_x = {lsp_progress},
+        lualine_c = { 'progress',lsp_progress},
+        lualine_x = {},
         lualine_y = { 'diff', 'branch' },
         lualine_z = {}
     },

@@ -23,9 +23,9 @@ mason_lspconfig.setup()
 
 local signs = {
     { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn",  text = "" },
-    { name = "DiagnosticSignHint",  text = "" },
-    { name = "DiagnosticSignInfo",  text = "" },
+    { name = "DiagnosticSignWarn", text = "" },
+    { name = "DiagnosticSignHint", text = "" },
+    { name = "DiagnosticSignInfo", text = "" },
 }
 
 for _, sign in ipairs(signs) do
@@ -123,7 +123,12 @@ mason_lspconfig.setup_handlers {
     ["rust_analyzer"] = function()
         require("rust-tools").setup(coq.lsp_ensure_capabilities({
             server = {
-                on_attach = on_attach;
+                on_attach = on_attach,
+            },
+            tools = {
+                inlay_hints = {
+                    only_current_line = true,
+                }
             },
             dap = {
                 adapter = {

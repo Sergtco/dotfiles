@@ -19,9 +19,12 @@ require("noice").setup({
             view = "mini",
             filter = {
                 any = {
+                    {event="msg_show"},
                     {find = "change"},
                     {find = "less"},
                     {find = "more"},
+                    {find = "Cargo workspace"},
+                    {find = "Cargo Workspace"}
                 }
             }
         },
