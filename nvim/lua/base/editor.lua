@@ -5,7 +5,7 @@ local g = vim.g
 --editor line numbers
 opt.number = true
 --scrolloff
-opt.scrolloff = 5
+opt.scrolloff = 6
 
 
 --signs column

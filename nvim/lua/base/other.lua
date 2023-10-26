@@ -21,8 +21,9 @@ opt.fixeol = false
 opt.completeopt = 'menuone,noselect,noinsert'
 vim.opt.shortmess = vim.opt.shortmess + { c = true }
 vim.api.nvim_set_option('updatetime', 300)
+
 -- Не автокомментировать новые линии при переходе на новую строку
--- vim.cmd [[autocmd BufEnter * set fo-=c fo-=r fo-=o]]
+vim.cmd [[autocmd BufEnter * set fo-=c fo-=r fo-=o]]
 --termguicolors
 opt.termguicolors = true
 
