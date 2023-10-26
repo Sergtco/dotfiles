@@ -5,7 +5,6 @@
   margin: 0;
   padding: 0;
     opacity: 0.95;
-
   font-family: "JetBrainsMono Nerd Font";
 
 }
@@ -97,6 +96,7 @@ window#waybar {
   background-color: #303643;
   border-radius: 30px;
   margin: 6px 6px;
+}
 #battery {
   color: #cffafe;
   padding-right: 11px;
