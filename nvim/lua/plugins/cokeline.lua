@@ -6,6 +6,7 @@ end
 local mappings = require('cokeline/mappings')
 local get_hex = require('cokeline.hlgroups').get_hl_attr
 
+
 local comments_fg = get_hex('Comment', 'fg')
 local errors_fg = get_hex('DiagnosticError', 'fg')
 local warnings_fg = get_hex('DiagnosticWarn', 'fg')
@@ -13,7 +14,10 @@ local warnings_fg = get_hex('DiagnosticWarn', 'fg')
 
 
 local red = vim.g.terminal_color_1
+local green = vim.g.terminal_color_2
 local yellow = vim.g.terminal_color_3
+
+local max_buffer_width = 30
 
 local components = {
     left_corner = {
@@ -23,10 +27,10 @@ local components = {
         truncation = { priority = 1 }
     },
     right_corner = {
-        text = '',
-        fg = get_hex('Visual', 'bg'),
-        bg = get_hex('StatusLine', 'bg'),
-        truncation  = { priority = 1 }
+        text       = '',
+        fg         = get_hex('Visual', 'bg'),
+        bg         = get_hex('StatusLine', 'bg'),
+        truncation = { priority = 1 }
     },
     space = {
         text = ' ',
@@ -72,7 +76,11 @@ local components = {
         end,
         truncation = { priority = 1 }
     },
+    padding = {
+        text = function(buffer) 
 
+        end,
+    },
     unique_prefix = {
         text = function(buffer)
             return buffer.unique_prefix
@@ -121,10 +129,10 @@ local components = {
 
     close_or_unsaved = {
         text = function(buffer)
-            return buffer.is_modified and '●' or ''
+            return buffer.is_modified and '󱙃' or ''
         end,
         fg = function(buffer)
-            return buffer.is_modified and green or nil
+            return buffer.is_modified and yellow or nil
         end,
         delete_buffer_on_left_click = true,
         truncation = { priority = 1 },
@@ -141,6 +149,7 @@ coke.setup({
         end,
         bg = get_hex('visual', 'bg'),
     },
+    fill_hl = "Title",
     show_if_buffers_are_at_least = 1,
 
     buffers = {
@@ -150,11 +159,10 @@ coke.setup({
     },
 
     rendering = {
-        max_buffer_width = 30,
+        max_buffer_width = max_buffer_width,
     },
     sidebar = {
         filetype = { 'CHADTree' },
-
         components = {
             components.left_corner,
             components.space,
@@ -168,7 +176,6 @@ coke.setup({
     components = {
         components.left_corner,
         components.devicon,
-        components.index,
         components.unique_prefix,
         components.filename,
         components.diagnostics,

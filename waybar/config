@@ -1,7 +1,7 @@
 {
   "layer": "top",
     "position": "top",
-    "height": "40",
+    "height": "30",
     "margin-bottom": 0,
     "modules-left": [
       "clock",
@@ -21,7 +21,7 @@
       "custom/powermenu",
     ],
     "tray": {
-      "icon-size": 24,
+      "icon-size": 20,
       "spacing": 10
     },
     "hyprland/language": {

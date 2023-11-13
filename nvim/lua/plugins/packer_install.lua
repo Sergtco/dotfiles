@@ -59,6 +59,7 @@ return require('packer').startup(function(use)
             "kyazdani42/nvim-web-devicons", -- If you want devicons
         }
     })
+    --telescope
     use {
         'nvim-telescope/telescope.nvim',
         requires = { 'nvim-lua/plenary.nvim', "nvim-lua/popup.nvim" }
@@ -68,9 +69,13 @@ return require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     }
+    --wilder
+    use 'gelguy/wilder.nvim'
 
     --toggleterm
     use { "akinsho/toggleterm.nvim", tag = '*' }
+    --chatGpt
+    use { "jackMort/ChatGPT.nvim", requires = { "MunifTanjim/nui.nvim" } }
     --auotpairs
     use {
         "windwp/nvim-autopairs",
@@ -94,13 +99,13 @@ return require('packer').startup(function(use)
         requires = { 'nvim-tree/nvim-web-devicons' },
     }
     --autosave
-    use { "Pocco81/auto-save.nvim", }
+    -- use { "Pocco81/auto-save.nvim", }
     --notify
-    use { "folke/noice.nvim",
-        requires = { "MunifTanjim/nui.nvim", 'rcarriga/nvim-notify' },
-    }
-    --ZenMode
-    use "folke/zen-mode.nvim"
+    -- use { "folke/noice.nvim",
+    --     requires = { "MunifTanjim/nui.nvim", 'rcarriga/nvim-notify' },
+    -- }
+
+
     if packer_bootstrap then
         require("packer").sync()
     end

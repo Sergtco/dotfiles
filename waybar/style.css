@@ -15,7 +15,7 @@ window#waybar {
   color: #C0CAF5;
   /* border-radius: 10px; */
   /* border-bottom: 2px solid #C0CAF5; */
-  font-size: 14px;
+  font-size: 12px;
 }
 
 #workspaces button {
@@ -150,7 +150,6 @@ window#waybar {
 }
 #custom-player {
     color: #C0CAF5;
-    font-size: 100%;
     min-width: 100px;
     padding: 4px 8px;
     background-color: #303643;

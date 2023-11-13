@@ -5,29 +5,26 @@ require('base/tabs')
 require('base/other')
 require('base/editor')
 
-
 require('keys/main')
 require('keys/plugins')
-
 local plugins = {
     'colorscheme',
     'lualine',
+    'wilder',
     'cokeline',
     'alpha',
     'telescope',
+    'coq',
     'toggleterm',
     'treesitter',
-    'coq',
     'lsp/mason',
     'lsp/dap',
-    'noice',
     'autopairs',
-    'autosave',
     'blankline',
     'comment',
     'surround',
     'markdown',
-    'zenmode',
+    'chatgpt',
 }
 for _, str in ipairs(plugins) do
     local path = 'plugins/' .. str

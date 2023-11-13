@@ -4,25 +4,39 @@ if not ok then
     return
 end
 
-function lsp_progress()
+local function lsp_progress()
     return require("lsp-progress").progress({ max_size = 50 })
+end
+local function modes(str)
+    if str == "INSERT" then
+        return "INS"
+    elseif str == "NORMAL" then
+        return "NOR"
+    elseif str == "VISUAL" then
+        return "VIS"
+    elseif str == "V-LINE" then
+        return "VIS-L"
+    elseif str == "COMMAND" then
+        return "COM"
+    end
+    return str
 end
 
 lualine.setup {
-    extensions = { 'chadtree' },
+    extensions = { 'chadtree', 'mason', 'toggleterm' },
     options = {
         icons_enabled = true,
         theme = 'tokyonight',
         component_separators = '|',
         section_separators = { left = '', right = '' },
-        disabled_filetypes = {},
-        always_divide_middle = true,
+        disabled_filetypes = { "alpha" },
+        always_divide_middle = false,
         globalstatus = true,
     },
     sections = {
-        lualine_a = { 'mode' },
-        lualine_b = { 'filename', 'encoding' },
-        lualine_c = { 'progress',lsp_progress},
+        lualine_a = { { 'mode', fmt = modes } },
+        lualine_b = { 'filename', 'location' },
+        lualine_c = { lsp_progress },
         lualine_x = {},
         lualine_y = { 'diff', 'branch' },
         lualine_z = {}

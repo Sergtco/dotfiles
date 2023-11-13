@@ -6,7 +6,7 @@ vim.g.coq_settings = {
     clients = {
         lsp = {
             enabled = true,
-            weight_adjust = 3,
+            weight_adjust = 1.4,
         },
         tree_sitter = {
             enabled = true,
@@ -14,12 +14,19 @@ vim.g.coq_settings = {
         },
         tabnine = {
             enabled = true,
+            weight_adjust = 0.8
         },
         snippets = {
-            weight_adjust = 2
+            weight_adjust = 1.2
         },
     },
     display = {
+        ghost_text = {
+            context = { "", "" },
+        },
+        pum = {
+            y_max_len = 10,
+        },
         preview = {
             border = "rounded"
         },
