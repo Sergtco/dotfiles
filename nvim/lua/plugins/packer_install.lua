@@ -18,7 +18,7 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     --treesitter
-    use { 'nvim-treesitter/nvim-treesitter' }
+    use { 'nvim-treesitter/nvim-treesitter', tag = 'v0.9.1' }
     --COQ
     use {
         'ms-jpq/coq_nvim', branch = 'coq'
@@ -37,20 +37,16 @@ return require('packer').startup(function(use)
         "rcarriga/nvim-dap-ui",
         "jay-babu/mason-nvim-dap.nvim",
         "neovim/nvim-lspconfig",
-        "lukas-reineke/lsp-format.nvim",
         'linrongbin16/lsp-progress.nvim',
     }
-    --LspStatus
-    use { 'nvim-lua/lsp-status.nvim' }
     --Jdtls
-    use 'mfussenegger/nvim-jdtls'
+    use { 'mfussenegger/nvim-jdtls', tag = "0.2.0" }
     --Rust-tools
     use 'simrat39/rust-tools.nvim'
     -- markdown
     use({ 'saimo/peek.nvim', run = 'deno task --quiet build:fast' })
     --chadtree
     use { 'ms-jpq/chadtree', branch = 'chad' }
-
     --cokeline
     use({
         'willothy/nvim-cokeline',
@@ -85,7 +81,7 @@ return require('packer').startup(function(use)
     --surrond
     use({
         "kylechui/nvim-surround",
-        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+        tag = "*",
     })
 
     --indent blankline
@@ -98,13 +94,6 @@ return require('packer').startup(function(use)
         'goolord/alpha-nvim',
         requires = { 'nvim-tree/nvim-web-devicons' },
     }
-    --autosave
-    -- use { "Pocco81/auto-save.nvim", }
-    --notify
-    -- use { "folke/noice.nvim",
-    --     requires = { "MunifTanjim/nui.nvim", 'rcarriga/nvim-notify' },
-    -- }
-
 
     if packer_bootstrap then
         require("packer").sync()

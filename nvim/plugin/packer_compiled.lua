@@ -114,20 +114,10 @@ _G.packer_plugins = {
     path = "/home/sergtco/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
-  ["lsp-format.nvim"] = {
-    loaded = true,
-    path = "/home/sergtco/.local/share/nvim/site/pack/packer/start/lsp-format.nvim",
-    url = "https://github.com/lukas-reineke/lsp-format.nvim"
-  },
   ["lsp-progress.nvim"] = {
     loaded = true,
     path = "/home/sergtco/.local/share/nvim/site/pack/packer/start/lsp-progress.nvim",
     url = "https://github.com/linrongbin16/lsp-progress.nvim"
-  },
-  ["lsp-status.nvim"] = {
-    loaded = true,
-    path = "/home/sergtco/.local/share/nvim/site/pack/packer/start/lsp-status.nvim",
-    url = "https://github.com/nvim-lua/lsp-status.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,

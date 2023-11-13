@@ -23,7 +23,8 @@ opt.fixeol = false
 
 -- Не автокомментировать новые линии при переходе на новую строку
 vim.cmd [[autocmd BufEnter * set fo-=c fo-=r fo-=o]]
+
 --termguicolors
 opt.termguicolors = true
 
---g.mapleader = " "
+-- g.mapleader = " "

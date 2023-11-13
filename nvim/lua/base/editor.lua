@@ -19,3 +19,11 @@ opt.undofile = true
 opt.foldlevel = 20
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
+
+vim.cmd [[
+    augroup remember_folds
+      autocmd!
+      autocmd BufWinLeave *.* mkview
+      autocmd BufWinEnter *.* silent! loadview
+    augroup END
+]]
