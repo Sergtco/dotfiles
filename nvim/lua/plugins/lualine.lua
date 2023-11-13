@@ -28,7 +28,7 @@ lualine.setup {
         icons_enabled = true,
         theme = 'tokyonight',
         component_separators = '|',
-        section_separators = { left = '', right = '' },
+        section_separators = {},
         disabled_filetypes = { "alpha" },
         always_divide_middle = false,
         globalstatus = true,

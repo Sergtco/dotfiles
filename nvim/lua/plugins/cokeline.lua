@@ -77,7 +77,7 @@ local components = {
         truncation = { priority = 1 }
     },
     padding = {
-        text = function(buffer) 
+        text = function(buffer)
 
         end,
     },
@@ -174,13 +174,16 @@ coke.setup({
 
 
     components = {
-        components.left_corner,
+        -- components.left_corner,
+        components.separator,
+        components.space,
         components.devicon,
         components.unique_prefix,
         components.filename,
         components.diagnostics,
         components.two_spaces,
         components.close_or_unsaved,
-        components.right_corner,
+        components.space,
+        -- components.right_corner,
     },
 })
