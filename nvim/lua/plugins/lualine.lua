@@ -38,7 +38,7 @@ lualine.setup {
         lualine_b = { 'filename'},
         lualine_c = { lsp_progress },
         lualine_x = {'location', 'progress'},
-        lualine_y = { 'diff', 'branch' },
+        lualine_y = {'branch', 'diff' },
         lualine_z = {}
     },
 }

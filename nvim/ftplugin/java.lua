@@ -29,11 +29,12 @@ local lsp_flags = {
     -- This is the default in Nvim 0.7+
     debounce_text_changes = 150,
 }
-
+ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local config = {
     cmd       = { '/home/sergtco/.local/share/nvim/mason/bin/jdtls' },
     root_dir  = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]),
     on_attach = on_attach,
     flags     = lsp_flags,
+    capabilities = capabilities,
 }
 require('jdtls').start_or_attach(config)
