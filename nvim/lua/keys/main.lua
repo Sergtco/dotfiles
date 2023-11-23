@@ -1,5 +1,6 @@
 require('keys/alias')
 
-im('<C-k>', '<escape>')
+im('<C-j>', '<escape>')
 
-nm('<leader>r', 'vi{:! prettier --parser html<CR>vi{>')
+nm('<leader>e', '<cmd>foldclose<CR>')
+nm('<leader>r', '<cmd>foldopen<CR>')

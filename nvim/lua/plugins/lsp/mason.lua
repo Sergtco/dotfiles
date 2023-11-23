@@ -1,11 +1,13 @@
 local ok, mason = pcall(require, 'mason')
+
 if not ok then
     return
 end
-local ok, mason_lspconfig = pcall(require, "mason-lspconfig")
-if not ok then
+local ok2, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not ok2 then
     return
 end
+
 require('lsp-progress').setup()
 
 mason.setup({
@@ -17,7 +19,9 @@ mason.setup({
         },
     }
 })
-mason_lspconfig.setup()
+mason_lspconfig.setup({
+    ensure_installed = {"rust_analyzer", "clangd", "pyright", "pylsp"}
+})
 
 
 
@@ -82,27 +86,104 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
     vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+        if client.name == "omnisharp" then
+        client.server_capabilities.semanticTokensProvider = {
+            full = vim.empty_dict(),
+            legend = {
+                tokenModifiers = { "static_symbol" },
+                tokenTypes = {
+                    "comment",
+                    "excluded_code",
+                    "identifier",
+                    "keyword",
+                    "keyword_control",
+                    "number",
+                    "operator",
+                    "operator_overloaded",
+                    "preprocessor_keyword",
+                    "string",
+                    "whitespace",
+                    "text",
+                    "static_symbol",
+                    "preprocessor_text",
+                    "punctuation",
+                    "string_verbatim",
+                    "string_escape_character",
+                    "class_name",
+                    "delegate_name",
+                    "enum_name",
+                    "interface_name",
+                    "module_name",
+                    "struct_name",
+                    "type_parameter_name",
+                    "field_name",
+                    "enum_member_name",
+                    "constant_name",
+                    "local_name",
+                    "parameter_name",
+                    "method_name",
+                    "extension_method_name",
+                    "property_name",
+                    "event_name",
+                    "namespace_name",
+                    "label_name",
+                    "xml_doc_comment_attribute_name",
+                    "xml_doc_comment_attribute_quotes",
+                    "xml_doc_comment_attribute_value",
+                    "xml_doc_comment_cdata_section",
+                    "xml_doc_comment_comment",
+                    "xml_doc_comment_delimiter",
+                    "xml_doc_comment_entity_reference",
+                    "xml_doc_comment_name",
+                    "xml_doc_comment_processing_instruction",
+                    "xml_doc_comment_text",
+                    "xml_literal_attribute_name",
+                    "xml_literal_attribute_quotes",
+                    "xml_literal_attribute_value",
+                    "xml_literal_cdata_section",
+                    "xml_literal_comment",
+                    "xml_literal_delimiter",
+                    "xml_literal_embedded_expression",
+                    "xml_literal_entity_reference",
+                    "xml_literal_name",
+                    "xml_literal_processing_instruction",
+                    "xml_literal_text",
+                    "regex_comment",
+                    "regex_character_class",
+                    "regex_anchor",
+                    "regex_quantifier",
+                    "regex_grouping",
+                    "regex_alternation",
+                    "regex_text",
+                    "regex_self_escaped_character",
+                    "regex_other_escape",
+                },
+            },
+            range = true,
+        }
+    end
 end
 
 local lsp_flags = {
     -- This is the default in Nvim 0.7+
     debounce_text_changes = 150,
 }
-local coq = require("coq")
-local util = require("lspconfig.util")
+ local capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- local util = require("lspconfig.util")
 mason_lspconfig.setup_handlers {
     -- The first entry (without a key) will be the default handler
     -- and will be called for each installed server that doesn't have
     -- a dedicated handler.
     function(server_name) -- default handler (optional)
-        require("lspconfig")[server_name].setup(coq.lsp_ensure_capabilities({
+        require("lspconfig")[server_name].setup({
+            capabilities = capabilities,
             root_dir = vim.loop.cwd,
             on_attach = on_attach,
             flags = lsp_flags,
-        }))
+        })
     end,
     ["pylsp"] = function()
-        require("lspconfig")["pylsp"].setup(coq.lsp_ensure_capabilities({
+        require("lspconfig")["pylsp"].setup({
             settings  = {
                 pylsp = {
                     plugins = {
@@ -112,16 +193,18 @@ mason_lspconfig.setup_handlers {
                     }
                 }
             },
+            capabilities = capabilities,
             root_dir  = vim.loop.cwd,
             logLevel  = 5,
             on_attach = on_attach,
             flags     = lsp_flags,
-        }))
+        })
     end,
     ["jdtls"] = function()
     end,
     ["rust_analyzer"] = function()
-        require("rust-tools").setup(coq.lsp_ensure_capabilities({
+        require("rust-tools").setup({
+            capabilities = capabilities,
             server = {
                 on_attach = on_attach,
             },
@@ -137,7 +220,7 @@ mason_lspconfig.setup_handlers {
                     name = "rt_lldb",
                 }
             }
-        }))
+        })
     end,
 
 }

@@ -1,7 +1,7 @@
 {
   "layer": "top",
     "position": "top",
-    "height": "40",
+    "height": "30",
     "margin-bottom": 0,
     "modules-left": [
       "clock",
@@ -14,15 +14,15 @@
       "custom/player",
       ],
     "modules-right": [
-      "network",
-      "hyprland/language",
+      "custom/notification",
       "wireplumber",
       "bluetooth",
-      "battery",
+      "network",
+      "hyprland/language",
       "custom/powermenu",
     ],
     "tray": {
-      "icon-size": 24,
+      "icon-size": 20,
       "spacing": 10
     },
     "hyprland/language": {
@@ -64,7 +64,7 @@
         "9": "󰲰",
         "10": "󰿬",
         "-99": "",
-        "active": "",
+//        "active": "",
         "default": ""
       }
     },
@@ -164,7 +164,7 @@
             "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
             "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
             "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-            "on-click": "kitty bluetuith",
+            "on-click": "blueberry",
     },
     "clock": {
       //"format": "<span color=\"#56b6c2\"></span> {:%H:%M}",

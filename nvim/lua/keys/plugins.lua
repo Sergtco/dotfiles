@@ -13,8 +13,8 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>s', "<cmd>Telescope keymaps<CR>", {})
 
 --Cokeline
-nm('<S-Tab>', '<Plug>(cokeline-focus-prev)')
-nm('<Tab>', '<Plug>(cokeline-focus-next)')
+nm('<S-Tab>', '<cmd>bprevious<CR>')
+nm('<Tab>', '<cmd>bnext<CR>')
 nm('<Leader>p', '<Plug>(cokeline-switch-prev)')
 nm('<Leader>n', '<Plug>(cokeline-switch-next)')
 nm("<Leader>c", "<cmd>bdelete<CR>")
@@ -48,6 +48,9 @@ vim.keymap.set('n', '<leader>dk', function() require('dap').continue() end)
 vim.keymap.set('n', '<leader>dl', function() require('dap').run_last() end)
 vim.keymap.set('n', '<leader>b', function() require('dap').toggle_breakpoint() end)
 vim.keymap.set('n', '<leader>du', function() require('dapui').toggle() end)
+
+--toggleterm
+vim.api.nvim_set_keymap("n", "<leader>lg", "<cmd>lua Gitui_toggle()<CR>", { noremap = true, silent = true })
 
 
 

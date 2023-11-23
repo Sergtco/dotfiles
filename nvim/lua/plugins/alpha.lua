@@ -1,18 +1,18 @@
-local alpha = require('alpha')
+local ok, alpha = pcall(require, 'alpha')
+if not ok then
+    return
+end
+
 local dashboard = require('alpha.themes.dashboard')
 dashboard.section.header.val = {
-    " ________                   __                                             ",
-    "|        \\                 |  \\                                            ",
-    "| ▓▓▓▓▓▓▓▓__    __  _______| ▓▓   __                   ",
-    "| ▓▓__   |  \\  |  \\/       \\ ▓▓  /  \\                              ",
-    "| ▓▓  \\  | ▓▓  | ▓▓  ▓▓▓▓▓▓▓ ▓▓_/  ▓▓    ",
-    "| ▓▓▓▓▓  | ▓▓  | ▓▓ ▓▓     | ▓▓   ▓▓         ",
-    "| ▓▓     | ▓▓__/ ▓▓ ▓▓_____| ▓▓▓▓▓▓\\           ",
-    "| ▓▓      \\▓▓    ▓▓\\▓▓     \\ ▓▓  \\▓▓\\              ",
-    " \\▓▓       \\▓▓▓▓▓▓  \\▓▓▓▓▓▓▓\\▓▓   \\▓▓"
+    "                      ",
+    " ▄ .▄      ▄▄▌   ▄▄▄· ",
+    "██▪▐█ ▄█▀▄ ██•  ▐█ ▀█ ",
+    "██▀▀█▐█▌.▐▌██ ▪ ▄█▀▀█ ",
+    "██▌▐▀▐█▌.▐▌▐█▌ ▄▐█▪ ▐▌",
+    "▀▀▀ · ▀█▄▀▪.▀▀▀  ▀  ▀ ",
+    "                      ",
 }
-
-
 
 
 dashboard.section.buttons.val = {
@@ -23,6 +23,17 @@ dashboard.section.buttons.val = {
     dashboard.button("s", "  > Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),
     dashboard.button("q", "  > Quit NVIM", ":qa<CR>"),
 }
+
+local handle = io.popen('fortune')
+local fortune = handle and handle:read("*a")
+if handle then
+    handle:close()
+else
+    fortune = 'No fortune today'
+end
+dashboard.section.footer.val = fortune
+
+dashboard.config.opts.noautocmd = true
 
 alpha.setup(dashboard.opts)
 vim.cmd([[

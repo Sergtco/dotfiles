@@ -19,8 +19,8 @@ toggleterm.setup {
 }
 
 local Terminal  = require('toggleterm.terminal').Terminal
-local lazygit = Terminal:new({
-    cmd = "lazygit",
+local gitui = Terminal:new({
+    cmd = "gitui",
     count = 5,
     dir = "git_dir",
     direction = "float",
@@ -38,8 +38,7 @@ local lazygit = Terminal:new({
     end,
 })
 
-function _lazygit_toggle()
-    lazygit:toggle()
+function Gitui_toggle()
+    gitui:toggle()
 end
 
-vim.api.nvim_set_keymap("n", "<leader>lg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })

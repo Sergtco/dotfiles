@@ -5,6 +5,6 @@ require("tokyonight").setup {
     },
     sidebars = {
         "CHADTree"
-    }
+    },
 }
 vim.cmd [[colorscheme tokyonight-night]]
