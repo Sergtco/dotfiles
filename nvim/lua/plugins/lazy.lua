@@ -27,7 +27,10 @@ require('lazy').setup({
             'hrsh7th/cmp-cmdline',
             'hrsh7th/cmp-nvim-lsp-document-symbol',
             'doxnit/cmp-luasnip-choice',
-            'L3MON4D3/LuaSnip',
+            {
+                'L3MON4D3/LuaSnip',
+                dependencies = { "rafamadriz/friendly-snippets" }
+            },
             {
                 'tzachar/cmp-tabnine',
                 build = "./install.sh",
@@ -77,7 +80,7 @@ require('lazy').setup({
     {
         'willothy/nvim-cokeline',
         dependencies = {
-            "nvim-lua/plenary.nvim", -- Required for v0.4.0+
+            "nvim-lua/plenary.nvim",        -- Required for v0.4.0+
             "kyazdani42/nvim-web-devicons", -- If you want devicons
         }
     },

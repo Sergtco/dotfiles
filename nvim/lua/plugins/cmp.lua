@@ -7,7 +7,7 @@ local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
 
 require('cmp_tabnine.config'):setup({
     max_lines = 1000,
-    max_num_results = 20,
+    max_num_results = 3,
     sort = true,
     run_on_every_keystroke = true,
     snippet_placeholder = '..',
@@ -109,12 +109,10 @@ cmp.setup {
             i = cmp.mapping.abort(),
             c = cmp.mapping.close(),
         },
-        ['<cr>'] = cmp.mapping.confirm { select = true, behavior = cmp.ConfirmBehavior.Replace },
+        ['<cr>'] = cmp.mapping.confirm { select = false, behavior = cmp.ConfirmBehavior.Replace },
         ['<tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
-            elseif luasnip.expand_or_locally_jumpable() then
-                luasnip.expand_or_jump()
             elseif has_words_before() then
                 cmp.complete()
             else
@@ -124,7 +122,19 @@ cmp.setup {
         ['<s-tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
+            else
+                fallback()
+            end
+        end, { 'i', 's' }),
+        ['<c-L>'] = cmp.mapping(function(fallback)
+            if luasnip.expand_or_locally_jumpable() then
+                luasnip.expand_or_jump()
+            else
+                fallback()
+            end
+        end, { 'i', 's' }),
+        ['<c-h>'] = cmp.mapping(function(fallback)
+            if luasnip.jumpable(-1) then
                 luasnip.jump(-1)
             else
                 fallback()
