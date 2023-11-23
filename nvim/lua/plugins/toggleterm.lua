@@ -19,8 +19,8 @@ toggleterm.setup {
 }
 
 local Terminal  = require('toggleterm.terminal').Terminal
-local lazygit = Terminal:new({
-    cmd = "lazygit",
+local gitui = Terminal:new({
+    cmd = "gitui",
     count = 5,
     dir = "git_dir",
     direction = "float",
@@ -38,7 +38,7 @@ local lazygit = Terminal:new({
     end,
 })
 
-function Lazygit_toggle()
-    lazygit:toggle()
+function Gitui_toggle()
+    gitui:toggle()
 end
 

@@ -50,7 +50,7 @@ vim.keymap.set('n', '<leader>b', function() require('dap').toggle_breakpoint() e
 vim.keymap.set('n', '<leader>du', function() require('dapui').toggle() end)
 
 --toggleterm
-vim.api.nvim_set_keymap("n", "<leader>lg", "<cmd>lua Lazygit_toggle()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>lg", "<cmd>lua Gitui_toggle()<CR>", { noremap = true, silent = true })
 
 
 

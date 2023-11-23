@@ -5,7 +5,7 @@ if not ok then
 end
 
 local function lsp_progress()
-    return require("lsp-progress").progress({ max_size = 50 })
+    return require("lsp-progress").progress({ max_size = 75 })
 end
 local function modes(str)
     if str == "INSERT" then
