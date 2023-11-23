@@ -68,6 +68,8 @@ return require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     }
+    --chatgpt
+    use {"Sergtco/ChatGPT.nvim"}
 
     --toggleterm
     use { "akinsho/toggleterm.nvim", tag = '*' }

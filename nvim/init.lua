@@ -22,6 +22,7 @@ local plugins = {
     'lsp/dap',
     'noice',
     'autopairs',
+    'gpt',
     'autosave',
     'blankline',
     'comment',

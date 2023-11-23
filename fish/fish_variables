@@ -1,6 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export BROWSER:firefox
+SETUVAR --export OPENAI_API_KEY:daskfasdfasf
 SETUVAR ROC_ENABLE_PRE_VEGA:1
 SETUVAR __fish_initialized:3400
 SETUVAR autovenv_enable:yes
