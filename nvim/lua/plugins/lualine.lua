@@ -37,7 +37,7 @@ lualine.setup {
         lualine_a = { { 'mode', fmt = modes } },
         lualine_b = { 'filename'},
         lualine_c = { lsp_progress },
-        lualine_x = {'location', 'progress'},
+        lualine_x = {'encoding','location', 'progress'},
         lualine_y = {'branch', 'diff' },
         lualine_z = {}
     },
