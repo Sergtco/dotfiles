@@ -34,11 +34,11 @@ lualine.setup {
         globalstatus = true,
     },
     sections = {
-        lualine_a = { 'mode' },
-        lualine_b = { 'filename', 'encoding' },
-        lualine_c = { 'progress',lsp_progress},
-        lualine_x = {},
-        lualine_y = { 'diff', 'branch' },
+        lualine_a = { { 'mode', fmt = modes } },
+        lualine_b = { 'filename'},
+        lualine_c = { lsp_progress },
+        lualine_x = {'encoding','location', 'progress'},
+        lualine_y = {'branch', 'diff' },
         lualine_z = {}
     },
 }

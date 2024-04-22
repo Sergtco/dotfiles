@@ -1,0 +1,39 @@
+theme = "tokyonight"
+
+[editor]
+bufferline = "multiple"
+color-modes = true
+# cursorline = true
+line-number = "relative"
+rulers = [120]
+true-color = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+
+[editor.indent-guides]
+character = "┆"
+display-messages = true
+render = true
+
+[editor.soft-wrap]
+enable = true
+
+
+[editor.statusline]
+left = ["mode", "file-name", "read-only-indicator", "file-modification-indicator","separator","spacer", "version-control"]
+center = ["spinner"]
+right = ["diagnostics","primary-selection-length", "position"]
+
+
+[editor.lsp]
+display-inlay-hints = false
+
+
+[keys.normal]
+"A-c" = ":bc"
+
+

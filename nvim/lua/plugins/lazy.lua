@@ -73,9 +73,17 @@ require('lazy').setup({
     --Rust-tools
     'simrat39/rust-tools.nvim',
     -- markdown
-    { 'saimo/peek.nvim' },
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        build = "cd app && npm install",
+        init = function()
+            vim.g.mkdp_filetypes = { "markdown" }
+        end,
+        ft = { "markdown" },
+    },
     --chadtree
-    { 'ms-jpq/chadtree', branch = 'chad' },
+    { 'ms-jpq/chadtree',         branch = 'chad' },
     --cokeline
     {
         'willothy/nvim-cokeline',
