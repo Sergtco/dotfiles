@@ -4,6 +4,7 @@ SETUVAR --export EDITOR:nvim
 SETUVAR --export OPENAI_API_KEY:sk\x2dJFQ4waYAiJKASXecSxpgT3BlbkFJlkeM8qUSTKrX42wNo9Ka
 SETUVAR ROC_ENABLE_PRE_VEGA:1
 SETUVAR --export TERMINAL:/usr/bin/kitty
+SETUVAR --export VISUAL:/usr/bin/helix
 SETUVAR __fish_initialized:3400
 SETUVAR autovenv_enable:yes
 SETUVAR fish_color_autosuggestion:555\x1ebrblack

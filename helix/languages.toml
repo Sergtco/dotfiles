@@ -1,9 +1,10 @@
 [[language]]
 name = "python"
-language-servers = ["pyright"]
+language-servers = ["scls","pyright"]
 file-types = ["py", "pyi"]
 roots = ["pyproject.toml"]
 formatter = {command = "black", args=["-", "--quiet"]}
+auto-format = true
 
 [[language]]
 name = "go"
@@ -27,17 +28,10 @@ name = "cpp"
 language-servers = ["clangd"]
 indent = {tab-width=4, unit="    "}
 
-# [language-server.snippets-ls-go]
-# command = "snippets-ls"
-# args = ["-config", "/home/sergtco/dotfiles/helix/external-snippets/github.com/rafamadriz/friendly-snippets.git/snippets/go.json"]
-
 # introduce new language server
 [language-server.scls]
 command = "simple-completion-language-server"
 
-# [language-server.scls.environment]
-# RUST_LOG = "info,simple-completion-langauge-server=info"
-# LOG_FILE = "/tmp/completion.log"
 
 [language-server.scls.config]
 max_completion_items = 10     # set max completion results len for each group: words, snippets, unicode-input
