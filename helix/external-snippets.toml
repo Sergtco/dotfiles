@@ -7,4 +7,8 @@ scope = ["go"]
 path = "snippets/go.json"
 
 [[sources.paths]]
+scope = ["python"]
+path = "snippets/python/python.json"
+
+[[sources.paths]]
 path = "snippets/"

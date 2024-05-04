@@ -6,11 +6,11 @@
 
 // define colors etc.
 * {
-    bg: #24283b;
+    bg: #1A1B26;
     hv: #9274ca; 
     primary: #C5C8C6; 
     ug: #0B2447;
-    font: "JetBrainsMono NF 11";
+    font: "JetBrainsMono NerdFont 12";
     background-color: @bg;
     //dark: @bg;
     border: 0px;
@@ -47,7 +47,7 @@ mainbox {
 inputbar {
     color: @kl;
     padding: 11px;
-    border: 3px 3px 2px 3px;
+    border: 0px 0px 0px 0px;
     border-color: @primary;
     border-radius: 6px 6px 0px 0px;
 }
@@ -55,7 +55,7 @@ inputbar {
 message {
     padding: 0;
     border-color: @primary;
-    border: 0px 1px 1px 1px;
+    border: 0px 0px 0px 1px;
 }
 
 entry, prompt, case-indicator {
@@ -76,11 +76,11 @@ listview {
     //spacing: 5px;
     padding: 8px;
     lines: 7;
-    columns: 2;
-    border: 0px 3px 3px 3px; 
+    columns: 1;
+    border: 0px 0px 0px 0px; 
     border-radius: 0px 0px 6px 6px;
     border-color: @primary;
-    dynamic: false;
+    dynamic: true;
 }
 
 element {
@@ -88,6 +88,7 @@ element {
     vertical-align: 1;
     color: @kl;
     font: inherit;
+    border-radius: 6px 6px 6px 6px;
 }
 
 element-text {
@@ -109,7 +110,7 @@ element normal active {
 element-icon {
     background-color: inherit;
     text-color: inherit;
-    size: 2.5em;
+    size: 1.5em;
 }
 
 element normal urgent {
