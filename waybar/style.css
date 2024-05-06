@@ -8,7 +8,7 @@
 
 }
 window#waybar {
-    background-color: transparent;
+    background-color: #1A1B26;
 }
 #waybar {
   background: #1e222a;
@@ -28,22 +28,16 @@ window#waybar {
   color: #fa5aa4;
 }
 
-#custom-powermenu,
-#cpu,
-#temperature,
-#memory,
 #workspaces,
 #language,
 #clock,
 #window,
 #wireplumber,
-#battery,
-#custom-updates,
 #custom-notification
 #network
 #bluetooth,
 #idle_inhibitor,
-#custom-player {
+#mpris{
   padding: 4px 8px;
   background-color: #1A1B26;
   margin: 0px 0 0px;
@@ -64,12 +58,12 @@ window#waybar {
 
 #tray {
   padding: 4px 8px;
-  padding-right: 20px;
-  background-color: #1A1B26;
-  border-radius: 0 0px 30px 0;
+  padding-right: 10px;
+  background-color: #2A2F41;
+  border-radius: 30px 30px 30px 30px;
 }
 
-#custom-player {
+#mpris{
     color: #C0CAF5;
     min-width: 100px;
     padding: 0px 20px 0px;
@@ -108,7 +102,10 @@ window#waybar {
 }
 
 #language {
-    /* padding-right: 11px; */
+  /* padding-right: 11px; */
+  min-width: 75px;
+  padding-right: 30px;
+  border-radius: 0 0px 30px 0;
 }
 
 

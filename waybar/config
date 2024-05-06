@@ -3,6 +3,7 @@
     "position": "top",
     "height": "30",
     "margin-bottom": 0,
+    "reload_style_on_change": true,
     "modules-left": [
       "clock",
       "idle_inhibitor",
@@ -11,7 +12,7 @@
       "custom/notification",
       ],
     "modules-center": [
-      "custom/player",
+      "mpris",
       ],
     "modules-right": [
       "custom/notification",
@@ -19,14 +20,13 @@
       "bluetooth",
       "network",
       "hyprland/language",
-      "custom/powermenu",
     ],
     "tray": {
       "icon-size": 20,
       "spacing": 10
     },
     "hyprland/language": {
-    "format": "Lang: {}",
+    "format": "󰌓 {}",
     "format-en": "Burger",
     "format-ru": "Пельмени",
     "keyboard-name": "at-translated-set-2-keyboard"
@@ -44,11 +44,6 @@
           "Search(.*)": "  Search$1",
       },
       "separate-outputs": false
-    },
-    "hyprland/submap": {
-      "format": "✌️ {}",
-      "max-length": 8,
-      "tooltip": true
     },
     "hyprland/workspaces": {
       "format": "{icon}",
@@ -76,59 +71,23 @@
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
-    "temperature": {
-      "format": "{icon} {temperatureC}°C",
-      "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-      "critical-threshold": 80,
-      "format-icons": ["", "", ""]
-    },
-    "battery": {
-        "bat": "BAT1",
-        "states": {
-            //"good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon}",
-        "format-charging": "{capacity}% 󰚥",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{capacity}% {icon}",
-         //"format-good": "", // An empty format will hide the module
-        "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "memory": {
-      "format": " {}%",
-      "tooltip": "false"
-    },
-    "cpu": {
-      "format": " {usage}%",
-      "tooltip": "false"
-    },
     "custom/powermenu": {
       "format": "",
       "tooltip": false,
       "on-click": "exec wlogout -p layer-shell",
     },
-    "custom/updates": {
-      "format": "<span color=\"#61afef\"></span> {}",
-      "tooltip": false,
-      "interval": 3600,
-      "exec": "exec $HOME/.config/waybar/checkupdate.sh"
-    },
-    "custom/player": {
-        "format": "{icon}{}",
-        "escape": true,
-        "return-type": "json",
-        "interval": "1",
-        "max-length": 40,
-        "on-click": "playerctl play-pause",
-        "on-click-right": "playerctl stop",
-        "smooth-scrolling-threshold": 5, // This value was tested using a trackpad, it should be lowered if using a mouse.
-        "on-scroll-up": "playerctl next",
-        "on-scroll-down": "playerctl previous",
-        "exec": "~/.config/waybar/mediaplayer.py 2> /dev/null", // Script in resources/custom_modules folder
-    },
+    "mpris": {
+    	"format": "{player_icon} {dynamic}",
+    	"format-paused": "{status_icon} <i>{dynamic}</i>",
+    	"player-icons": {
+    		"default": "",
+    	},
+        "tooltip":false,
+    	"status-icons": {
+    		"paused": "",
+    	},
+    }
+    ,
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
@@ -167,7 +126,6 @@
             "on-click": "blueberry",
     },
     "clock": {
-      //"format": "<span color=\"#56b6c2\"></span> {:%H:%M}",
       "format": "{:%H:%M}",
       "interval": 60,
       "tooltip": true,
