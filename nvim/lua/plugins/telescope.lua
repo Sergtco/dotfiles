@@ -1,2 +1,5 @@
-require('telescope').setup{
+require('telescope').setup {
+    defaults = {},
+    pickers = {},
+    extensions = {},
 }

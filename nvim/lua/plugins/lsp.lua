@@ -41,6 +41,18 @@ require("mason-lspconfig").setup_handlers {
             capabilities = capabilities,
         }
     end,
+    ["html"] = function()
+        require("lspconfig")["html"].setup {
+            on_attach = on_attach,
+            capabilities = capabilities,
+            filetypes = { "html", "templ" }
+        }
+        require("lspconfig")["emmet_language_server"].setup {
+            on_attach = on_attach,
+            capabilities = capabilities,
+            filetypes = { "html", "templ" }
+        }
+    end
 }
 
 local config = {

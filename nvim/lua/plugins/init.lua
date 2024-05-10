@@ -1,6 +1,6 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-    vim.fn.system({
+    vim.fn.sstem({
         "git",
         "clone",
         "--filter=blob:none",
@@ -26,9 +26,9 @@ require("lazy").setup({
     {
         "williamboman/mason.nvim",
         dependencies = {
-            "williamboman/mason-lspconfig.nvim",
             "neovim/nvim-lspconfig",
             "nvim-treesitter/nvim-treesitter",
+            "williamboman/mason-lspconfig.nvim",
         }
     },
     --telescope
@@ -57,18 +57,32 @@ require("lazy").setup({
             },
             'L3MON4D3/LuaSnip',
             'hrsh7th/cmp-buffer',
-            'rafamadriz/friendly-snippets',
-            'hrsh7th/cmp-path',
             'hrsh7th/cmp-cmdline',
             'hrsh7th/cmp-nvim-lsp-signature-help',
+            'hrsh7th/cmp-path',
+            'rafamadriz/friendly-snippets',
         }
     },
     --bufferline
     { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
+    --comment
+    {
+        'numToStr/Comment.nvim',
+        opts = {},
+        lazy = false,
+    },
+    --lualine
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' }
+    },
+
+
 })
 
 local plugins = {
     'bufferline',
+    'lualine',
     'cmp',
     'lsp',
     'treesitter',
