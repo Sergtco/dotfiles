@@ -3,20 +3,18 @@ theme = "tokyonight"
 [editor]
 bufferline = "multiple"
 color-modes = true
-# cursorline = true
 line-number = "relative"
 rulers = [120]
 true-color = true
+completion-timeout = 5
 
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
 select = "underline"
 
-
 [editor.indent-guides]
 character = "┆"
-display-messages = true
 render = true
 
 [editor.soft-wrap]
@@ -31,7 +29,7 @@ right = ["diagnostics","primary-selection-length", "position"]
 
 [editor.lsp]
 display-inlay-hints = false
-
+display-messages = true
 
 [keys.normal]
 "A-c" = ":bc"
