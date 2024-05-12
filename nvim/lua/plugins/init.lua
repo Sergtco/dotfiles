@@ -28,6 +28,7 @@ require("lazy").setup({
         dependencies = {
             "neovim/nvim-lspconfig",
             "nvim-treesitter/nvim-treesitter",
+            "nvim-treesitter/nvim-treesitter-textobjects",
             "williamboman/mason-lspconfig.nvim",
         }
     },
@@ -35,7 +36,10 @@ require("lazy").setup({
     {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.6',
-        dependencies = { 'nvim-lua/plenary.nvim' }
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+        }
     },
     --surround
     {
@@ -57,6 +61,7 @@ require("lazy").setup({
             },
             'L3MON4D3/LuaSnip',
             'hrsh7th/cmp-buffer',
+            'onsails/lspkind.nvim',
             'hrsh7th/cmp-cmdline',
             'hrsh7th/cmp-nvim-lsp-signature-help',
             'hrsh7th/cmp-path',

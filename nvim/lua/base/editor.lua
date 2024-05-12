@@ -7,6 +7,8 @@ opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
 opt.syntax = "enable"
 opt.ignorecase = true
 opt.smartcase = true
+opt.clipboard = "unnamedplus"
+vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 
 --indent
 local indent = 4
@@ -26,7 +28,3 @@ opt.scrolloff = 5
 
 --colors
 opt.termguicolors = true
-
--- fold
-opt.foldmethod = "marker"
-opt.foldlevel = 99

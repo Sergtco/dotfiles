@@ -1,2 +1,4 @@
 require('keys/maps')
-require('keys/plugins')
+
+local plugin_keys = require('keys/plugins')
+plugin_keys.telescope()
