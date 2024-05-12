@@ -7,7 +7,6 @@ opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
 opt.syntax = "enable"
 opt.ignorecase = true
 opt.smartcase = true
-opt.clipboard = "unnamedplus"
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 
 --indent
