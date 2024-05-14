@@ -1,7 +1,6 @@
 local opt = vim.opt
 local g = vim.g
 
-
 --misc
 opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
 opt.syntax = "enable"
@@ -24,6 +23,8 @@ opt.number = true
 opt.relativenumber = true
 opt.signcolumn = "number"
 opt.scrolloff = 5
+opt.splitbelow = true
+opt.splitright = true
 
 --colors
 opt.termguicolors = true
