@@ -1,12 +1,16 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export EDITOR:nvim
+SETUVAR DISPLAY:\x3a1
+SETUVAR --export EDITOR:/usr/bin/nvim
 SETUVAR --export OPENAI_API_KEY:sk\x2dJFQ4waYAiJKASXecSxpgT3BlbkFJlkeM8qUSTKrX42wNo9Ka
 SETUVAR ROC_ENABLE_PRE_VEGA:1
 SETUVAR TERM:/usr/bin/alacritty
 SETUVAR --export TERMINAL:/usr/bin/alacritty
 SETUVAR --export VISUAL:/usr/bin/helix
 SETUVAR __fish_initialized:3400
+SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
+SETUVAR _fisher_plugins:jorgebucaran/fisher
+SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR autovenv_enable:yes
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr

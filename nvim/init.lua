@@ -1,3 +1,4 @@
-require('plugins')
-require('base/editor')
-require('keys')
+vim.g.mapleader = " "
+require("base.editor")
+require("base.lazy")
+require("keys")
