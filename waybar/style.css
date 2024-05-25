@@ -1,33 +1,21 @@
 * {
-  border: none;
-  border-radius: 0;
   min-height: 0;
   margin: 0;
   padding: 0;
   font-family: "DejaVuSansM Nerd Font";
-
+  font-size: 13px;
+  background-color: #16161D;
+  color:#C8BF8D;
 }
 window#waybar {
-    background-color: #1A1B26;
 }
 #waybar {
   background: #1e222a;
   color: #C0CAF5;
-  /* border-radius: 10px; */
-  /* border-bottom: 2px solid #C0CAF5; */
   font-size: 12px;
 }
 
-#workspaces button {
-  padding: 0 5px;
-  color: #eeeeef;
-}
-/* Fix: active workspace doesn't show up */
-/* #workspaces button.focused { */
-#workspaces button.active {
-  color: #fa5aa4;
-}
-
+#tray,
 #workspaces,
 #language,
 #clock,
@@ -38,105 +26,59 @@ window#waybar {
 #bluetooth,
 #idle_inhibitor,
 #mpris{
-  padding: 4px 8px;
-  background-color: #1A1B26;
-  margin: 0px 0 0px;
+  padding: 5px 10px 5px 10px;
 }
 
 #clock {
-  color: #fff;
-  padding-left: 20px;
-  border-radius: 0px 0 0 30px;
 }
 
 #idle_inhibitor {
-  padding: 4px 10px;
+font-size: 15px;
 }
 
 #workspaces {
 }
+#workspaces button {
+  padding: 0 5px;
+}
+#workspaces button.active {
+  color: #fa5aa4;
+  
+}
 
 #tray {
-  padding: 4px 8px;
-  padding-right: 10px;
-  background-color: #2A2F41;
-  border-radius: 30px 30px 30px 30px;
+  color:#C8BF8D;
 }
 
 #mpris{
     color: #C0CAF5;
     min-width: 100px;
-    padding: 0px 20px 0px;
-    border-radius: 0px 0px 30px 30px;
 }
 
 #custom-notification{
-  color: #61afef;
   min-width: 35px;
-  background-color: #1A1B26;
-  padding: 4px 8px;
-  padding-left: 20px;
-  border-radius: 0px 0 0 30px;
-
 }
+
 #wireplumber {
-  color: #0fb9b1;
-  padding-right: 14px;
 }
 
 #bluetooth{
-  padding: 4px 8px;
-  background-color: #1A1B26;
 }
 
 #network {
-  color: #c678dd;
-  min-width: 200px;
-  background-color: #1A1B26;
-  padding: 4px 8px;
+  margin-left: 10px;
 }
 
 #language {
-  /* padding-right: 11px; */
-  min-width: 75px;
-  padding-right: 30px;
-  border-radius: 0 0px 30px 0;
+  min-width: 100px;
 }
 
 
 #custom-powermenu {
   color: #e06c75;
-  padding-right: 30px;
-  border-radius: 0 0px 30px 0;
 }
 
 
 #scratchpad {
   color: #cffafe;
-  padding-right: 4px;
-  padding-left: 4px;
 }
-#window {
-  color: #929db1;
-}
-
-
-#custom-updates {
-  color: #1788e4;
-}
-
-
-
-#cpu {
-  color: #61afef;
-}
-
-#temperature {
-  color: #98c379;
-}
-
-#memory {
-  color: #e5c07b;
-}
-
-

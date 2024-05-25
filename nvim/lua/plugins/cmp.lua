@@ -24,7 +24,10 @@ return {
 			view = {
 				entries = "custom",
 			},
-			window = {},
+			window = {
+				completion = cmp.config.window.bordered(),
+				documentation = cmp.config.window.bordered(),
+			},
 			formatting = {
 				fields = { "kind", "abbr", "menu" },
 				format = function(entry, vim_item)

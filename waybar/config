@@ -1,9 +1,11 @@
 {
   "layer": "top",
-    "position": "top",
+    "position": "bottom",
     "height": "30",
     "margin-bottom": 0,
     "reload_style_on_change": true,
+    "mode": "dock",
+    "start_hidden": true,
     "modules-left": [
       "clock",
       "idle_inhibitor",
@@ -64,12 +66,12 @@
       }
     },
     "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-wifi": "  {signalStrength}% ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{essid}: {ipaddr}/{cidr}"
     },
     "custom/powermenu": {
       "format": "",
@@ -91,13 +93,13 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": "󰌵",
+            "deactivated": "󰌶"
         }
     },
     "wireplumber": {
-      "format": "{volume}% {icon}",
-      "format-bluetooth": "{volume}% {icon}",
+      "format": "{icon} {volume}%",
+      "format-bluetooth": "{icon} {volume}%",
       "format-muted": "",
       "format-icons": {
           "headphone": "",
@@ -116,9 +118,8 @@
         "format": " {status}",
         "format-on": "",
         "format-off": "󰂲",
-            "format-connected": " {device_alias}",
-            "format-connected-battery": " {device_alias} {device_battery_percentage}%",
-            // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+            "format-connected": "",
+            "format-connected-battery": " {device_battery_percentage}%",
             "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
             "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
             "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",

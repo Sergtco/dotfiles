@@ -1,0 +1,96 @@
+* {
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  font-family: "DejaVuSansM Nerd Font";
+  font-size: 13px;
+
+}
+window#waybar {
+    background-color: #1A1B26;
+}
+#waybar {
+  background: #1e222a;
+  color: #C0CAF5;
+  font-size: 12px;
+}
+
+#tray,
+#workspaces,
+#language,
+#clock,
+#window,
+#wireplumber,
+#custom-notification
+#network
+#bluetooth,
+#idle_inhibitor,
+#mpris{
+  background-color: #1A1B26;
+  padding: 5px 10px 5px 10px;
+}
+
+#clock {
+  color: #fff;
+}
+
+#idle_inhibitor {
+font-size: 15px;
+}
+
+#workspaces {
+}
+#workspaces button {
+  padding: 0 5px;
+  color: #eeeeef;
+}
+#workspaces button.active {
+  color: #fa5aa4;
+  
+}
+
+#tray {
+  background-color: #2A2F41;
+}
+
+#mpris{
+    color: #C0CAF5;
+    min-width: 100px;
+    
+}
+
+#custom-notification{
+  color: #61afef;
+  min-width: 35px;
+  background-color: #1A1B26;
+}
+
+#wireplumber {
+  color: #0fb9b1;
+  
+}
+
+#bluetooth{
+  background-color: #1A1B26;
+}
+
+#network {
+  color: #c678dd;
+  margin-left: 10px;
+}
+
+#language {
+  min-width: 100px;
+}
+
+
+#custom-powermenu {
+  color: #e06c75;
+}
+
+
+#scratchpad {
+  color: #cffafe;
+  
+  
+}
