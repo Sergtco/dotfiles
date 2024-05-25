@@ -2,32 +2,28 @@ local opt = vim.opt
 local g = vim.g
 
 
---editor line numbers
+--misc
+opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
+opt.syntax = "enable"
+opt.ignorecase = true
+opt.smartcase = true
+vim.cmd([[autocmd FileType * set formatoptions-=ro]])
+
+--indent
+local indent = 4
+opt.autoindent = true
+opt.expandtab = true
+opt.shiftwidth = indent
+opt.smartindent = true
+opt.softtabstop = indent
+opt.tabstop = indent
+opt.shiftround = true
+
+--ui
 opt.number = true
---scrolloff
-opt.scrolloff = 6
+opt.relativenumber = true
+opt.signcolumn = "number"
+opt.scrolloff = 5
 
-
---signs column
-opt.signcolumn = "yes"
-
---scrolloff
-opt.scrolloff = 8
-
---no mode for cmdline
-opt.smd = false
---persistent undo
-opt.undofile = true
-
---Folding
-opt.foldlevel = 20
-opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
-
-vim.cmd [[
-    augroup remember_folds
-      autocmd!
-      autocmd BufWinLeave *.* mkview
-      autocmd BufWinEnter *.* silent! loadview
-    augroup END
-]]
+--colors
+opt.termguicolors = true

@@ -1,51 +1,39 @@
-local ok, lualine = pcall(require, 'lualine')
-
-if not ok then
-    return
-end
-
-local function lsp_progress()
-    return require("lsp-progress").progress({ max_size = 75 })
-end
-local function modes(str)
-    if str == "INSERT" then
-        return "INS"
-    elseif str == "NORMAL" then
-        return "NOR"
-    elseif str == "VISUAL" then
-        return "VIS"
-    elseif str == "V-LINE" then
-        return "VIS-L"
-    elseif str == "COMMAND" then
-        return "COM"
-    end
-    return str
-end
-
-lualine.setup {
-    extensions = { 'chadtree', 'mason', 'toggleterm' },
+require('lualine').setup {
     options = {
         icons_enabled = true,
         theme = 'tokyonight',
-        component_separators = '|',
-        section_separators = {},
-        disabled_filetypes = { "alpha" },
-        always_divide_middle = false,
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
+        filetype_names = {
+            TelescopePrompt = 'Telescope',
+        },
+        disabled_filetypes = {
+            statusline = {},
+            winbar = {},
+        },
+        ignore_focus = {},
+        always_divide_middle = true,
         globalstatus = true,
+        refresh = {
+            statusline = 1000,
+            tabline = 1000,
+            winbar = 1000,
+        }
     },
     sections = {
-        lualine_a = { { 'mode', fmt = modes } },
-        lualine_b = { 'filename'},
-        lualine_c = { lsp_progress },
-        lualine_x = {'encoding','location', 'progress'},
-        lualine_y = {'branch', 'diff' },
+        lualine_a = { 'mode' },
+        lualine_b = { { 'diagnostics', sources = { "nvim_lsp" } } },
+        lualine_c = { 'filename' },
+        lualine_x = { 'encoding', 'fileformat' },
+        lualine_y = { 'progress' },
+        lualine_z = { 'location' }
+    },
+    inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { 'filename' },
+        lualine_x = { 'location' },
+        lualine_y = {},
         lualine_z = {}
     },
 }
-
-vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
-vim.api.nvim_create_autocmd("User", {
-    group = "lualine_augroup",
-    pattern = "LspProgressStatusUpdated",
-    callback = require("lualine").refresh,
-})

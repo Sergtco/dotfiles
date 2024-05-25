@@ -1,0 +1,10 @@
+import = [
+    "~/dotfiles/alacritty/alacritty-theme/themes/tokyo-night.toml"
+]
+
+[font]
+size = 17
+normal = { family = "FiraCode Nerd Font Mono", style = "Regular"}
+
+[mouse]
+hide_when_typing = true
