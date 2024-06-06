@@ -11,7 +11,6 @@ return {
 
 		local opts = { noremap = true, silent = true }
 		vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
-		local augroup = vim.api.nvim_create_augroup("AutoFormatting", {})
 		local on_attach = function(client, bufnr)
 			vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 			---keymaps
@@ -29,8 +28,10 @@ return {
 				timeout_ms = 500,
 			},
 		})
+
 		vim.filetype.add({ extension = { templ = "templ" } })
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 		require("mason-lspconfig").setup_handlers({
 			function(server_name)
 				require("lspconfig")[server_name].setup({
@@ -52,12 +53,23 @@ return {
 			end,
 		})
 
+		local signs = {
+			{ name = "DiagnosticSignError", text = "" },
+			{ name = "DiagnosticSignWarn", text = "" },
+			{ name = "DiagnosticSignHint", text = "󰌵" },
+			{ name = "DiagnosticSignInfo", text = "" },
+		}
+
+		for _, sign in ipairs(signs) do
+			vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+		end
 		local config = {
-			-- disable virtual text
 			virtual_text = false,
 			update_in_insert = true,
 			underline = true,
-			signs = true,
+			signs = {
+				active = signs,
+			},
 			severity_sort = true,
 			float = {
 				focusable = true,

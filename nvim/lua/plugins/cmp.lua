@@ -49,6 +49,7 @@ return {
 				{ name = "nvim_lsp_signature_help", priority = 8 },
 				{ name = "luasnip", priority = 4 },
 				{ name = "path", priority = 3 },
+				{ max_item_count = 10 },
 			}, {
 				{ name = "buffer", priority = 2 },
 			}),

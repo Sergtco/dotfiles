@@ -4,10 +4,10 @@
   padding: 0;
   font-family: "DejaVuSansM Nerd Font";
   font-size: 13px;
-  background-color: #16161D;
   color:#C8BF8D;
 }
-window#waybar {
+window#waybar{
+  background-color: #16161D;
 }
 #waybar {
   background: #1e222a;
@@ -51,7 +51,6 @@ font-size: 15px;
 }
 
 #mpris{
-    color: #C0CAF5;
     min-width: 100px;
 }
 

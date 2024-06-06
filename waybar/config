@@ -30,7 +30,7 @@
     "format": "󰌓 {long}",
     //"format-en": "Burger",
     //"format-ru": "Пельмени",
-    "keyboard-name": "usb-dongle"
+    "keyboard-name": "ergohaven-k:03"
     },
     "hyprland/window": {
       "format": "{}",

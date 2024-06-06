@@ -1,4 +1,5 @@
 local opt = vim.opt
+local g = vim.g
 
 --misc
 opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
@@ -9,10 +10,11 @@ opt.colorcolumn = "120"
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 
 -- file system
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.undofile = true
+opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+opt.undofile = true
 opt.swapfile = false
 opt.backup = false
+g.netrw_liststyle = 3
 
 --indent
 local indent = 4
