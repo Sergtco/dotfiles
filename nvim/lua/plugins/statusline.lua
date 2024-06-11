@@ -7,6 +7,9 @@ return {
 	event = { "BufEnter" },
 	config = function(_, opts)
 		require("sttusline").setup({
+			disabled = {
+				buftypes = {},
+			},
 			components = {
 				"mode",
 				"filename",

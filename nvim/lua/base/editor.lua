@@ -32,8 +32,8 @@ opt.scrolloff = 8
 opt.splitbelow = true
 opt.splitright = true
 opt.laststatus = 3
-opt.wrap = false
--- opt.showbreak = "󱞶"
+opt.wrap = true
+opt.showbreak = "󱞶"
 
 --colors
 opt.termguicolors = true
