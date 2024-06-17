@@ -7,6 +7,7 @@ opt.syntax = "enable"
 opt.ignorecase = true
 opt.smartcase = true
 opt.colorcolumn = "120"
+opt.shortmess:append("I")
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 
 -- file system
