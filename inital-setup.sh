@@ -21,8 +21,8 @@ fi
 
 _needed_packages="fish neovim firefox ttf-jetbrains-mono-nerd"
 _hypr_packages="udiskie libappindicator-gtk3 \
-hyprpicker-git waybar-git \
-dunst nwg-look wf-recorder wlogout wlsunset \
+hyprpicker waybar \
+dunst wf-recorder wlogout wlsunset \
 colord ffmpegthumbnailer gnome-keyring grimblast-git gtk-engine-murrine \
 imagemagick kvantum pamixer playerctl polkit-kde-agent qt5-quickcontrols        \
 qt5-quickcontrols2 qt5-wayland qt6-wayland swaybg ttf-font-awesome tumbler     \
