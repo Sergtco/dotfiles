@@ -21,7 +21,7 @@ local lsp = function(client, bufnr)
 	vim.keymap.set("n", "<space>a", vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 	vim.keymap.set("n", "<space>w", function()
-		require("conform").format({ bufnr = bufnr })
+		require("conform").format({ bufnr = bufnr, lsp_format = "fallback" })
 	end, bufopts)
 end
 

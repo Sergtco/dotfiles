@@ -6,7 +6,7 @@ opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
 opt.syntax = "enable"
 opt.ignorecase = true
 opt.smartcase = true
-opt.colorcolumn = "120"
+opt.colorcolumn = "80"
 opt.shortmess:append("I")
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 

@@ -1,27 +1,15 @@
 return {
 	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require("tokyonight").setup({
-				style = "night",
-				light_style = "day",
-				on_highlights = function(hl, c) end,
-			})
-			-- vim.cmd.colorscheme("tokyonight")
-		end,
-	},
-	{
 		"rebelot/kanagawa.nvim",
 		lazy = false,
 		priority = 1000,
 		config = function()
 			require("kanagawa").setup({
+				compile = true,
 				overrides = function(colors)
 					local theme = colors.theme
 					return {
-						NormalFloat = { bg = "none" },
+						NormalFloat = { bg = theme.ui.bg_p1 },
 						FloatBorder = { fg = "none", bg = "none" },
 						FloatTitle = { bg = "none" },
 						NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },

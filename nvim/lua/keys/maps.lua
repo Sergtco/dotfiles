@@ -6,7 +6,7 @@ vim.keymap.set("n", "<A-]>", "<cmd>bnext<cr>", {})
 vim.keymap.set("n", "<A-c>", "<cmd>bdelete<cr>", {})
 
 --Files
-vim.keymap.set("n", "<leader>fe", "<cmd>Oil<cr>", {})
+vim.keymap.set("n", "<leader>fe", require("oil").open_float, {})
 --Term
 vim.keymap.set("t", "<esc>", "<C-\\><C-N>", { silent = true })
 vim.keymap.set("n", "<c-space>", ToggleTerminal, { silent = true })

@@ -23,10 +23,10 @@ return {
 				python = { "black" },
 				javascript = { "prettier" },
 			},
-			format_on_save = {
+			format_on_save = false,--[[ {
 				lsp_fallback = true,
 				timeout_ms = 500,
-			},
+			} ]]
 		})
 
 		vim.filetype.add({ extension = { templ = "templ" } })
@@ -80,7 +80,6 @@ return {
 				prefix = "",
 			},
 		}
-
 		vim.diagnostic.config(config)
 	end,
 }

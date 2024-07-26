@@ -11,7 +11,6 @@ return {
 		"hrsh7th/cmp-buffer",
 		"onsails/lspkind.nvim",
 		"hrsh7th/cmp-cmdline",
-		"hrsh7th/cmp-nvim-lsp-signature-help",
 		"hrsh7th/cmp-path",
 		"rafamadriz/friendly-snippets",
 	},
@@ -26,13 +25,15 @@ return {
 			},
 			window = {},
 			formatting = {
-				fields = { "kind", "abbr", "menu" },
+				fields = {
+					"kind",
+					"abbr",
+				},
+
 				format = function(entry, vim_item)
-					local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+					local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
 					local strings = vim.split(kind.kind, "%s", { trimempty = true })
 					kind.kind = " " .. (strings[1] or "") .. " "
-					kind.menu = strings[2] or ""
-
 					return kind
 				end,
 			},
@@ -43,7 +44,6 @@ return {
 			},
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp", priority = 7 },
-				{ name = "nvim_lsp_signature_help", priority = 8 },
 				{ name = "luasnip", priority = 4 },
 				{ name = "path", priority = 3 },
 				{ max_item_count = 10 },
