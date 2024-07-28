@@ -9,8 +9,15 @@ return {
 		require("telescope").load_extension("fzf")
 		require("telescope").load_extension("grapple")
 		require("telescope").setup({
-			defaults = {},
-			pickers = {},
+			defaults = {
+                layout_strategy = 'bottom_pane',
+                layout_config = {
+                    vertical = {
+                    },
+                },
+            },
+			pickers = {
+            },
 			extensions = {
 				fzf = {
 					fuzzy = true,
