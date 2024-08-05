@@ -8,7 +8,6 @@ return {
 	config = function()
 		require("mason").setup()
 		require("mason-lspconfig").setup()
-		vim.lsp.inlay_hint.enable()
 
 		local opts = { noremap = true, silent = true }
 		vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
@@ -24,7 +23,7 @@ return {
 				python = { "black" },
 				javascript = { "prettier" },
 			},
-			format_on_save = false,
+			format_on_save = true,
 			{
 				lsp_fallback = true,
 				timeout_ms = 500,
@@ -34,6 +33,17 @@ return {
 		vim.filetype.add({ extension = { templ = "templ" } })
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+		require("lspconfig").gleam.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			settings = {
+				inlay_hints = false,
+			},
+		})
+		require("lspconfig").erlangls.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
 		require("mason-lspconfig").setup_handlers({
 			function(server_name)
 				require("lspconfig")[server_name].setup({
@@ -41,6 +51,7 @@ return {
 					capabilities = capabilities,
 				})
 			end,
+			["gleam"] = function() end,
 			["clangd"] = function()
 				require("lspconfig").clangd.setup({
 					on_attach = on_attach,
@@ -82,7 +93,7 @@ return {
 			vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 		end
 		local config = {
-			virtual_text = true,
+			virtual_text = false,
 			update_in_insert = true,
 			underline = true,
 			signs = {
