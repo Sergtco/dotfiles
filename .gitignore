@@ -1,0 +1,4 @@
+helix/runtime/
+tmux/plugins/
+fish/fish_variables
+nvim/lazy-lock.json

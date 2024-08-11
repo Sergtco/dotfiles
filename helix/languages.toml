@@ -1,0 +1,36 @@
+[[language]]
+name = "python"
+language-servers = ["pyright"]
+file-types = ["py", "pyi"]
+roots = ["pyproject.toml"]
+formatter = {command = "black", args=["-", "--quiet"]}
+auto-format = true
+
+[[language]]
+name = "go"
+language-servers = ["gopls"]
+file-types = ["go"]
+
+
+[[language]]
+name = "html"
+language-servers = ["emmet-ls", "tailwindcss-ls"]
+formatter = {command = "prettier", args = ["--parser", "html"]}
+file-types = ["html"]
+
+[[language]]
+name = "templ"
+language-servers = ["templ","emmet-ls",  "tailwindcss-ls"]
+file-types = ["templ"]
+
+[[language]]
+name = "cpp"
+language-servers = ["clangd"]
+indent = {tab-width=4, unit="    "}
+
+[language-server.tailwindcss-ls]
+config = { userLanguages = { templ = "html", "*.templ" = "html" } }
+
+[language-server.emmet-ls]
+command = "emmet-language-server"
+args = ["--stdio"]
