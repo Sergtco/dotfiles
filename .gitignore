@@ -1,4 +1,5 @@
-helix/runtime/
-tmux/plugins/
-fish/fish_variables
-nvim/lazy-lock.json
+config/helix/runtime
+config/tmux/plugins
+config/fish/fish_variables
+config/nvim/lazy-lock.json
+.DS_Store

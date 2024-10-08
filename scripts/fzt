@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+sessions ()
+{
+    local session=`tmux list-sessions -F "#S" | fzf-tmux -p | sed 's/^\(.*\): .*$/\1/'`
+    if [ $session != 1 ]; then
+        tmux switch-client -t $session
+    fi
+}
+sessions

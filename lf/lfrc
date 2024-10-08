@@ -1,4 +1,0 @@
-set icons
-
-map <enter> shell
-map . set hidden!
