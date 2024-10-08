@@ -1,5 +1,5 @@
 [env]
-term = "alacritty-direct"
+term = "alacritty"
 [window]
 option_as_alt = "Both"
 [font]

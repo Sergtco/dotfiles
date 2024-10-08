@@ -7,6 +7,7 @@ line-number = "relative"
 rulers = [80]
 true-color = true
 completion-timeout = 5
+undercurl = true
 
 [editor.cursor-shape]
 insert = "bar"
