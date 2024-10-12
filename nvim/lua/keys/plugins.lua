@@ -1,12 +1,3 @@
-local telescope = function()
-	local builtin = require("telescope.builtin")
-	vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-	vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-	vim.keymap.set("n", "<leader>b", builtin.buffers, {})
-	vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
-	vim.keymap.set("n", "<leader>d", builtin.diagnostics, {})
-	vim.keymap.set("n", "<leader>s", builtin.lsp_document_symbols, {})
-end
 
 local lsp = function(client, bufnr)
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -25,18 +16,6 @@ local lsp = function(client, bufnr)
 	end, bufopts)
 end
 
-local grapple = function()
-	local grapple = require("grapple")
-	vim.keymap.set("n", "<leader>m", grapple.toggle)
-	vim.keymap.set("n", "<leader>M", grapple.toggle_tags)
-	vim.keymap.set("n", "<leader>j", "<cmd>Grapple select index=1<cr>")
-	vim.keymap.set("n", "<leader>k", "<cmd>Grapple select index=2<cr>")
-	vim.keymap.set("n", "<leader>l", "<cmd>Grapple select index=3<cr>")
-	vim.keymap.set("n", "<leader>;", "<cmd>Grapple select index=4<cr>")
-	vim.keymap.set("n", "<leader>[", "<cmd>Grapple cycle_tags prev<cr>")
-	vim.keymap.set("n", "<leader>]", "<cmd>Grapple cycle_tags next<cr>")
-end
-
 local treesitter = {
 	enable = true,
 	set_jumps = true,
@@ -51,8 +30,6 @@ local treesitter = {
 }
 
 return {
-	telescope = telescope,
 	lsp = lsp,
 	treesitter = treesitter,
-	grapple = grapple,
 }

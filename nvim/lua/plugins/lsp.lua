@@ -19,7 +19,7 @@ return {
 
         require("conform").setup({
             formatters_by_ft = {
-                -- python = {"black" },
+                python = { "ruff" },
             },
             format_on_save = true,
             {
@@ -29,65 +29,49 @@ return {
             formatters = {
                 gopls = {
                     command = "ya tool gofmt"
-                }
+                },
             }
         })
 
         vim.filetype.add({ extension = { templ = "templ" } })
-        local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-        -- require("lspconfig").gleam.setup({
-        -- 	on_attach = on_attach,
-        -- 	capabilities = capabilities,
-        -- 	settings = {
-        -- 		inlay_hints = false,
-        -- 	},
-        -- })
-        require("lspconfig").erlangls.setup({
-            on_attach = on_attach,
-            capabilities = capabilities,
-        })
         require("mason-lspconfig").setup_handlers({
             function(server_name)
                 require("lspconfig")[server_name].setup({
                     on_attach = on_attach,
-                    capabilities = capabilities,
                 })
             end,
-            ["clangd"] = function()
-                require("lspconfig").clangd.setup({
-                    on_attach = on_attach,
-                    capabilities = capabilities,
-                    settings = {
-                        clangd = {
-                            InlayHints = {
-                                Designators = false,
-                                Enabled = true,
-                                ParameterNames = false,
-                                DeducedTypes = true,
+            ["basedpyright"] = function()
+                local filepath = vim.fn.expand("%:p")
+                if string.find(filepath, "arcadia") ~= nil then
+                    require('lspconfig').basedpyright.setup({
+                        on_attach = on_attach,
+                        settings = {
+                            basedpyright = {
+                                analysis = {
+                                    typeCheckingMode = "standard",
+                                    diagnosticSeverityOverrides = {
+                                        reportImplicitRelativeImport = false,
+                                    }
+                                }
                             },
-                        },
-                    },
-                })
-            end,
-            ["html"] = function()
-                require("lspconfig")["html"].setup({
-                    on_attach = on_attach,
-                    capabilities = capabilities,
-                    filetypes = { "html", "templ" },
-                })
-                require("lspconfig")["emmet_language_server"].setup({
-                    on_attach = on_attach,
-                    capabilities = capabilities,
-                    filetypes = { "html", "templ" },
-                })
+                            python = {
+                                pythonPath = "/usr/local/bin/python3.7"
+                            }
+
+                        }
+                    })
+                else
+                    require('lspconfig').basedpyright.setup({
+                        on_attach = on_attach,
+                    })
+                end
             end,
             ["gopls"] = function()
                 local filepath = vim.fn.expand("%:p")
                 if string.find(filepath, "arcadia") ~= nil then
-                    require 'lspconfig'.gopls.setup {
+                    require 'lspconfig'.gopls.setup({
                         on_attach = on_attach,
-                        capabilities = capabilities,
                         cmd = { "ya", "tool", "gopls" },
                         -- root_dir = require("lspconfig.util").root_pattern("ya.make", "go.work", "go.mod", ".git"),
                         settings = {
@@ -100,12 +84,11 @@ return {
                                 }
                             }
                         }
-                    }
+                    })
                 else
-                    require 'lspconfig'.gopls.setup {
+                    require 'lspconfig'.gopls.setup({
                         on_attach = on_attach,
-                        capabilities = capabilities,
-                    }
+                    })
                 end
             end
         })
