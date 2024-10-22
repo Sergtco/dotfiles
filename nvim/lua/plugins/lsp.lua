@@ -47,17 +47,19 @@ return {
         })
 
         vim.filetype.add({ extension = { templ = "templ" } })
+        -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+        local coq = require('coq')
 
         require("mason-lspconfig").setup_handlers({
             function(server_name)
-                require("lspconfig")[server_name].setup({
+                require("lspconfig")[server_name].setup(coq.lsp_ensure_capabilities({
                     on_attach = on_attach,
-                })
+                }))
             end,
             ["basedpyright"] = function()
                 local filepath = vim.fn.expand("%:p")
                 if string.find(filepath, "arcadia") ~= nil then
-                    require('lspconfig').basedpyright.setup({
+                    require('lspconfig').basedpyright.setup(coq.lsp_ensure_capabilities({
                         on_attach = on_attach,
                         settings = {
                             basedpyright = {
@@ -73,17 +75,17 @@ return {
                             }
 
                         }
-                    })
+                    }))
                 else
-                    require('lspconfig').basedpyright.setup({
+                    require('lspconfig').basedpyright.setup(coq.lsp_ensure_capabilities({
                         on_attach = on_attach,
-                    })
+                    }))
                 end
             end,
             ["gopls"] = function()
                 local filepath = vim.fn.expand("%:p")
                 if string.find(filepath, "arcadia") ~= nil then
-                    require 'lspconfig'.gopls.setup({
+                    require 'lspconfig'.gopls.setup(coq.lsp_ensure_capabilities({
                         on_attach = on_attach,
                         cmd = { "ya", "tool", "gopls" },
                         -- root_dir = require("lspconfig.util").root_pattern("ya.make", "go.work", "go.mod", ".git"),
@@ -97,11 +99,11 @@ return {
                                 }
                             }
                         }
-                    })
+                    }))
                 else
-                    require 'lspconfig'.gopls.setup({
+                    require 'lspconfig'.gopls.setup(coq.lsp_ensure_capabilities({
                         on_attach = on_attach,
-                    })
+                    }))
                 end
             end
         })
@@ -117,7 +119,7 @@ return {
             vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
         end
         local config = {
-            virtual_text = false,
+            virtual_text = true,
             update_in_insert = true,
             underline = true,
             signs = {

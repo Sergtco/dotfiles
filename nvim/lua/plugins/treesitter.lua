@@ -1,6 +1,6 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    dependecies = {
+    dependencies = {
         "nvim-treesitter/nvim-treesitter-textobjects",
     },
     config = function()
@@ -31,17 +31,49 @@ return {
             },
             indent = { enable = true },
             textobjects = {
+                lsp_interop = { enable = true },
+                select = {
+                    enable = true,
+                    keymaps = {
+                        ["ab"] = "@block.outer",
+                        ["ib"] = "@block.inner",
+                        ["ac"] = "@class.outer",
+                        ["ic"] = "@class.inner",
+                        ["af"] = "@function.outer",
+                        ["if"] = "@function.inner",
+                        ["aa"] = "@parameter.outer",
+                        ["ia"] = "@parameter.inner",
+                        ["ak"] = "@comment.outer"
+                    },
+                },
                 move = {
                     enable = true,
                     set_jumps = true,
                     goto_next_start = {
                         ["]f"] = "@function.outer",
-                        ["]a"] = "@parameter.inner",
+                        ["]]"] = { query = "@class.outer", desc = "Next class start" },
+                        ["]o"] = "@loop.*",
+                    },
+                    goto_next_end = {
+                        ["]F"] = "@function.outer",
+                        ["]["] = "@class.outer",
                     },
                     goto_previous_start = {
                         ["[f"] = "@function.outer",
-                        ["[a"] = "@parameter.outer",
+                        ["[["] = "@class.outer",
                     },
+                    goto_previous_end = {
+                        ["[F"] = "@function.outer",
+                        ["[]"] = "@class.outer",
+                    },
+                    goto_next = {
+                        ["]d"] = "@conditional.outer",
+                        ["]a"] = "@parameter.outer",
+                    },
+                    goto_previous = {
+                        ["[d"] = "@conditional.outer",
+                        ["[a"] = "@parameter.outer",
+                    }
                 }
             },
         })

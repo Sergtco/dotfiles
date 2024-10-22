@@ -15,6 +15,17 @@ return {
     {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
-        config = true
+        config = function()
+            require("nvim-autopairs").setup({ map_bs = false, map_cr = false })
+        end
+    },
+    {
+        'notomo/cmdbuf.nvim',
+        lasy = false,
+        config = function()
+            vim.keymap.set("n", "q:", function()
+                require("cmdbuf").split_open(vim.o.cmdwinheight)
+            end)
+        end
     }
 }
