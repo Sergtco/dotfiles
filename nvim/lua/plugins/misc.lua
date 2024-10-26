@@ -3,9 +3,7 @@ return {
         "kylechui/nvim-surround",
         version = "*",
         event = "VeryLazy",
-        config = function()
-            require("nvim-surround").setup({})
-        end,
+        config = true,
     },
     {
         "numToStr/Comment.nvim",
@@ -15,9 +13,9 @@ return {
     {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
-        config = function()
-            require("nvim-autopairs").setup({ map_bs = false, map_cr = false })
-        end
+        disabled = true,
+        opts = {},
+        config = true,
     },
     {
         'notomo/cmdbuf.nvim',
@@ -27,5 +25,5 @@ return {
                 require("cmdbuf").split_open(vim.o.cmdwinheight)
             end)
         end
-    }
+    },
 }

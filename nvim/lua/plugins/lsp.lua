@@ -4,6 +4,8 @@ return {
         "neovim/nvim-lspconfig",
         "williamboman/mason-lspconfig.nvim",
         "stevearc/conform.nvim",
+        "hrsh7th/nvim-cmp",
+        "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
         require("mason").setup()
@@ -11,9 +13,9 @@ return {
 
         local opts = { noremap = true, silent = true }
         vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
-        local on_attach = function(client, bufnr)
+        local on_attach = function(_, bufnr)
             vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-            ---keymaps
+
             local bufopts = { noremap = true, silent = true, buffer = bufnr }
             vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
@@ -41,26 +43,27 @@ return {
             },
             formatters = {
                 gopls = {
-                    command = "ya tool gofmt"
+                    command = "ya tool gofmt %% ya tool yoimports"
                 },
             }
         })
 
         vim.filetype.add({ extension = { templ = "templ" } })
-        -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
-        local coq = require('coq')
+        local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
         require("mason-lspconfig").setup_handlers({
             function(server_name)
-                require("lspconfig")[server_name].setup(coq.lsp_ensure_capabilities({
+                require("lspconfig")[server_name].setup({
                     on_attach = on_attach,
-                }))
+                    capabilities = capabilities,
+                })
             end,
             ["basedpyright"] = function()
                 local filepath = vim.fn.expand("%:p")
                 if string.find(filepath, "arcadia") ~= nil then
-                    require('lspconfig').basedpyright.setup(coq.lsp_ensure_capabilities({
+                    require('lspconfig').basedpyright.setup({
                         on_attach = on_attach,
+                        capabilities = capabilities,
                         settings = {
                             basedpyright = {
                                 analysis = {
@@ -70,23 +73,21 @@ return {
                                     }
                                 }
                             },
-                            python = {
-                                pythonPath = "/usr/local/bin/python3.7"
-                            }
-
                         }
-                    }))
+                    })
                 else
-                    require('lspconfig').basedpyright.setup(coq.lsp_ensure_capabilities({
+                    require('lspconfig').basedpyright.setup({
                         on_attach = on_attach,
-                    }))
+                        capabilities = capabilities,
+                    })
                 end
             end,
             ["gopls"] = function()
                 local filepath = vim.fn.expand("%:p")
                 if string.find(filepath, "arcadia") ~= nil then
-                    require 'lspconfig'.gopls.setup(coq.lsp_ensure_capabilities({
+                    require 'lspconfig'.gopls.setup({
                         on_attach = on_attach,
+                        capabilities = capabilities,
                         cmd = { "ya", "tool", "gopls" },
                         -- root_dir = require("lspconfig.util").root_pattern("ya.make", "go.work", "go.mod", ".git"),
                         settings = {
@@ -99,13 +100,14 @@ return {
                                 }
                             }
                         }
-                    }))
+                    })
                 else
-                    require 'lspconfig'.gopls.setup(coq.lsp_ensure_capabilities({
+                    require 'lspconfig'.gopls.setup({
                         on_attach = on_attach,
-                    }))
+                        capabilities = capabilities,
+                    })
                 end
-            end
+            end,
         })
 
         local signs = {
