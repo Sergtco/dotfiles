@@ -17,17 +17,15 @@ return {
 
             local cmp = require('cmp')
             local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-
             cmp.event:on(
                 'confirm_done',
                 cmp_autopairs.on_confirm_done()
-
             )
 
             cmp.setup({
-                performance = {
-                    max_view_entries = 10,
-                },
+                -- performance = {
+                --     max_view_entries = 10,
+                -- },
                 experimental = {
                     ghost_text = true,
                 },
@@ -35,17 +33,6 @@ return {
                     expand = function(args)
                         luasnip.lsp_expand(args.body)
                     end,
-                },
-                view = {
-                    entries = {
-                        name = 'custom',
-                    }
-                },
-                formatting = {
-                    fields = {
-                        "abbr",
-                        "kind",
-                    }
                 },
                 mapping = cmp.mapping.preset.insert({
                     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
@@ -64,8 +51,25 @@ return {
                     },
                     {
                         { name = 'buffer' },
-                    })
+                    }),
+                formatting = {
+                    format = function(entry, vim_item)
+                        vim_item.menu = ({
+                            nvim_lsp = '[LSP]',
+                            path     = '[PAT]',
+                            luasnip  = '[SNI]',
+                            buffer   = '[BUF]',
+                        })[entry.source.name]
+                        vim_item.dup = ({
+                            buffer = 1,
+                            path = 1,
+                            nvim_lsp = 0,
+                        })[entry.source.name] or 0
+                        return vim_item
+                    end
+                },
             })
+
             cmp.setup.cmdline({ '/', '?' }, {
                 view = {
                     entries = {

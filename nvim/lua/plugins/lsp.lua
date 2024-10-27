@@ -84,30 +84,32 @@ return {
             end,
             ["gopls"] = function()
                 local filepath = vim.fn.expand("%:p")
+                local cmd, settings = {}, {}
                 if string.find(filepath, "arcadia") ~= nil then
-                    require 'lspconfig'.gopls.setup({
-                        on_attach = on_attach,
-                        capabilities = capabilities,
-                        cmd = { "ya", "tool", "gopls" },
-                        -- root_dir = require("lspconfig.util").root_pattern("ya.make", "go.work", "go.mod", ".git"),
-                        settings = {
-                            gopls = {
-                                directoryFilters = {
-                                    "-",
-                                    "+taxi/backend-go/",
-                                    "-library/",
-                                    "+library/go"
-                                }
+                    cmd = { "ya", "tool", "gopls" }
+                    settings = {
+                        gopls = {
+                            directoryFilters = {
+                                "-",
+                                "+taxi/backend-go/",
+                                "-library/",
+                                "+library/go"
                             }
                         }
-                    })
+                    }
                 else
-                    require 'lspconfig'.gopls.setup({
-                        on_attach = on_attach,
-                        capabilities = capabilities,
-                    })
                 end
+                require 'lspconfig'.gopls.setup({
+                    on_attach = on_attach,
+                    capabilities = capabilities,
+                    cmd = cmd,
+                    settings = settings
+                })
             end,
+        })
+        require('lspconfig').gleam.setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
         })
 
         local signs = {
