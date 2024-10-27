@@ -1,18 +1,18 @@
 return {
     {
-        "kylechui/nvim-surround",
-        version = "*",
-        event = "VeryLazy",
+        'kylechui/nvim-surround',
+        version = '*',
+        event = 'VeryLazy',
         config = true,
     },
     {
-        "numToStr/Comment.nvim",
+        'numToStr/Comment.nvim',
         opts = {},
         lazy = false,
     },
     {
         'windwp/nvim-autopairs',
-        event = "InsertEnter",
+        event = 'InsertEnter',
         disabled = true,
         opts = {},
         config = true,
@@ -21,8 +21,8 @@ return {
         'notomo/cmdbuf.nvim',
         lasy = false,
         config = function()
-            vim.keymap.set("n", "q:", function()
-                require("cmdbuf").split_open(vim.o.cmdwinheight)
+            vim.keymap.set('n', 'q:', function()
+                require('cmdbuf').split_open(vim.o.cmdwinheight)
             end)
         end
     },

@@ -1,5 +1,4 @@
 local opt = vim.opt
-local g = vim.g
 
 --misc
 opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
@@ -8,16 +7,12 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.colorcolumn = "80"
 opt.shortmess:append("I")
-opt.runtimepath:append(",/usr/local/bin/fzf")
-
-vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 
 -- file system
 opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 opt.undofile = true
 opt.swapfile = false
 opt.backup = false
-g.netrw_liststyle = 3
 
 --indent
 local indent = 4
@@ -37,6 +32,8 @@ opt.splitright = true
 opt.laststatus = 3
 opt.wrap = true
 opt.showbreak = "󱞶"
+
+opt.guicursor = 'n-c:block,v:hor25,i-ci-ve:ver25,r-cr:hor20,o:hor50'
 
 --colors
 opt.termguicolors = true
