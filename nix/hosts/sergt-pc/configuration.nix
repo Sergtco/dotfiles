@@ -18,17 +18,28 @@ in
     ./programming.nix
   ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    grub = {
+      theme = "${pkgs.libsForQt5.breeze-grub}/grub/themes/breeze";
+      efiSupport = true;
+      device = "nodev";
+      useOSProber = true;
+    };
+  };
+
   services.udisks2.enable = true;
+  services.gvfs.enable = true;
   fileSystems."/mnt/hard" = {
     label = "hard";
     fsType = "ext4";
+    options = [ "users" ];
   };
 
   fileSystems."/mnt/lin_hard" = {
     label = "chonky";
     fsType = "ext4";
+    options = [ "users" ];
   };
 
   networking.hostName = "sergt-pc";
@@ -86,6 +97,7 @@ in
     };
   };
 
+  users.defaultUserShell = pkgs.zsh;
   users.users.sergtco = {
     isNormalUser = true;
     description = "sergtco";
@@ -93,7 +105,7 @@ in
       "networkmanager"
       "wheel"
     ];
-    shell = pkgs.zsh;
+    useDefaultShell = true;
     packages = with pkgs; [ ];
   };
 
@@ -102,20 +114,7 @@ in
   };
 
   systemd = {
-    user.services = {
-      polkit-gnome-authentication-agent-1 = {
-        description = "polkit-gnome-authentication-agent-1";
-        wantedBy = [ "graphical-session.target" ];
-        wants = [ "graphical-session.target" ];
-        after = [ "graphical-session.target" ];
-        serviceConfig = {
-          Type = "simple";
-          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-          Restart = "on-failure";
-          RestartSec = 1;
-          TimeoutStopSec = 10;
-        };
-      };
+    services = {
       #dpi
       byedpi = {
         enable = true;
@@ -143,6 +142,7 @@ in
     hyprpaper
     kitty
     pavucontrol
+    cinnamon.nemo
     #cli
     bash
     bottom
@@ -157,6 +157,8 @@ in
     wget
     wl-clipboard
     xclip
+
+    lxqt.lxqt-policykit
   ];
   fonts.packages = with pkgs; [
     (nerdfonts.override {
