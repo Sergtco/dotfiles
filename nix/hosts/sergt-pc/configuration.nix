@@ -28,6 +28,11 @@ in
     };
   };
 
+  boot.kernelModules = ["i2c-dev"];
+  services.udev.extraRules = ''
+        KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
+  '';
+
   services.udisks2.enable = true;
   services.gvfs.enable = true;
   fileSystems."/mnt/hard" = {
@@ -104,6 +109,7 @@ in
     extraGroups = [
       "networkmanager"
       "wheel"
+      "i2c"
     ];
     useDefaultShell = true;
     packages = with pkgs; [ ];
@@ -158,7 +164,9 @@ in
     wl-clipboard
     xclip
 
+    #need them
     lxqt.lxqt-policykit
+    ddcutil
   ];
   fonts.packages = with pkgs; [
     (nerdfonts.override {

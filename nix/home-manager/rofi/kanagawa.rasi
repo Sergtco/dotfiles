@@ -1,9 +1,3 @@
-/*
- * Tokyonight colorscheme (big icons) for rofi
- * User: w8ste
- */
-
-
 // define colors etc.
 * {
     bg: #1F1F28;

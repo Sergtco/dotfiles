@@ -10,21 +10,46 @@
   home.homeDirectory = "/home/sergtco";
   home.sessionVariables = {
     EDITOR = "nvim";
+    BROWSER = "firefox";
+    TERMINAL = "alacritty";
   };
 
   stylix = {
     enable = true;
     image = ../../../wallpaper/mountains.jpg;
     base16Scheme = ../../kanagawa.yaml;
+    polarity = "dark";
     cursor = {
       name = "Banana";
       size = 24;
       package = pkgs.banana-cursor;
     };
+    fonts = {
+      monospace = {
+        name = "FiraCode Nerd Font Mono";
+        package = (pkgs.nerdfonts.override {fonts=["FiraCode"];});
+      };
+      sizes = {
+        terminal = 16;
+        desktop = 14;
+      };
+    };
     targets = {
       firefox.enable = true;
       yazi.enable = true;
+      rofi.enable = false;
+      waybar.enable = true;
     };
+  };
+  gtk = {
+      enable = true;
+      iconTheme = {
+        package = pkgs.kanagawa-icon-theme;
+	    name = "Kanagawa";
+      };
+  };
+  wayland.windowManager.hyprland = {
+    systemd.enable = true;
   };
   programs.zsh = {
     enable = true;
@@ -46,6 +71,18 @@
     };
   };
 
+  programs.rofi = {
+    enable = true;
+    terminal = "alacritty";
+    theme = ../../home-manager/rofi/kanagawa.rasi;
+    package = pkgs.rofi-wayland;
+    extraConfig= {
+      show-icons = true;
+      display-drun = " ";
+      display-run = " ";
+      display-window = " ";
+    };
+  };
   programs.gh = {
     enable = true;
     gitCredentialHelper.enable = true;
@@ -55,7 +92,6 @@
     alacritty
     tmux
     yazi
-    rofi-wayland
     waybar
     wlogout
     telegram-desktop
@@ -111,12 +147,6 @@
     hypr = {
       target = ".config/hypr";
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/hypr";
-      recursive = true;
-    };
-
-    rofi = {
-      target = ".config/rofi";
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/rofi";
       recursive = true;
     };
 
