@@ -6,9 +6,25 @@
 }:
 
 {
+  imports = [ inputs.stylix.homeManagerModules.stylix ];
   home.homeDirectory = "/home/sergtco";
   home.sessionVariables = {
     EDITOR = "nvim";
+  };
+
+  stylix = {
+    enable = true;
+    image = ../../../wallpaper/mountains.jpg;
+    base16Scheme = ../../kanagawa.yaml;
+    cursor = {
+      name = "Banana";
+      size = 24;
+      package = pkgs.banana-cursor;
+    };
+    targets = {
+      firefox.enable = true;
+      yazi.enable = true;
+    };
   };
   programs.zsh = {
     enable = true;
@@ -30,34 +46,9 @@
     };
   };
 
-  gtk = {
+  programs.gh = {
     enable = true;
-    theme = {
-      name = "Kanagawa-BL";
-      package = pkgs.kanagawa-gtk-theme;
-    };
-    cursorTheme = {
-      name = "Banana";
-      package = pkgs.banana-cursor;
-    };
-    iconTheme = {
-      name = "Kanagawa";
-      package = pkgs.kanagawa-icon-theme;
-    };
-    gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
-  };
-
-  xdg.configFile = {
-    "gtk-4.0/assets".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
-    "gtk-4.0/gtk.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk.css";
-    "gtk-4.0/gtk-dark.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk-dark.css";
-  };
-
-  home.pointerCursor = {
-    name = "Banana";
-    gtk.enable = true;
-    x11.enable = true;
-    package = pkgs.banana-cursor;
+    gitCredentialHelper.enable = true;
   };
 
   home.packages = with pkgs; [
