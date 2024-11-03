@@ -17,7 +17,7 @@ in
     enable = true;
   };
   environment.systemPackages = with pkgs; [
-  lutris
-  wine
+    lutris
+    wine
   ];
 }

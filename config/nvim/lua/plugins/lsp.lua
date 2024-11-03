@@ -1,16 +1,11 @@
 return {
-    "williamboman/mason.nvim",
+    "neovim/nvim-lspconfig",
     dependencies = {
-        "neovim/nvim-lspconfig",
-        "williamboman/mason-lspconfig.nvim",
         "stevearc/conform.nvim",
         "hrsh7th/nvim-cmp",
         "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
-        require("mason").setup()
-        require("mason-lspconfig").setup()
-
         local opts = { noremap = true, silent = true }
         vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
         local on_attach = function(_, bufnr)
@@ -48,69 +43,16 @@ return {
             }
         })
 
-        vim.filetype.add({ extension = { templ = "templ" } })
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-        require("mason-lspconfig").setup_handlers({
-            function(server_name)
-                require("lspconfig")[server_name].setup({
-                    on_attach = on_attach,
-                    capabilities = capabilities,
-                })
-            end,
-            ["basedpyright"] = function()
-                local filepath = vim.fn.expand("%:p")
-                if string.find(filepath, "arcadia") ~= nil then
-                    require('lspconfig').basedpyright.setup({
-                        on_attach = on_attach,
-                        capabilities = capabilities,
-                        settings = {
-                            basedpyright = {
-                                analysis = {
-                                    typeCheckingMode = "standard",
-                                    diagnosticSeverityOverrides = {
-                                        reportImplicitRelativeImport = false,
-                                    }
-                                }
-                            },
-                        }
-                    })
-                else
-                    require('lspconfig').basedpyright.setup({
-                        on_attach = on_attach,
-                        capabilities = capabilities,
-                    })
-                end
-            end,
-            ["gopls"] = function()
-                local filepath = vim.fn.expand("%:p")
-                local cmd, settings = {}, {}
-                if string.find(filepath, "arcadia") ~= nil then
-                    cmd = { "ya", "tool", "gopls" }
-                    settings = {
-                        gopls = {
-                            directoryFilters = {
-                                "-",
-                                "+taxi/backend-go/",
-                                "-library/",
-                                "+library/go"
-                            }
-                        }
-                    }
-                else
-                end
-                require 'lspconfig'.gopls.setup({
-                    on_attach = on_attach,
-                    capabilities = capabilities,
-                    cmd = cmd,
-                    settings = settings
-                })
-            end,
-        })
-        require('lspconfig').gleam.setup({
-            on_attach = on_attach,
-            capabilities = capabilities,
-        })
+
+        local servers = { 'gleam', 'gopls', 'rust_analyzer', 'basedpyright', 'lua_ls' }
+        for _, server in pairs(servers) do
+            require('lspconfig')[server].setup({
+                on_attach = on_attach,
+                capabilities = capabilities,
+            })
+        end
 
         local signs = {
             { name = "DiagnosticSignError", text = "" },

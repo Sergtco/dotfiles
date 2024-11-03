@@ -53,7 +53,7 @@
             "9" = "󰲰";
             "10" = "󰝚";
             "-99" = "";
-            active = "";
+            # active = "";
             default = "";
           };
         };
@@ -78,8 +78,8 @@
           format-muted = "";
           format-icons = {
             headphone = "";
-            hands-free = "";
-            headset = "";
+            hands-free = "";
+            headset = "";
             phone = "";
             portable = "";
             car = "";

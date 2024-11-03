@@ -52,22 +52,6 @@ return {
                     {
                         { name = 'buffer' },
                     }),
-                formatting = {
-                    format = function(entry, vim_item)
-                        vim_item.menu = ({
-                            nvim_lsp = '[LSP]',
-                            path     = '[PAT]',
-                            luasnip  = '[SNI]',
-                            buffer   = '[BUF]',
-                        })[entry.source.name]
-                        vim_item.dup = ({
-                            buffer = 1,
-                            path = 1,
-                            nvim_lsp = 0,
-                        })[entry.source.name] or 0
-                        return vim_item
-                    end
-                },
             })
 
             cmp.setup.cmdline({ '/', '?' }, {
@@ -82,7 +66,6 @@ return {
                 }
             })
 
-            -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
             cmp.setup.cmdline(':', {
                 performance = {
                     max_view_entries = 100,

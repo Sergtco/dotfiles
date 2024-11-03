@@ -5,6 +5,7 @@
   ...
 }:
 {
+  imports = [ ./oh_my_posh.nix ];
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -14,15 +15,9 @@
     };
     syntaxHighlighting.enable = true;
 
-    oh-my-zsh = {
-      enable = true;
-      theme = "robbyrussell";
-    };
-
     shellAliases = {
       nv = "nvim";
       tm = "tmux -a || tmux";
     };
   };
-
 }

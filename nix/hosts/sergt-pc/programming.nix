@@ -18,7 +18,7 @@ in
     clang
     python3
     go
-    rustup
+    cargo
     unstable.gleam
     erlang
   ];

@@ -42,13 +42,21 @@ in
   fileSystems."/mnt/hard" = {
     label = "hard";
     fsType = "ext4";
-    options = [ "users" ];
+    options = [
+      "defaults"
+      "users"
+      "x-gvfs-show"
+    ];
   };
 
-  fileSystems."/mnt/lin_hard" = {
+  fileSystems."/mnt/chonky" = {
     label = "chonky";
     fsType = "ext4";
-    options = [ "users" ];
+    options = [
+      "defaults"
+      "users"
+      "x-gvfs-show"
+    ];
   };
 
   networking.hostName = "sergt-pc";
@@ -124,6 +132,19 @@ in
   };
 
   systemd = {
+    user.services.polkit-gnome-authentication-agent-1 = {
+      description = "polkit-gnome-authentication-agent-1";
+      wantedBy = [ "graphical.target" ];
+      wants = [ "graphical.target" ];
+      after = [ "graphical.target" ];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+    };
     services = {
       #dpi
       byedpi = {
@@ -163,13 +184,12 @@ in
     nixfmt-rfc-style
     ripgrep
     udiskie
-    unstable.neovim
+    vim
     wget
     wl-clipboard
     xclip
 
     #need them
-    lxqt.lxqt-policykit
     ddcutil
   ];
   fonts.packages = with pkgs; [

@@ -20,6 +20,7 @@ in
     ../../home/rofi/rofi.nix
     ../../home/shells/zsh.nix
     ../../home/waybar/waybar.nix
+    ../../home/nvim/nvim.nix 
   ];
   home.homeDirectory = "/home/sergtco";
 
@@ -42,7 +43,6 @@ in
     alacritty
     tmux
     yazi
-    wlogout
     playerctl
     telegram-desktop
     swaynotificationcenter
@@ -70,11 +70,6 @@ in
   };
 
   home.file = {
-    nvim = {
-      target = ".config/nvim";
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/nvim";
-      recursive = true;
-    };
 
     alacritty = {
       target = ".config/alacritty";
