@@ -28,8 +28,6 @@
     },
     "hyprland/language": {
     "format": "󰌓 {long}",
-    //"format-en": "Burger",
-    //"format-ru": "Пельмени",
     "keyboard-name": "ergohaven-k:03"
     },
     "hyprland/window": {

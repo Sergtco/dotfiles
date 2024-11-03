@@ -4,10 +4,10 @@
   padding: 0;
   font-family: "DejaVuSansM Nerd Font";
   font-size: 13px;
-
+  color:#C8BF8D;
 }
-window#waybar {
-    background-color: #1A1B26;
+window#waybar{
+  background-color: #16161D;
 }
 #waybar {
   background: #1e222a;
@@ -26,12 +26,10 @@ window#waybar {
 #bluetooth,
 #idle_inhibitor,
 #mpris{
-  background-color: #1A1B26;
   padding: 5px 10px 5px 10px;
 }
 
 #clock {
-  color: #fff;
 }
 
 #idle_inhibitor {
@@ -42,7 +40,6 @@ font-size: 15px;
 }
 #workspaces button {
   padding: 0 5px;
-  color: #eeeeef;
 }
 #workspaces button.active {
   color: #fa5aa4;
@@ -50,32 +47,24 @@ font-size: 15px;
 }
 
 #tray {
-  background-color: #2A2F41;
+  color:#C8BF8D;
 }
 
 #mpris{
-    color: #C0CAF5;
     min-width: 100px;
-    
 }
 
 #custom-notification{
-  color: #61afef;
   min-width: 35px;
-  background-color: #1A1B26;
 }
 
 #wireplumber {
-  color: #0fb9b1;
-  
 }
 
 #bluetooth{
-  background-color: #1A1B26;
 }
 
 #network {
-  color: #c678dd;
   margin-left: 10px;
 }
 
@@ -91,6 +80,4 @@ font-size: 15px;
 
 #scratchpad {
   color: #cffafe;
-  
-  
 }

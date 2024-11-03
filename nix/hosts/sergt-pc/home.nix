@@ -19,7 +19,7 @@ in
     ../../home/themes/kanagawa.nix
     ../../home/rofi/rofi.nix
     ../../home/shells/zsh.nix
-    ../../home/eww/eww.nix
+    ../../home/waybar/waybar.nix
   ];
   home.homeDirectory = "/home/sergtco";
 
@@ -42,8 +42,8 @@ in
     alacritty
     tmux
     yazi
-    waybar
     wlogout
+    playerctl
     telegram-desktop
     swaynotificationcenter
     blueberry
@@ -78,6 +78,7 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/nvim";
       recursive = true;
     };
+
     alacritty = {
       target = ".config/alacritty";
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/alacritty";
@@ -111,12 +112,6 @@ in
     tmux = {
       target = ".config/tmux";
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/tmux";
-      recursive = true;
-    };
-
-    waybar = {
-      target = ".config/waybar";
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/waybar";
       recursive = true;
     };
 

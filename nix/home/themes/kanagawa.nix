@@ -29,7 +29,7 @@
       firefox.enable = true;
       yazi.enable = true;
       rofi.enable = false;
-      waybar.enable = true;
+      waybar.enable = false;
     };
   };
   gtk = {
