@@ -16,6 +16,7 @@ in
   imports = [
     ./hardware-configuration.nix
     ./programming.nix
+    ./gaming.nix
   ];
 
   boot.loader = {
@@ -178,6 +179,7 @@ in
         "JetBrainsMono"
       ];
     })
+    corefonts
   ];
 
   services.xserver = {

@@ -49,11 +49,8 @@ in
     blueberry
     hyprpicker
     grimblast
-    lutris
-    wine
-    steam
     vial
-    unstable.onlyoffice-bin_latest
+    libreoffice
   ];
 
   programs.git = {
