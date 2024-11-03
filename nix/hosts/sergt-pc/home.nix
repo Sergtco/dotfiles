@@ -6,7 +6,10 @@
 }:
 
 {
-  imports = [ inputs.stylix.homeManagerModules.stylix ];
+  imports = [ 
+    inputs.stylix.homeManagerModules.stylix 
+    ../../home-manager/themes/kanagawa.nix
+  ];
   home.homeDirectory = "/home/sergtco";
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -14,40 +17,6 @@
     TERMINAL = "alacritty";
   };
 
-  stylix = {
-    enable = true;
-    image = ../../../wallpaper/mountains.jpg;
-    base16Scheme = ../../kanagawa.yaml;
-    polarity = "dark";
-    cursor = {
-      name = "Banana";
-      size = 24;
-      package = pkgs.banana-cursor;
-    };
-    fonts = {
-      monospace = {
-        name = "FiraCode Nerd Font Mono";
-        package = (pkgs.nerdfonts.override {fonts=["FiraCode"];});
-      };
-      sizes = {
-        terminal = 16;
-        desktop = 14;
-      };
-    };
-    targets = {
-      firefox.enable = true;
-      yazi.enable = true;
-      rofi.enable = false;
-      waybar.enable = true;
-    };
-  };
-  gtk = {
-      enable = true;
-      iconTheme = {
-        package = pkgs.kanagawa-icon-theme;
-	    name = "Kanagawa";
-      };
-  };
   wayland.windowManager.hyprland = {
     systemd.enable = true;
   };
@@ -76,7 +45,7 @@
     terminal = "alacritty";
     theme = ../../home-manager/rofi/kanagawa.rasi;
     package = pkgs.rofi-wayland;
-    extraConfig= {
+    extraConfig = {
       show-icons = true;
       display-drun = " ";
       display-run = " ";
@@ -102,6 +71,7 @@
     lutris
     wine
     steam
+    vial
   ];
 
   programs.git = {
