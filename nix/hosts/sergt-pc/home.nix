@@ -5,12 +5,21 @@
   ...
 }:
 
+let
+  unstable = import inputs.nixpkgs-unstable {
+    system = "x86_64-linux";
+    config = {
+      allowUnfree = true;
+    };
+  };
+in
 {
   imports = [
     inputs.stylix.homeManagerModules.stylix
     ../../home/themes/kanagawa.nix
     ../../home/rofi/rofi.nix
     ../../home/shells/zsh.nix
+    ../../home/eww/eww.nix
   ];
   home.homeDirectory = "/home/sergtco";
 
@@ -44,6 +53,7 @@
     wine
     steam
     vial
+    unstable.onlyoffice-bin_latest
   ];
 
   programs.git = {
