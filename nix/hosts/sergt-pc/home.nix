@@ -6,10 +6,11 @@
 }:
 
 {
-  imports = [ 
-    inputs.stylix.homeManagerModules.stylix 
-    ../../home-manager/themes/kanagawa.nix
-    ../../home-manager/rofi/rofi.nix
+  imports = [
+    inputs.stylix.homeManagerModules.stylix
+    ../../home/themes/kanagawa.nix
+    ../../home/rofi/rofi.nix
+    ../../home/shells/zsh.nix
   ];
   home.homeDirectory = "/home/sergtco";
 
@@ -21,26 +22,6 @@
 
   wayland.windowManager.hyprland = {
     systemd.enable = true;
-  };
-
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autocd = true;
-    autosuggestion = {
-      enable = true;
-    };
-    syntaxHighlighting.enable = true;
-
-    oh-my-zsh = {
-      enable = true;
-      theme = "robbyrussell";
-    };
-
-    shellAliases = {
-      nv = "nvim";
-      tm = "tmux -a || tmux";
-    };
   };
 
   programs.gh = {

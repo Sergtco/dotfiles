@@ -18,4 +18,4 @@
       display-window = " ";
     };
   };
-  }
+}
