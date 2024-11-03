@@ -9,8 +9,10 @@
   imports = [ 
     inputs.stylix.homeManagerModules.stylix 
     ../../home-manager/themes/kanagawa.nix
+    ../../home-manager/rofi/rofi.nix
   ];
   home.homeDirectory = "/home/sergtco";
+
   home.sessionVariables = {
     EDITOR = "nvim";
     BROWSER = "firefox";
@@ -20,6 +22,7 @@
   wayland.windowManager.hyprland = {
     systemd.enable = true;
   };
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -40,18 +43,6 @@
     };
   };
 
-  programs.rofi = {
-    enable = true;
-    terminal = "alacritty";
-    theme = ../../home-manager/rofi/kanagawa.rasi;
-    package = pkgs.rofi-wayland;
-    extraConfig = {
-      show-icons = true;
-      display-drun = " ";
-      display-run = " ";
-      display-window = " ";
-    };
-  };
   programs.gh = {
     enable = true;
     gitCredentialHelper.enable = true;
