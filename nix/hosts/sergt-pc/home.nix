@@ -12,6 +12,7 @@ let
       allowUnfree = true;
     };
   };
+  qmk-hid-host = pkgs.callPackage ../../pkgs/qmk-hid-host/qmk-hid-host.nix { };
 in
 {
   imports = [
@@ -52,6 +53,7 @@ in
     grimblast
     vial
     libreoffice
+    qmk-hid-host
   ];
 
   programs.git = {
