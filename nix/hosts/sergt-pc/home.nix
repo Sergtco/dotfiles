@@ -21,7 +21,6 @@ in
     ../../home/shells/zsh.nix
     ../../home/waybar/waybar.nix
     ../../home/nvim/nvim.nix
-    ../../home/terminals/rio.nix
   ];
   home.homeDirectory = "/home/sergtco";
 
@@ -44,6 +43,7 @@ in
     alacritty
     tmux
     yazi
+    ueberzugpp
     playerctl
     telegram-desktop
     swaynotificationcenter

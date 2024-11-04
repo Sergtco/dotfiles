@@ -18,6 +18,7 @@
     shellAliases = {
       nv = "nvim";
       tm = "tmux -a || tmux";
+      yz = "yazi";
     };
   };
 }
