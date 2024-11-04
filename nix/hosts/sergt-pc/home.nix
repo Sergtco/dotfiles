@@ -20,7 +20,8 @@ in
     ../../home/rofi/rofi.nix
     ../../home/shells/zsh.nix
     ../../home/waybar/waybar.nix
-    ../../home/nvim/nvim.nix 
+    ../../home/nvim/nvim.nix
+    ../../home/terminals/rio.nix
   ];
   home.homeDirectory = "/home/sergtco";
 

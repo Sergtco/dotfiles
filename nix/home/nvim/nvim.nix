@@ -4,6 +4,14 @@
   inputs,
   ...
 }:
+let
+  unstable = import inputs.nixpkgs-unstable {
+    system = "x86_64-linux";
+    config = {
+      allowUnfree = true;
+    };
+  };
+in
 {
   programs.neovim = {
     enable = true;

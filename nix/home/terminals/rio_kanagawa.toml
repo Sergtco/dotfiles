@@ -1,0 +1,52 @@
+[colors]
+background = "#1f1f28"
+foreground = "#dcd7ba"
+
+# Selection
+selection-background = "#2d4f67"
+selection-foreground = "#c8c093"
+
+# Navigation
+tabs-active = ""
+tabs-active-foreground = ""
+tabs-active-highlight = ""
+bar = ""
+cursor = ""
+vi-cursor = ""
+
+# Search
+search-match-background = ""
+search-match-foreground = ""
+search-focused-match-background = ""
+search-focused-match-foreground = ""
+
+# Regular colors
+black   = "#727169"
+red     = "#e82424"
+green   = "#98bb6c"
+yellow  = "#e6c384"
+blue    = "#7fb4ca"
+magenta = "#938aa9"
+cyan    = "#7aa89f"
+white   = "#dcd7ba"
+
+# Dim colors
+dim-black   = "#090618"
+dim-red     = "#c34043"
+dim-green   = "#76946a"
+dim-yellow  = "#c0a36e"
+dim-blue    = "#7e9cd8"
+dim-magenta = "#957fb8"
+dim-cyan    = "#6a9589"
+dim-white   = "#c8c093"
+
+# Light colors
+light-black = ""
+light-blue = ""
+light-cyan = ""
+light-foreground = ""
+light-green = ""
+light-magenta = ""
+light-red = ""
+light-white = ""
+light-yellow = ""
