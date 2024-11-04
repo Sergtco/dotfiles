@@ -10,15 +10,15 @@
 }:
 rustPlatform.buildRustPackage rec {
   pname = "qmk-hid-host";
-  version = "latest";
+  version = "aca5255203aba3f7e30638d415499fc201209b9e";
 
   src = fetchFromGitHub {
     owner = "ergohaven";
-    repo = "qmk-hid-host";
-    rev = "latest";
+    repo = pname;
+    rev = version;
     hash = "sha256-wJ7IhEqUjSYmnMzrhhUAYAo1RJ0X5Hn+3+nqVf9Fz/Y=";
   };
-  cargoHash = "sha256-ZAowpEhzvvBh7m3sLvJG3dHEleUFh9ixpJN45J0Pejw=";
+  cargoHash = "sha256-kZUOaNTCGvVvmWuNyzVxdMotwYoTe2fm/54kBoNxyR8=";
 
   buildInputs = [
     udev
@@ -28,10 +28,6 @@ rustPlatform.buildRustPackage rec {
   ];
   nativeBuildInputs = [ pkg-config ];
 
-  installPhase = ''
-    mkdir -p $out/bin
-    cp qmk-hid-host $out/bin
-  ''
   meta = {
     description = "Host component for communicating with QMK keyboards using Raw HID feature.";
     homepage = "https://github.com/ergohaven/qmk-hid-host";
