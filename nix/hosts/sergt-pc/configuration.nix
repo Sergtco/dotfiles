@@ -30,6 +30,7 @@ in
   };
 
   boot.kernelModules = [ "i2c-dev" ];
+  boot.initrd.kernelModules = [ "amdgpu" ];
   services.udev = {
     extraRules = ''
       KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
@@ -65,6 +66,13 @@ in
 
   time.timeZone = "Europe/Moscow";
 
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+    extraPackages = with pkgs; [ amdvlk ];
+    extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
+  };
   # rtkit is optional but recommended
   security.rtkit.enable = true;
   services.pipewire = {
@@ -72,20 +80,22 @@ in
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    jack.enable = true;
-  };
-
-  services.pipewire.wireplumber.extraConfig.bluetoothEnhancements = {
-    "monitor.bluez.properties" = {
-      "bluez5.enable-sbc-xq" = true;
-      "bluez5.enable-msbc" = true;
-      "bluez5.enable-hw-volume" = true;
-      "bluez5.roles" = [
-        "hsp_hs"
-        "hsp_ag"
-        "hfp_hf"
-        "hfp_ag"
-      ];
+    wireplumber.extraConfig.bluetoothEnhancements = {
+      "monitor.bluez.properties" = {
+        "bluez5.enable-sbc-xq" = true;
+        "bluez5.enable-msbc" = true;
+        "bluez5.enable-hw-volume" = true;
+        "bluez5.roles" = [
+          "a2dp_sink"
+          "a2dp_source"
+          "bap_sink"
+          "bap_source"
+          "hsp_hs"
+          "hsp_ag"
+          "hfp_hf"
+          "hfp_ag"
+        ];
+      };
     };
   };
 
@@ -105,13 +115,6 @@ in
     LC_PAPER = "ru_RU.UTF-8";
     LC_TELEPHONE = "ru_RU.UTF-8";
     LC_TIME = "ru_RU.UTF-8";
-  };
-
-  services.xserver = {
-    xkb = {
-      layout = "us, ru";
-      variant = "";
-    };
   };
 
   users.defaultUserShell = pkgs.zsh;
@@ -145,16 +148,6 @@ in
         TimeoutStopSec = 10;
       };
     };
-    services = {
-      #dpi
-      byedpi = {
-        enable = true;
-        serviceConfig = {
-          ExecStart = "${unstable.byedpi}/bin/ciadpi -s1 -q1 -Y -Ar -s5 -o1+s -At -f-1 -r1+s -As -s1 -o1 +s -s-1 -An";
-        };
-        wantedBy = [ "multi-user.target" ];
-      };
-    };
   };
 
   nixpkgs.config = {
@@ -178,6 +171,7 @@ in
     bash
     bottom
     curl
+    p7zip
     fd
     git
     killall
@@ -204,11 +198,16 @@ in
 
   services.xserver = {
     enable = true;
+    xkb = {
+      layout = "us, ru";
+      variant = "";
+    };
     displayManager.gdm = {
       enable = true;
       wayland = true;
     };
   };
+  programs.nix-ld.enable = true;
   programs = {
     hyprland = {
       enable = true;

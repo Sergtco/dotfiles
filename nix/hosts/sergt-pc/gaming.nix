@@ -2,6 +2,7 @@
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }:
 let
@@ -13,11 +14,10 @@ let
   };
 in
 {
-  programs.steam = {
-    enable = true;
-  };
+  programs.steam.enable = true;
+  programs.gamemode.enable = true;
   environment.systemPackages = with pkgs; [
     lutris
-    wine
+    mangohud
   ];
 }
