@@ -1,25 +1,16 @@
 {
-  config,
   pkgs,
-  inputs,
   ...
 }:
-let
-  unstable = import inputs.nixpkgs-unstable {
-    system = "x86_64-linux";
-    config = {
-      allowUnfree = true;
-    };
-  };
-in
 {
   environment.systemPackages = with pkgs; [
     gcc
     clang
-    python3
-    go
-    cargo
-    unstable.gleam
-    erlang
+    unstable.python3
+    unstable.go
+    unstable.cargo
+    unstable.rustup
+    unstable.rustc
+    unstable.zig
   ];
 }

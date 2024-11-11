@@ -1,28 +1,19 @@
 {
   config,
   pkgs,
-  inputs,
   ...
 }:
-let
-  unstable = import inputs.nixpkgs-unstable {
-    system = "x86_64-linux";
-    config = {
-      allowUnfree = true;
-    };
-  };
-in
 {
   programs.neovim = {
     enable = true;
-    package = unstable.neovim-unwrapped;
+    package = pkgs.unstable.neovim-unwrapped;
     extraPackages = with pkgs; [
       gopls
       rust-analyzer
-      rustup
-      rustc
       rustfmt
       lua-language-server
+      zls
+      nixd
     ];
   };
 

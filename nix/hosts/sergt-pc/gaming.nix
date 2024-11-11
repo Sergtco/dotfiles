@@ -1,23 +1,27 @@
 {
-  config,
   pkgs,
-  inputs,
-  lib,
   ...
 }:
-let
-  unstable = import inputs.nixpkgs-unstable {
-    system = "x86_64-linux";
-    config = {
-      allowUnfree = true;
-    };
-  };
-in
 {
-  programs.steam.enable = true;
-  programs.gamemode.enable = true;
+  programs.steam = {
+    enable = true;
+    extraCompatPackages = with pkgs; [ proton-ge-bin ];
+  };
+  programs.gamemode = {
+    enable = true;
+  };
+  programs.gamescope = {
+    enable = true;
+    capSysNice = true;
+  };
   environment.systemPackages = with pkgs; [
-    lutris
+    (unstable.lutris.override {
+      extraPkgs = pkgs: [
+        wineWowPackages.stable
+        wine
+        winetricks
+      ];
+    })
     mangohud
   ];
 }

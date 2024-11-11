@@ -1,32 +1,39 @@
-{
-  config,
-  pkgs,
-  inputs,
-  ...
-}:
-let
-  unstable = import inputs.nixpkgs-unstable {
-    system = "x86_64-linux";
-    config = {
-      allowUnfree = true;
-    };
-  };
-in
+{ pkgs, inputs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
     ./programming.nix
     ./gaming.nix
+    ../../modules/zapret
   ];
 
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    grub = {
-      theme = "${pkgs.libsForQt5.breeze-grub}/grub/themes/breeze";
-      efiSupport = true;
-      device = "nodev";
-      useOSProber = true;
+  boot = {
+    loader = {
+      efi.canTouchEfiVariables = true;
+      grub = {
+        theme = "${pkgs.libsForQt5.breeze-grub}/grub/themes/breeze";
+        efiSupport = true;
+        device = "nodev";
+        useOSProber = true;
+      };
+      timeout = 0;
     };
+    plymouth = {
+      enable = true;
+      theme = "lone";
+      themePackages = [ (pkgs.adi1090x-plymouth-themes.override { selected_themes = [ "lone" ]; }) ];
+    };
+    consoleLogLevel = 0;
+    initrd.verbose = false;
+    kernelParams = [
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "loglevel=3"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+      "udev.log_priority=3"
+    ];
   };
 
   boot.kernelModules = [ "i2c-dev" ];
@@ -45,7 +52,6 @@ in
     fsType = "ext4";
     options = [
       "defaults"
-      "users"
       "x-gvfs-show"
     ];
   };
@@ -55,7 +61,6 @@ in
     fsType = "ext4";
     options = [
       "defaults"
-      "users"
       "x-gvfs-show"
     ];
   };
@@ -70,8 +75,6 @@ in
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
-    extraPackages = with pkgs; [ amdvlk ];
-    extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
   };
   # rtkit is optional but recommended
   security.rtkit.enable = true;
@@ -127,7 +130,6 @@ in
       "i2c"
     ];
     useDefaultShell = true;
-    packages = with pkgs; [ ];
   };
 
   security.polkit = {
@@ -153,6 +155,15 @@ in
   nixpkgs.config = {
     allowUnfree = true;
   };
+  nixpkgs.overlays = [
+    (final: _: {
+      unstable = import inputs.nixpkgs-unstable {
+        inherit (final.stdenv.hostPlatform) system;
+        inherit (final) config;
+      };
+    })
+  ]
+  ;
 
   nix.settings.experimental-features = [
     "nix-command"
@@ -167,6 +178,7 @@ in
     kitty
     pavucontrol
     cinnamon.nemo
+    swayimg
     #cli
     bash
     bottom
@@ -207,14 +219,16 @@ in
       wayland = true;
     };
   };
-  programs.nix-ld.enable = true;
   programs = {
     hyprland = {
       enable = true;
-
       xwayland.enable = true;
     };
     hyprlock.enable = true;
+  };
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
   };
   services.hypridle.enable = true;
 

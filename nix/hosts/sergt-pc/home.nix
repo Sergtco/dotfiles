@@ -4,15 +4,6 @@
   inputs,
   ...
 }:
-
-let
-  unstable = import inputs.nixpkgs-unstable {
-    system = "x86_64-linux";
-    config = {
-      allowUnfree = true;
-    };
-  };
-in
 {
   imports = [
     inputs.stylix.homeManagerModules.stylix
@@ -53,8 +44,15 @@ in
     grimblast
     vial
     libreoffice
+    swayimg
   ];
 
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "inode/directory" = [ "nemo.destkop" ];
+    };
+  };
   programs.git = {
     enable = true;
     userName = "Ivan Nizelnik";

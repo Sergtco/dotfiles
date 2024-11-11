@@ -32,6 +32,5 @@ rustPlatform.buildRustPackage rec {
     description = "Host component for communicating with QMK keyboards using Raw HID feature.";
     homepage = "https://github.com/ergohaven/qmk-hid-host";
     license = lib.licenses.unlicense;
-    maintainers = with lib.maintainers; [ ];
   };
 }
