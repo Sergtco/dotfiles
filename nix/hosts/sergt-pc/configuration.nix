@@ -4,7 +4,7 @@
     ./hardware-configuration.nix
     ./programming.nix
     ./gaming.nix
-    ../../modules/zapret
+    ../../modules/doh
   ];
 
   boot = {
@@ -75,6 +75,8 @@
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
+    extraPackages = with pkgs; [ amdvlk ];
+    extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
   };
   # rtkit is optional but recommended
   security.rtkit.enable = true;
@@ -148,6 +150,16 @@
         Restart = "on-failure";
         RestartSec = 1;
         TimeoutStopSec = 10;
+      };
+    };
+    services = {
+      #dpi
+      byedpi = {
+        enable = true;
+        serviceConfig = {
+          ExecStart = "${pkgs.unstable.byedpi}/bin/ciadpi -s1 -q1 -Y -Ar -s5 -o1+s -At -f-1 -r1+s -As -s1 -o1 +s -s-1 -An";
+        };
+        wantedBy = [ "multi-user.target" ];
       };
     };
   };
