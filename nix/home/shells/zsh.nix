@@ -1,6 +1,4 @@
-{
-  ...
-}:
+{ ... }:
 {
   imports = [ ./oh_my_posh.nix ];
   programs.zsh = {
@@ -10,6 +8,7 @@
     autosuggestion = {
       enable = true;
     };
+    history.ignoreDups = true;
     syntaxHighlighting.enable = true;
 
     shellAliases = {
@@ -17,5 +16,8 @@
       tm = "tmux -a || tmux";
       yz = "yazi";
     };
+    profileExtra = ''
+      zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
+    '';
   };
 }

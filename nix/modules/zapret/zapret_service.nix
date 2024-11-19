@@ -4,157 +4,124 @@
   pkgs,
   ...
 }:
+
+with lib;
+
 let
   cfg = config.services.zapret;
-
-  whitelist = lib.optionalString (
-    cfg.whitelist != null
-  ) "--hostlist ${pkgs.writeText "zapret-whitelist" (lib.concatStringsSep "\n" cfg.whitelist)}";
-
-  blacklist =
-    lib.optionalString (cfg.blacklist != null)
-      "--hostlist-exclude ${pkgs.writeText "zapret-blacklist" (lib.concatStringsSep "\n" cfg.blacklist)}";
-
-  ports = if cfg.httpSupport then "80,443" else "443";
 in
 {
   options.services.zapret = {
-    enable = lib.mkEnableOption "the Zapret DPI bypass service.";
-    package = lib.mkPackageOption pkgs "zapret" { };
-    params = lib.mkOption {
-      default = [ ];
-      type = with lib.types; listOf str;
-      example = ''
-        [
-          "--dpi-desync=fake,disorder2"
-          "--dpi-desync-ttl=1"
-          "--dpi-desync-autottl=2"
-        ];
-      '';
-      description = ''
-        Specify the bypass parameters for Zapret binary.
-        There are no universal parameters as they vary between different networks, so you'll have to find them yourself.
+    enable = mkEnableOption "DPI bypass multi platform service";
 
-        This can be done by running the `blockcheck` binary from zapret package, i.e. `nix-shell -p zapret --command blockcheck`.
-        It'll try different params and then tell you which params are working for your network.
-      '';
-    };
-    whitelist = lib.mkOption {
-      default = null;
-      type = with lib.types; nullOr (listOf str);
-      example = ''
-        [
-          "youtube.com"
-          "googlevideo.com"
-          "ytimg.com"
-          "youtu.be"
-        ]
-      '';
-      description = ''
-        Specify a list of domains to bypass. All other domains will be ignored.
-        You can specify either whitelist or blacklist, but not both.
-        If neither are specified, then bypass all domains.
+    package = mkPackageOption pkgs "zapret" { };
 
-        It is recommended to specify the whitelist. This will make sure that other resources won't be affected by this service.
-      '';
-    };
-    blacklist = lib.mkOption {
-      default = null;
-      type = with lib.types; nullOr (listOf str);
+    settings = mkOption {
+      type = types.lines;
+      default = "";
+
       example = ''
-        [
-          "example.com"
-        ]
+        TPWS_OPT="--hostspell=HOST --split-http-req=method --split-pos=3 --oob"
+        NFQWS_OPT_DESYNC="--dpi-desync-ttl=5"
       '';
+
       description = ''
-        Specify a list of domains NOT to bypass. All other domains will be bypassed.
-        You can specify either whitelist or blacklist, but not both.
-        If neither are specified, then bypass all domains.
+        Rules for zapret to work. Run ```nix-shell -p zapret --command blockcheck``` to get values to pass here.
+        Config example can be found here https://github.com/bol-van/zapret/blob/master/config.default
       '';
     };
-    qnum = lib.mkOption {
-      default = 200;
-      type = lib.types.int;
+
+    firewallType = mkOption {
+      type = types.enum [
+        "iptables"
+        "nftables"
+      ];
+      default = "iptables";
       description = ''
-        Routing queue number.
-        Only change this if you already use the default queue number somewhere else.
+        Which firewall zapret should use
       '';
     };
-    configureFirewall = lib.mkOption {
+
+    disableIpv6 = mkOption {
+      type = types.bool;
+      # recommended by upstream
       default = true;
-      type = lib.types.bool;
       description = ''
-        Whether to setup firewall routing so that system http(s) traffic is forwarded via this service.
-        Disable if you want to set it up manually.
+        Disable or enable usage of IpV6 by zapret
       '';
     };
-    httpSupport = lib.mkOption {
-      default = true;
-      type = lib.types.bool;
+
+    mode = mkOption {
+      type = types.enum [
+        "tpws"
+        "tpws-socks"
+        "nfqws"
+        "filter"
+        "custom"
+      ];
+      default = "tpws";
       description = ''
-        Whether to route http traffic on port 80.
-        Http bypass rarely works and you might want to disable it if you don't utilise http connections.
+        Which mode zapret should use
       '';
     };
   };
 
-  config = lib.mkIf cfg.enable (
-    lib.mkMerge [
-      {
-        assertions = [
-          {
-            assertion = (cfg.whitelist == null) || (cfg.blacklist == null);
-            message = "Can't specify both whitelist and blacklist.";
-          }
-          {
-            assertion = (builtins.length cfg.params) != 0;
-            message = "You have to specify zapret parameters. See the params option's description.";
-          }
-        ];
+  config = mkIf cfg.enable {
+    users.users.tpws = {
+      isSystemUser = true;
+      group = "tpws";
+    };
 
-        systemd.services.zapret = {
-          description = "DPI bypass service";
-          wantedBy = [ "multi-user.target" ];
-          after = [ "network.target" ];
-          serviceConfig = {
-            ExecStart = "${cfg.package}/bin/nfqws --pidfile=/run/nfqws.pid ${lib.concatStringsSep " " cfg.params} ${whitelist} ${blacklist} --qnum=${toString cfg.qnum}";
-            Type = "simple";
-            PIDFile = "/run/nfqws.pid";
-            Restart = "always";
-            RuntimeMaxSec = "1h"; # This service loves to crash silently or cause network slowdowns. It also restarts instantly. In my experience restarting it hourly provided the best experience.
+    users.groups.tpws = { };
 
-            # hardening
-            DevicePolicy = "closed";
-            KeyringMode = "private";
-            PrivateTmp = true;
-            PrivateMounts = true;
-            ProtectHome = true;
-            ProtectHostname = true;
-            ProtectKernelModules = true;
-            ProtectKernelTunables = true;
-            ProtectSystem = "strict";
-            ProtectProc = "invisible";
-            RemoveIPC = true;
-            RestrictNamespaces = true;
-            RestrictRealtime = true;
-            RestrictSUIDSGID = true;
-            SystemCallArchitectures = "native";
-          };
-        };
-      }
+    systemd.services.zapret = {
+      after = [ "network-online.target" ];
+      wants = [ "network-online.target" ];
+      wantedBy = [ "multi-user.target" ];
 
-      # Route system traffic via service for specified ports.
-      (lib.mkIf cfg.configureFirewall {
-        networking.firewall.extraCommands = ''
-          iptables -t mangle -I POSTROUTING -p tcp -m multiport --dports ${ports} -m connbytes --connbytes-dir=original --connbytes-mode=packets --connbytes 1:6 -m mark ! --mark 0x40000000/0x40000000 -j NFQUEUE --queue-num ${toString cfg.qnum} --queue-bypass
-          iptables -t mangle -A POSTROUTING -p udp -m multiport --dports 50000:50099 -m mark ! --mark 0x40000000/0x40000000 -m connbytes --connbytes 1:1 --connbytes-mode packets --connbytes-dir original -j NFQUEUE --queue-num ${toString cfg.qnum} --queue-bypass
-        '';
-      })
-    ]
-  );
+      path = with pkgs; [
+        (if cfg.firewallType == "iptables" then iptables else nftables)
+        gawk
+        ipset
+      ];
 
-  meta.maintainers = with lib.maintainers; [
-    voronind
-    nishimara
-  ];
+      serviceConfig = {
+        Type = "forking";
+        Restart = "no";
+        TimeoutSec = "30sec";
+        IgnoreSIGPIPE = "no";
+        KillMode = "none";
+        GuessMainPID = "no";
+        RemainAfterExit = "no";
+        ExecStart = "${cfg.package}/bin/zapret start";
+        ExecStop = "${cfg.package}/bin/zapret stop";
+
+        EnvironmentFile = pkgs.writeText "${cfg.package.pname}-environment" (concatStrings [
+          ''
+            MODE=${cfg.mode}
+            FWTYPE=${cfg.firewallType}
+            DISABLE_IPV6=${if cfg.disableIpv6 then "1" else "0"}
+          ''
+          cfg.settings
+        ]);
+
+        # hardening
+        DevicePolicy = "closed";
+        KeyringMode = "private";
+        PrivateTmp = true;
+        PrivateMounts = true;
+        ProtectHome = true;
+        ProtectHostname = true;
+        ProtectKernelModules = true;
+        ProtectKernelTunables = true;
+        ProtectSystem = "strict";
+        ProtectProc = "invisible";
+        RemoveIPC = true;
+        RestrictNamespaces = true;
+        RestrictRealtime = true;
+        RestrictSUIDSGID = true;
+        SystemCallArchitectures = "native";
+      };
+    };
+  };
 }

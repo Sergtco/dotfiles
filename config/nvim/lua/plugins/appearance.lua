@@ -4,7 +4,7 @@ return {
         lazy = false,
         priority = 1000,
         init = function()
-            vim.cmd.colorscheme('kanagawa')
+            vim.cmd.colorscheme('kanagawa-wave')
         end,
         config = true,
         opts = {

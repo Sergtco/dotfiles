@@ -9,6 +9,7 @@
     package = pkgs.unstable.neovim-unwrapped;
     extraPackages = with pkgs; [
       gopls
+      gofumpt
       rust-analyzer
       rustfmt
       lua-language-server

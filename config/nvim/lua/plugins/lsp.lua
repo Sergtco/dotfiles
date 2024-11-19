@@ -30,17 +30,13 @@ return {
         require("conform").setup({
             formatters_by_ft = {
                 python = { "ruff" },
+                go = { "gofumpt" },
             },
             format_on_save = true,
             {
                 lsp_fallback = true,
                 timeout_ms = 500,
             },
-            formatters = {
-                gopls = {
-                    command = "ya tool gofmt %% ya tool yoimports"
-                },
-            }
         })
 
         local capabilities = require('cmp_nvim_lsp').default_capabilities()

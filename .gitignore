@@ -1,5 +1,5 @@
-config/helix/runtime/
-config/tmux/plugins/
+config/helix/runtime
+config/tmux/plugins
 config/fish/fish_variables
 config/nvim/lazy-lock.json
 .DS_Store

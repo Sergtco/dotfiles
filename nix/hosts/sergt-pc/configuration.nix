@@ -2,9 +2,11 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./programming.nix
-    ./gaming.nix
     ../../modules/doh
+    ../../modules/gaming
+    ../../modules/programming
+    ../../modules/music
+    ../../modules/zapret
   ];
 
   boot = {
@@ -16,7 +18,6 @@
         device = "nodev";
         useOSProber = true;
       };
-      timeout = 0;
     };
     plymouth = {
       enable = true;
@@ -152,16 +153,6 @@
         TimeoutStopSec = 10;
       };
     };
-    services = {
-      #dpi
-      byedpi = {
-        enable = true;
-        serviceConfig = {
-          ExecStart = "${pkgs.unstable.byedpi}/bin/ciadpi -s1 -q1 -Y -Ar -s5 -o1+s -At -f-1 -r1+s -As -s1 -o1 +s -s-1 -An";
-        };
-        wantedBy = [ "multi-user.target" ];
-      };
-    };
   };
 
   nixpkgs.config = {
@@ -189,7 +180,9 @@
     hyprpaper
     kitty
     pavucontrol
-    cinnamon.nemo
+    vlc
+    xfce.thunar
+    gedit
     swayimg
     #cli
     bash
@@ -234,6 +227,7 @@
   programs = {
     hyprland = {
       enable = true;
+      package = pkgs.hyprland;
       xwayland.enable = true;
     };
     hyprlock.enable = true;

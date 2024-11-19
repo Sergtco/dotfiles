@@ -20,6 +20,8 @@
     EDITOR = "nvim";
     BROWSER = "firefox";
     TERMINAL = "alacritty";
+    XDG_PICTURES_DIR = "${config.home.homeDirectory}/Pictures";
+    XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}/Pictures/Screenshots";
   };
 
   wayland.windowManager.hyprland = {
@@ -34,7 +36,7 @@
   home.packages = with pkgs; [
     alacritty
     tmux
-    yazi
+    yazi-unwrapped
     ueberzugpp
     playerctl
     telegram-desktop
@@ -43,16 +45,10 @@
     hyprpicker
     grimblast
     vial
-    libreoffice
+    onlyoffice-bin_latest
     swayimg
   ];
 
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "inode/directory" = [ "nemo.destkop" ];
-    };
-  };
   programs.git = {
     enable = true;
     userName = "Ivan Nizelnik";
