@@ -1,9 +1,0 @@
-{
-  "device": {
-    "productId": 112,
-    "usage": 97,
-    "usagePage": 65376
-  },
-  "layouts": ["ABC", "Russian"],
-  "reconnectDelay": 5000
-}

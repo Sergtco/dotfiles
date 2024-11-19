@@ -1,8 +1,0 @@
-sessions ()
-{
-    local session=`tmux list-sessions | fzf-tmux | sed 's/^\(.*\): .*$/\1/'`
-    if [ $session != 1 ]; then
-        tmux switch-client -t $session
-    fi
-}
-sessions
