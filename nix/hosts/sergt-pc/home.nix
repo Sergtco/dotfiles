@@ -1,14 +1,7 @@
-{
-  config,
-  pkgs,
-  inputs,
-  ...
-}:
+{ config, pkgs, ... }:
 {
   imports = [
-    inputs.stylix.homeManagerModules.stylix
     ../../hardware/k02.nix
-    ../../home/eww
     ../../home/nvim
     ../../home/rofi
     ../../home/shells/zsh.nix
@@ -37,7 +30,6 @@
   home.packages = with pkgs; [
     alacritty
     tmux
-    yazi-unwrapped
     ueberzugpp
     playerctl
     telegram-desktop
@@ -45,6 +37,9 @@
     blueberry
     hyprpicker
     grimblast
+    grim
+    swappy
+    slurp
     vial
     onlyoffice-bin_latest
     swayimg
@@ -56,6 +51,10 @@
     userEmail = "iva.nizelnik@gmail.com";
   };
 
+  programs.yazi = {
+    enable = true;
+    enableZshIntegration = true;
+  };
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
@@ -80,12 +79,6 @@
       recursive = true;
     };
 
-    lf = {
-      target = ".config/lf";
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/lf";
-      recursive = true;
-    };
-
     hypr = {
       target = ".config/hypr";
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/hypr";
@@ -103,13 +96,6 @@
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/tmux";
       recursive = true;
     };
-
-    wlogout = {
-      target = ".config/wlogout";
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/wlogout";
-      recursive = true;
-    };
-
   };
 
   programs.home-manager.enable = true;

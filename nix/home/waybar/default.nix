@@ -1,12 +1,9 @@
-{
-  ...
-}:
-
+{config, ... }:
 {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
-    style = ./style.css;
+    style = config.lib.file.mkOutOfStoreSymlink ./style.css;
     settings = [
       {
         layer = "top";
@@ -50,7 +47,6 @@
             "9" = "󰲰";
             "10" = "󰝚";
             "-99" = "";
-            # active = "";
             default = "";
           };
         };

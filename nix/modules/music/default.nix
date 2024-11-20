@@ -1,11 +1,13 @@
-{pkgs, ...}
-  :
+{ pkgs, ... }:
 {
   users.groups = {
-    realtime = {};
-    audio = {};
+    realtime = { };
+    audio = { };
   };
-  users.users.sergtco.extraGroups = [ "realtime" "audio" ];
+  users.users.sergtco.extraGroups = [
+    "realtime"
+    "audio"
+  ];
   services.pipewire = {
     jack.enable = true;
   };

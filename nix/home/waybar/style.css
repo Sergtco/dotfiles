@@ -7,10 +7,10 @@
   color:#C8BF8D;
 }
 window#waybar{
-  background-color: #16161D;
+  background-color: #1F1F28;
 }
 #waybar {
-  background: #1e222a;
+  background: #1F1F28;
   color: #C0CAF5;
   font-size: 12px;
 }
@@ -42,8 +42,7 @@ font-size: 15px;
   padding: 0 5px;
 }
 #workspaces button.active {
-  color: #fa5aa4;
-  
+  color: #C77892;
 }
 
 #tray {

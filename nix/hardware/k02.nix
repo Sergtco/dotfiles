@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 
 let
   qmk-hid-host = pkgs.callPackage ../pkgs/qmk-hid-host/qmk-hid-host.nix { };

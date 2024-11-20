@@ -13,11 +13,7 @@
   };
 
   outputs =
-    {
-      nixpkgs,
-      home-manager,
-      ...
-    }@inputs:
+    { nixpkgs, home-manager, ... }@inputs:
     {
       nixosConfigurations.sergt-pc = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

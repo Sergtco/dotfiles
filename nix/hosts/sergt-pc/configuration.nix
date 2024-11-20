@@ -125,7 +125,7 @@
 
   users.defaultUserShell = pkgs.zsh;
   users.groups = {
-    i2c = {};
+    i2c = { };
   };
   users.users.sergtco = {
     isNormalUser = true;
@@ -168,8 +168,7 @@
         inherit (final) config;
       };
     })
-  ]
-  ;
+  ];
 
   nix.settings.experimental-features = [
     "nix-command"

@@ -1,21 +1,17 @@
-{
-  config,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
 {
   programs.neovim = {
     enable = true;
     package = pkgs.unstable.neovim-unwrapped;
-    extraPackages = with pkgs; [
+    extraPackages = with pkgs.unstable; [
       gopls
       gofumpt
       rust-analyzer
       rustfmt
       lua-language-server
-      zls
-      nixd
+      nil
     ];
+    defaultEditor = true;
   };
 
   xdg.configFile = {

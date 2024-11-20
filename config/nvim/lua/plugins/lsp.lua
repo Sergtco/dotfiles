@@ -41,8 +41,7 @@ return {
 
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-
-        local servers = { 'gleam', 'gopls', 'rust_analyzer', 'basedpyright', 'lua_ls', 'zls', 'nixd' }
+        local servers = { 'gleam', 'gopls', 'rust_analyzer', 'basedpyright', 'lua_ls', 'nil_ls' }
         for _, server in pairs(servers) do
             require('lspconfig')[server].setup({
                 on_attach = on_attach,
