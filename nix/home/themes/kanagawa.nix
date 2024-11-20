@@ -5,7 +5,7 @@
 {
   stylix = {
     enable = true;
-    image = ../../../wallpaper/mountains.png;
+    image = ../../../wallpaper/mountains.jpg;
     base16Scheme = ./kanagawa.yaml;
     polarity = "dark";
     cursor = {

@@ -124,6 +124,9 @@
   };
 
   users.defaultUserShell = pkgs.zsh;
+  users.groups = {
+    i2c = {};
+  };
   users.users.sergtco = {
     isNormalUser = true;
     description = "sergtco";
@@ -189,11 +192,9 @@
     bottom
     curl
     p7zip
-    fd
     git
     killall
     nixfmt-rfc-style
-    ripgrep
     udiskie
     vim
     wget

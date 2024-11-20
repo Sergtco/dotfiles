@@ -7,12 +7,13 @@
 {
   imports = [
     inputs.stylix.homeManagerModules.stylix
-    ../../home/themes/kanagawa.nix
-    ../../home/rofi/rofi.nix
-    ../../home/shells/zsh.nix
-    ../../home/waybar/waybar.nix
-    ../../home/nvim/nvim.nix
     ../../hardware/k02.nix
+    ../../home/eww
+    ../../home/nvim
+    ../../home/rofi
+    ../../home/shells/zsh.nix
+    ../../home/themes/kanagawa.nix
+    ../../home/waybar
   ];
   home.homeDirectory = "/home/sergtco";
 
