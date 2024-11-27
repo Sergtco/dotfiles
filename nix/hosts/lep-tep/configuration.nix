@@ -44,11 +44,10 @@
   };
 
   ### KERNEL ###
-  boot.kernelModules = ["i2c-dev"];
+  boot.kernelModules = [];
   boot.initrd.kernelModules = ["amdgpu"];
   services.udev = {
     extraRules = ''
-      KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
     '';
     packages = with pkgs; [via];
   };
@@ -120,6 +119,19 @@
     };
   };
 
+  ### POWER ###
+  powerManagement.enable = true;
+  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.settings = {
+    battery = {
+      governor = "powersave";
+      turbo = "never";
+    };
+    charger = {
+      governor = "performance";
+      turbo = "auto";
+    };
+  };
   ### LOCALE ###
   time.timeZone = "Europe/Moscow";
 
@@ -143,16 +155,12 @@
   };
 
   ### ADMINISTRATION ###
-  users.groups = {
-    i2c = {};
-  };
   users.users.sergtco = {
     isNormalUser = true;
     description = "sergtco";
     extraGroups = [
       "networkmanager"
       "wheel"
-      "i2c"
     ];
     useDefaultShell = true;
   };
