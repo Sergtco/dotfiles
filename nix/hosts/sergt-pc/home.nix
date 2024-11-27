@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ../../hardware/k02.nix
     ../../home/nvim
@@ -7,6 +10,7 @@
     ../../home/shells/zsh.nix
     ../../home/themes/kanagawa.nix
     ../../home/waybar
+    ../../home/cli
   ];
   home.homeDirectory = "/home/sergtco";
 
@@ -18,64 +22,27 @@
     XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}/Pictures/Screenshots";
   };
 
-  wayland.windowManager.hyprland = {
-    systemd.enable = true;
-  };
-
-  programs.gh = {
-    enable = true;
-    gitCredentialHelper.enable = true;
-  };
-
   home.packages = with pkgs; [
     alacritty
     tmux
-    ueberzugpp
     playerctl
+    pinta
     telegram-desktop
+    transmission_4-gtk
     swaynotificationcenter
     blueberry
     hyprpicker
     grimblast
-    grim
-    swappy
-    slurp
     vial
     onlyoffice-bin_latest
     swayimg
+    vesktop
   ];
 
-  programs.git = {
-    enable = true;
-    userName = "Ivan Nizelnik";
-    userEmail = "iva.nizelnik@gmail.com";
-  };
-
-  programs.yazi = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
   home.file = {
-
     alacritty = {
       target = ".config/alacritty";
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/alacritty";
-      recursive = true;
-    };
-
-    helix = {
-      target = ".config/helix";
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/helix";
       recursive = true;
     };
 
@@ -99,5 +66,5 @@
   };
 
   programs.home-manager.enable = true;
-  home.stateVersion = "24.05";
+  home.stateVersion = "24.11";
 }

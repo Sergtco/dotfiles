@@ -36,4 +36,10 @@
       name = "Kanagawa";
     };
   };
+  qt = {
+    style = {
+      name = "adwaita-dark";
+      package = pkgs.adwaita-qt;
+    };
+  };
 }

@@ -1,5 +1,8 @@
-{ pkgs, inputs, ... }:
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/doh
@@ -9,6 +12,7 @@
     ../../modules/zapret
   ];
 
+  ### BOOTLOADER ###
   boot = {
     loader = {
       efi.canTouchEfiVariables = true;
@@ -19,11 +23,13 @@
         useOSProber = true;
       };
     };
+
     plymouth = {
       enable = true;
       theme = "lone";
-      themePackages = [ (pkgs.adi1090x-plymouth-themes.override { selected_themes = [ "lone" ]; }) ];
+      themePackages = [(pkgs.adi1090x-plymouth-themes.override {selected_themes = ["lone"];})];
     };
+
     consoleLogLevel = 0;
     initrd.verbose = false;
     kernelParams = [
@@ -37,15 +43,17 @@
     ];
   };
 
-  boot.kernelModules = [ "i2c-dev" ];
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  ### KERNEL ###
+  boot.kernelModules = ["i2c-dev"];
+  boot.initrd.kernelModules = ["amdgpu"];
   services.udev = {
     extraRules = ''
       KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
     '';
-    packages = with pkgs; [ via ];
+    packages = with pkgs; [via];
   };
 
+  ### DRIVES ###
   services.udisks2.enable = true;
   services.gvfs.enable = true;
   fileSystems."/mnt/hard" = {
@@ -66,19 +74,16 @@
     ];
   };
 
+  ### NETWORKING ###
   networking.hostName = "sergt-pc";
 
   networking.networkmanager.enable = true;
 
-  time.timeZone = "Europe/Moscow";
-
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-    extraPackages = with pkgs; [ amdvlk ];
-    extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
+  programs.ssh = {
+    startAgent = true;
   };
+
+  ### BLUETOOTH ###
   # rtkit is optional but recommended
   security.rtkit.enable = true;
   services.pipewire = {
@@ -105,9 +110,23 @@
     };
   };
 
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-  services.blueman.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Experimental = true;
+      };
+    };
+  };
+
+  ### LOCALE ###
+  time.timeZone = "Europe/Moscow";
+
+  services.xserver.xkb = {
+    layout = "us, ru";
+    variant = "";
+  };
 
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -123,9 +142,9 @@
     LC_TIME = "ru_RU.UTF-8";
   };
 
-  users.defaultUserShell = pkgs.zsh;
+  ### ADMINISTRATION ###
   users.groups = {
-    i2c = { };
+    i2c = {};
   };
   users.users.sergtco = {
     isNormalUser = true;
@@ -138,6 +157,10 @@
     useDefaultShell = true;
   };
 
+  users.defaultUserShell = pkgs.zsh;
+  programs.zsh.enable = true;
+  environment.shells = with pkgs; [zsh];
+
   security.polkit = {
     enable = true;
   };
@@ -145,9 +168,9 @@
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {
       description = "polkit-gnome-authentication-agent-1";
-      wantedBy = [ "graphical.target" ];
-      wants = [ "graphical.target" ];
-      after = [ "graphical.target" ];
+      wantedBy = ["graphical.target"];
+      wants = ["graphical.target"];
+      after = ["graphical.target"];
       serviceConfig = {
         Type = "simple";
         ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
@@ -156,8 +179,16 @@
         TimeoutStopSec = 10;
       };
     };
+    services.shadowsocks-proxy = {
+      wantedBy = ["default.target"];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.shadowsocks-rust}/bin/sslocal -c /home/sergtco/shadowsocks.json";
+      };
+    };
   };
 
+  ### PACKAGES ####
   nixpkgs.config = {
     allowUnfree = true;
   };
@@ -170,12 +201,6 @@
     })
   ];
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-  environment.shells = with pkgs; [ zsh ];
-
   environment.systemPackages = with pkgs; [
     #gui
     firefox
@@ -186,6 +211,7 @@
     xfce.thunar
     gedit
     swayimg
+
     #cli
     bash
     bottom
@@ -212,19 +238,32 @@
     })
     corefonts
   ];
+  ### GRAPHICS ###
+  services.xserver.enable = true;
 
-  services.xserver = {
+  hardware.graphics = {
     enable = true;
-    xkb = {
-      layout = "us, ru";
-      variant = "";
-    };
-    displayManager.gdm = {
-      enable = true;
-      wayland = true;
-    };
+    enable32Bit = true;
+    extraPackages = with pkgs; [amdvlk];
+    extraPackages32 = with pkgs; [driversi686Linux.amdvlk];
   };
+
+  services.xserver.displayManager.gdm = {
+    enable = true;
+    wayland = true;
+  };
+
   programs = {
+    uwsm = {
+      enable = true;
+      waylandCompositors = {
+        hyprland = {
+          prettyName = "Hyprland";
+          comment = "Hyprland compositor managed by UWSM";
+          binPath = "/run/current-system/sw/bin/Hyprland";
+        };
+      };
+    };
     hyprland = {
       enable = true;
       package = pkgs.hyprland;
@@ -234,16 +273,30 @@
   };
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+    extraPortals = with pkgs; [xdg-desktop-portal-gtk];
   };
   services.hypridle.enable = true;
 
-  programs.zsh.enable = true;
+  ### !FIXME delete after litvin ###
+  virtualisation.virtualbox = {
+    host = {
+      enable = true;
+      enableExtensionPack = true;
+    };
+    guest.enable = true;
+  };
+  users.extraGroups.vboxusers.members = ["sergtco"];
 
-  ## delete after litivin
-  virtualisation.vmware = {
-    host.enable = true;
+  ### NIX ###
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
   };
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 }

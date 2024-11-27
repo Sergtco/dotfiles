@@ -8,6 +8,7 @@
   environment.systemPackages = with pkgs; [
     gcc
     clang
+    gnumake
     unstable.python3
     unstable.go
     unstable.cargo

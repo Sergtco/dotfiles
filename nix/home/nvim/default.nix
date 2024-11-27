@@ -9,7 +9,11 @@
       rust-analyzer
       rustfmt
       lua-language-server
+      basedpyright
       nil
+      alejandra
+      python312Packages.sqlfmt
+      black
     ];
     defaultEditor = true;
   };

@@ -1,9 +1,10 @@
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
-        "stevearc/conform.nvim",
+        "nvimtools/none-ls.nvim",
         "hrsh7th/nvim-cmp",
         "hrsh7th/cmp-nvim-lsp",
+        "nvim-lua/plenary.nvim",
     },
     config = function()
         local opts = { noremap = true, silent = true }
@@ -22,22 +23,8 @@ return {
             vim.keymap.set("n", "<space>r", vim.lsp.buf.rename, bufopts)
             vim.keymap.set("n", "<space>a", vim.lsp.buf.code_action, bufopts)
             vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-            vim.keymap.set("n", "<space>w", function()
-                require("conform").format({ bufnr = bufnr, lsp_format = "fallback" })
-            end, bufopts)
+            vim.keymap.set("n", "<space>w", vim.lsp.buf.format, bufopts)
         end
-
-        require("conform").setup({
-            formatters_by_ft = {
-                python = { "ruff" },
-                go = { "gofumpt" },
-            },
-            format_on_save = true,
-            {
-                lsp_fallback = true,
-                timeout_ms = 500,
-            },
-        })
 
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -59,6 +46,16 @@ return {
         for _, sign in ipairs(signs) do
             vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
         end
+
+        local null_ls = require('null-ls')
+        null_ls.setup({
+            sources = {
+                null_ls.builtins.formatting.alejandra,
+                null_ls.builtins.formatting.sqlfmt,
+                null_ls.builtins.formatting.black,
+            },
+            on_attach = on_attach,
+        })
         local config = {
             virtual_text = true,
             update_in_insert = true,

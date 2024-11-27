@@ -1,12 +1,13 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.steam = {
     enable = true;
-    extraCompatPackages = with pkgs; [ proton-ge-bin ];
+    extraCompatPackages = with pkgs; [proton-ge-bin];
   };
+
   programs.gamemode = {
     enable = true;
   };
+
   environment.systemPackages = with pkgs; [
     (unstable.lutris.override {
       extraPkgs = pkgs: [

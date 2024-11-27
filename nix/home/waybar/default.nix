@@ -86,7 +86,7 @@
           on-click = "pavucontrol";
         };
         bluetooth = {
-          format = " {status}";
+          format = " {device_battery_percentage}%";
           format-on = "";
           format-off = "󰂲";
           on-click = "blueberry";
