@@ -11,6 +11,7 @@
     ../../home/themes/kanagawa.nix
     ../../home/waybar
     ../../home/cli
+    ../../home/helix
   ];
   home.homeDirectory = "/home/sergtco";
 

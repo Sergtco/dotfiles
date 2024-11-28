@@ -74,7 +74,7 @@
   };
 
   ### NETWORKING ###
-  networking.hostName = "sergt-pc";
+  networking.hostName = "lep-tep";
 
   networking.networkmanager.enable = true;
 
