@@ -23,9 +23,6 @@ return {
             )
 
             cmp.setup({
-                -- performance = {
-                --     max_view_entries = 10,
-                -- },
                 experimental = {
                     ghost_text = true,
                 },

@@ -44,6 +44,9 @@ return {
                 },
                 extensions = {
                     "oil",
+                    "lazy",
+                    "quickfix",
+                    "fzf"
                 },
                 sections = {
                     lualine_a = { "mode" },
@@ -51,7 +54,7 @@ return {
                     lualine_c = { "diagnostics" },
                     lualine_x = {},
                     lualine_y = {},
-                    lualine_z = {},
+                    lualine_z = { "branch" },
                 },
             })
         end,

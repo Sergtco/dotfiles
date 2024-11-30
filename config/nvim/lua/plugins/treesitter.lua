@@ -6,14 +6,13 @@ return {
     config = function(_, opts)
         require('nvim-treesitter.configs').setup(opts)
         vim.filetype.add {
-            extension = { rasi = 'rasi' },
             pattern = {
                 ['.*/hypr/.*%.conf'] = 'hyprlang',
             },
         }
     end,
     opts = {
-        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "cpp", "python", "go", },
+        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "comment", "markdown", "markdown_inline", "cpp", "python", "go" },
         sync_install = true,
         highlight = {
             enable = true,

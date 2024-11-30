@@ -17,13 +17,4 @@ return {
         opts = {},
         config = true,
     },
-    {
-        'notomo/cmdbuf.nvim',
-        lasy = false,
-        config = function()
-            vim.keymap.set('n', 'q:', function()
-                require('cmdbuf').split_open(vim.o.cmdwinheight)
-            end)
-        end
-    },
 }

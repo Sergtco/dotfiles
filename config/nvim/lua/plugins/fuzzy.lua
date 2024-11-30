@@ -4,7 +4,7 @@ return {
         -- optional for icon support
         dependencies = { "nvim-tree/nvim-web-devicons" },
         keys = {
-            { "<leader>z", "<cmd>FzfLua<cr>",                       desc = "find_files" },
+            { "<leader>z", "<cmd>FzfLua<cr>",                       desc = "FzfLua" },
             { "<leader>f", "<cmd>FzfLua files<cr>",                 desc = "find_files" },
             { "<leader>g", "<cmd>FzfLua live_grep<cr>",             desc = "live_grep" },
             { "<leader>b", "<cmd>FzfLua buffers<cr>",               desc = "buffers" },
@@ -15,7 +15,7 @@ return {
         config = function()
             -- calling `setup` is optional for customization
             require("fzf-lua").setup({
-                fzf_colors = true,
+                fzf_colors = false,
                 fzf_opts = {
                     ['--layout'] = 'reverse-list'
                 },
@@ -23,11 +23,11 @@ return {
                 previewers = {
                     builtin = {
                         extensions = {
-                            ["jpg"] = {"ueberzug"},
-                            ["png"] = {"ueberzug"},
-                            ["jpeg"] = {"ueberzug"},
-                            ["gif"] = {"ueberzug"},
-                            ["webp"] = {"ueberzug"},
+                            ["jpg"] = { "ueberzug" },
+                            ["png"] = { "ueberzug" },
+                            ["jpeg"] = { "ueberzug" },
+                            ["gif"] = { "ueberzug" },
+                            ["webp"] = { "ueberzug" },
                         }
                     }
                 },
