@@ -1,10 +1,13 @@
-{ pkgs, inputs, ... }:
 {
-  imports = [ inputs.stylix.homeManagerModules.stylix ];
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [inputs.stylix.homeManagerModules.stylix];
 
   stylix = {
     enable = true;
-    image = ../../../wallpaper/mountains.jpg;
+    image = ../../../wallpaper/wave.jpg;
     base16Scheme = ./kanagawa.yaml;
     polarity = "dark";
     cursor = {
@@ -15,7 +18,7 @@
     fonts = {
       monospace = {
         name = "FiraCode Nerd Font Mono";
-        package = (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; });
+        package = pkgs.nerdfonts.override {fonts = ["FiraCode"];};
       };
       sizes = {
         terminal = 16;
