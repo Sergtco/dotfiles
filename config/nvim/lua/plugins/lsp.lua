@@ -28,12 +28,20 @@ return {
 
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-        local servers = { 'gleam', 'gopls', 'rust_analyzer', 'basedpyright', 'lua_ls', 'nil_ls', 'ts_ls'}
+        local servers = { 'gleam', 'gopls', 'rust_analyzer', 'basedpyright', 'lua_ls', 'nil_ls', 'ts_ls' }
         for _, server in pairs(servers) do
-            require('lspconfig')[server].setup({
-                on_attach = on_attach,
-                capabilities = capabilities,
-            })
+            if server == 'gopls' then
+                require('lspconfig')[server].setup({
+                    on_attach = on_attach,
+                    capabilities = capabilities,
+                    settings = {gopls = {gofumpt = true}}
+                })
+            else
+                require('lspconfig')[server].setup({
+                    on_attach = on_attach,
+                    capabilities = capabilities,
+                })
+            end
         end
 
         local signs = {
@@ -51,8 +59,8 @@ return {
         null_ls.setup({
             sources = {
                 null_ls.builtins.formatting.alejandra,
-                null_ls.builtins.formatting.sqlfmt,
                 null_ls.builtins.formatting.black,
+                null_ls.builtins.formatting.sqlfmt,
             },
             on_attach = on_attach,
         })
