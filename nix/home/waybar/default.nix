@@ -1,5 +1,7 @@
-{config, ... }:
 {
+  config,
+  ...
+}: {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -11,12 +13,16 @@
         height = 30;
         mode = "dock";
         start_hidden = false;
-        modules-left = [
-          "clock"
-          "idle_inhibitor"
-          "hyprland/workspaces"
-          "tray"
-        ];
+        modules-left =
+          [
+            "clock"
+          ]
+          ++ ["battery"]
+          ++ [
+            "idle_inhibitor"
+            "hyprland/workspaces"
+            "tray"
+          ];
         modules-right = [
           "custom/notification"
           "wireplumber"
@@ -27,6 +33,8 @@
         tray = {
           icon-size = 20;
           spacing = 10;
+        };
+        battery = {
         };
         "hyprland/language" = {
           format = "󰌓 {long}";

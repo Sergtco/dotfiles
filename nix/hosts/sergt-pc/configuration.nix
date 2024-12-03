@@ -143,8 +143,9 @@
   };
 
   ### ADMINISTRATION ###
-  users.groups = {
+  users.extraGroups = {
     i2c = {};
+    video = {};
   };
   users.users.sergtco = {
     isNormalUser = true;
@@ -228,6 +229,7 @@
 
     #need them
     ddcutil
+    brightnessctl
   ];
   fonts.packages = with pkgs; [
     (nerdfonts.override {

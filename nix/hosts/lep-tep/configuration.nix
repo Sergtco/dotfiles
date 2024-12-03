@@ -55,23 +55,6 @@
   ### DRIVES ###
   services.udisks2.enable = true;
   services.gvfs.enable = true;
-  fileSystems."/mnt/hard" = {
-    label = "hard";
-    fsType = "ext4";
-    options = [
-      "defaults"
-      "x-gvfs-show"
-    ];
-  };
-
-  fileSystems."/mnt/chonky" = {
-    label = "chonky";
-    fsType = "ext4";
-    options = [
-      "defaults"
-      "x-gvfs-show"
-    ];
-  };
 
   ### NETWORKING ###
   networking.hostName = "lep-tep";
@@ -132,6 +115,8 @@
       turbo = "auto";
     };
   };
+  ### HARDWARE ###
+  services.libinput.touchpad.naturalScrolling = true;
   ### LOCALE ###
   time.timeZone = "Europe/Moscow";
 
@@ -155,12 +140,16 @@
   };
 
   ### ADMINISTRATION ###
+  users.extraGroups = {
+    video = {};
+  };
   users.users.sergtco = {
     isNormalUser = true;
     description = "sergtco";
     extraGroups = [
       "networkmanager"
       "wheel"
+      "video"
     ];
     useDefaultShell = true;
   };
@@ -185,13 +174,6 @@
         Restart = "on-failure";
         RestartSec = 1;
         TimeoutStopSec = 10;
-      };
-    };
-    services.shadowsocks-proxy = {
-      wantedBy = ["default.target"];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.shadowsocks-rust}/bin/sslocal -c /home/sergtco/shadowsocks.json";
       };
     };
   };
@@ -236,6 +218,7 @@
 
     #need them
     ddcutil
+    brightnessctl
   ];
   fonts.packages = with pkgs; [
     (nerdfonts.override {
