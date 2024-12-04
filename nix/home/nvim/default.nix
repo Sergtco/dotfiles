@@ -24,6 +24,8 @@
       python312Packages.sqlfmt
 
       typescript-language-server
+
+      clang-tools
     ];
     defaultEditor = true;
   };
@@ -32,5 +34,11 @@
     "nvim/init.lua".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/nvim/init.lua";
     "nvim/lua".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/nvim/lua";
     "nvim/ftplugin".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/nvim/ftplugin";
+  };
+  home.file.".clang-format" = {
+    text = ''
+      IndentWidth: 4
+      AccessModifierOffset: -4
+    '';
   };
 }

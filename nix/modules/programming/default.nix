@@ -12,7 +12,6 @@
     unstable.python3
     unstable.go
     unstable.cargo
-    unstable.rustup
     unstable.rustc
     unstable.zig
   ];
