@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  config,
   ...
 }: {
   imports = [
@@ -44,7 +45,8 @@
   };
 
   ### KERNEL ###
-  boot.kernelModules = ["i2c-dev"];
+  boot.extraModulePackages = [config.boot.kernelPackages.ddcci-driver];
+  boot.kernelModules = ["i2c-dev" "ddcci_backlight"];
   boot.initrd.kernelModules = ["amdgpu"];
   services.udev = {
     extraRules = ''
@@ -154,6 +156,7 @@
       "networkmanager"
       "wheel"
       "i2c"
+      "video"
     ];
     useDefaultShell = true;
   };
