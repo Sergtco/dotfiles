@@ -221,6 +221,8 @@
     bottom
     curl
     p7zip
+    zip
+    unzip
     git
     killall
     nixfmt-rfc-style
@@ -259,20 +261,11 @@
   };
 
   programs = {
-    uwsm = {
-      enable = true;
-      waylandCompositors = {
-        hyprland = {
-          prettyName = "Hyprland";
-          comment = "Hyprland compositor managed by UWSM";
-          binPath = "/run/current-system/sw/bin/Hyprland";
-        };
-      };
-    };
     hyprland = {
       enable = true;
       package = pkgs.hyprland;
       xwayland.enable = true;
+      withUWSM = true;
     };
     hyprlock.enable = true;
   };

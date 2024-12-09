@@ -13,7 +13,6 @@
     shellAliases = {
       nv = "nvim";
       tm = "tmux -a || tmux";
-      yz = "yazi";
     };
     profileExtra = ''
       zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion

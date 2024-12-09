@@ -17,5 +17,6 @@
       ];
     })
     mangohud
+    r2modman
   ];
 }

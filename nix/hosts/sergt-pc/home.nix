@@ -26,6 +26,8 @@
     alacritty
     tmux
     playerctl
+    rhythmbox
+    lollypop
     pinta
     telegram-desktop
     transmission_4-gtk
