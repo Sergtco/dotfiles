@@ -244,6 +244,7 @@
       ];
     })
     corefonts
+    noto-fonts-color-emoji
   ];
   ### GRAPHICS ###
   services.xserver.enable = true;

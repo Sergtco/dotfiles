@@ -6,7 +6,7 @@
   imports = [
     ../../hardware/k02.nix
     ../../home/nvim
-    ../../home/rofi
+    ../../home/anyrun
     ../../home/shells/zsh.nix
     ../../home/themes/kanagawa.nix
     ../../home/waybar

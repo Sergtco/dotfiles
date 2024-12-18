@@ -6,11 +6,11 @@
   imports = [
     ../../hardware/k02.nix
     ../../home/nvim
-    ../../home/rofi
     ../../home/shells/zsh.nix
     ../../home/themes/kanagawa.nix
     ../../home/waybar
     ../../home/cli
+    ../../home/anyrun
   ];
   home.homeDirectory = "/home/sergtco";
 
