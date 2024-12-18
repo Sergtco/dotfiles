@@ -16,8 +16,8 @@ vim.keymap.set('v', '<leader>p', '"+p')
 vim.keymap.set('n', '<leader>p', '"+p')
 
 -- quickfix
-vim.keymap.set('n', '<leader>q', '<cmd>cn<cr>', { desc = 'Quickfix next' })
-vim.keymap.set('n', '<leader>Q', '<cmd>cp<cr>', { desc = 'Quickfix prev' })
+vim.keymap.set('n', '<M-n>', '<cmd>cnext<cr>', { desc = 'Quickfix next' })
+vim.keymap.set('n', '<M-p>', '<cmd>cprevious<cr>', { desc = 'Quickfix prev' })
 
 -- light-dark mode
 local function swap_mode()

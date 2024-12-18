@@ -39,7 +39,7 @@
         #ron
         ''
           Config(
-            desktop_actions: true,
+            desktop_actions: false,
             max_entries: 10,
             terminal: Some("alacritty"),
           )
