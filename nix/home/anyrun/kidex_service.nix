@@ -6,7 +6,7 @@ in {
       Description = "A simple file indexing service for looking up file locations.";
     };
     Install = {
-      WantedBy = ["multi-user.target"];
+      WantedBy = ["default.target"];
     };
     Service = {
       ExecStart = "${kidex}/bin/kidex";
