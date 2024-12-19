@@ -15,7 +15,7 @@ return {
         config = function()
             -- calling `setup` is optional for customization
             require("fzf-lua").setup({
-                fzf_colors = false,
+                fzf_colors = true,
                 winopts = { row = 1, height = 0.5, width = 0.9 },
                 previewers = {
                     builtin = {
