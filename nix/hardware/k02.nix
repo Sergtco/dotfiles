@@ -11,7 +11,7 @@ in
       Description = "Start qmk-hid-host for keyboard multimedia display.";
     };
     Install = {
-      WantedBy = [ "graphical.target" ];
+      WantedBy = [ "default.target" ];
     };
     Service = {
       ExecStart = "${qmk-hid-host}/bin/qmk-hid-host";

@@ -13,18 +13,12 @@ return {
 
         build = 'nix run .#build-plugin',
         opts = {
-            sources = {
-                default = { 'lsp', 'path', 'snippets', 'buffer' },
-            },
+            sources = { default = { 'lsp', 'path', 'luasnip', 'buffer' }, },
 
             completion = {
-                trigger = {
-                    prefetch_on_insert = true,
-                },
+                trigger = { prefetch_on_insert = true },
                 accept = { auto_brackets = { enabled = true } },
-                documentation = {
-                    auto_show = true,
-                },
+                documentation = { auto_show = true },
                 ghost_text = { enabled = true },
             },
 
@@ -39,7 +33,9 @@ return {
                 ['<S-Tab>'] = {},
             }
         },
+
         opts_extend = { "sources.default" },
+
         config = function(_, opts)
             require('blink.cmp').setup(opts)
             require("luasnip.loaders.from_vscode").lazy_load()
@@ -50,7 +46,7 @@ return {
             vim.keymap.set({ "i", "s" }, "<C-L>", function() ls.jump(1) end,
                 { desc = "Jump to next snipeet placeholder" })
             vim.keymap.set({ "i", "s" }, "<C-J>", function() ls.jump(-1) end,
-                { desc = "Jump to previous snippet placeholder"})
+                { desc = "Jump to previous snippet placeholder" })
         end
     },
 }

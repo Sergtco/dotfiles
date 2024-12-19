@@ -41,6 +41,16 @@
     vesktop
   ];
 
+  xdg.mimeApps = {
+    enable = true;
+    associations.added = {
+      "inode/directory" = ["thunar.desktop"];
+    };
+    defaultApplications = {
+      "inode/directory" = ["thunar.desktop"];
+    };
+  };
+
   home.file = {
     alacritty = {
       target = ".config/alacritty";
