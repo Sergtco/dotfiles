@@ -1,14 +1,10 @@
-require("base.term")
-
--- Buffer motions
-vim.keymap.set('n', '<A-[>', '<cmd>tabprevious<cr>', {})
-vim.keymap.set('n', '<A-]>', '<cmd>tabnext<cr>', {})
-vim.keymap.set('n', '<A-c>', '<cmd>tabclose<cr>', {})
+-- Tab motions
+vim.keymap.set('n', '<A-[>', '<cmd>tabprevious<cr>')
+vim.keymap.set('n', '<A-]>', '<cmd>tabnext<cr>')
+vim.keymap.set('n', '<A-c>', '<cmd>tabclose<cr>')
 
 --Term
-vim.keymap.set('t', '<esc>', '<C-\\><C-N>', { silent = true })
-vim.keymap.set('n', '<c-\\>', ToggleTerminal, { silent = true })
-vim.keymap.set('t', '<c-\\>', ToggleTerminal, { silent = true })
+vim.keymap.set('t', '<esc>', '<C-\\><C-N>')
 
 --global yank and paste
 vim.keymap.set('v', '<leader>y', '"+y')

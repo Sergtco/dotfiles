@@ -9,7 +9,7 @@ return {
             require('lualine').setup({
                 options = {
                     section_separators = "",
-                    component_separators = "",
+                    component_separators = "|",
                     theme = "kanagawa",
                 },
                 extensions = {

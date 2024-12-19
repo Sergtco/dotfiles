@@ -1,85 +1,56 @@
 return {
     {
-        'hrsh7th/nvim-cmp',
+        'saghen/blink.cmp',
         dependencies = {
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-path',
-            'hrsh7th/cmp-cmdline',
-            { 'L3MON4D3/LuaSnip', version = "*", build = "make install_jsregexp" },
+            {
+                "L3MON4D3/LuaSnip",
+                dependencies = 'rafamadriz/friendly-snippets',
+                version = "v2.*",
+                build = "make install_jsregexp",
+            },
             'rafamadriz/friendly-snippets',
-            'saadparwaiz1/cmp_luasnip',
-
         },
-        config = function()
-            local luasnip = require('luasnip')
+
+        build = 'nix run .#build-plugin',
+        opts = {
+            sources = {
+                default = { 'lsp', 'path', 'snippets', 'buffer' },
+            },
+
+            completion = {
+                trigger = {
+                    prefetch_on_insert = true,
+                },
+                accept = { auto_brackets = { enabled = true } },
+                documentation = {
+                    auto_show = true,
+                },
+                ghost_text = { enabled = true },
+            },
+
+            signature = { enabled = true },
+            snippets = {
+                expand = function(snippet) require('luasnip').lsp_expand(snippet) end,
+            },
+
+            keymap = {
+                preset = 'default',
+                ['<Tab>'] = {},
+                ['<S-Tab>'] = {},
+            }
+        },
+        opts_extend = { "sources.default" },
+        config = function(_, opts)
+            require('blink.cmp').setup(opts)
             require("luasnip.loaders.from_vscode").lazy_load()
 
-            local cmp = require('cmp')
-            local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-            cmp.event:on(
-                'confirm_done',
-                cmp_autopairs.on_confirm_done()
-            )
+            local ls = require("luasnip")
 
-            cmp.setup({
-                experimental = {
-                    ghost_text = true,
-                },
-                snippet = {
-                    expand = function(args)
-                        luasnip.lsp_expand(args.body)
-                    end,
-                },
-                mapping = cmp.mapping.preset.insert({
-                    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-                    ['<C-d>'] = cmp.mapping.scroll_docs(4),
-                    ['<C-Space>'] = cmp.mapping.complete(),
-                    ['<C-e>'] = cmp.mapping.abort(),
-                    ['<CR>'] = cmp.mapping.confirm({ select = false }),
-                    ['<C-l>'] = cmp.mapping(function(_) luasnip.jump(1) end, { 's', 'i' }),
-                    ['<C-j>'] = cmp.mapping(function(_) luasnip.jump(-1) end, { 's', 'i' }),
-                    ['<C-k>'] = cmp.mapping(function(_) luasnip.expand() end, { 'i' }),
-                }),
-                sources = cmp.config.sources({
-                        { name = 'nvim_lsp' },
-                        { name = 'luasnip', option = { show_autosnippets = true } },
-                        { name = 'path' }
-                    },
-                    {
-                        { name = 'buffer' },
-                    }),
-            })
-
-            cmp.setup.cmdline({ '/', '?' }, {
-                view = {
-                    entries = {
-                        name = 'custom',
-                    }
-                },
-                mapping = cmp.mapping.preset.cmdline(),
-                sources = {
-                    { name = 'buffer' }
-                }
-            })
-
-            cmp.setup.cmdline(':', {
-                performance = {
-                    max_view_entries = 100,
-                },
-                view = {
-                    entries = {
-                        name = 'custom',
-                    }
-                },
-                mapping = cmp.mapping.preset.cmdline(),
-                sources = cmp.config.sources({
-                    { name = 'path' }
-                }, {
-                    { name = 'cmdline' }
-                }),
-                matching = { disallow_symbol_nonprefix_matching = false }
-            })
-        end,
-    }
+            vim.keymap.set("i", "<C-K>", ls.expand, { desc = "Expand(accept) snippet" })
+            vim.keymap.set({ "i", "s" }, "<C-L>", function() ls.jump(1) end,
+                { desc = "Jump to next snipeet placeholder" })
+            vim.keymap.set({ "i", "s" }, "<C-J>", function() ls.jump(-1) end,
+                { desc = "Jump to previous snippet placeholder"})
+        end
+    },
 }

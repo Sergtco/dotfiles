@@ -5,11 +5,6 @@ return {
     },
     config = function(_, opts)
         require('nvim-treesitter.configs').setup(opts)
-        vim.filetype.add {
-            pattern = {
-                ['.*/hypr/.*%.conf'] = 'hyprlang',
-            },
-        }
     end,
     opts = {
         ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "comment", "markdown", "markdown_inline", "cpp", "python", "go" },
@@ -39,7 +34,10 @@ return {
                     ["if"] = "@function.inner",
                     ["aa"] = "@parameter.outer",
                     ["ia"] = "@parameter.inner",
-                    ["ak"] = "@comment.outer"
+                    ["il"] = "@loop.inner",
+                    ["al"] = "@loop.inner",
+                    ["ak"] = "@comment.outer",
+                    ["ik"] = "@comment.outer",
                 },
             },
             move = {

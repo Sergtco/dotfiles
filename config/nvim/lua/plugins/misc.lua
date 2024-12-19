@@ -6,11 +6,6 @@ return {
         config = true,
     },
     {
-        'numToStr/Comment.nvim',
-        opts = {},
-        lazy = false,
-    },
-    {
         'windwp/nvim-autopairs',
         event = 'InsertEnter',
         disabled = true,
