@@ -47,8 +47,7 @@
   boot.kernelModules = [];
   boot.initrd.kernelModules = ["amdgpu"];
   services.udev = {
-    extraRules = ''
-    '';
+    extraRules = '''';
     packages = with pkgs; [via];
   };
 

@@ -41,13 +41,18 @@
     vesktop
   ];
 
+  xdg.configFile."mimeapps.list".force = true;
   xdg.mimeApps = {
     enable = true;
     associations.added = {
       "inode/directory" = ["thunar.desktop"];
+      "text/html" = ["firefox.desktop"];
+      "text/plain" = ["org.gnome.gedit.desktop"];
     };
     defaultApplications = {
       "inode/directory" = ["thunar.desktop"];
+      "text/html" = ["firefox.desktop"];
+      "text/plain" = ["org.gnome.gedit.desktop"];
     };
   };
 

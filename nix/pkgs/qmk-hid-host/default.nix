@@ -26,7 +26,7 @@ rustPlatform.buildRustPackage rec {
     dbus
     pulseaudio
   ];
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [pkg-config];
 
   meta = {
     description = "Host component for communicating with QMK keyboards using Raw HID feature.";

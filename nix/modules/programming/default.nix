@@ -1,6 +1,5 @@
-{ pkgs, ... }:
-{
-  users.users.sergtco.extraGroups = [ "docker" ];
+{pkgs, ...}: {
+  users.users.sergtco.extraGroups = ["docker"];
   programs.nix-ld = {
     enable = true;
   };

@@ -46,7 +46,10 @@
 
   ### KERNEL ###
   boot.extraModulePackages = [config.boot.kernelPackages.ddcci-driver];
-  boot.kernelModules = ["i2c-dev" "ddcci_backlight"];
+  boot.kernelModules = [
+    "i2c-dev"
+    "ddcci_backlight"
+  ];
   boot.initrd.kernelModules = ["amdgpu"];
   services.udev = {
     extraRules = ''

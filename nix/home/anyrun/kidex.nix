@@ -15,10 +15,6 @@ rustPlatform.buildRustPackage rec {
   };
   cargoHash = "sha256-EMQy+C3gcIyxfaQHfjM+9RE2ZB+ZEeA4ddBGoD9Zm1c=";
 
-  buildInputs = [
-  ];
-  nativeBuildInputs = [];
-
   meta = {
     description = "A simple file indexing service for looking up file locations";
     homepage = "https://github.com/Kirottu/kidex";
