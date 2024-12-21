@@ -8,6 +8,8 @@
     ../../home/nvim
     ../../home/shells/zsh.nix
     ../../home/themes/kanagawa.nix
+    ../../home/terminals/alacritty.nix
+    ../../home/terminals/wezterm.nix
     ../../home/waybar
     ../../home/cli
     ../../home/anyrun
@@ -57,12 +59,6 @@
   };
 
   home.file = {
-    alacritty = {
-      target = ".config/alacritty";
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/alacritty";
-      recursive = true;
-    };
-
     hypr = {
       target = ".config/hypr";
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/hypr";

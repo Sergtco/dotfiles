@@ -6,11 +6,12 @@
   imports = [
     ../../hardware/k02.nix
     ../../home/nvim
-    ../../home/anyrun
     ../../home/shells/zsh.nix
     ../../home/themes/kanagawa.nix
+    ../../home/terminals/alacritty.nix
     ../../home/waybar
     ../../home/cli
+    ../../home/anyrun
   ];
   home.homeDirectory = "/home/sergtco";
 
@@ -39,6 +40,21 @@
     swayimg
     vesktop
   ];
+
+  xdg.configFile."mimeapps.list".force = true;
+  xdg.mimeApps = {
+    enable = true;
+    associations.added = {
+      "inode/directory" = ["thunar.desktop"];
+      "text/html" = ["firefox.desktop"];
+      "text/plain" = ["org.gnome.gedit.desktop"];
+    };
+    defaultApplications = {
+      "inode/directory" = ["thunar.desktop"];
+      "text/html" = ["firefox.desktop"];
+      "text/plain" = ["org.gnome.gedit.desktop"];
+    };
+  };
 
   home.file = {
     alacritty = {

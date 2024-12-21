@@ -4,6 +4,7 @@
     fd
     ueberzugpp
   ];
+
   programs = {
     git = {
       enable = true;
@@ -26,18 +27,6 @@
   programs.yazi = {
     enable = true;
     enableZshIntegration = true;
-    package = pkgs.yazi.overrideAttrs (
-      final: prev: {
-        postInstall = ''
-          installShellCompletion --cmd yazi \
-            --bash ./yazi-boot/completions/yazi.bash \
-            --fish ./yazi-boot/completions/yazi.fish \
-            --zsh  ./yazi-boot/completions/_yazi
-
-          install -Dm444 assets/logo.png $out/share/pixmaps/yazi.png
-        '';
-      }
-    );
   };
 
   programs.fzf = {
