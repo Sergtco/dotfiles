@@ -8,7 +8,7 @@ in {
       Description = "Start qmk-hid-host for keyboard multimedia display.";
     };
     Install = {
-      WantedBy = ["default.target"];
+      WantedBy = ["graphical-session.target"];
     };
     Service = {
       ExecStart = "${qmk-hid-host}/bin/qmk-hid-host";

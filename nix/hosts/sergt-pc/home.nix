@@ -9,10 +9,10 @@
     ../../home/shells/zsh.nix
     ../../home/themes/kanagawa.nix
     ../../home/terminals/alacritty.nix
-    ../../home/terminals/wezterm.nix
     ../../home/waybar
     ../../home/cli
     ../../home/anyrun
+    ../../home/de
   ];
   home.homeDirectory = "/home/sergtco";
 

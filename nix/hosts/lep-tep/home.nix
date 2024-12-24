@@ -12,6 +12,7 @@
     ../../home/waybar
     ../../home/cli
     ../../home/anyrun
+    ../../home/de
   ];
   home.homeDirectory = "/home/sergtco";
 

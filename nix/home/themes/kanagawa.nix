@@ -30,7 +30,6 @@
       yazi.enable = true;
       rofi.enable = false;
       waybar.enable = false;
-      wezterm.enable = false;
     };
   };
   gtk = {
