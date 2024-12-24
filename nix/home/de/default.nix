@@ -2,6 +2,9 @@
   config,
   ...
 }: {
+  imports = [
+    ./wlogout.nix
+  ];
   services.udiskie.enable = true;
 
   services.swaync = {
@@ -16,7 +19,6 @@
     '';
   };
   services.hyprpaper.enable = true;
-
   home.file = {
     alacritty = {
       target = ".config/alacritty";
@@ -30,10 +32,6 @@
       recursive = true;
     };
 
-    # ".config/hypr/hyprpaper.conf".source =
-    #   config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/hypr/hyprpaper.conf";
-    # ".config/hypr/hyprland.conf".source =
-    #   config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/hypr/hyprland.conf";
     ".config/hypr/hypridle.conf".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/hypr/hypridle.conf";
     ".config/hypr/hyprlock.conf".source =

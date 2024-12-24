@@ -7,7 +7,7 @@
 
   stylix = {
     enable = true;
-    image = ../../../wallpaper/wave.jpg;
+    image = ../../../wallpaper/mini-wave.jpg;
     base16Scheme = ./kanagawa.yaml;
     polarity = "dark";
     cursor = {
