@@ -11,9 +11,9 @@
     base16Scheme = ./kanagawa.yaml;
     polarity = "dark";
     cursor = {
-      name = "Banana";
+      name = "Hackneyed";
       size = 24;
-      package = pkgs.banana-cursor;
+      package = pkgs.hackneyed;
     };
     fonts = {
       monospace = {

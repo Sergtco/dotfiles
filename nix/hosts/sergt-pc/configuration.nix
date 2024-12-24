@@ -21,7 +21,7 @@
         theme = "${pkgs.libsForQt5.breeze-grub}/grub/themes/breeze";
         efiSupport = true;
         device = "nodev";
-        useOSProber = true;
+        useOSProber = false;
       };
     };
 
@@ -211,7 +211,6 @@
   environment.systemPackages = with pkgs; [
     #gui
     firefox
-    hyprpaper
     kitty
     pavucontrol
     vlc
@@ -229,14 +228,12 @@
     git
     killall
     nixfmt-rfc-style
-    udiskie
     vim
     wget
     wl-clipboard
     xclip
 
     #need them
-    ddcutil
     brightnessctl
   ];
   fonts.packages = with pkgs; [

@@ -32,7 +32,6 @@
     pinta
     telegram-desktop
     transmission_4-gtk
-    swaynotificationcenter
     blueberry
     hyprpicker
     grimblast
@@ -54,32 +53,6 @@
       "inode/directory" = ["thunar.desktop"];
       "text/html" = ["firefox.desktop"];
       "text/plain" = ["org.gnome.gedit.desktop"];
-    };
-  };
-
-  home.file = {
-    alacritty = {
-      target = ".config/alacritty";
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/alacritty";
-      recursive = true;
-    };
-
-    hypr = {
-      target = ".config/hypr";
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/hypr";
-      recursive = true;
-    };
-
-    swaync = {
-      target = ".config/swaync";
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/swaync";
-      recursive = true;
-    };
-
-    tmux = {
-      target = ".config/tmux";
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/tmux";
-      recursive = true;
     };
   };
 
