@@ -275,7 +275,8 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "stylix": "stylix"
+        "stylix": "stylix",
+        "umu": "umu"
       }
     },
     "stylix": {
@@ -385,6 +386,28 @@
       "original": {
         "owner": "tinted-theming",
         "repo": "tinted-tmux",
+        "type": "github"
+      }
+    },
+    "umu": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "dir": "packaging/nix",
+        "lastModified": 1734207213,
+        "narHash": "sha256-djzWQaAnt2WHmioOlhuY46wabByEYePfO/ec1bBZI/o=",
+        "owner": "Open-Wine-Components",
+        "repo": "umu-launcher",
+        "rev": "6189d0d9fd062e89a375db20aeae1d1c009e9833",
+        "type": "github"
+      },
+      "original": {
+        "dir": "packaging/nix",
+        "owner": "Open-Wine-Components",
+        "repo": "umu-launcher",
         "type": "github"
       }
     }
