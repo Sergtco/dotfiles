@@ -255,15 +255,6 @@
   };
   services.hypridle.enable = true;
 
-  ### !FIXME delete after litvin ###
-  virtualisation.virtualbox = {
-    host = {
-      enable = true;
-      enableExtensionPack = true;
-    };
-  };
-  users.extraGroups.vboxusers.members = ["sergtco"];
-
   ### NIX ###
   nix.settings.experimental-features = [
     "nix-command"

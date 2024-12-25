@@ -25,6 +25,7 @@ in {
       " --filter-udp=50000-50099 --dpi-desync=fake --dpi-desync-any-protocol --dpi-desync-cutoff=n2 --dpi-desync-repeats=6 --new"
     ];
     whitelist = [
+      "ntc.party"
       "cker.cc"
       "googleapis.com"
       "googleusercontent.com"
