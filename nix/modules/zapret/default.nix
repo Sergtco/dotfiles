@@ -1,16 +1,17 @@
-{
-  lib,
-  ...
-}: let
-  discord_ips = builtins.toPath (builtins.fetchurl {
-    url = "https://raw.githubusercontent.com/iamkuper/amnezia-discord-config/refs/heads/main/configs/all.ips.txt";
-    sha256 = "1q7l5avf3bqxpsv7dd43mpwj13gc80jw7vc3a5jbzlmbpws1xzjr";
-  });
+{inputs, ...}: let
+  quic_google = builtins.fetchurl {
+    url = "https://github.com/bol-van/zapret/raw/refs/heads/master/files/fake/quic_initial_www_google_com.bin";
+    sha256 = "02n5v8fya194ww3lffvjm2qgh1bh3m97l69q0nrnp5czfibrqn7l";
+  };
+  tls_google = builtins.fetchurl {
+    url = "https://github.com/bol-van/zapret/raw/refs/heads/master/files/fake/tls_clienthello_www_google_com.bin";
+    sha256 = "1pichrzkjz0kri0frdc3kcv7g54y62xym01z70hgfs912n08g4z5";
+  };
 in {
   disabledModules = ["services/networking/zapret.nix"];
 
   imports = [
-    ./zapret_service.nix
+    "${inputs.nixpkgs-unstable}/nixos/modules/services/networking/zapret.nix"
   ];
 
   services.zapret = {
@@ -19,15 +20,65 @@ in {
     udpPorts = ["50000:50099"];
     httpSupport = false;
     params = [
-      "--filter-tcp=443 --dpi-desync=split2 --dpi-desync-split-seqovl=9 --dpi-desync-split-pos=10 --wssize 1:6 --new"
-      "--dpi-desync=fake --dpi-desync-any-protocol --dpi-desync-repeats=6"
+      "--filter-tcp=443 --dpi-desync=fake,split --dpi-desync-autottl=2 --dpi-desync-repeats=6 --dpi-desync-fooling=badseq --dpi-desync-fake-tls=${tls_google}"
+      "--filter-udp=443 --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic=${quic_google} --new"
+      " --filter-udp=50000-50099 --dpi-desync=fake --dpi-desync-any-protocol --dpi-desync-cutoff=n2 --dpi-desync-repeats=6 --new"
     ];
     whitelist = [
+      "cker.cc"
+      "googleapis.com"
+      "googleusercontent.com"
       "googlevideo.com"
+      "gstatic.com"
+      "nhacmp3youtube.com"
+      "www.youtube.com"
+      "youtu.be"
+      "youtube.com"
       "youtubei.googleapis.com"
-      "i.ytimg.com"
-      "yt3.ggpht.com"
+      "yt4.ggpht.com"
+      "ytimg.com"
+      "ytimg.l.google.com"
+      "x.com"
+      "twimg.com"
+      "t.co"
+      "twitter.com"
+      "rutor.info"
+      "rutracker.org"
+      "instagram.com"
+      "cdninstagram.com"
+      "ig.me"
+      "donmai.us"
+      "facebook.com"
+      "fbcdn.net"
+      "facebook.net"
+      "fbsbx.com"
+      "fbpigeon.com"
+      "fb.com"
+      "fb.gg"
+      "discord.com"
+      "gateway.discord.gg"
+      "cdn.discordapp.com"
+      "discordapp.net"
+      "discordapp.com"
+      "discord.gg"
+      "media.discordapp.net"
+      "images-ext-1.discordapp.net"
+      "www.discord.com"
+      "www.discord.app"
+      "discord.app"
+      "*.discord.com"
+      "*.discord.gg"
+      "*.discordapp.com"
+      "*.discordapp.net"
+      "discord.media"
+      "*.discord.media"
+      "discordcdn.com"
+      "discord.dev"
+      "discord.new"
+      "discord.gift"
+      "discordstatus.com"
+      "dis.gd"
+      "discord.com"
     ];
-    iplist = lib.strings.splitString "\n" (builtins.readFile discord_ips);
   };
 }

@@ -11,7 +11,7 @@ return {
             'rafamadriz/friendly-snippets',
         },
 
-        build = 'nix run .#build-plugin',
+        version = "v0.*",
         opts = {
             sources = { default = { 'lsp', 'path', 'luasnip', 'buffer' }, },
 
@@ -29,6 +29,10 @@ return {
 
             keymap = {
                 preset = 'default',
+                ['<C-u>'] = {'scroll_documentation_up', 'fallback'},
+                ['<C-d>'] = {'scroll_documentation_down', 'fallback'},
+                ['<C-b>'] = {},
+                ['<C-f>'] = {},
                 ['<Tab>'] = {},
                 ['<S-Tab>'] = {},
             }
