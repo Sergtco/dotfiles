@@ -1,4 +1,11 @@
-{config, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
+  home.packages = with pkgs; [
+    playerctl
+  ];
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -20,6 +27,9 @@
             "hyprland/workspaces"
             "tray"
           ];
+        modules-center = [
+          "mpris"
+        ];
         modules-right = [
           "custom/notification"
           "wireplumber"
@@ -30,8 +40,6 @@
         tray = {
           icon-size = 20;
           spacing = 10;
-        };
-        battery = {
         };
         "hyprland/language" = {
           format = "󰌓 {long}";
@@ -95,6 +103,12 @@
           format-on = "";
           format-off = "󰂲";
           on-click = "blueberry";
+        };
+        mpris = {
+          format = "{status_icon} <b>{artist}</b> - {title}";
+          status-icons = {
+            paused = "󰏤";
+          };
         };
         clock = {
           format = "{:%H:%M}";
