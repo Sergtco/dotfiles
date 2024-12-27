@@ -228,7 +228,6 @@
     git
     killall
     nixfmt-rfc-style
-    vim
     wget
     wl-clipboard
     xclip
