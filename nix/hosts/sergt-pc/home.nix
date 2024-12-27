@@ -8,7 +8,7 @@
     ../../home/nvim
     ../../home/shells/zsh.nix
     ../../home/themes/kanagawa.nix
-    ../../home/terminals/alacritty.nix
+    ../../home/terminals/ghostty.nix
     ../../home/waybar
     ../../home/cli
     ../../home/anyrun
@@ -19,13 +19,11 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     BROWSER = "firefox";
-    TERMINAL = "alacritty";
     XDG_PICTURES_DIR = "${config.home.homeDirectory}/Pictures";
     XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}/Pictures/Screenshots";
   };
 
   home.packages = with pkgs; [
-    alacritty
     tmux
     playerctl
     rhythmbox

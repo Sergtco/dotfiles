@@ -47,7 +47,7 @@
           Config(
             desktop_actions: false,
             max_entries: 10,
-            terminal: Some("alacritty"),
+            terminal: Some("ghostty"),
           )
         '';
       "symbols.ron".text =
@@ -157,7 +157,6 @@
       '';
   };
   nix.settings = {
-    builders-use-substitutes = true;
     extra-substituters = [
       "https://anyrun.cachix.org"
     ];

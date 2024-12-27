@@ -20,12 +20,6 @@
   };
   services.hyprpaper.enable = true;
   home.file = {
-    alacritty = {
-      target = ".config/alacritty";
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/alacritty";
-      recursive = true;
-    };
-
     tmux = {
       target = ".config/tmux";
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/tmux";

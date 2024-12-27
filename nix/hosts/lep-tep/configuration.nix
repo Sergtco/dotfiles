@@ -256,10 +256,13 @@
   services.hypridle.enable = true;
 
   ### NIX ###
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix.settings = {
+    builders-use-substitutes = true;
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+  };
 
   nix.gc = {
     automatic = true;
