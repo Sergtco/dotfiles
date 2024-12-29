@@ -205,6 +205,8 @@
     bottom
     curl
     p7zip
+    zip
+    unzip
     git
     killall
     nixfmt-rfc-style
