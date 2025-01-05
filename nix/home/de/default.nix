@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}: {
+{config, ...}: {
   imports = [
     ./wlogout.nix
   ];
@@ -18,7 +15,16 @@
       ${builtins.readFile ../../../config/hypr/hyprland.conf}
     '';
   };
-  services.hyprpaper.enable = true;
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      ipc = "on";
+      splash = false;
+      preload = ["${../../../wallpaper/mini-wave.jpg}"];
+
+      wallpaper = ", ${../../../wallpaper/mini-wave.jpg}";
+    };
+  };
   home.file = {
     tmux = {
       target = ".config/tmux";

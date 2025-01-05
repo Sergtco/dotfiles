@@ -11,7 +11,7 @@
     ../../home/terminals/ghostty.nix
     ../../home/waybar
     ../../home/cli
-    ../../home/anyrun
+    ../../home/rofi
     ../../home/de
   ];
   home.homeDirectory = "/home/sergtco";
