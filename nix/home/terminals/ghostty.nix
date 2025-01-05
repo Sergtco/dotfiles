@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   config,
   ...
@@ -10,7 +9,7 @@
     };
   };
   home.packages = [
-    inputs.ghostty.packages.${pkgs.system}.ghostty
+    pkgs.unstable.ghostty
   ];
 
   home.file.".config/ghostty/config".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/ghostty/config";

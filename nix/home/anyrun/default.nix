@@ -72,7 +72,9 @@
     };
 
     extraCss =
-      #css
+      /*
+      css
+      */
       ''
         @define-color bg-color #1f1f28;
         @define-color fg-color #7E9CD8;
@@ -155,5 +157,14 @@
           color: @text-color;
         }
       '';
+  };
+  nix.settings = {
+    extra-substituters = [
+      "https://anyrun.cachix.org"
+    ];
+
+    extra-trusted-public-keys = [
+      "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
+    ];
   };
 }
