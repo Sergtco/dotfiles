@@ -10,7 +10,7 @@
     ../../home/themes/kanagawa.nix
     ../../home/waybar
     ../../home/cli
-    ../../home/anyrun
+    ../../home/rofi
     ../../home/de
     ../../home/terminals/ghostty.nix
   ];
