@@ -13,6 +13,8 @@
       rust-analyzer
       rustfmt
 
+      zls
+
       lua-language-server
 
       nil

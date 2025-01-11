@@ -1,7 +1,9 @@
 {config, ...}: {
+
   imports = [
     ./wlogout.nix
   ];
+
   services.udiskie.enable = true;
 
   services.swaync = {
@@ -15,6 +17,7 @@
       ${builtins.readFile ../../../config/hypr/hyprland.conf}
     '';
   };
+
   services.hyprpaper = {
     enable = true;
     settings = {
@@ -25,12 +28,8 @@
       wallpaper = ", ${../../../wallpaper/mini-wave.jpg}";
     };
   };
+
   home.file = {
-    tmux = {
-      target = ".config/tmux";
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/tmux";
-      recursive = true;
-    };
 
     ".config/hypr/hypridle.conf".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/hypr/hypridle.conf";
