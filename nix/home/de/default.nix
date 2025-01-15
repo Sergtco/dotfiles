@@ -1,9 +1,5 @@
 {config, ...}: {
 
-  imports = [
-    ./wlogout.nix
-  ];
-
   services.udiskie.enable = true;
 
   services.swaync = {
