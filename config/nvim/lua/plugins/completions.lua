@@ -13,7 +13,7 @@ return {
 
         version = "v0.*",
         opts = {
-            sources = { default = { 'lsp', 'path', 'luasnip', 'buffer' }, },
+            sources = { default = { 'lsp', 'path', 'snippets', 'buffer' }, },
 
             completion = {
                 trigger = { prefetch_on_insert = true },
@@ -24,13 +24,13 @@ return {
 
             signature = { enabled = true },
             snippets = {
-                expand = function(snippet) require('luasnip').lsp_expand(snippet) end,
+                preset = "luasnip",
             },
 
             keymap = {
                 preset = 'default',
-                ['<C-u>'] = {'scroll_documentation_up', 'fallback'},
-                ['<C-d>'] = {'scroll_documentation_down', 'fallback'},
+                ['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
+                ['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
                 ['<C-b>'] = {},
                 ['<C-f>'] = {},
                 ['<Tab>'] = {},
