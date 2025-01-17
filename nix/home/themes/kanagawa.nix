@@ -10,12 +10,14 @@
       name = "Kanagawa-BL";
     };
   };
+
   qt = {
     style = {
       name = "adwaita-dark";
       package = pkgs.adwaita-qt;
     };
   };
+
   home.pointerCursor = {
     package = pkgs.hackneyed;
     name = "Hackneyed";

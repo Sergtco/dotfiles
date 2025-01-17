@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home.packages = with pkgs; [
     ripgrep
     fd
@@ -37,5 +41,11 @@
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
+  };
+
+  home.file.tmux = {
+    target = ".config/tmux";
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/tmux";
+    recursive = true;
   };
 }
