@@ -58,3 +58,13 @@ vim.opt.langmap = vim.fn.join({
     escape(ru_shift) .. ';' .. escape(en_shift),
     escape(ru) .. ';' .. escape(en),
 }, ',')
+
+-- highlights yanked text
+vim.api.nvim_create_autocmd("TextYankPost", {
+    callback = function()
+        vim.highlight.on_yank({
+            higroup = "CurSearch",
+            timeout = 100,
+        })
+    end,
+})
