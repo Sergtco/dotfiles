@@ -13,7 +13,7 @@ return {
 
         version = "v0.*",
         opts = {
-            sources = { default = { 'lsp', 'path', 'snippets', 'buffer' }, },
+            sources = { default = { 'lsp', 'path', 'snippets', 'buffer' } },
 
             completion = {
                 trigger = { prefetch_on_insert = true },
@@ -23,9 +23,7 @@ return {
             },
 
             signature = { enabled = true },
-            snippets = {
-                preset = "luasnip",
-            },
+            snippets = { preset = "luasnip" },
 
             keymap = {
                 preset = 'default',
@@ -43,6 +41,7 @@ return {
         config = function(_, opts)
             require('blink.cmp').setup(opts)
             require("luasnip.loaders.from_vscode").lazy_load()
+
 
             local ls = require("luasnip")
 

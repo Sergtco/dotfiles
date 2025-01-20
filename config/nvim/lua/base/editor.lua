@@ -63,7 +63,7 @@ vim.opt.langmap = vim.fn.join({
 vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function()
         vim.highlight.on_yank({
-            higroup = "CurSearch",
+            higroup = "IncSearch",
             timeout = 100,
         })
     end,

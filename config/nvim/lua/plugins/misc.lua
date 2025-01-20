@@ -1,38 +1,7 @@
 return {
-    {
-        'kylechui/nvim-surround',
-        version = '*',
-        event = 'VeryLazy',
-        config = true,
-    },
-    {
-        'windwp/nvim-autopairs',
-        event = 'InsertEnter',
-        disabled = true,
-        opts = {},
-        config = true,
-    },
-
-    {
-        'stevearc/quicker.nvim',
-        opts = {},
-        config = true,
-    },
-    {
-        'echasnovski/mini-git',
-        version = '*',
-        main = 'mini.git',
-        opts = {},
-        config = true,
-    },
-    {
-        'smoka7/hop.nvim',
-        version = "*",
-        keys = {
-            { "ga", "<cmd>HopWord<cr>", desc = "Hop any word" },
-        },
-        opts = {
-            keys = 'etovxqpdygfblzhckisuran'
-        }
-    }
+    { 'echasnovski/mini-git',      version = '*',         main = 'mini.git',       opts = {} },
+    { 'echasnovski/mini.surround', version = '*',         opts = { n_lines = 100 } },
+    { 'echasnovski/mini.pairs',    version = '*',         opts = {} },
+    { 'echasnovski/mini.align',    version = '*',         opts = {} },
+    { 'stevearc/quicker.nvim',     event = "FileType qf", opts = {} },
 }

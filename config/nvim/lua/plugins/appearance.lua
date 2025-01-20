@@ -6,7 +6,6 @@ return {
         init = function()
             vim.cmd.colorscheme('kanagawa-wave')
         end,
-        config = true,
         opts = {
             compile = true,
             overrides = function(colors)
@@ -17,14 +16,14 @@ return {
                     FloatTitle = { bg = 'none' },
                     NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
                     Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },
-                    PmenuSel = { fg = 'NONE', bg = theme.ui.bg_p2 },
+                    PmenuSel = { fg = "none", bg = theme.ui.bg_p2 },
                     PmenuSbar = { bg = theme.ui.bg_m1 },
                     PmenuThumb = { bg = theme.ui.bg_p2 },
                     LineNr = { bg = 'none' },
                     SignColumn = { bg = 'none' },
                     DiagnosticSign = { bg = 'none' },
-                    FzfLuaNormal = { bg = theme.ui.bg_p1 },
-                    FzfLuaBorder = { bg = theme.ui.bg_p1, fg = theme.ui.bg_p1 },
+                    FzfLuaNormal = { bg = theme.ui.bg_dim },
+                    FzfLuaBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
                 }
             end,
         }

@@ -7,27 +7,23 @@
     enable = true;
     package = pkgs.unstable.neovim-unwrapped;
     extraPackages = with pkgs.unstable; [
-      gopls
-      gofumpt
-
-      rust-analyzer
-      rustfmt
-
-      zls
-
-      lua-language-server
-
-      nil
-      alejandra
-
-      black
+      #lsps
       basedpyright
-
-      python312Packages.sqlfmt
-
-      typescript-language-server
-
       clang-tools
+      gopls
+      lua-language-server
+      nil
+      rust-analyzer
+      typescript-language-server
+      zls
+      #formatters
+      alejandra
+      black
+      gofumpt
+      nodePackages.prettier
+      python312Packages.sqlfmt
+      rustfmt
+      stylua
     ];
     defaultEditor = true;
   };

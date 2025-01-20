@@ -1,13 +1,10 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    dependencies = {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-    },
     config = function(_, opts)
         require('nvim-treesitter.configs').setup(opts)
     end,
     opts = {
-        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "comment", "markdown", "markdown_inline", "cpp", "python", "go" },
+        ensure_installed = { "vim", "vimdoc", "query", "comment", "markdown", "markdown_inline" },
         sync_install = true,
         highlight = {
             enable = true,
@@ -21,54 +18,5 @@ return {
             additional_vim_regex_highlighting = { "ruby", "markdown" },
         },
         indent = { enable = true },
-        textobjects = {
-            lsp_interop = { enable = true },
-            select = {
-                enable = true,
-                keymaps = {
-                    ["ab"] = "@block.outer",
-                    ["ib"] = "@block.inner",
-                    ["ac"] = "@class.outer",
-                    ["ic"] = "@class.inner",
-                    ["af"] = "@function.outer",
-                    ["if"] = "@function.inner",
-                    ["aa"] = "@parameter.outer",
-                    ["ia"] = "@parameter.inner",
-                    ["il"] = "@loop.inner",
-                    ["al"] = "@loop.inner",
-                    ["ak"] = "@comment.outer",
-                    ["ik"] = "@comment.outer",
-                },
-            },
-            move = {
-                enable = true,
-                set_jumps = true,
-                goto_next_start = {
-                    ["]f"] = "@function.outer",
-                    ["]]"] = { query = "@class.outer", desc = "Next class start" },
-                    ["]o"] = "@loop.*",
-                },
-                goto_next_end = {
-                    ["]F"] = "@function.outer",
-                    ["]["] = "@class.outer",
-                },
-                goto_previous_start = {
-                    ["[f"] = "@function.outer",
-                    ["[["] = "@class.outer",
-                },
-                goto_previous_end = {
-                    ["[F"] = "@function.outer",
-                    ["[]"] = "@class.outer",
-                },
-                goto_next = {
-                    ["]c"] = "@conditional.outer",
-                    ["]a"] = "@parameter.outer",
-                },
-                goto_previous = {
-                    ["[c"] = "@conditional.outer",
-                    ["[a"] = "@parameter.outer",
-                }
-            }
-        },
     }
 }
