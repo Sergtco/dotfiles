@@ -26,8 +26,8 @@
   home.packages = with pkgs; [
     tmux
     playerctl
-    rhythmbox
-    pinta
+    lollypop
+    gimp
     telegram-desktop
     transmission_4-gtk
     blueberry
