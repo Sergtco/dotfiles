@@ -248,6 +248,10 @@
     enable = true;
     wayland = true;
   };
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "sergtco";
+  };
 
   programs = {
     hyprland = {
