@@ -11,6 +11,7 @@
     ../../modules/programming
     ../../modules/music
     ../../modules/zapret
+    ../../modules/utils
   ];
 
   ### BOOTLOADER ###
