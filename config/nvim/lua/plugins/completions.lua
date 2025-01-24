@@ -11,6 +11,7 @@ return {
 			"rafamadriz/friendly-snippets",
 		},
 
+		event = { "InsertEnter" },
 		version = "v0.*",
 		opts = {
 			sources = { default = { "lsp", "path", "snippets", "buffer" } },

@@ -46,7 +46,6 @@ vim.cmd([[
 au BufWritePre,FileWritePre * if @% !~# '\(://\)' | call mkdir(expand('<afile>:p:h'), 'p') | endif
 ]])
 
-
 -- highlights yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
