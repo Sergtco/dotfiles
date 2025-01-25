@@ -2,12 +2,12 @@
   gtk = {
     enable = true;
     iconTheme = {
-      package = pkgs.kanagawa-icon-theme;
-      name = "Kanagawa";
+      package = pkgs.vimix-icon-theme;
+      name = "Vimix-Beryl";
     };
     theme = {
-      package = pkgs.kanagawa-gtk-theme;
-      name = "Kanagawa-BL";
+      package = pkgs.amarena-theme;
+      name = "amarena";
     };
   };
 

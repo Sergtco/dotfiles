@@ -4,14 +4,15 @@
   padding: 0;
   font-family: "JetBrainsMono Nerd Font";
   font-size: 13px;
-  color:#C8BF8D;
+  color: #DDDDDD;
 }
-window#waybar{
-  background-color: #1F1F28;
+
+window#waybar {
+  background-color: #101010;
 }
+
 #waybar {
-  background: #1F1F28;
-  color: #C0CAF5;
+  background: #101010;
   font-size: 12px;
 }
 
@@ -21,47 +22,36 @@ window#waybar{
 #clock,
 #window,
 #wireplumber,
-#custom-notification
-#network
-#bluetooth,
+#custom-notification #network #bluetooth,
 #idle_inhibitor,
-#mpris{
+#mpris {
   padding: 5px 10px 5px 10px;
 }
 
-#clock {
-}
-
 #idle_inhibitor {
-font-size: 15px;
+  font-size: 15px;
 }
 
-#workspaces {
-}
 #workspaces button {
   padding: 0 5px;
 }
+
 #workspaces button.active {
-  color: #C77892;
+  color: #c77892;
 }
 
 #tray {
-  color:#C8BF8D;
+  color: #c8bf8d;
 }
 
-#mpris{
-    min-width: 100px;
+#mpris {
+  min-width: 100px;
 }
 
-#custom-notification{
+#custom-notification {
   min-width: 35px;
 }
 
-#wireplumber {
-}
-
-#bluetooth{
-}
 
 #network {
   margin-left: 10px;
@@ -71,12 +61,3 @@ font-size: 15px;
   min-width: 100px;
 }
 
-
-#custom-powermenu {
-  color: #e06c75;
-}
-
-
-#scratchpad {
-  color: #cffafe;
-}

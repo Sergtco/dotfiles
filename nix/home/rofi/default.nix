@@ -28,7 +28,7 @@
       kb-move-char-forward = "Control+f";
       kb-mode-complete = "Control+o";
     };
-    theme = ./kanagawa.rasi;
+    theme = ./lackluster.rasi;
     plugins = [
       pkgs.rofi-power-menu
       (pkgs.rofi-calc.override {rofi-unwrapped = pkgs.rofi-wayland-unwrapped;})

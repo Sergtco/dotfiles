@@ -1,6 +1,6 @@
 font-family = "FiraCode Nerd Font Mono"
 font-size = 15
-theme = "Kanagawa Wave"
+theme = lackluster
 window-decoration = false
 shell-integration = "detect"
 confirm-close-surface = false

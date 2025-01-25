@@ -7,7 +7,7 @@
     ../../hardware/k02.nix
     ../../home/nvim
     ../../home/shells/zsh.nix
-    ../../home/themes/kanagawa.nix
+    ../../home/themes
     ../../home/terminals/ghostty.nix
     ../../home/waybar
     ../../home/cli

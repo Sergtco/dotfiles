@@ -12,5 +12,8 @@
     pkgs.unstable.ghostty
   ];
 
-  home.file.".config/ghostty/config".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/ghostty/config";
+  home.file.".config/ghostty/" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/ghostty/";
+    recursive = true;
+  };
 }
