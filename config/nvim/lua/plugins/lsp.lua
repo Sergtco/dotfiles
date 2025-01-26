@@ -21,6 +21,7 @@ return {
 			ts_ls = {},
 			gopls = { settings = { gopls = { gofumpt = true } } },
 			zls = {},
+			marksman = {},
 		},
 	},
 

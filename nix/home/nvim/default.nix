@@ -16,6 +16,7 @@
       rust-analyzer
       typescript-language-server
       zls
+      marksman
       #formatters
       alejandra
       black
