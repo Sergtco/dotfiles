@@ -1,14 +1,7 @@
 {
   pkgs,
-  inputs,
   ...
-}: let
-  inherit (pkgs.stdenv.hostPlatform) system;
-  umu = inputs.umu.packages.${system}.umu.override {
-    version = inputs.umu.shortRev;
-    truststore = true;
-  };
-in {
+}: {
   programs.steam = {
     enable = true;
     extraCompatPackages = with pkgs; [proton-ge-bin];
@@ -29,7 +22,7 @@ in {
     })
     mangohud
     r2modman
-    umu
+    unstable.umu-launcher
   ];
 
   hardware.xone.enable = true;

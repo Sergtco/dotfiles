@@ -9,10 +9,6 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    umu = {
-      url = "github:Open-Wine-Components/umu-launcher?dir=packaging/nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
