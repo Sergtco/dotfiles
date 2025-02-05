@@ -23,7 +23,7 @@ in {
       "--filter-tcp=443 --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fooling=md5sig --dpi-desync-fake-tls=${tls_google} --new"
       "--filter-tcp=80 --dpi-desync=fake,split2 --dpi-desync-autottl=2 --dpi-desync-fooling=md5sig --new"
       "--filter-udp=443 --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic=${quic_google} --new"
-      "--filter-udp=50000-50099 --dpi-desync=fake --dpi-desync-any-protocol --dpi-desync-cutoff=n2 --dpi-desync-repeats=6"
+      "--filter-udp=50000-50099 --dpi-desync=fake --dpi-desync-any-protocol --dpi-desync-cutoff=n2 --dpi-desync-repeats=6 --new"
     ];
     whitelist = [
       "ntc.party"
@@ -65,22 +65,17 @@ in {
       "discord.gg"
       "media.discordapp.net"
       "images-ext-1.discordapp.net"
-      "www.discord.com"
-      "www.discord.app"
       "discord.app"
-      "*.discord.com"
-      "*.discord.gg"
-      "*.discordapp.com"
-      "*.discordapp.net"
       "discord.media"
-      "*.discord.media"
       "discordcdn.com"
       "discord.dev"
       "discord.new"
       "discord.gift"
       "discordstatus.com"
       "dis.gd"
-      "discord.com"
+      "discord.co"
+      "discord-attachments-uploads-prd.storage.googleapis.com"
+      "cloudflare-ech.com"
     ];
   };
 }
