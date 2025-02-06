@@ -17,8 +17,6 @@ return {
 			rust_analyzer = {},
 			basedpyright = {},
 			lua_ls = { sttings = { Lua = { format = { enable = false } } } },
-			nil_ls = {},
-			ts_ls = {},
 			gopls = { settings = { gopls = { gofumpt = true } } },
 			zls = {},
 			marksman = {},

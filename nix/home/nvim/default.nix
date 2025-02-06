@@ -14,7 +14,6 @@
       lua-language-server
       nil
       rust-analyzer
-      typescript-language-server
       zls
       marksman
       #formatters

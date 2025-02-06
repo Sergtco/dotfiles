@@ -1,4 +1,3 @@
 vim.g.mapleader = " "
-require("base.editor")
-require("base.lazy_init")
+require("base")
 require("keys")
