@@ -7,14 +7,12 @@ return {
 	{
 		"smoka7/hop.nvim",
 		version = "*",
-		keys = { "gh", "<cmd>HopWord<cr>", desc = "Hop any word" },
+		keys = { { "gh", "<cmd>HopWord<cr>", desc = "Hop any word" } },
 		opts = {},
 	},
 	{
 		"echasnovski/mini.ai",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter-textobjects",
-		},
+		dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
 		version = "*",
 		config = function(_, _)
 			local gen_spec = require("mini.ai").gen_spec
@@ -25,7 +23,6 @@ return {
 					L = gen_spec.treesitter({ a = "@loop.outer", i = "@loop.inner" }),
 					c = gen_spec.treesitter({ a = "@comment.outer", i = "@comment.inner" }),
 				},
-
 				n_lines = 200,
 			})
 		end,

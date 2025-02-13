@@ -4,7 +4,7 @@
   padding: 0;
   font-family: "JetBrainsMono Nerd Font";
   font-size: 13px;
-  color: #DDDDDD;
+  color: #dddddd;
 }
 
 window#waybar {
@@ -22,7 +22,9 @@ window#waybar {
 #clock,
 #window,
 #wireplumber,
-#custom-notification #network #bluetooth,
+#custom-notification,
+#network,
+#bluetooth,
 #idle_inhibitor,
 #mpris {
   padding: 5px 10px 5px 10px;
@@ -32,32 +34,6 @@ window#waybar {
   font-size: 15px;
 }
 
-#workspaces button {
-  padding: 0 5px;
-}
-
-#workspaces button.active {
-  color: #c77892;
-}
-
-#tray {
-  color: #c8bf8d;
-}
-
 #mpris {
   min-width: 100px;
 }
-
-#custom-notification {
-  min-width: 35px;
-}
-
-
-#network {
-  margin-left: 10px;
-}
-
-#language {
-  min-width: 100px;
-}
-

@@ -25,6 +25,7 @@ vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 
 --ui
 opt.relativenumber = true
+opt.number = true
 opt.signcolumn = "yes"
 opt.scrolloff = 8
 opt.splitbelow = true

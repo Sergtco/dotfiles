@@ -207,7 +207,6 @@
   environment.systemPackages = with pkgs; [
     #gui
     firefox
-    kitty
     pavucontrol
     vlc
     xfce.thunar

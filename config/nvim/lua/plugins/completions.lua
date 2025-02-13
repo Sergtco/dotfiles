@@ -15,26 +15,10 @@ return {
 		version = "v0.*",
 		opts = {
 			sources = { default = { "lsp", "path", "snippets", "buffer" } },
-
-			completion = {
-				trigger = { prefetch_on_insert = true },
-				accept = { auto_brackets = { enabled = true } },
-				documentation = { auto_show = true },
-				ghost_text = { enabled = true },
-			},
-
-			signature = { enabled = true },
 			snippets = { preset = "luasnip" },
-
-			keymap = {
-				preset = "default",
-				["<C-u>"] = { "scroll_documentation_up", "fallback" },
-				["<C-d>"] = { "scroll_documentation_down", "fallback" },
-				["<C-b>"] = {},
-				["<C-f>"] = {},
-				["<Tab>"] = {},
-				["<S-Tab>"] = {},
-			},
+			completion = { keyword = { range = "prefix" } },
+			signature = { enabled = true },
+			keymap = { ["<Tab>"] = {}, ["<S-Tab>"] = {} },
 		},
 
 		opts_extend = { "sources.default" },
@@ -45,11 +29,11 @@ return {
 
 			local ls = require("luasnip")
 
-			vim.keymap.set("i", "<C-K>", ls.expand, { desc = "Expand(accept) snippet" })
-			vim.keymap.set({ "i", "s" }, "<C-L>", function()
+			vim.keymap.set("i", "<C-k>", ls.expand, { desc = "Expand(accept) snippet" })
+			vim.keymap.set({ "i", "s" }, "<C-l>", function()
 				ls.jump(1)
 			end, { desc = "Jump to next snipeet placeholder" })
-			vim.keymap.set({ "i", "s" }, "<C-J>", function()
+			vim.keymap.set({ "i", "s" }, "<C-j>", function()
 				ls.jump(-1)
 			end, { desc = "Jump to previous snippet placeholder" })
 		end,

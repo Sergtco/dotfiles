@@ -13,16 +13,16 @@
     '';
   };
 
-  services.hyprpaper = {
-    enable = true;
-    settings = {
-      ipc = "on";
-      splash = false;
-      preload = ["${../../../wallpaper/mini-wave.jpg}"];
-
-      wallpaper = ", ${../../../wallpaper/mini-wave.jpg}";
-    };
-  };
+  # services.hyprpaper = {
+  #   enable = true;
+  #   settings = {
+  #     ipc = "on";
+  #     splash = false;
+  #     preload = ["${../../../wallpaper/mini-wave.jpg}"];
+  #
+  #     wallpaper = ", ${../../../wallpaper/mini-wave.jpg}";
+  #   };
+  # };
   home.file = {
     tmux = {
       target = ".config/tmux";

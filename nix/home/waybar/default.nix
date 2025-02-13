@@ -9,7 +9,7 @@
   programs.waybar = {
     enable = true;
     systemd.enable = true;
-    style = config.lib.file.mkOutOfStoreSymlink ./style.css;
+    style = ./style.css;
     settings = [
       {
         layer = "top";
@@ -42,7 +42,7 @@
           spacing = 10;
         };
         "hyprland/language" = {
-          format = "󰌓 {long}";
+          format = "󰌓 {short}";
           keyboard-name = "ergohaven-k:03";
         };
         "hyprland/workspaces" = {
