@@ -7,8 +7,7 @@
     clang
     unstable.python3
     unstable.go
-    unstable.cargo
-    unstable.rustc
+    unstable.rustup
     unstable.zig
 
     #utils

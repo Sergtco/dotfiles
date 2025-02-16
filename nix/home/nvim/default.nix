@@ -13,7 +13,6 @@
       gopls
       lua-language-server
       nil
-      rust-analyzer
       zls
       marksman
       #formatters
@@ -22,7 +21,6 @@
       gofumpt
       nodePackages.prettier
       python312Packages.sqlfmt
-      rustfmt
       stylua
     ];
     defaultEditor = true;
