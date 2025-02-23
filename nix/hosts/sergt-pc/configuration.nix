@@ -12,6 +12,7 @@
     ../../modules/music
     ../../modules/zapret
     ../../modules/utils
+    ../../modules/virtualization
   ];
 
   ### BOOTLOADER ###
