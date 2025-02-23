@@ -3,7 +3,6 @@ return {
 	{ "echasnovski/mini.surround", version = "*", opts = { n_lines = 100 } },
 	{ "echasnovski/mini.pairs", version = "*", opts = {} },
 	{ "echasnovski/mini.align", version = "*", opts = {} },
-	{ "echasnovski/mini.jump", version = "*", opts = {} },
 	{
 		"smoka7/hop.nvim",
 		version = "*",

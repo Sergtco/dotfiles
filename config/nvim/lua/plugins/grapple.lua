@@ -1,6 +1,9 @@
 return {
 	{
 		"cbochs/grapple.nvim",
+		dependencies = {
+			{ "nvim-tree/nvim-web-devicons", lazy = true },
+		},
 		keys = {
 			{ "<leader>m", "<cmd>Grapple toggle<cr>", desc = "Grapple toggle" },
 			{ "<leader>M", "<cmd>Grapple toggle_tags<cr>", desc = "Grapple select index=1" },
@@ -11,9 +14,6 @@ return {
 			{ "<leader>[", "<cmd>Grapple cycle_tags prev<cr>", desc = "Grapple cycle_tags prev" },
 			{ "<leader>]", "<cmd>Grapple cycle_tags next<cr>", desc = "Grapple cycle_tags next" },
 		},
-		opts = {
-			scope = "git_branch",
-			icons = false,
-		},
+		opts = {},
 	},
 }

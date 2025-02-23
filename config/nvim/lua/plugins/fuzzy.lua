@@ -1,6 +1,6 @@
 return {
 	"ibhagwan/fzf-lua",
-	dependencies = { "echasnovski/mini.icons", opts = {} },
+	dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
 	keys = {
 		{ "<leader>z", "<cmd>FzfLua<cr>", desc = "FzfLua" },
 		{ "<leader>f", "<cmd>FzfLua files<cr>", desc = "find_files" },
@@ -13,7 +13,6 @@ return {
 		{ "<leader>S", "<cmd>FzfLua lsp_live_workspace_symbols<cr>", desc = "lsp_workspace_symbols_symbols" },
 	},
 	opts = {
-		fzf_colors = true,
 		winopts = { row = 1, height = 0.5, width = 0.9 },
 		keymap = {
 			builtin = {

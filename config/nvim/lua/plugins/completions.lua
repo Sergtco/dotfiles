@@ -18,7 +18,7 @@ return {
 			snippets = { preset = "luasnip" },
 			completion = { keyword = { range = "prefix" } },
 			signature = { enabled = true },
-			keymap = { ["<Tab>"] = {}, ["<S-Tab>"] = {} },
+			keymap = { ["<Tab>"] = {}, ["<S-Tab>"] = {}, ["<C-K>"] = {} },
 		},
 
 		opts_extend = { "sources.default" },
@@ -28,6 +28,7 @@ return {
 			require("luasnip.loaders.from_vscode").lazy_load()
 
 			local ls = require("luasnip")
+			ls.config.setup({ enable_autosnippets = true })
 
 			vim.keymap.set("i", "<C-k>", ls.expand, { desc = "Expand(accept) snippet" })
 			vim.keymap.set({ "i", "s" }, "<C-l>", function()
