@@ -13,6 +13,7 @@ return {
 		{ "<leader>S", "<cmd>FzfLua lsp_live_workspace_symbols<cr>", desc = "lsp_workspace_symbols_symbols" },
 	},
 	opts = {
+		"skim",
 		winopts = { row = 1, height = 0.5, width = 0.9 },
 		keymap = {
 			builtin = {

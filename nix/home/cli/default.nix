@@ -33,7 +33,7 @@
     enableZshIntegration = true;
   };
 
-  programs.fzf = {
+  programs.skim = {
     enable = true;
     enableZshIntegration = true;
   };
