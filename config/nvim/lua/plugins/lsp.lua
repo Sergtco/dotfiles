@@ -19,6 +19,7 @@ return {
 			lua_ls = { sttings = { Lua = { format = { enable = false } } } },
 			gopls = { settings = { gopls = { gofumpt = true } } },
 			zls = {},
+            nil_ls = {},
 			marksman = {},
 		},
 	},
