@@ -18,6 +18,7 @@ return {
 			basedpyright = {},
 			lua_ls = { sttings = { Lua = { format = { enable = false } } } },
 			gopls = { settings = { gopls = { gofumpt = true } } },
+            nil_ls = {},
 			zls = {},
 			marksman = {},
 		},
