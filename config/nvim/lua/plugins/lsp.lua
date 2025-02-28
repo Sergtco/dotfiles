@@ -14,13 +14,13 @@ return {
 	opts = {
 		servers = {
 			clangd = {},
-			rust_analyzer = {},
 			basedpyright = {},
 			lua_ls = { sttings = { Lua = { format = { enable = false } } } },
 			gopls = { settings = { gopls = { gofumpt = true } } },
-            nil_ls = {},
+			nil_ls = {},
 			zls = {},
 			marksman = {},
+			rust_analyzer = {},
 		},
 	},
 
