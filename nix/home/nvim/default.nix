@@ -7,7 +7,7 @@
     enable = true;
     package = pkgs.unstable.neovim-unwrapped;
     extraPackages = with pkgs.unstable; [
-      #lsps
+      # lsps
       basedpyright
       clang-tools
       gopls
@@ -15,13 +15,16 @@
       nil
       zls
       marksman
-      #formatters
+      # formatters
       alejandra
       black
       gofumpt
       nodePackages.prettier
       python312Packages.sqlfmt
       stylua
+      # linters
+      golangci-lint-langserver
+      golangci-lint
     ];
     defaultEditor = true;
   };

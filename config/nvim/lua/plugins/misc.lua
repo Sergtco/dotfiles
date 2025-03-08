@@ -4,6 +4,11 @@ return {
 	{ "echasnovski/mini.pairs", version = "*", opts = {} },
 	{ "echasnovski/mini.align", version = "*", opts = {} },
 	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+		opts = { latex = { enabled = false } },
+	},
+	{
 		"smoka7/hop.nvim",
 		version = "*",
 		keys = { { "gh", "<cmd>HopWord<cr>", desc = "Hop any word" } },
