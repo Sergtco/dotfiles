@@ -17,7 +17,6 @@ return {
 			basedpyright = {},
 			lua_ls = { sttings = { Lua = { format = { enable = false } } } },
 			gopls = { settings = { gopls = { gofumpt = true } } },
-            golangci_lint_ls = {},
 			nil_ls = {},
 			zls = {},
 			marksman = {},
@@ -56,6 +55,7 @@ return {
 				null_ls.builtins.formatting.clang_format,
 				null_ls.builtins.formatting.prettier,
 				null_ls.builtins.formatting.stylua,
+				null_ls.builtins.diagnostics.golangci_lint,
 			},
 			on_attach = on_attach,
 		})

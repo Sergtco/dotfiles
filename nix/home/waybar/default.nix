@@ -1,10 +1,8 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     playerctl
+    (pkgs.nerdfonts.override
+      {fonts = ["FiraCode"];})
   ];
   programs.waybar = {
     enable = true;
@@ -42,7 +40,7 @@
           spacing = 10;
         };
         "hyprland/language" = {
-          format = "󰌓 {short}";
+          format = "{short}";
           keyboard-name = "ergohaven-k:03";
         };
         "hyprland/workspaces" = {
@@ -64,7 +62,7 @@
           };
         };
         network = {
-          format-wifi = "  {signalStrength}% ";
+          format-wifi = " {signalStrength}% ";
           format-ethernet = "{ipaddr}/{cidr} ";
           tooltip-format = "{ifname} via {gwaddr} ";
           format-linked = "{ifname} (No IP) ";

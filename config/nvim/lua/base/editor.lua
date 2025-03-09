@@ -30,7 +30,7 @@ opt.signcolumn = "yes"
 opt.scrolloff = 8
 opt.splitbelow = true
 opt.splitright = true
-opt.laststatus = 3
+opt.laststatus = 2
 opt.wrap = true
 opt.showbreak = "󱞶"
 

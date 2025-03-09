@@ -23,11 +23,11 @@
       python312Packages.sqlfmt
       stylua
       # linters
-      golangci-lint-langserver
       golangci-lint
     ];
     defaultEditor = true;
   };
+
 
   xdg.configFile = {
     "nvim/init.lua".source =

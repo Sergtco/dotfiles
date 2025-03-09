@@ -1,12 +1,12 @@
 return {
-	{ "echasnovski/mini-git", version = "*", main = "mini.git", opts = {} },
-	{ "echasnovski/mini.surround", version = "*", opts = { n_lines = 100 } },
-	{ "echasnovski/mini.pairs", version = "*", opts = {} },
-	{ "echasnovski/mini.align", version = "*", opts = {} },
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
-		opts = { latex = { enabled = false } },
+		opts = {
+			latex = { enabled = false },
+			anti_conceal = { enabled = true, ignore = { code_background = true } },
+			overrides = { buftype = { nofile = { code = { enabled = false } } } },
+		},
 	},
 	{
 		"smoka7/hop.nvim",
@@ -31,4 +31,7 @@ return {
 			})
 		end,
 	},
+	{ "echasnovski/mini.surround", version = "*", opts = { n_lines = 100 } },
+	{ "echasnovski/mini.pairs", version = "*", opts = {} },
+	{ "echasnovski/mini.align", version = "*", opts = {} },
 }

@@ -2,8 +2,8 @@
   min-height: 0;
   margin: 0;
   padding: 0;
-  font-family: "JetBrainsMono Nerd Font";
-  font-size: 13px;
+  font-family: "FontAwesome Fira Code Nerd Font";
+  font-size: 15px;
   color: #dddddd;
 }
 
@@ -11,9 +11,12 @@ window#waybar {
   background-color: #101010;
 }
 
-#waybar {
-  background: #101010;
-  font-size: 12px;
+button {
+  /* Use box-shadow instead of border so the text isn't offset */
+  box-shadow: inset 0 -3px transparent;
+  /* Avoid rounded borders under each button name */
+  border: none;
+  border-radius: 0;
 }
 
 #tray,
@@ -30,8 +33,8 @@ window#waybar {
   padding: 5px 10px 5px 10px;
 }
 
-#idle_inhibitor {
-  font-size: 15px;
+#workspaces button.active label {
+  color: #708090;
 }
 
 #mpris {

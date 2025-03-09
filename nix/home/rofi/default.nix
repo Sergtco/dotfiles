@@ -3,7 +3,7 @@
     enable = true;
     package = pkgs.rofi-wayland;
     terminal = "${pkgs.unstable.ghostty}/bin/ghostty";
-    font = "JetBrainsMono Nerd Font 14";
+    font = "Fira Code Nerd Font 14";
     extraConfig = {
       modi = "drun,calc,power-menu:${pkgs.rofi-power-menu}/bin/rofi-power-menu";
       show-icons = true;
@@ -34,4 +34,5 @@
       (pkgs.rofi-calc.override {rofi-unwrapped = pkgs.rofi-wayland-unwrapped;})
     ];
   };
+  home.packages = [(pkgs.nerdfonts.override {fonts = ["FiraCode"];})];
 }
