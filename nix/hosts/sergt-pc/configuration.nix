@@ -17,6 +17,7 @@
 
   ### BOOTLOADER ###
   boot = {
+    resumeDevice = "/dev/sdd3";
     loader = {
       efi.canTouchEfiVariables = true;
       grub = {

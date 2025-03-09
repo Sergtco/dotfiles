@@ -5,14 +5,11 @@
     terminal = "${pkgs.unstable.ghostty}/bin/ghostty";
     font = "Fira Code Nerd Font 14";
     extraConfig = {
-      modi = "drun,calc,power-menu:${pkgs.rofi-power-menu}/bin/rofi-power-menu";
+      modes = "drun,calc,power-menu:${pkgs.rofi-power-menu}/bin/rofi-power-menu";
       show-icons = true;
       drun-display-format = "{icon} {name}";
-      location = 0;
-      disable-history = false;
-      sidebar-mode = false;
+      sidebar-mode = true;
       display-drun = " ";
-      display-run = " ";
       display-window = " ";
 
       kb-row-up = "Up,Control+p";
@@ -20,7 +17,7 @@
       kb-row-right = "Right,Control+l";
       kb-row-down = "Down,Control+n";
 
-      kb-accept-entry = "Control+z,Control+y,Return,KP_Enter";
+      kb-accept-entry = "Control+y,Return,KP_Enter";
 
       kb-remove-to-eol = "";
       kb-move-char-back = "Control+b";

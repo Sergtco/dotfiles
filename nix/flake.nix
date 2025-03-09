@@ -17,42 +17,18 @@
     nixpkgs,
     home-manager,
     ...
-  } @ inputs: {
-    nixosConfigurations.sergt-pc = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = {
-        inherit inputs;
+  } @ inputs: let
+    myLib = import ./myLib {inherit inputs;};
+  in {
+    nixosConfigurations = {
+      sergt-pc = myLib.buildCfg {
+        system = "x86_64-linux";
+        hostname = "sergt-pc";
       };
-      modules = [
-        ./hosts/sergt-pc/configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = {
-            inherit inputs;
-          };
-          home-manager.users.sergtco = import ./hosts/sergt-pc/home.nix;
-        }
-      ];
-    };
-    nixosConfigurations.lep-tep = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = {
-        inherit inputs;
+      lep-tep = myLib.buildCfg {
+        system = "x86_64-linux";
+        hostname = "lep-tep";
       };
-      modules = [
-        ./hosts/lep-tep/configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = {
-            inherit inputs;
-          };
-          home-manager.users.sergtco = import ./hosts/lep-tep/home.nix;
-        }
-      ];
     };
   };
 }
