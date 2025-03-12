@@ -2,7 +2,7 @@
   users.users.sergtco.extraGroups = ["docker"];
   virtualisation.docker.enable = true;
   environment.systemPackages = with pkgs; [
-    #compilers 
+    #compilers
     gcc
     clang
     unstable.python3
@@ -12,5 +12,6 @@
 
     #utils
     jq
+    gnumake
   ];
 }
