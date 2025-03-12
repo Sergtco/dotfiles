@@ -12,7 +12,6 @@
 
     shellAliases = {
       nv = "nvim";
-      vimdiff = "nvim -d";
       tm = "tmux a || tmux";
     };
     profileExtra = ''

@@ -13,5 +13,7 @@
     #utils
     jq
     gnumake
+    graphviz
   ];
+  documentation.man.generateCaches = true;
 }
