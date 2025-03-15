@@ -198,10 +198,10 @@
     unzip
     git
     killall
-    nixfmt-rfc-style
     wget
     wl-clipboard
     xclip
+    uutils-coreutils-noprefix
 
     #need them
     brightnessctl

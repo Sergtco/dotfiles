@@ -20,6 +20,7 @@
       black
       gofumpt
       nodePackages.prettier
+      nixfmt-rfc-style
       python312Packages.sqlfmt
       stylua
       # linters
@@ -43,5 +44,4 @@
       AccessModifierOffset: -4
     '';
   };
-
 }
