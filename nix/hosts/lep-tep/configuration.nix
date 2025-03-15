@@ -201,7 +201,6 @@
     wget
     wl-clipboard
     xclip
-    uutils-coreutils-noprefix
 
     #need them
     brightnessctl

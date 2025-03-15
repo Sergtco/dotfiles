@@ -1,7 +1,7 @@
 return {
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
-		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+		wants = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" },
 		opts = {
 			latex = { enabled = false },
 			anti_conceal = { enabled = false },
@@ -30,6 +30,13 @@ return {
 	},
 	{ "echasnovski/mini.surround", version = "*", opts = { n_lines = 100 } },
 	{ "echasnovski/mini.pairs", version = "*", opts = {} },
-	{ "echasnovski/mini.align", version = "*", opts = {} },
 	{ "backdround/improved-ft.nvim", version = "*", opts = { use_default_mappings = true } },
+	{
+		"echasnovski/mini.icons",
+		version = "*",
+		opts = function()
+			require("mini.icons").mock_nvim_web_devicons()
+			return {}
+		end,
+	},
 }

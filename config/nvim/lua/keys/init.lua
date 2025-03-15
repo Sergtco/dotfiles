@@ -1,8 +1,3 @@
--- Tab motions
-vim.keymap.set("n", "<A-[>", "<cmd>tabprevious<cr>")
-vim.keymap.set("n", "<A-]>", "<cmd>tabnext<cr>")
-vim.keymap.set("n", "<A-c>", "<cmd>tabclose<cr>")
-
 --Term
 vim.keymap.set("t", "<esc>", "<C-\\><C-N>")
 

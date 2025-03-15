@@ -9,8 +9,6 @@ return {
 				build = "make install_jsregexp",
 			},
 			"rafamadriz/friendly-snippets",
-			"onsails/lspkind.nvim",
-			"xzbdmw/colorful-menu.nvim",
 		},
 
 		event = { "InsertEnter" },
@@ -20,29 +18,6 @@ return {
 			snippets = { preset = "luasnip" },
 			completion = {
 				keyword = { range = "prefix" },
-				menu = {
-					draw = {
-						columns = { { "kind_icon" }, { "label", gap = 1 } },
-						components = {
-							kind_icon = {
-								text = function(ctx)
-									return require("lspkind").symbolic(ctx.kind, { mode = "symbol" })
-								end,
-								highlight = function(ctx)
-									return require("colorful-menu").blink_components_highlight(ctx)
-								end,
-							},
-							label = {
-								text = function(ctx)
-									return require("colorful-menu").blink_components_text(ctx)
-								end,
-								highlight = function(ctx)
-									return require("colorful-menu").blink_components_highlight(ctx)
-								end,
-							},
-						},
-					},
-				},
 			},
 			cmdline = { completion = { menu = { auto_show = true } } },
 			signature = { enabled = true },
