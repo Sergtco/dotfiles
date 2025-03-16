@@ -41,7 +41,7 @@
         };
         "hyprland/language" = {
           format = "{short}";
-          keyboard-name = "ergohaven-k:03";
+          keyboard-name = "ergohaven-k:03-v1/v2";
         };
         "hyprland/workspaces" = {
           format = "{icon}";
