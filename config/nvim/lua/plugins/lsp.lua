@@ -7,6 +7,7 @@ return {
 	},
 	wants = {
 		"saghen/blink.cmp",
+        "ibhagwan/fzf-lua"
 	},
 
 	event = { "BufReadPost", "BufWritePost", "BufNewFile" },
@@ -41,6 +42,7 @@ return {
 	config = function(_, opts)
 		local on_attach = function(_, bufnr)
 			local bufopts = { noremap = true, silent = true, buffer = bufnr }
+            local fzf = require("fzf-lua")
 			vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, bufopts)
 			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
@@ -49,8 +51,8 @@ return {
 			vim.keymap.set({ "n", "i" }, "<C-s>", vim.lsp.buf.signature_help, bufopts)
 			vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, bufopts)
 			vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, bufopts)
-			vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-			vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, bufopts)
+			vim.keymap.set("n", "gr", fzf.lsp_references, bufopts)
+			vim.keymap.set("n", "<leader>a", fzf.lsp_code_actions, bufopts)
 			vim.keymap.set("n", "<leader>w", vim.lsp.buf.format, bufopts)
 		end
 
