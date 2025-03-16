@@ -11,19 +11,33 @@ return {
 
 	event = { "BufReadPost", "BufWritePost", "BufNewFile" },
 
-	opts = {
-		servers = {
-			clangd = {},
-			basedpyright = {},
-			lua_ls = { sttings = { Lua = { format = { enable = false } } } },
-			gopls = { settings = { gopls = { gofumpt = true } } },
-			nil_ls = {},
-			zls = {},
-			marksman = {},
-			rust_analyzer = {},
-		},
-	},
+	opts = function()
+		local null_ls = require("null-ls")
+		return {
+			servers = {
+				basedpyright = {},
+				clangd = {},
+				gopls = { settings = { gopls = { gofumpt = true } } },
+				lua_ls = { sttings = { Lua = { format = { enable = false } } } },
+				marksman = {},
+				nil_ls = {},
+				rust_analyzer = {},
+				zls = {},
+			},
 
+			null_ls = {
+				sources = {
+					null_ls.builtins.diagnostics.golangci_lint,
+					null_ls.builtins.formatting.alejandra,
+					null_ls.builtins.formatting.black,
+					null_ls.builtins.formatting.clang_format,
+					null_ls.builtins.formatting.prettier,
+					null_ls.builtins.formatting.sqlfmt,
+					null_ls.builtins.formatting.stylua,
+				},
+			},
+		}
+	end,
 	config = function(_, opts)
 		local on_attach = function(_, bufnr)
 			local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -46,17 +60,8 @@ return {
 			require("lspconfig")[server].setup(config)
 		end
 
-		local null_ls = require("null-ls")
-		null_ls.setup({
-			sources = {
-				null_ls.builtins.formatting.alejandra,
-				null_ls.builtins.formatting.black,
-				null_ls.builtins.formatting.sqlfmt,
-				null_ls.builtins.formatting.clang_format,
-				null_ls.builtins.formatting.prettier,
-				null_ls.builtins.formatting.stylua,
-				null_ls.builtins.diagnostics.golangci_lint,
-			},
+		require("null-ls").setup({
+			sources = opts.null_ls.sources,
 			on_attach = on_attach,
 		})
 	end,
