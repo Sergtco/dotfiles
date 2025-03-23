@@ -12,7 +12,7 @@
     ../../home/cli
     ../../home/rofi
     ../../home/de
-    ../../home/terminals/ghostty.nix
+    ../../home/terminals
   ];
   home.homeDirectory = "/home/sergtco";
 

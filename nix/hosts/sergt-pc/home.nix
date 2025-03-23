@@ -8,7 +8,7 @@
     ../../home/nvim
     ../../home/shells/zsh.nix
     ../../home/themes
-    ../../home/terminals/ghostty.nix
+    ../../home/terminals
     ../../home/waybar
     ../../home/cli
     ../../home/rofi

@@ -3,6 +3,7 @@
   config,
   ...
 }: {
+  imports = [./tmux.nix];
   home = {
     sessionVariables = {
       TERMINAL = "ghostty";
