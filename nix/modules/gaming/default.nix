@@ -33,6 +33,9 @@
     unstable.umu-launcher
   ];
 
+  boot.kernelModules = [
+    "xpad"
+  ];
   hardware.xone.enable = true;
   hardware.xpadneo.enable = true;
 }

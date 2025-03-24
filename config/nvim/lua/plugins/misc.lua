@@ -17,7 +17,7 @@ return {
 				custom_textobjects = {
 					F = ts_spec({ a = "@function.outer", i = "@function.inner" }),
 					C = ts_spec({ a = "@class.outer", i = "@class.inner" }),
-					p = ts_spec({ a = "@parameter.outer", i = "@parameter.inner" }),
+					a = ts_spec({ a = "@parameter.outer", i = "@parameter.inner" }),
 					o = ts_spec({
 						a = { "@conditional.outer", "@loop.outer" },
 						i = { "@conditional.inner", "@loop.inner" },
