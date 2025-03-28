@@ -6,6 +6,7 @@
     gcc
     clang
     unstable.python3
+    unstable.uv
     unstable.go
     unstable.rustup
     unstable.zig
