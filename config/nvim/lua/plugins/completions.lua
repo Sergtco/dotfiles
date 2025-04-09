@@ -12,19 +12,20 @@ return {
 		},
 
 		event = { "InsertEnter" },
-		version = "v0.*",
+		version = "1.*",
 		opts = {
 			sources = { default = { "lsp", "path", "snippets", "buffer" } },
 			snippets = { preset = "luasnip" },
 			completion = {
 				keyword = { range = "prefix" },
+				menu = { draw = { treesitter = { "lsp" } } },
 			},
 			cmdline = { completion = { menu = { auto_show = true } } },
 			signature = { enabled = true },
 			keymap = {
 				["<Tab>"] = {},
 				["<S-Tab>"] = {},
-				["<C-K>"] = {},
+				["<C-k>"] = {},
 				["<C-n>"] = { "show", "select_next", "fallback_to_mappings" },
 			},
 		},

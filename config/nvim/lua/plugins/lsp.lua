@@ -50,8 +50,8 @@ return {
 			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
 			vim.keymap.set({ "n", "i" }, "<C-s>", vim.lsp.buf.signature_help, bufopts)
 			vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, bufopts)
-			vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, bufopts)
-			vim.keymap.set("n", "gr", fzf.lsp_references, bufopts)
+			vim.keymap.set("n", "grn", vim.lsp.buf.rename, bufopts)
+			vim.keymap.set("n", "grr", fzf.lsp_references, bufopts)
 			vim.keymap.set("n", "<leader>a", fzf.lsp_code_actions, bufopts)
 			vim.keymap.set("n", "<leader>w", vim.lsp.buf.format, bufopts)
 		end
@@ -65,6 +65,10 @@ return {
 		require("null-ls").setup({
 			sources = opts.null_ls.sources,
 			on_attach = on_attach,
+		})
+
+		vim.diagnostic.config({
+			virtual_text = true,
 		})
 	end,
 }

@@ -13,6 +13,7 @@
     ../../modules/zapret
     ../../modules/utils
     ../../modules/virtualization
+    ../../modules/desktop
   ];
 
   ### BOOTLOADER ###
@@ -207,14 +208,6 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    #gui
-    firefox
-    pavucontrol
-    vlc
-    xfce.thunar
-    gedit
-    swayimg
-
     #cli
     bash
     bottom

@@ -1,14 +1,5 @@
 return {
 	{
-		"MeanderingProgrammer/render-markdown.nvim",
-		wants = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" },
-		opts = {
-			latex = { enabled = false },
-			anti_conceal = { enabled = false },
-			overrides = { buftype = { nofile = { code = { enabled = false } } } },
-		},
-	},
-	{
 		"echasnovski/mini.ai",
 		dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
 		opts = function()
@@ -35,7 +26,7 @@ return {
 		end,
 	},
 	{ "echasnovski/mini.surround", opts = { n_lines = 100 } },
-	{ "echasnovski/mini.pairs", opts = {} },
+	{ "echasnovski/mini.pairs", opts = {}, enabled = true },
 	{ "echasnovski/mini.align", opts = {} },
 	{ "echasnovski/mini-git", main = "mini.git", opts = {} },
 	{ "sindrets/diffview.nvim", opts = {} },
