@@ -35,7 +35,6 @@
     grimblast
     vial
     onlyoffice-bin_latest
-    swayimg
     vesktop
   ];
 

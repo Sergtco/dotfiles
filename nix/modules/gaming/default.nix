@@ -20,15 +20,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    (lutris.override {
-      extraPkgs = pkgs: [
-        wineWowPackages.stable
-        wineWowPackages.waylandFull
-        wine
-        winetricks
-      ];
-    })
-    mangohud
+    lutris
     r2modman
     unstable.umu-launcher
   ];

@@ -22,18 +22,8 @@
     pavucontrol
     vlc
     gedit
-    swayimg
+    nomacs
   ];
-
-  xdg.configFile."mimeapps.list".force = true;
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "inode/directory" = ["thunar.desktop"];
-      "text/html" = ["firefox.desktop"];
-      "text/plain" = ["org.gnome.gedit.desktop"];
-    };
-  };
 
   home.file = {
     tmux = {
@@ -48,5 +38,26 @@
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/hypr/hypridle.conf";
     ".config/hypr/hyprlock.conf".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/hypr/hyprlock.conf";
+  };
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "inode/directory" = ["thunar.desktop"];
+      "application/pdf" = ["onlyoffice-desktopeditors.desktop"];
+
+      "text/html" = ["firefox.desktop"];
+      "text/plain" = ["nvim.desktop"];
+      "text/markdown" = ["nvim.desktop"];
+
+      "video/*" = ["vlc.desktop"];
+      "video/mp4" = ["vlc.desktop"];
+      "video/x-matroska" = ["vlc.desktop"];
+      "image/*" = ["org.nomacs.ImageLounge.desktop"];
+
+      "image/png" = ["org.nomacs.ImageLounge.desktop"];
+      "image/jpeg" = ["org.nomacs.ImageLounge.desktop"];
+      "image/gif" = ["org.nomacs.ImageLounge.desktop"];
+    };
   };
 }
