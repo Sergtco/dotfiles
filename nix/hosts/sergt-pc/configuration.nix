@@ -185,13 +185,6 @@
         TimeoutStopSec = 10;
       };
     };
-    # services.shadowsocks-proxy = {
-    #   wantedBy = ["default.target"];
-    #   serviceConfig = {
-    #     Type = "simple";
-    #     ExecStart = "${pkgs.shadowsocks-rust}/bin/sslocal -c /home/sergtco/shadowsocks.json";
-    #   };
-    # };
   };
 
   ### PACKAGES ####
