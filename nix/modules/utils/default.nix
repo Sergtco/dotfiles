@@ -7,5 +7,6 @@
     file
     usbutils
     imagemagick
+    progress
   ];
 }
