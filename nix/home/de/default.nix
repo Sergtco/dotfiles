@@ -10,6 +10,8 @@
     settings = ../../../config/swaync/config.json;
   };
 
+  services.swayosd.enable = true;
+
   wayland.windowManager.hyprland = {
     enable = true;
     extraConfig = ''
@@ -23,6 +25,7 @@
     vlc
     gedit
     nomacs
+    wdisplays
   ];
 
   home.file = {
