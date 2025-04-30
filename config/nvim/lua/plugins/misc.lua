@@ -29,4 +29,9 @@ return {
 	{ "echasnovski/mini.pairs", opts = {}, enabled = true },
 	{ "echasnovski/mini.align", opts = {} },
 	{ "backdround/improved-ft.nvim", opts = { use_default_mappings = true } },
+	{
+		"smoka7/hop.nvim",
+		keys = { { "<leader>h", "<cmd>HopWord<cr>", desc = "Hop to word" } },
+		opts = { keys = "etovxqpdygfblzhckisuran" },
+	},
 }

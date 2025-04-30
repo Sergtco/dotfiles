@@ -83,6 +83,15 @@
     ];
   };
 
+  fileSystems."/mnt/fasty" = {
+    label = "fasty";
+    fsType = "ext4";
+    options = [
+      "defaults"
+      "x-gvfs-show"
+    ];
+  };
+
   ### NETWORKING ###
   networking.hostName = "sergt-pc";
 
