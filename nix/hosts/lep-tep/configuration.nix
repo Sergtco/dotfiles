@@ -48,10 +48,7 @@
   ### KERNEL ###
   boot.kernelModules = [];
   boot.initrd.kernelModules = ["amdgpu"];
-  services.udev = {
-    extraRules = '''';
-    packages = with pkgs; [via];
-  };
+  services.udev.packages = with pkgs; [via];
 
   ### DRIVES ###
   services.udisks2.enable = true;
@@ -62,12 +59,9 @@
 
   networking.networkmanager.enable = true;
 
-  programs.ssh = {
-    startAgent = true;
-  };
+  programs.ssh.startAgent = true;
 
   ### BLUETOOTH ###
-  # rtkit is optional but recommended
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -85,11 +79,7 @@
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
-    settings = {
-      General = {
-        Experimental = true;
-      };
-    };
+    settings.General.Experimental = true;
   };
 
   ### POWER ###
@@ -107,13 +97,11 @@
   };
   ### HARDWARE ###
   services.libinput.touchpad.naturalScrolling = true;
+
   ### LOCALE ###
   time.timeZone = "Europe/Moscow";
 
-  services.xserver.xkb = {
-    layout = "us, ru";
-    variant = "";
-  };
+  services.xserver.xkb.layout = "us, ru";
 
   i18n.defaultLocale = "en_US.UTF-8";
 
