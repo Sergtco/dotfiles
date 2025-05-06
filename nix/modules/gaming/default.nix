@@ -20,9 +20,15 @@
   };
 
   environment.systemPackages = with pkgs; [
-    lutris
     r2modman
     unstable.umu-launcher
+    (lutris.override {
+      extraPkgs = pkgs: [
+        wineWowPackages.stable
+        wine
+        winetricks
+      ];
+    })
   ];
 
   boot.initrd.kernelModules = [
