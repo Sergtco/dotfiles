@@ -13,5 +13,6 @@
     xarchiver
     rar
     unrar
+    blueberry
   ];
 }

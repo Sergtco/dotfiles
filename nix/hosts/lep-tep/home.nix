@@ -30,7 +30,6 @@
     gimp
     telegram-desktop
     transmission_4-gtk
-    blueberry
     hyprpicker
     grimblast
     vial
