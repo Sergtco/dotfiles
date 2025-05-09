@@ -8,11 +8,11 @@
     ];
   };
   services.tumbler.enable = true;
+  services.blueman.enable = true;
   environment.systemPackages = with pkgs; [
     gnome-disk-utility
     xarchiver
     rar
     unrar
-    blueberry
   ];
 }

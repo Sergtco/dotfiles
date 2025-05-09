@@ -16,9 +16,7 @@
         mode = "dock";
         start_hidden = false;
         modules-left =
-          [
-            "clock"
-          ]
+          ["clock"]
           ++ ["battery"]
           ++ [
             "idle_inhibitor"
@@ -33,15 +31,22 @@
           "wireplumber"
           "bluetooth"
           "network"
-          "hyprland/language"
         ];
         tray = {
           icon-size = 20;
           spacing = 10;
         };
-        "hyprland/language" = {
-          format = "{short}";
-          keyboard-name = "ergohaven-k:03-v1/v2";
+        "battery" = {
+          "states" = {
+            "warning" = 30;
+            "critical" = 15;
+          };
+          "format" = "{icon} {capacity}%";
+          "format-charging" = "󰂄 {capacity}%";
+          "format-plugged" = " {capacity}%";
+          "format-alt" = "{time} {icon}";
+          "format-full" = "󰁹 {capacity}%";
+          "format-icons" = ["󰁺" "󰁽" "󰂁"];
         };
         "hyprland/workspaces" = {
           format = "{icon}";
@@ -78,29 +83,15 @@
         };
         wireplumber = {
           format = "{icon} {volume}%";
-          format-bluetooth = "{icon} {volume}%";
-          format-muted = "";
-          format-icons = {
-            headphone = "";
-            hands-free = "";
-            headset = "";
-            phone = "";
-            portable = "";
-            car = "";
-            default = [
-              ""
-              ""
-            ];
-          };
-          restart-interval = 1;
-          scroll-step = 1;
+          format-muted = "󰝟";
+          format-icons = ["" "" ""];
           on-click = "pavucontrol";
         };
         bluetooth = {
           format = " {device_battery_percentage}%";
           format-on = "";
           format-off = "󰂲";
-          on-click = "blueberry";
+          on-click = "blueman-manager";
         };
         mpris = {
           format = "{status_icon} <b>{artist}</b> - {title}";
