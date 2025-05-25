@@ -10,7 +10,7 @@
     };
   };
   home.packages = [
-    pkgs.unstable.ghostty
+    pkgs.ghostty
   ];
 
   home.file.".config/ghostty/" = {

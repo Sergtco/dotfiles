@@ -1,5 +1,4 @@
 {...}: {
-  imports = [./oh_my_posh.nix];
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -14,6 +13,7 @@
       nv = "nvim";
       tm = "tmux a || tmux";
     };
+
     profileExtra = ''
       zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
     '';
@@ -27,6 +27,12 @@
       config = {
         global.hide_env_diff = true;
       };
+    };
+
+    oh-my-posh = {
+      enable = true;
+      enableZshIntegration = true;
+      useTheme = "pure";
     };
   };
 }
