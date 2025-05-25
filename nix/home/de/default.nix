@@ -28,6 +28,7 @@
     gedit
     nomacs
     wdisplays
+    brightnessctl
   ];
 
   home.file = {
@@ -51,7 +52,7 @@
     enable = true;
     defaultApplications = {
       "inode/directory" = ["thunar.desktop"];
-      "application/pdf" = ["onlyoffice-desktopeditors.desktop"];
+      "application/pdf" = ["firefox.destkop"];
 
       "text/html" = ["firefox.desktop"];
       "text/plain" = ["nvim.desktop"];

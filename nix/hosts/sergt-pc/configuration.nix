@@ -25,7 +25,6 @@
         theme = "${pkgs.libsForQt5.breeze-grub}/grub/themes/breeze";
         efiSupport = true;
         device = "nodev";
-        useOSProber = false;
       };
     };
 
@@ -49,18 +48,23 @@
   };
 
   ### KERNEL ###
-  boot.extraModulePackages = [config.boot.kernelPackages.ddcci-driver];
-  boot.kernelModules = [
-    "i2c-dev"
-    "ddcci_backlight"
-  ];
-  boot.initrd.kernelModules = ["amdgpu"];
-  services.udev = {
-    extraRules = ''
-      KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
-    '';
-    packages = with pkgs; [via];
+  boot = {
+    extraModulePackages = [config.boot.kernelPackages.ddcci-driver];
+    initrd.kernelModules = ["amdgpu"];
+    kernelModules = ["ddcci-backlight"];
   };
+
+  services.udev.packages = with pkgs; [via];
+
+  ### DISPLAY ###
+  hardware.i2c.enable = true;
+  services.udev.extraRules = let
+    bash = "${pkgs.bash}/bin/bash";
+    ddcciDev = "AMDGPU DM aux hw bus 1";
+    ddcciNode = "/sys/bus/i2c/devices/i2c-7/new_device";
+  in ''
+    SUBSYSTEM=="i2c", ACTION=="add", ATTR{name}=="${ddcciDev}", RUN+="${bash} -c 'sleep 30; printf ddcci\ 0x37 > ${ddcciNode}'"
+  '';
 
   ### DRIVES ###
   services.udisks2.enable = true;
@@ -110,12 +114,6 @@
       "monitor.bluez.properties" = {
         "bluez5.enable-sbc-xq" = true;
         "bluez5.enable-hw-volume" = true;
-        # "bluez5.roles" = [
-        #   "a2dp_sink"
-        #   "a2dp_source"
-        #   "bap_sink"
-        #   "bap_source"
-        # ];
       };
     };
   };
@@ -147,8 +145,12 @@
 
   ### ADMINISTRATION ###
   users.extraGroups = {
-    i2c = {};
-    video = {};
+    video = {
+      members = ["sergtco"];
+    };
+    i2c = {
+      members = ["sergtco"];
+    };
   };
   users.users.sergtco = {
     isNormalUser = true;
@@ -156,8 +158,6 @@
     extraGroups = [
       "networkmanager"
       "wheel"
-      "i2c"
-      "video"
     ];
     useDefaultShell = true;
   };
@@ -212,9 +212,6 @@
     wget
     wl-clipboard
     xclip
-
-    #need them
-    brightnessctl
   ];
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
