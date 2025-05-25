@@ -97,12 +97,9 @@
 
   networking.networkmanager.enable = true;
 
-  programs.ssh = {
-    startAgent = true;
-  };
+  programs.ssh.startAgent = true;
 
   ### BLUETOOTH ###
-  # rtkit is optional but recommended
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -113,12 +110,12 @@
       "monitor.bluez.properties" = {
         "bluez5.enable-sbc-xq" = true;
         "bluez5.enable-hw-volume" = true;
-        "bluez5.roles" = [
-          "a2dp_sink"
-          "a2dp_source"
-          "bap_sink"
-          "bap_source"
-        ];
+        # "bluez5.roles" = [
+        #   "a2dp_sink"
+        #   "a2dp_source"
+        #   "bap_sink"
+        #   "bap_source"
+        # ];
       };
     };
   };
@@ -126,20 +123,13 @@
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
-    settings = {
-      General = {
-        Experimental = true;
-      };
-    };
+    settings.General.Experimental = true;
   };
 
   ### LOCALE ###
   time.timeZone = "Europe/Moscow";
 
-  services.xserver.xkb = {
-    layout = "us, ru";
-    variant = "";
-  };
+  services.xserver.xkb.layout = "us, ru";
 
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -227,12 +217,8 @@
     brightnessctl
   ];
   fonts.packages = with pkgs; [
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "JetBrainsMono"
-      ];
-    })
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
     corefonts
     noto-fonts-color-emoji
   ];
@@ -282,5 +268,5 @@
     dates = "weekly";
   };
 
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.05";
 }

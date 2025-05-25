@@ -1,8 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     playerctl
-    (pkgs.nerdfonts.override
-      {fonts = ["FiraCode"];})
+    nerd-fonts.fira-code
   ];
   programs.waybar = {
     enable = true;

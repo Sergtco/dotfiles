@@ -46,7 +46,6 @@
   };
 
   ### KERNEL ###
-  boot.kernelModules = [];
   boot.initrd.kernelModules = ["amdgpu"];
   services.udev.packages = with pkgs; [via];
 
@@ -189,13 +188,10 @@
     brightnessctl
   ];
   fonts.packages = with pkgs; [
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "JetBrainsMono"
-      ];
-    })
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
     corefonts
+    noto-fonts-color-emoji
   ];
   ### GRAPHICS ###
   services.xserver.enable = true;
@@ -203,8 +199,6 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = with pkgs; [amdvlk];
-    extraPackages32 = with pkgs; [driversi686Linux.amdvlk];
   };
 
   services.xserver.displayManager.gdm = {
@@ -297,5 +291,5 @@
     dates = "weekly";
   };
 
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.05";
 }

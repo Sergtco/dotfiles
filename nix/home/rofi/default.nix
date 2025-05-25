@@ -31,5 +31,5 @@
       (pkgs.rofi-calc.override {rofi-unwrapped = pkgs.rofi-wayland-unwrapped;})
     ];
   };
-  home.packages = [(pkgs.nerdfonts.override {fonts = ["FiraCode"];})];
+  home.packages = [pkgs.nerd-fonts.fira-code];
 }

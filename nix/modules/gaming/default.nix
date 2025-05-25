@@ -1,34 +1,21 @@
 {pkgs, ...}: {
-  programs.steam = {
-    enable = true;
-    extraCompatPackages = with pkgs; [proton-ge-bin];
-  };
+  programs.steam.enable = true;
 
-  programs.gamescope = {
-    enable = true;
-    capSysNice = false;
-    args = [
-      "-w 1920"
-      "-h 1080"
-      "-f"
-      "-r 165"
-    ];
-  };
+  programs.gamescope.enable = true;
 
-  programs.gamemode = {
-    enable = true;
-  };
+  programs.gamemode.enable = true;
 
   environment.systemPackages = with pkgs; [
-    r2modman
-    unstable.umu-launcher
     (lutris.override {
       extraPkgs = pkgs: [
         wineWowPackages.stable
         wine
         winetricks
+        mangohud
+        unstable.umu-launcher
       ];
     })
+    protonplus
   ];
 
   boot.initrd.kernelModules = [

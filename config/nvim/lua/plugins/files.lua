@@ -21,6 +21,9 @@ return {
 			{ "<leader>S", "<cmd>FzfLua lsp_live_workspace_symbols<cr>", desc = "lsp_workspace_symbols_symbols" },
 		},
 		opts = { { "ivy", "borderless" }, fzf_colors = true },
+		init = function()
+			require("fzf-lua").register_ui_select()
+		end,
 	},
 	{ "tpope/vim-fugitive" },
 }
