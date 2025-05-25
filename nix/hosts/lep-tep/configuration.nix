@@ -183,9 +183,6 @@
     wget
     wl-clipboard
     xclip
-
-    #need them
-    brightnessctl
   ];
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
