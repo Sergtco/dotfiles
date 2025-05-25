@@ -3,14 +3,16 @@
   pkgs,
   ...
 }: {
-  services.udiskie.enable = true;
+  services = {
+    udiskie.enable = true;
 
-  services.swaync = {
-    enable = true;
-    settings = ../../../config/swaync/config.json;
+    swaync = {
+      enable = true;
+      settings = ../../../config/swaync/config.json;
+    };
+
+    swayosd.enable = true;
   };
-
-  services.swayosd.enable = true;
 
   wayland.windowManager.hyprland = {
     enable = true;

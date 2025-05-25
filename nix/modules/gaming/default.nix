@@ -12,7 +12,7 @@
         wine
         winetricks
         mangohud
-        unstable.umu-launcher
+        umu-launcher
       ];
     })
     protonplus

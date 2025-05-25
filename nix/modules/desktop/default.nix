@@ -1,4 +1,9 @@
 {pkgs, ...}: {
+  services = {
+    tumbler.enable = true;
+    blueman.enable = true;
+  };
+
   ### Enable thunar fm
   programs.thunar = {
     enable = true;
@@ -7,8 +12,7 @@
       thunar-volman
     ];
   };
-  services.tumbler.enable = true;
-  services.blueman.enable = true;
+
   environment.systemPackages = with pkgs; [
     gnome-disk-utility
     xarchiver
