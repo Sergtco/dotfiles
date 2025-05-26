@@ -26,7 +26,7 @@
     pavucontrol
     vlc
     gedit
-    nomacs
+    eog
     wdisplays
     brightnessctl
   ];

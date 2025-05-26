@@ -12,6 +12,7 @@
     ../../modules/zapret
     ../../modules/utils
     ../../modules/desktop
+    ../../modules/themes
   ];
 
   ### BOOTLOADER ###
@@ -19,18 +20,12 @@
     loader = {
       efi.canTouchEfiVariables = true;
       grub = {
-        theme = "${pkgs.libsForQt5.breeze-grub}/grub/themes/breeze";
         efiSupport = true;
         device = "nodev";
-        useOSProber = false;
       };
     };
 
-    plymouth = {
-      enable = true;
-      theme = "lone";
-      themePackages = [(pkgs.adi1090x-plymouth-themes.override {selected_themes = ["lone"];})];
-    };
+    plymouth.enable = true;
 
     consoleLogLevel = 0;
     initrd.verbose = false;

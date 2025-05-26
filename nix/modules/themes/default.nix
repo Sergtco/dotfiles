@@ -1,13 +1,6 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: let
+{pkgs, ...}: let
   themes = (import ./themes.nix) {};
 in {
-  imports = [
-    inputs.stylix.homeModules.stylix
-  ];
   stylix = {
     enable = true;
     image = ../../../wallpaper/mini-wave-white.jpg;
@@ -19,6 +12,16 @@ in {
       package = pkgs.hackneyed;
     };
 
+    fonts = {
+      monospace = {
+        package = pkgs.nerd-fonts.fira-code;
+        name = "FiraCode Nerd Font Mono";
+      };
+    };
+  };
+  home-manager.users.sergtco.stylix = {
+    enable = true;
+
     iconTheme = {
       enable = true;
       package = pkgs.papirus-icon-theme.override {
@@ -26,13 +29,6 @@ in {
       };
       dark = "Papirus-Dark";
       light = "Papirus-Light";
-    };
-
-    fonts = {
-      monospace = {
-        package = pkgs.nerd-fonts.fira-code;
-        name = "FiraCode Nerd Font Mono";
-      };
     };
 
     targets = {
