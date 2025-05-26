@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-    ../../hardware/k02.nix
     ../../home/nvim
     ../../home/shells/zsh.nix
     ../../home/waybar
