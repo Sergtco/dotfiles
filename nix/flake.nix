@@ -16,6 +16,7 @@
   outputs = {
     nixpkgs,
     home-manager,
+    stylix,
     ...
   } @ inputs: let
     myLib = import ./myLib {inherit inputs;};
@@ -24,10 +25,12 @@
       sergt-pc = myLib.buildCfg {
         system = "x86_64-linux";
         hostname = "sergt-pc";
+        extraModules = [stylix.nixosModules.stylix];
       };
       lep-tep = myLib.buildCfg {
         system = "x86_64-linux";
         hostname = "lep-tep";
+        extraModules = [stylix.nixosModules.stylix];
       };
     };
   };

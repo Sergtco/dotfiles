@@ -10,14 +10,17 @@ in {
   buildCfg = {
     system,
     hostname,
+    extraModules ? [],
   }:
     inputs.nixpkgs.lib.nixosSystem {
       system = system;
       specialArgs = {inherit inputs;};
-      modules = [
-        ../hosts/${hostname}/configuration.nix
-        inputs.home-manager.nixosModules.home-manager
-        (myLib.homeInit ../hosts/${hostname}/home.nix)
-      ];
+      modules =
+        [
+          ../hosts/${hostname}/configuration.nix
+          inputs.home-manager.nixosModules.home-manager
+          (myLib.homeInit ../hosts/${hostname}/home.nix)
+        ]
+        ++ extraModules;
     };
 }

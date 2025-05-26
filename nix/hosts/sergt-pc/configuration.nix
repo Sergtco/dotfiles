@@ -14,36 +14,29 @@
     ../../modules/utils
     ../../modules/virtualization
     ../../modules/desktop
+    ../../modules/themes
   ];
 
   ### BOOTLOADER ###
   boot = {
-    resumeDevice = "/dev/sdd3";
     loader = {
       efi.canTouchEfiVariables = true;
       grub = {
-        theme = "${pkgs.libsForQt5.breeze-grub}/grub/themes/breeze";
         efiSupport = true;
         device = "nodev";
       };
     };
 
-    plymouth = {
-      enable = true;
-      theme = "lone";
-      themePackages = [(pkgs.adi1090x-plymouth-themes.override {selected_themes = ["lone"];})];
-    };
+    plymouth.enable = true;
 
-    consoleLogLevel = 0;
+    consoleLogLevel = 3;
     initrd.verbose = false;
     kernelParams = [
       "quiet"
       "splash"
       "boot.shell_on_fail"
-      "loglevel=3"
-      "rd.systemd.show_status=false"
-      "rd.udev.log_level=3"
       "udev.log_priority=3"
+      "rd.systemd.show_status=auto"
     ];
   };
 
@@ -231,6 +224,7 @@
     enable = true;
     wayland = true;
   };
+
   services.displayManager.autoLogin = {
     enable = true;
     user = "sergtco";

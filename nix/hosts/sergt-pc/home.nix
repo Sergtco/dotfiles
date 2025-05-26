@@ -7,7 +7,6 @@
     ../../hardware/k02.nix
     ../../home/nvim
     ../../home/shells/zsh.nix
-    ../../home/themes
     ../../home/terminals
     ../../home/waybar
     ../../home/cli
