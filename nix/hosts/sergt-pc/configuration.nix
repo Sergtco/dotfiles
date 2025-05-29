@@ -28,35 +28,26 @@
     };
 
     plymouth.enable = true;
-
-    consoleLogLevel = 3;
-    initrd.verbose = false;
-    kernelParams = [
-      "quiet"
-      "splash"
-      "boot.shell_on_fail"
-      "udev.log_priority=3"
-      "rd.systemd.show_status=auto"
-    ];
+    kernelParams = ["quiet"];
   };
 
   ### KERNEL ###
   boot = {
     extraModulePackages = [config.boot.kernelPackages.ddcci-driver];
     initrd.kernelModules = ["amdgpu"];
-    kernelModules = ["ddcci-backlight"];
+    kernelModules = ["ddcci_backlight"];
   };
 
   services.udev.packages = with pkgs; [via];
 
   ### DISPLAY ###
-  hardware.i2c.enable = true;
+  # hardware.i2c.enable = true;
   services.udev.extraRules = let
     bash = "${pkgs.bash}/bin/bash";
     ddcciDev = "AMDGPU DM aux hw bus 1";
     ddcciNode = "/sys/bus/i2c/devices/i2c-7/new_device";
   in ''
-    SUBSYSTEM=="i2c", ACTION=="add", ATTR{name}=="${ddcciDev}", RUN+="${bash} -c 'sleep 30; printf ddcci\ 0x37 > ${ddcciNode}'"
+    SUBSYSTEM=="i2c", ACTION=="add", ATTR{name}=="${ddcciDev}", RUN+="${bash} -c 'echo ddcci 0x37 > ${ddcciNode}'"
   '';
 
   ### DRIVES ###
@@ -123,28 +114,23 @@
   services.xserver.xkb.layout = "us, ru";
 
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = "ru_RU.UTF-8";
-    LC_IDENTIFICATION = "ru_RU.UTF-8";
-    LC_MEASUREMENT = "ru_RU.UTF-8";
-    LC_MONETARY = "ru_RU.UTF-8";
-    LC_NAME = "ru_RU.UTF-8";
-    LC_NUMERIC = "ru_RU.UTF-8";
-    LC_PAPER = "ru_RU.UTF-8";
-    LC_TELEPHONE = "ru_RU.UTF-8";
+    LANGUAGE = "en_US.UTF-8";
+    LC_ALL = "en_US.UTF-8";
+    LC_CTYPE = "ru_RU.UTF-8";
+    LC_COLLATE = "ru_RU.UTF-8";
     LC_TIME = "ru_RU.UTF-8";
+    LC_MESSAGES = "ru_RU.UTF-8";
+    LC_MONETARY = "ru_RU.UTF-8";
+    LC_ADDRESS = "ru_RU.UTF-8";
   };
 
   ### ADMINISTRATION ###
   users.extraGroups = {
-    video = {
-      members = ["sergtco"];
-    };
-    i2c = {
-      members = ["sergtco"];
-    };
+    video.members = ["sergtco"];
+    i2c.members = ["sergtco"];
   };
+
   users.users.sergtco = {
     isNormalUser = true;
     description = "sergtco";
@@ -161,22 +147,6 @@
 
   security.polkit = {
     enable = true;
-  };
-
-  systemd = {
-    user.services.polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
-      wantedBy = ["graphical-session.target"];
-      wants = ["graphical-session.target"];
-      after = ["graphical-session.target"];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-    };
   };
 
   ### PACKAGES ####

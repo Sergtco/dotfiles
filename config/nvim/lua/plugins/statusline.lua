@@ -16,11 +16,11 @@ return {
 				lualine_y = { "branch" },
 				lualine_z = {},
 			},
-            extensions = {
-                'quickfix',
-                'oil',
-                'fugitive',
-            }
+			extensions = {
+				"quickfix",
+				"oil",
+				"fugitive",
+			},
 		},
 	},
 }

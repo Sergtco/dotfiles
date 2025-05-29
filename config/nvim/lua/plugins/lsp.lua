@@ -19,7 +19,7 @@ return {
 				basedpyright = {},
 				clangd = {},
 				gopls = { settings = { gopls = { gofumpt = true } } },
-				lua_ls = { sttings = { Lua = { format = { enable = false } } } },
+				lua_ls = { settings = { Lua = { format = { enable = false } } } },
 				marksman = {},
 				nil_ls = {},
 				rust_analyzer = {},
@@ -52,7 +52,7 @@ return {
 			vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, bufopts)
 			vim.keymap.set("n", "grn", vim.lsp.buf.rename, bufopts)
 			vim.keymap.set("n", "grr", fzf.lsp_references, bufopts)
-			vim.keymap.set("n", "<leader>a", fzf.lsp_code_actions, bufopts)
+			vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, bufopts)
 			vim.keymap.set("n", "<leader>w", vim.lsp.buf.format, bufopts)
 		end
 
