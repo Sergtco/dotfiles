@@ -12,6 +12,7 @@
     };
 
     swayosd.enable = true;
+    hyprpolkitagent.enable = true;
   };
 
   wayland.windowManager.hyprland = {
@@ -29,6 +30,7 @@
     eog
     wdisplays
     brightnessctl
+    vesktop
   ];
 
   home.file = {
@@ -43,8 +45,6 @@
 
     ".config/hypr/hypridle.conf".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/hypr/hypridle.conf";
-    ".config/hypr/hyprlock.conf".source =
-      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/hypr/hyprlock.conf";
   };
 
   xdg.configFile."mimeapps.list".force = true;

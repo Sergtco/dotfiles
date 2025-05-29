@@ -7,24 +7,28 @@
     enable = true;
     package = pkgs.neovim-unwrapped;
     extraPackages = with pkgs.unstable; [
-      # lsps
       basedpyright
-      clang-tools
-      gopls
-      lua-language-server
-      nil
-      zls
-      marksman
-      # formatters
-      alejandra
       black
-      gofumpt
-      nodePackages.prettier
-      nixfmt-rfc-style
-      python312Packages.sqlfmt
+
+      lua-language-server
       stylua
-      # linters
+
+      nil
+      alejandra
+
+      gofumpt
+      gopls
       golangci-lint
+
+      nodePackages.prettier
+      clang-tools
+
+      python312Packages.sqlfmt
+
+      marksman
+
+      gdb
+      delve
     ];
     defaultEditor = true;
   };
