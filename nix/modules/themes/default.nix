@@ -5,6 +5,7 @@ in {
     enable = true;
     image = ../../../wallpaper/mini-wave-white.jpg;
     base16Scheme = themes.lackluster;
+    polarity = "dark";
 
     cursor = {
       name = "Hackneyed";

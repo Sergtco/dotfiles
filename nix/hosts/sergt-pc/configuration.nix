@@ -27,8 +27,10 @@
       };
     };
 
+    initrd.verbose = false;
+    consoleLogLevel = 0;
     plymouth.enable = true;
-    kernelParams = ["quiet"];
+    kernelParams = ["quiet" "amdgpu.dcdebugmask=0x10"];
   };
 
   ### KERNEL ###
@@ -41,7 +43,6 @@
   services.udev.packages = with pkgs; [via];
 
   ### DISPLAY ###
-  # hardware.i2c.enable = true;
   services.udev.extraRules = let
     bash = "${pkgs.bash}/bin/bash";
     ddcciDev = "AMDGPU DM aux hw bus 1";
@@ -144,6 +145,7 @@
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
   environment.shells = with pkgs; [zsh];
+  environment.localBinInPath = true;
 
   security.polkit = {
     enable = true;
@@ -184,21 +186,22 @@
   ];
   ### GRAPHICS ###
   services.xserver.enable = true;
+  services.xserver.videoDrivers = ["amdgpu"];
 
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
 
-  services.xserver.displayManager.gdm = {
+  services.greetd = {
     enable = true;
-    wayland = true;
+    settings.initial_session = {
+      command = "${pkgs.uwsm}/bin/uwsm start -- hyprland-uwsm.desktop";
+      user = "sergtco";
+    };
   };
 
-  services.displayManager.autoLogin = {
-    enable = true;
-    user = "sergtco";
-  };
+  programs.regreet.enable = true;
 
   programs = {
     hyprland = {
