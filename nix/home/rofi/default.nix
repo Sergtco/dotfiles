@@ -2,7 +2,7 @@
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
-    terminal = "${pkgs.unstable.ghostty}/bin/ghostty";
+    terminal = "${pkgs.foot}/bin/foot";
     font = "Fira Code Nerd Font 14";
     extraConfig = {
       modes = "drun,calc,power-menu:${pkgs.rofi-power-menu}/bin/rofi-power-menu";

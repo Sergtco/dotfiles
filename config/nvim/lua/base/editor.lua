@@ -33,6 +33,7 @@ opt.splitright = true
 opt.laststatus = 2
 opt.wrap = true
 opt.showbreak = "󱞶"
+opt.guicursor = "n-c:block,v:hor25,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkon1"
 
 -- colors
 opt.termguicolors = true
