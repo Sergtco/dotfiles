@@ -18,6 +18,9 @@
       zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
     '';
   };
+  home.sessionPath = [
+    "/home/sergtco/.cargo/bin/"
+  ];
 
   programs = {
     direnv = {

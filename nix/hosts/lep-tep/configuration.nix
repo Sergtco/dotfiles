@@ -25,11 +25,13 @@
       };
     };
 
-    plymouth.enable = true;
-    kernelParams = ["quiet"];
+    initrd.verbose = false;
+    consoleLogLevel = 0;
+    kernelParams = ["quiet" "amdgpu.dcdebugmask=0x10"];
   };
 
   ### KERNEL ###
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.kernelModules = ["amdgpu"];
   services.udev.packages = with pkgs; [via];
 
@@ -118,6 +120,7 @@
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
   environment.shells = with pkgs; [zsh];
+  environment.localBinInPath = true;
 
   security.polkit = {
     enable = true;
@@ -158,16 +161,15 @@
   ];
   ### GRAPHICS ###
   services.xserver.enable = true;
+  services.xserver.videoDrivers = ["amdgpu"];
 
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
 
-  services.xserver.displayManager.gdm = {
-    enable = true;
-    wayland = true;
-  };
+  services.greetd.enable = true;
+  programs.regreet.enable = true;
 
   programs = {
     hyprland = {
