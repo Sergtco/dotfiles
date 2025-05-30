@@ -18,6 +18,7 @@ in {
         package = pkgs.nerd-fonts.fira-code;
         name = "FiraCode Nerd Font Mono";
       };
+      sizes.terminal = 13;
     };
   };
   home-manager.users.sergtco.stylix = {
