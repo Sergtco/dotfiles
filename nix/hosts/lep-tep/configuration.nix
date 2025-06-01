@@ -13,6 +13,7 @@
     ../../modules/utils
     ../../modules/desktop
     ../../modules/themes
+    ../../modules/amdpu_patch
   ];
 
   ### BOOTLOADER ###
@@ -27,7 +28,8 @@
 
     initrd.verbose = false;
     consoleLogLevel = 0;
-    kernelParams = ["quiet" "amdgpu.dcdebugmask=0x10"];
+    plymouth.enable = true;
+    kernelParams = ["quiet"];
   };
 
   ### KERNEL ###
