@@ -32,7 +32,6 @@
   };
 
   ### KERNEL ###
-  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.kernelModules = ["amdgpu"];
   services.udev.packages = with pkgs; [via];
 
