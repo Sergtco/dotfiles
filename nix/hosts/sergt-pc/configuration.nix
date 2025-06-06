@@ -16,6 +16,7 @@
     ../../modules/desktop
     ../../modules/themes
     ../../modules/amdpu_patch
+    ../../modules/vpn
   ];
 
   ### BOOTLOADER ###
