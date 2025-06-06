@@ -25,6 +25,7 @@
       grub = {
         efiSupport = true;
         device = "nodev";
+        timeoutStyle = "hidden";
       };
     };
 
@@ -38,10 +39,13 @@
   boot = {
     extraModulePackages = [config.boot.kernelPackages.ddcci-driver];
     initrd.kernelModules = ["amdgpu"];
-    kernelModules = ["ddcci_backlight"];
+    kernelModules = ["ddcci_backlight" "nct6775"];
   };
 
   services.udev.packages = with pkgs; [via];
+
+  ### RGBOFF
+  services.hardware.openrgb.enable = true;
 
   ### DISPLAY ###
   services.udev.extraRules = let
@@ -140,12 +144,10 @@
       "networkmanager"
       "wheel"
     ];
-    useDefaultShell = true;
+    shell = pkgs.zsh;
   };
 
-  users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
-  environment.shells = with pkgs; [zsh];
   environment.localBinInPath = true;
 
   security.polkit = {

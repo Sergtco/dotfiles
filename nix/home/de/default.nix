@@ -25,7 +25,7 @@
   home.packages = with pkgs; [
     firefox
     pavucontrol
-    vlc
+    mpv
     gedit
     eog
     wdisplays
@@ -58,9 +58,9 @@
       "text/plain" = ["nvim.desktop"];
       "text/markdown" = ["nvim.desktop"];
 
-      "video/*" = ["vlc.desktop"];
-      "video/mp4" = ["vlc.desktop"];
-      "video/x-matroska" = ["vlc.desktop"];
+      "video/*" = ["mpv.desktop"];
+      "video/mp4" = ["mpv.desktop"];
+      "video/x-matroska" = ["mpv.desktop"];
       "image/*" = ["org.nomacs.ImageLounge.desktop"];
 
       "image/png" = ["org.nomacs.ImageLounge.desktop"];

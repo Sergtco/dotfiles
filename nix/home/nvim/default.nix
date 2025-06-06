@@ -3,6 +3,9 @@
   pkgs,
   ...
 }: {
+  home.sessionVariables = {
+    MANPAGER = "nvim +Man!";
+  };
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-unwrapped;
@@ -26,6 +29,8 @@
       python312Packages.sqlfmt
 
       marksman
+
+      zls
 
       gdb
       delve

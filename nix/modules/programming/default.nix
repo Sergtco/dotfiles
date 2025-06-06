@@ -15,6 +15,11 @@
     jq
     gnumake
     graphviz
+
+    #manuals
+    man-pages
+    man-pages-posix
   ];
+  documentation.dev.enable = true;
   documentation.man.generateCaches = true;
 }
