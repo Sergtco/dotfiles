@@ -116,14 +116,11 @@
       "uinput"
       "input"
     ];
-    useDefaultShell = true;
+    shell = pkgs.zsh;
   };
 
-  users.defaultUserShell = pkgs.zsh;
-  programs.zsh.enable = true;
-  environment.shells = with pkgs; [zsh];
   environment.localBinInPath = true;
-
+  programs.zsh.enable = true;
   security.polkit = {
     enable = true;
   };
@@ -144,7 +141,7 @@
   environment.systemPackages = with pkgs; [
     #cli
     bash
-    bottom
+    htop
     curl
     p7zip
     zip
