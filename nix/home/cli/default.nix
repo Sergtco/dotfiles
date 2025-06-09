@@ -6,7 +6,7 @@
   home.packages = with pkgs; [
     ripgrep
     fd
-    ueberzugpp
+    tmux
   ];
 
   programs = {
@@ -28,23 +28,14 @@
     };
   };
 
-  programs.yazi = {
-    enable = true;
-    enableZshIntegration = true;
+  programs = {
+    fzf.enable = true;
+    nix-index.enable = true;
+    yazi.enable = true;
+    zoxide.enable = true;
   };
 
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  home.file.tmux = {
-    target = ".config/tmux";
+  xdg.configFile.tmux = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/tmux";
     recursive = true;
   };

@@ -15,6 +15,7 @@
     ../../modules/virtualization
     ../../modules/desktop
     ../../modules/themes
+    ../../modules/themes/no_rgb.nix
     ../../modules/amdpu_patch
     ../../modules/vpn
   ];
@@ -44,9 +45,6 @@
   };
 
   services.udev.packages = with pkgs; [via];
-
-  ### RGBOFF
-  services.hardware.openrgb.enable = true;
 
   ### DISPLAY ###
   services.udev.extraRules = let
@@ -220,7 +218,6 @@
     enable = true;
     extraPortals = with pkgs; [xdg-desktop-portal-gtk];
   };
-  services.hypridle.enable = true;
 
   ### NIX ###
   nix.settings = {

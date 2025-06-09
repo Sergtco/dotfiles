@@ -6,9 +6,7 @@
   imports = [
     ../../home/nvim
     ../../home/shells/zsh.nix
-    ../../home/waybar
     ../../home/cli
-    ../../home/rofi
     ../../home/de
     ../../home/terminals
   ];
@@ -22,7 +20,6 @@
   };
 
   home.packages = with pkgs; [
-    tmux
     playerctl
     lollypop
     gimp

@@ -8,12 +8,10 @@
     ../../modules/doh
     ../../modules/gaming
     ../../modules/programming
-    ../../modules/music
     ../../modules/zapret
     ../../modules/utils
     ../../modules/desktop
     ../../modules/themes
-    ../../modules/amdpu_patch
     ../../modules/vpn
   ];
 
@@ -184,7 +182,6 @@
     enable = true;
     extraPortals = with pkgs; [xdg-desktop-portal-gtk];
   };
-  services.hypridle.enable = true;
 
   ### KEYBOARD ###
   services.kanata = {

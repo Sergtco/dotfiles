@@ -21,6 +21,7 @@ in {
       sizes.terminal = 13;
     };
   };
+
   home-manager.users.sergtco.stylix = {
     enable = true;
 
