@@ -218,7 +218,6 @@
     enable = true;
     extraPortals = with pkgs; [xdg-desktop-portal-gtk];
   };
-  services.hypridle.enable = true;
 
   ### NIX ###
   nix.settings = {

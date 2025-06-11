@@ -1,4 +1,6 @@
 {...}: {
+  home.shell.enableZshIntegration = true;
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -26,7 +28,6 @@
   programs = {
     direnv = {
       enable = true;
-      enableZshIntegration = true;
       nix-direnv.enable = true;
 
       config.global.hide_env_diff = true;
@@ -34,7 +35,6 @@
 
     oh-my-posh = {
       enable = true;
-      enableZshIntegration = true;
       useTheme = "pure";
     };
   };
