@@ -4,11 +4,11 @@
   ...
 }: {
   imports = [
-    ../../home/nvim
-    ../../home/shells/zsh.nix
-    ../../home/cli
-    ../../home/de
-    ../../home/terminals
+    ../../homeModules/cli
+    ../../homeModules/destkop
+    ../../homeModules/nvim
+    ../../homeModules/shell/zsh.nix
+    ../../homeModules/terminal
   ];
   home.homeDirectory = "/home/sergtco";
 
