@@ -1,8 +1,8 @@
 {pkgs, ...}: {
   imports = [
     ./mimeapps.nix
-    ../waybar
-    ../rofi
+    ./waybar
+    ./rofi
   ];
   services = {
     udiskie.enable = true;
