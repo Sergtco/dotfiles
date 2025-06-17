@@ -17,6 +17,6 @@
     gnome-disk-utility
     xarchiver
     rar
-    unrar
+    gimp3
   ];
 }

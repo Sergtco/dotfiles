@@ -22,5 +22,8 @@ return {
 				"fugitive",
 			},
 		},
+        init = function ()
+            vim.opt.showmode = false
+        end
 	},
 }

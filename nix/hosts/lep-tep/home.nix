@@ -22,7 +22,6 @@
   home.packages = with pkgs; [
     playerctl
     lollypop
-    gimp
     telegram-desktop
     transmission_4-gtk
     hyprpicker
