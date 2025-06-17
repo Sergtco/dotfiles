@@ -1,15 +1,13 @@
-{inputs, ...}: let
+{...}: let
   quic_google = builtins.fetchurl {
     url = "https://github.com/bol-van/zapret/raw/refs/heads/master/files/fake/quic_initial_www_google_com.bin";
     sha256 = "02n5v8fya194ww3lffvjm2qgh1bh3m97l69q0nrnp5czfibrqn7l";
   };
 in {
-  disabledModules = ["services/networking/zapret.nix"];
-
-  imports = [
-    "${inputs.nixpkgs-unstable}/nixos/modules/services/networking/zapret.nix"
-  ];
-
+  programs.nekoray = {
+    enable = true;
+    tunMode.enable = true;
+  };
   services.zapret = {
     enable = true;
     udpSupport = true;
@@ -69,6 +67,8 @@ in {
       "discord.co"
       "discord-attachments-uploads-prd.storage.googleapis.com"
       "cloudflare-ech.com"
+      "cloudflare.com"
+      "cloudflare.steamstatic.com"
     ];
   };
 }

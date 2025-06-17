@@ -16,7 +16,6 @@
     ../../modules/desktop
     ../../modules/themes
     ../../modules/themes/no_rgb.nix
-    ../../modules/amdpu_patch
     ../../modules/vpn
   ];
 

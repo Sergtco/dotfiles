@@ -1,6 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  ...
+}: {
   imports = [
     ./mimeapps.nix
+    ./firefox
     ./waybar
     ./rofi
   ];
@@ -48,8 +52,8 @@
     };
   };
 
+
   home.packages = with pkgs; [
-    firefox
     pavucontrol
     mpv
     gedit
@@ -57,5 +61,6 @@
     wdisplays
     brightnessctl
     vesktop
+    thunderbird
   ];
 }
