@@ -1,23 +1,23 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    blesh
-  ];
-  programs.bash = {
+{...}: {
+  home.shell.enableZshIntegration = true;
+
+  programs.zsh = {
     enable = true;
     enableCompletion = true;
-    historyControl = ["ignoredups"];
+    autocd = true;
+    autosuggestion = {
+      enable = true;
+    };
+    history.ignoreDups = true;
+    syntaxHighlighting.enable = true;
 
     shellAliases = {
       nv = "nvim";
       tm = "tmux a || tmux";
     };
-    bashrcExtra = ''
-      [[ $- == *i* ]] && source "$(blesh-share)"/ble.sh --noattach
-      [[ ! ''${BLE_VERSION-} ]] || ble-attach
-    '';
 
     profileExtra = ''
-      bind 'set completion-ignore-case on'
+      zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
     '';
   };
 
@@ -28,7 +28,6 @@
   programs = {
     direnv = {
       enable = true;
-      enableBashIntegration = true;
       nix-direnv.enable = true;
 
       config.global.hide_env_diff = true;
@@ -36,7 +35,6 @@
 
     oh-my-posh = {
       enable = true;
-      enableBashIntegration = true;
       useTheme = "pure";
     };
   };

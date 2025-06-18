@@ -4,13 +4,11 @@
   ...
 }: {
   imports = [
-    ../../home/nvim
-    ../../home/shells/zsh.nix
-    ../../home/terminals
-    ../../home/waybar
-    ../../home/cli
-    ../../home/rofi
-    ../../home/de
+    ../../homeModules/cli
+    ../../homeModules/desktop
+    ../../homeModules/nvim
+    ../../homeModules/shell/zsh.nix
+    ../../homeModules/terminal
   ];
   home.homeDirectory = "/home/sergtco";
 
@@ -22,10 +20,8 @@
   };
 
   home.packages = with pkgs; [
-    tmux
     playerctl
     lollypop
-    gimp
     telegram-desktop
     transmission_4-gtk
     hyprpicker

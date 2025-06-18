@@ -3,6 +3,7 @@
     playerctl
     nerd-fonts.fira-code
   ];
+
   programs.waybar = {
     enable = true;
     systemd.enable = true;

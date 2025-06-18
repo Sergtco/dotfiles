@@ -21,6 +21,7 @@ in {
       sizes.terminal = 13;
     };
   };
+
   home-manager.users.sergtco.stylix = {
     enable = true;
 
@@ -36,6 +37,7 @@ in {
     targets = {
       waybar.enable = false;
       rofi.enable = false;
+      firefox.profileNames = ["default"];
     };
   };
 }

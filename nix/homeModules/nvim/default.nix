@@ -6,6 +6,7 @@
   home.sessionVariables = {
     MANPAGER = "nvim +Man!";
   };
+
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-unwrapped;
