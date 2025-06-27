@@ -4,9 +4,9 @@
     enable = true;
     defaultApplications = {
       "inode/directory" = ["thunar.desktop"];
-      "application/pdf" = ["firefox.destkop"];
+      "application/pdf" = ["brave.destkop"];
 
-      "text/html" = ["firefox.desktop"];
+      "text/html" = ["brave.desktop"];
       "text/plain" = ["nvim.desktop"];
       "text/markdown" = ["nvim.desktop"];
 
