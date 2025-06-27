@@ -20,6 +20,9 @@ in {
       };
       sizes.terminal = 13;
     };
+    targets = {
+      chromium.enable = false;
+    };
   };
 
   home-manager.users.sergtco.stylix = {
