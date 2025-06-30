@@ -26,24 +26,6 @@
       "icon-size": 20,
       "spacing": 10
     },
-    "hyprland/language": {
-    "format": "󰌓 {long}",
-    "keyboard-name": "ergohaven-k:03"
-    },
-    "hyprland/window": {
-      "format": "{}",
-      "max-length": 50,
-      "icon": true,
-      "rewrite": {
-          "(.*) — Mozilla Firefox": "󰈹  $1",
-          "nv(.*)": " $1",
-          "nv": "  Neovim ",
-          "ranger(.*)": "  $1",
-          "kitty(.*)": "  $1",
-          "Search(.*)": "  Search$1",
-      },
-      "separate-outputs": false
-    },
     "hyprland/workspaces": {
       "format": "{icon}",
       "all-outputs": true,

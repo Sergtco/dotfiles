@@ -4,7 +4,7 @@
 }: {
   imports = [
     ./mimeapps.nix
-    ./firefox
+    ./browser
     ./waybar
     ./rofi
   ];
