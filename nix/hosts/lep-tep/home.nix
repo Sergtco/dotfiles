@@ -5,7 +5,7 @@
 }: {
   imports = [
     ../../homeModules/cli
-    ../../homeModules/destkop
+    ../../homeModules/desktop
     ../../homeModules/nvim
     ../../homeModules/shell/zsh.nix
     ../../homeModules/terminal
