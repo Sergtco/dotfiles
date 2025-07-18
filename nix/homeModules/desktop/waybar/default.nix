@@ -46,7 +46,11 @@
           "format-plugged" = " {capacity}%";
           "format-alt" = "{time} {icon}";
           "format-full" = "󰁹 {capacity}%";
-          "format-icons" = ["󰁺" "󰁽" "󰂁"];
+          "format-icons" = [
+            "󰁺"
+            "󰁽"
+            "󰂁"
+          ];
         };
         "hyprland/workspaces" = {
           format = "{icon}";
@@ -84,7 +88,11 @@
         wireplumber = {
           format = "{icon} {volume}%";
           format-muted = "󰝟";
-          format-icons = ["" "" ""];
+          format-icons = [
+            ""
+            ""
+            ""
+          ];
           on-click = "pavucontrol";
         };
         bluetooth = {
