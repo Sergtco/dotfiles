@@ -2,6 +2,13 @@
   services = {
     tumbler.enable = true;
     blueman.enable = true;
+
+    printing.enable = true;
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
   };
 
   ### Enable thunar fm
