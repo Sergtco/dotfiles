@@ -11,6 +11,7 @@
     ../../modules/utils
     ../../modules/desktop
     ../../modules/themes
+    ../../modules/virtualization
     ../../modules/vpn
   ];
 
