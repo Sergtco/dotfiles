@@ -139,7 +139,7 @@
   environment.systemPackages = with pkgs; [
     #cli
     bash
-    htop
+    bottom
     curl
     p7zip
     zip
