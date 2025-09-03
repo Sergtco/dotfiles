@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./mimeapps.nix
     ./browser
@@ -32,6 +29,7 @@
       general = {
         lock_cmd = "pidof hyprlock || hyprlock";
         after_sleep_cmd = "hyprctl dispatch dpms on";
+        before_sleep_cmd = "hyprlock;";
       };
 
       listeners = [
@@ -51,7 +49,6 @@
       ];
     };
   };
-
 
   home.packages = with pkgs; [
     pavucontrol

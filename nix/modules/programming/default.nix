@@ -1,6 +1,11 @@
 {pkgs, ...}: {
   users.users.sergtco.extraGroups = ["docker"];
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    daemon.settings = {
+      mtu = 1300;
+    };
+  };
   environment.systemPackages = with pkgs; [
     #compilers
     gcc
@@ -19,6 +24,7 @@
     #manuals
     man-pages
     man-pages-posix
+    tlrc
   ];
   documentation.dev.enable = true;
   documentation.man.generateCaches = true;
