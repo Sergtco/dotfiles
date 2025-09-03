@@ -1,13 +1,16 @@
 {
   pkgs,
   config,
+  inputs,
   ...
 }: {
+  imports = [
+    inputs.nix-index-database.homeModules.nix-index
+  ];
   home.packages = with pkgs; [
     ripgrep
     fd
     tmux
-    comma
   ];
 
   programs = {
@@ -32,6 +35,7 @@
   programs = {
     fzf.enable = true;
     nix-index.enable = true;
+    nix-index-database.comma.enable = true;
     yazi.enable = true;
     zoxide.enable = true;
   };

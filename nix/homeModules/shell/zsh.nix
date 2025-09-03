@@ -23,6 +23,7 @@
 
   home.sessionPath = [
     "/home/sergtco/.cargo/bin/"
+    "/home/sergtco/go/bin/"
   ];
 
   programs = {

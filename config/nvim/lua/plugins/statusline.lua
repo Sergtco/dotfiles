@@ -10,20 +10,14 @@ return {
 			},
 			sections = {
 				lualine_a = { "mode" },
-				lualine_b = {},
 				lualine_c = { "filename", "diagnostics" },
 				lualine_x = { "location" },
 				lualine_y = { "branch" },
-				lualine_z = {},
 			},
-			extensions = {
-				"quickfix",
-				"oil",
-				"fugitive",
-			},
+			extensions = { "quickfix", "oil", "fugitive" },
 		},
-        init = function ()
-            vim.opt.showmode = false
-        end
+		init = function()
+			vim.opt.showmode = false
+		end,
 	},
 }
