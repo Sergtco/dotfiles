@@ -22,9 +22,9 @@ in {
     udpPorts = ["50000:50099"];
     httpSupport = false;
     params = [
-      "--filter-tcp=443 --dpi-desync=fake --dpi-desync-autottl=2 --dpi-desync-repeats=6 --dpi-desync-fooling=badseq --dpi-desync-fake-tls=${client_hello} --new"
-      "--filter-udp=443 --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic=${quic_google} --new"
-      "--filter-udp=50000-50099 --dpi-desync=fake --dpi-desync-any-protocol --dpi-desync-cutoff=n2 --dpi-desync-repeats=6 --new"
+      "--filter-tcp=443 --dpi-desync=fake --dpi-desync-autottl=2 --dpi-desync-repeats=6 --dpi-desync-fooling=badseq --dpi-desync-fake-tls=${client_hello} "
+      "--filter-udp=443 --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic=${quic_google} "
+      "--filter-udp=50000-50099 --dpi-desync=fake --dpi-desync-any-protocol --dpi-desync-cutoff=n2 --dpi-desync-repeats=6 "
     ];
     whitelist = [
       "dis.gd"
@@ -67,6 +67,7 @@ in {
       "yt-video-upload.l.google.com"
       "ytimg.com"
       "ytimg.l.google.com"
+      "rutracker.org"
     ];
   };
 }
