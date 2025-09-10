@@ -26,8 +26,8 @@
     transmission_4-gtk
     hyprpicker
     grimblast
-    vial
     onlyoffice-bin_latest
+    wdisplays
   ];
 
   programs.home-manager.enable = true;
