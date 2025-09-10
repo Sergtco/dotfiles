@@ -2,9 +2,6 @@
   users.users.sergtco.extraGroups = ["docker"];
   virtualisation.docker = {
     enable = true;
-    daemon.settings = {
-      mtu = 1300;
-    };
   };
   environment.systemPackages = with pkgs; [
     #compilers
@@ -20,12 +17,26 @@
     jq
     gnumake
     graphviz
+    nixos-firewall-tool
 
     #manuals
     man-pages
     man-pages-posix
     tlrc
+
+    # language utils
+    black
+    stylua
+    alejandra
+    gofumpt
+    golangci-lint
+    nodePackages.prettier
+    clang-tools
+    python312Packages.sqlfmt
+    gdb
+    delve
   ];
+
   documentation.dev.enable = true;
   documentation.man.generateCaches = true;
 }

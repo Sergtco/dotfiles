@@ -11,8 +11,6 @@ return {
 			"ibhagwan/fzf-lua",
 		},
 
-		event = { "BufReadPost", "BufWritePost", "BufNewFile" },
-
 		opts = function()
 			local null_ls = require("null-ls")
 			return {

@@ -223,6 +223,9 @@
             s left
             d down
             f right
+            i ◀◀
+            o ▶⏸
+            p ▶▶
           )
 
           (deflayermap (layers)
