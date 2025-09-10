@@ -50,8 +50,8 @@ return {
 		build = function()
 			require("dbee").install()
 		end,
-		config = function()
-			require("dbee").setup()
-		end,
+		opts = {
+			result = { focus_result = false },
+		},
 	},
 }
