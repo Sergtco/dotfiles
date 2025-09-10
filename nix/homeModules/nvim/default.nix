@@ -11,30 +11,14 @@
     enable = true;
     package = pkgs.neovim-unwrapped;
     extraPackages = with pkgs.unstable; [
+      # lsps
       basedpyright
-      black
-
       lua-language-server
-      stylua
-
       nil
-      alejandra
-
-      gofumpt
       gopls
-      golangci-lint
-
-      nodePackages.prettier
       clang-tools
-
-      python312Packages.sqlfmt
-
       marksman
-
       zls
-
-      gdb
-      delve
     ];
     defaultEditor = true;
   };
