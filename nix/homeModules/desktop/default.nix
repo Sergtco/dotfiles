@@ -55,7 +55,6 @@
     mpv
     gedit
     eog
-    wdisplays
     brightnessctl
     vesktop
     thunderbird
