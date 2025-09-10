@@ -1,7 +1,6 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-
 		dependencies = {
 			"nvimtools/none-ls.nvim",
 			"nvim-lua/plenary.nvim",
@@ -58,11 +57,13 @@ return {
 			for server, config in pairs(opts.servers) do
 				config.on_attach = on_attach
 				config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-				require("lspconfig")[server].setup(config)
+				vim.lsp.config(server, config)
+				vim.lsp.enable(server)
 			end
 
 			require("null-ls").setup({
 				sources = opts.null_ls.sources,
+				capabilities = require("blink.cmp").get_lsp_capabilities({}),
 				on_attach = on_attach,
 			})
 

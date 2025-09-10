@@ -16,6 +16,7 @@
     ../../modules/themes
     ../../modules/themes/no_rgb.nix
     ../../modules/vpn
+    ../../modules/ai
   ];
 
   ### BOOTLOADER ###
