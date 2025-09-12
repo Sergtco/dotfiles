@@ -63,12 +63,15 @@ in {
     enable = true;
     package = pkgs.unstable.zapret;
     udpSupport = true;
-    udpPorts = ["50000:50099"];
+    udpPorts = [
+      "50000:50099"
+      "19294:19344"
+    ];
     httpSupport = false;
     params = [
       "--filter-tcp=443 --dpi-desync=fake,multidisorder --dpi-desync-split-pos=method+2,midsld,5 --dpi-desync-ttl=1 --dpi-desync-fooling=md5sig,badsum,badseq --dpi-desync-repeats=15 --dpi-desync-fake-tls=${client_hello} --hostlist ${hostlist} --new"
       "--filter-udp=443 --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic=${quic_google} --hostlist ${hostlist} --new"
-      "--filter-udp=50000-50099 --dpi-desync=fake --dpi-desync-any-protocol --dpi-desync-cutoff=n2 --dpi-desync-repeats=6 --hostlist ${hostlist} --new"
+      "--filter-udp=19294-19344,50000-50099 --filter-l7=discord,stun --dpi-desync=fake --dpi-desync-repeats=6 --new"
     ];
   };
 }

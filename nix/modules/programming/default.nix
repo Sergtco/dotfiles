@@ -3,15 +3,15 @@
   virtualisation.docker = {
     enable = true;
   };
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs.unstable; [
     #compilers
     gcc
     clang
-    unstable.python3
-    unstable.uv
-    unstable.go
-    unstable.rustup
-    unstable.zig
+    python3
+    uv
+    go
+    rustup
+    zig
 
     #utils
     jq
@@ -35,6 +35,9 @@
     python312Packages.sqlfmt
     gdb
     delve
+    typst
+    tinymist
+    typstyle
   ];
 
   documentation.dev.enable = true;
