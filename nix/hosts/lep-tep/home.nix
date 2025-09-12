@@ -26,7 +26,7 @@
     transmission_4-gtk
     hyprpicker
     grimblast
-    onlyoffice-bin_latest
+    libreoffice-fresh
     wdisplays
   ];
 

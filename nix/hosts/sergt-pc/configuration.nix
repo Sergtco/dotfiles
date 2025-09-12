@@ -16,7 +16,6 @@
     ../../modules/themes
     ../../modules/themes/no_rgb.nix
     ../../modules/vpn
-    ../../modules/ai
   ];
 
   ### BOOTLOADER ###
@@ -29,18 +28,16 @@
         timeoutStyle = "hidden";
       };
     };
-
-    initrd.verbose = false;
-    consoleLogLevel = 0;
-    plymouth.enable = true;
-    kernelParams = ["quiet"];
   };
 
   ### KERNEL ###
   boot = {
     extraModulePackages = [config.boot.kernelPackages.ddcci-driver];
     initrd.kernelModules = ["amdgpu"];
-    kernelModules = ["ddcci_backlight" "nct6775"];
+    kernelModules = [
+      "ddcci_backlight"
+      "nct6775"
+    ];
   };
 
   services.udev.packages = with pkgs; [via];

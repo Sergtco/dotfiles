@@ -24,11 +24,6 @@
         device = "nodev";
       };
     };
-
-    initrd.verbose = false;
-    consoleLogLevel = 0;
-    plymouth.enable = true;
-    kernelParams = ["quiet"];
   };
 
   ### KERNEL ###

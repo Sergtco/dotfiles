@@ -24,6 +24,12 @@
         cm = "commit";
         st = "status";
       };
+      includes = [
+        {
+          path = "~/work/.gitconfig";
+          condition = "gitdir:~/work/";
+        }
+      ];
     };
 
     gh = {

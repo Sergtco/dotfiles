@@ -22,12 +22,14 @@ return {
 					nil_ls = {},
 					rust_analyzer = {},
 					zls = {},
+					tinymist = {},
 				},
 
 				null_ls = {
 					sources = {
 						null_ls.builtins.diagnostics.golangci_lint,
 						null_ls.builtins.formatting.alejandra,
+						null_ls.builtins.formatting.typstyle,
 						null_ls.builtins.formatting.black,
 						null_ls.builtins.formatting.clang_format,
 						null_ls.builtins.formatting.prettier,
