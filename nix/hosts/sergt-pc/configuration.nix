@@ -14,7 +14,6 @@
     ../../modules/virtualization
     ../../modules/desktop
     ../../modules/themes
-    ../../modules/themes/no_rgb.nix
     ../../modules/vpn
   ];
 
@@ -61,6 +60,7 @@
       "defaults"
       "x-gvfs-show"
     ];
+    noCheck = true;
   };
 
   fileSystems."/mnt/chonky" = {
@@ -70,6 +70,7 @@
       "defaults"
       "x-gvfs-show"
     ];
+    noCheck = true;
   };
 
   fileSystems."/mnt/fasty" = {
@@ -79,6 +80,7 @@
       "defaults"
       "x-gvfs-show"
     ];
+    noCheck = true;
   };
 
   ### NETWORKING ###

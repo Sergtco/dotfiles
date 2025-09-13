@@ -1,15 +1,6 @@
 {pkgs, ...}: {
   programs.steam = {
     enable = true;
-
-    gamescopeSession = {
-      enable = true;
-      steamArgs = [
-        "-steamos3"
-        "-gamepadui"
-        "-pipewire-dmabuf"
-      ];
-    };
   };
 
   programs.gamescope = {
