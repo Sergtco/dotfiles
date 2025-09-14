@@ -13,6 +13,7 @@
     ../../modules/utils
     ../../modules/virtualization
     ../../modules/desktop
+    # ../../modules/themes/no_rgb.nix
     ../../modules/themes
     ../../modules/vpn
   ];
