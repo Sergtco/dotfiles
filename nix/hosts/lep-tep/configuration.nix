@@ -145,12 +145,14 @@
     wl-clipboard
     xclip
   ];
+
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
     corefonts
     noto-fonts-color-emoji
   ];
+
   ### GRAPHICS ###
   services.xserver.enable = true;
   services.xserver.videoDrivers = ["amdgpu"];
@@ -160,21 +162,8 @@
     enable32Bit = true;
   };
 
-  services.greetd.enable = true;
-  programs.regreet.enable = true;
-
-  programs = {
-    hyprland = {
-      enable = true;
-      package = pkgs.hyprland;
-      xwayland.enable = true;
-      withUWSM = true;
-    };
-    hyprlock.enable = true;
-  };
-  xdg.portal = {
+  custom.desktop = {
     enable = true;
-    extraPortals = with pkgs; [xdg-desktop-portal-gtk];
   };
 
   ### KEYBOARD ###
