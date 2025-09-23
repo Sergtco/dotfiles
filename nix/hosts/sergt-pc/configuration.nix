@@ -193,28 +193,10 @@
     enable32Bit = true;
   };
 
-  services.greetd = {
+  ## DESKTOP ###
+  custom.desktop = {
     enable = true;
-    settings.initial_session = {
-      command = "${pkgs.uwsm}/bin/uwsm start -- hyprland-uwsm.desktop";
-      user = "sergtco";
-    };
-  };
-
-  programs.regreet.enable = true;
-
-  programs = {
-    hyprland = {
-      enable = true;
-      package = pkgs.hyprland;
-      xwayland.enable = true;
-      withUWSM = true;
-    };
-    hyprlock.enable = true;
-  };
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [xdg-desktop-portal-gtk];
+    autologin = true;
   };
 
   ### NIX ###
