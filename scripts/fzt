@@ -2,9 +2,14 @@
 
 sessions ()
 {
-    local session=`tmux list-sessions -F "#S" | fzf-tmux -p | sed 's/^\(.*\): .*$/\1/'`
-    if [ $session != 1 ]; then
-        tmux switch-client -t $session
-    fi
+    tmux list-sessions -F '#{session_name}' 2>/dev/null \
+    | fzf-tmux --exit-0 --reverse --preview 'tmux capture-pane -ep -t {}:1' \
+    | xargs -r tmux switch-client -t
 }
-sessions
+
+
+case "$1" in
+    "sessions") sessions
+    ;;
+esac
+

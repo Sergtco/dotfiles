@@ -15,7 +15,7 @@
     ../../modules/desktop
     ../../modules/themes
     ../../modules/vpn
-    # ../../modules/ai
+    ../../modules/ai
   ];
 
   ### BOOTLOADER ###
@@ -36,7 +36,6 @@
     initrd.kernelModules = ["amdgpu"];
     kernelModules = [
       "ddcci_backlight"
-      "nct6775"
     ];
   };
 

@@ -3,7 +3,7 @@
     ./mimeapps.nix
     ./browser
     ./waybar
-    ./rofi
+    ./fuzzel
   ];
   services = {
     udiskie.enable = true;

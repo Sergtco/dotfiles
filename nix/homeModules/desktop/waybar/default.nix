@@ -16,7 +16,9 @@
         mode = "dock";
         start_hidden = false;
         modules-left =
-          ["clock"]
+          [
+            "clock"
+          ]
           ++ ["battery"]
           ++ [
             "idle_inhibitor"
@@ -72,9 +74,9 @@
         };
         network = {
           format-wifi = " {signalStrength}%";
-          format-ethernet = "{ipaddr}/{cidr} ";
-          tooltip-format = "{ifname} via {gwaddr} ";
-          format-linked = "{ifname} (No IP) ";
+          format-ethernet = "{ipaddr}/{cidr}";
+          tooltip-format = "{ifname} via {gwaddr}";
+          format-linked = "{ifname} (No IP)";
           format-disconnected = "Disconnected ⚠";
           format-alt = "{essid}: {ipaddr}/{cidr}";
         };
