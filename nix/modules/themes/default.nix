@@ -3,7 +3,7 @@
 in {
   stylix = {
     enable = true;
-    image = ../../../wallpaper/mini-wave-white.jpg;
+    image = ../../../wallpaper/nixos.jpg;
     base16Scheme = themes.lackluster;
     polarity = "dark";
 
@@ -18,7 +18,9 @@ in {
         package = pkgs.nerd-fonts.fira-code;
         name = "FiraCode Nerd Font Mono";
       };
+      sizes.desktop = 13;
       sizes.terminal = 13;
+      sizes.popups = 14;
     };
     targets = {
       chromium.enable = false;
@@ -39,8 +41,6 @@ in {
 
     targets = {
       waybar.enable = false;
-      rofi.enable = false;
-      firefox.profileNames = ["default"];
     };
   };
 }

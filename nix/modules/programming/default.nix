@@ -33,7 +33,6 @@
     golangci-lint
     nodePackages.prettier
     clang-tools
-    python312Packages.sqlfmt
     gdb
     delve
     typst
