@@ -22,6 +22,7 @@ in {
       sizes.terminal = 13;
       sizes.popups = 14;
     };
+
     targets = {
       chromium.enable = false;
     };

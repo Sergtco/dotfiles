@@ -9,7 +9,6 @@
     udiskie.enable = true;
     swaync = {
       enable = true;
-      settings = ../../../config/swaync/config.json;
     };
 
     swayosd.enable = true;

@@ -13,7 +13,6 @@
 
     shellAliases = {
       nv = "nvim";
-      tm = "tmux a || tmux";
       shortest = "brave --new-window https://www.youtube.com/shorts/ && go test ./...";
     };
 
@@ -31,7 +30,6 @@
     direnv = {
       enable = true;
       nix-direnv.enable = true;
-
       config.global.hide_env_diff = true;
     };
 

@@ -16,27 +16,18 @@ in {
 
   config = lib.mkIf cfg.enable {
     services = {
-      tumbler.enable = true;
       blueman.enable = true;
 
       printing.enable = true;
       printing.drivers = with pkgs; [
         canon-cups-ufr2
       ];
+
       avahi = {
         enable = true;
         nssmdns4 = true;
         openFirewall = true;
       };
-    };
-
-    ### Enable thunar fm
-    programs.thunar = {
-      enable = true;
-      plugins = with pkgs.xfce; [
-        thunar-archive-plugin
-        thunar-volman
-      ];
     };
 
     programs.gpu-screen-recorder.enable = true;
@@ -47,6 +38,7 @@ in {
       ffmpeg
       gnome-disk-utility
       xarchiver
+      pcmanfm
       rar
       gimp3
     ];
@@ -60,13 +52,9 @@ in {
       };
       hyprlock.enable = true;
     };
-    xdg.portal = {
-      enable = true;
-      extraPortals = with pkgs; [xdg-desktop-portal-gtk];
-    };
+    xdg.portal.enable = true;
 
     ### LOGIN ###
-
     services.greetd = {
       enable = true;
       settings.initial_session = lib.mkIf cfg.autologin {

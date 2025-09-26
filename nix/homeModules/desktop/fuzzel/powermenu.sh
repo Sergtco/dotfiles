@@ -4,11 +4,11 @@ SELECTION="$(printf "1 - Lock\n2 - Suspend\n3 - Log out\n4 - Reboot\n5 - Reboot 
 
 case $SELECTION in
 	*"Lock")
-		loginctl lock-session;;
+		loginctl lock-session ${XDG_SESSION_ID-};;
 	*"Suspend")
-		suspend;;
+		systemctl suspend;;
 	*"Log out")
-        logout;;
+        loginctl terminate-session ${XDG_SESSION_ID-};;
 	*"Reboot")
 		systemctl reboot;;
 	*"Reboot to UEFI")
