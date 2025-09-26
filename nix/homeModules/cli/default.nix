@@ -1,16 +1,15 @@
 {
   pkgs,
-  config,
   inputs,
   ...
 }: {
   imports = [
     inputs.nix-index-database.homeModules.nix-index
+    ./tmux.nix
   ];
   home.packages = with pkgs; [
     ripgrep
     fd
-    tmux
   ];
 
   programs = {
@@ -40,14 +39,9 @@
 
   programs = {
     fzf.enable = true;
-    nix-index.enable = true;
-    nix-index-database.comma.enable = true;
     yazi.enable = true;
     zoxide.enable = true;
-  };
-
-  xdg.configFile.tmux = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/tmux";
-    recursive = true;
+    nix-index.enable = true;
+    nix-index-database.comma.enable = true;
   };
 }
