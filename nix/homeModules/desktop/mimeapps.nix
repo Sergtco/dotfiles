@@ -3,7 +3,7 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "inode/directory" = ["thunar.desktop"];
+      "inode/directory" = ["pcmanfm.desktop"];
       "application/pdf" = ["brave.destkop"];
 
       "text/html" = ["brave.desktop"];
@@ -13,11 +13,11 @@
       "video/*" = ["mpv.desktop"];
       "video/mp4" = ["mpv.desktop"];
       "video/x-matroska" = ["mpv.desktop"];
-      "image/*" = ["org.nomacs.ImageLounge.desktop"];
+      "image/*" = ["swayimg"];
 
-      "image/png" = ["org.nomacs.ImageLounge.desktop"];
-      "image/jpeg" = ["org.nomacs.ImageLounge.desktop"];
-      "image/gif" = ["org.nomacs.ImageLounge.desktop"];
+      "image/png" = ["swayimg"];
+      "image/jpeg" = ["swayimg"];
+      "image/gif" = ["swayimg"];
     };
   };
 }

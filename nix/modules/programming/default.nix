@@ -1,9 +1,11 @@
 {pkgs, ...}: {
   users.users.sergtco.extraGroups = ["docker"];
+
   virtualisation.docker = {
     enable = true;
     enableOnBoot = false;
   };
+
   environment.systemPackages = with pkgs.unstable; [
     #compilers
     gcc
@@ -17,7 +19,6 @@
     #utils
     jq
     gnumake
-    graphviz
     nixos-firewall-tool
 
     #manuals

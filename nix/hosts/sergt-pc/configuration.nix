@@ -34,9 +34,7 @@
   boot = {
     extraModulePackages = [config.boot.kernelPackages.ddcci-driver];
     initrd.kernelModules = ["amdgpu"];
-    kernelModules = [
-      "ddcci_backlight"
-    ];
+    kernelModules = ["ddcci_backlight"];
   };
 
   services.udev.packages = with pkgs; [via];
@@ -56,30 +54,21 @@
   fileSystems."/mnt/hard" = {
     label = "hard";
     fsType = "ext4";
-    options = [
-      "defaults"
-      "x-gvfs-show"
-    ];
+    options = ["defaults" "x-gvfs-show"];
     noCheck = true;
   };
 
   fileSystems."/mnt/chonky" = {
     label = "chonky";
     fsType = "ext4";
-    options = [
-      "defaults"
-      "x-gvfs-show"
-    ];
+    options = ["defaults" "x-gvfs-show"];
     noCheck = true;
   };
 
   fileSystems."/mnt/fasty" = {
     label = "fasty";
     fsType = "ext4";
-    options = [
-      "defaults"
-      "x-gvfs-show"
-    ];
+    options = ["defaults" "x-gvfs-show"];
     noCheck = true;
   };
 
@@ -137,19 +126,14 @@
   users.users.sergtco = {
     isNormalUser = true;
     description = "sergtco";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
+    extraGroups = ["networkmanager" "wheel"];
     shell = pkgs.zsh;
   };
 
   programs.zsh.enable = true;
   environment.localBinInPath = true;
 
-  security.polkit = {
-    enable = true;
-  };
+  security.polkit.enable = true;
 
   ### PACKAGES ####
   nixpkgs.config = {
@@ -162,7 +146,17 @@
         inherit (final) config;
       };
     })
+    (final: prev: {
+      inherit
+        (prev.lixPackageSets.latest)
+        nixpkgs-review
+        nix-eval-jobs
+        nix-fast-build
+        colmena
+        ;
+    })
   ];
+  nix.package = pkgs.lixPackageSets.latest.lix;
 
   environment.systemPackages = with pkgs; [
     #cli

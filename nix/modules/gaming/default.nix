@@ -1,34 +1,30 @@
 {pkgs, ...}: {
   programs.steam = {
     enable = true;
+    extraCompatPackages = [pkgs.proton-ge-bin];
   };
 
   programs.gamescope = {
     enable = true;
-    args = [
-      "-W 1920"
-      "-H 1080"
-      "-f"
-      "--force-grab-cursor"
-      "-r 165"
-    ];
+    args = ["-W1920" "-H1080" "-r165" "-f" "--force-grab-cursor"];
   };
 
   programs.gamemode.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    (lutris.override {
-      extraPkgs = pkgs: [
-        wineWowPackages.stable
-        wine
-        winetricks
-        mangohud
-        umu-launcher
-      ];
-    })
-    r2modman
-    protonplus
-  ];
+  environment.systemPackages = with pkgs; [r2modman];
+
+  home-manager.users.sergtco.programs.lutris = {
+    enable = true;
+    protonPackages = [pkgs.proton-ge-bin];
+    winePackages = [pkgs.wineWowPackages.stable];
+    extraPackages = with pkgs; [
+      winetricks
+      mangohud
+      umu-launcher
+      unstable.gamescope
+      gamemode
+    ];
+  };
 
   boot.initrd.kernelModules = [
     "xpad"
