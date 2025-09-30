@@ -1,10 +1,17 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
   imports = [
     ./mimeapps.nix
     ./browser
     ./waybar
     ./fuzzel
+    ./music.nix
   ];
+  xdg.userDirs.enable = true;
   services = {
     udiskie.enable = true;
     swaync = {
@@ -53,7 +60,7 @@
     pavucontrol
     mpv
     gedit
-    eog
+    unstable.swayimg
     brightnessctl
     vesktop
     thunderbird

@@ -11,10 +11,8 @@
     enable = true;
     package = pkgs.neovim-unwrapped;
     extraPackages = with pkgs.unstable; [
-      # lsps
       basedpyright
       lua-language-server
-      nil
       gopls
       clang-tools
       marksman

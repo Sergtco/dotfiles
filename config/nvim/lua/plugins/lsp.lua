@@ -19,7 +19,6 @@ return {
 					gopls = { settings = { gopls = { gofumpt = true } } },
 					lua_ls = { settings = { Lua = { format = { enable = false } } } },
 					marksman = {},
-					nil_ls = {},
 					rust_analyzer = {},
 					zls = {},
 					tinymist = {},
