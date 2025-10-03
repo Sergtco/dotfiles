@@ -129,17 +129,7 @@
         inherit (final) config;
       };
     })
-    (final: prev: {
-      inherit
-        (prev.lixPackageSets.latest)
-        nixpkgs-review
-        nix-eval-jobs
-        nix-fast-build
-        colmena
-        ;
-    })
   ];
-  nix.package = pkgs.lixPackageSets.latest.lix;
 
   environment.systemPackages = with pkgs; [
     #cli
@@ -179,6 +169,13 @@
   ### NIX ###
   nix.settings = {
     builders-use-substitutes = true;
+    substituters = [
+      "https://cache.nixos.org/"
+      "https://install.determinate.systems"
+    ];
+    trusted-public-keys = [
+      "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM="
+    ];
     experimental-features = [
       "nix-command"
       "flakes"
