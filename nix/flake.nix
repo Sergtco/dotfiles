@@ -16,11 +16,6 @@
     };
 
     stylix.url = "github:danth/stylix/release-25.05";
-
-    nix-index-database = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
@@ -28,7 +23,6 @@
     nixpkgs,
     home-manager,
     stylix,
-    nix-index-database,
     ...
   } @ inputs: let
     myLib = import ./myLib {inherit inputs;};

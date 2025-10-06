@@ -4,12 +4,17 @@
   ...
 }: {
   imports = [
-    inputs.nix-index-database.homeModules.nix-index
     ./tmux.nix
   ];
+
   home.packages = with pkgs; [
     ripgrep
     fd
+    file
+    usbutils
+    ffmpeg
+    imagemagick
+    progress
   ];
 
   programs = {
@@ -30,7 +35,6 @@
         }
       ];
     };
-
     gh = {
       enable = true;
       gitCredentialHelper.enable = true;
@@ -41,7 +45,5 @@
     fzf.enable = true;
     yazi.enable = true;
     zoxide.enable = true;
-    nix-index.enable = true;
-    nix-index-database.comma.enable = true;
   };
 }

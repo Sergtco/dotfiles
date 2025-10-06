@@ -63,7 +63,7 @@
     unstable.swayimg
     brightnessctl
     vesktop
-    thunderbird
+    unstable.thunderbird
   ];
 
   home.file = {

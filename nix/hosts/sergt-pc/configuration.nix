@@ -10,7 +10,6 @@
     ../../modules/programming
     ../../modules/music
     ../../modules/zapret
-    ../../modules/utils
     ../../modules/virtualization
     ../../modules/desktop
     ../../modules/themes
@@ -74,7 +73,7 @@
 
   ### NETWORKING ###
   networking.hostName = "sergt-pc";
-
+  networking.nameservers = ["8.8.8.8" "1.1.1.1" "4.4.4.4"];
   networking.networkmanager.enable = true;
 
   programs.ssh.startAgent = true;
