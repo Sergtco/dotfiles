@@ -8,7 +8,6 @@
     ../../modules/gaming
     ../../modules/programming
     ../../modules/zapret
-    ../../modules/utils
     ../../modules/desktop
     ../../modules/themes
     ../../modules/virtualization
@@ -39,6 +38,7 @@
   networking.hostName = "lep-tep";
 
   networking.networkmanager.enable = true;
+  networking.nameservers = ["8.8.8.8" "1.1.1.1" "4.4.4.4"];
 
   programs.ssh.startAgent = true;
 

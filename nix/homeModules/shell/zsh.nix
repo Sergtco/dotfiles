@@ -5,18 +5,15 @@
     enable = true;
     enableCompletion = true;
     autocd = true;
-    autosuggestion = {
-      enable = true;
-    };
+    autosuggestion.enable = true;
     history.ignoreDups = true;
     syntaxHighlighting.enable = true;
 
     shellAliases = {
       nv = "nvim";
-      shortest = "brave --new-window https://www.youtube.com/shorts/ && go test ./...";
     };
 
-    profileExtra = ''
+    initContent = ''
       zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
     '';
   };
