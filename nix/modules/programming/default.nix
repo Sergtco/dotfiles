@@ -31,7 +31,6 @@
     stylua
     alejandra
     gofumpt
-    golangci-lint
     nodePackages.prettier
     clang-tools
     gdb

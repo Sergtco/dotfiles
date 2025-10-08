@@ -1,14 +1,12 @@
 return {
 	{
 		"stevearc/oil.nvim",
-		wants = { "echasnovski/mini.icons" },
 		lazy = false,
 		keys = { { "<leader>o", "<cmd>Oil<cr>", desc = "Open Oil" } },
 		opts = {},
 	},
 	{
 		"ibhagwan/fzf-lua",
-		wants = { "echasnovski/mini.icons" },
 		keys = {
 			{ "<leader>z", "<cmd>FzfLua<cr>", desc = "FzfLua" },
 			{ "<leader>f", "<cmd>FzfLua files<cr>", desc = "find_files" },
