@@ -1,7 +1,6 @@
 return {
 	{
 		"cbochs/grapple.nvim",
-		wants = { "echasnovski/mini.icons" },
 		keys = {
 			{ "<leader>m", "<cmd>Grapple toggle<cr>", desc = "Grapple toggle" },
 			{ "<leader>M", "<cmd>Grapple toggle_tags<cr>", desc = "Grapple open tags" },
