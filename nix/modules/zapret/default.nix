@@ -7,50 +7,8 @@
     url = "https://github.com/bol-van/zapret/raw/refs/heads/master/files/fake/tls_clienthello_www_google_com.bin";
     sha256 = "0p172hxcfsf5knap4wdimp8vqgsbhg6cnbbb88yam07v9kp2nv4k";
   };
-  whitelist = [
-    "dis.gd"
-    "discord-attachments-uploads-prd.storage.googleapis.com"
-    "discord.app"
-    "discord.co"
-    "discord.com"
-    "discord.design"
-    "discord.dev"
-    "discord.gift"
-    "discord.gifts"
-    "discord.gg"
-    "discord.media"
-    "discord.new"
-    "discord.store"
-    "discord.status"
-    "discord-activities.com"
-    "discordactivities.com"
-    "discordapp.com"
-    "discordapp.net"
-    "discordcdn.com"
-    "discordmerch.com"
-    "discordpartygames.com"
-    "discordsays.com"
-    "discordsez.com"
-    "stable.dl2.discordapp.net"
-    "yt3.ggpht.com"
-    "yt4.ggpht.com"
-    "yt3.googleusercontent.com"
-    "googlevideo.com"
-    "jnn-pa.googleapis.com"
-    "wide-youtube.l.google.com"
-    "youtube-nocookie.com"
-    "youtube-ui.l.google.com"
-    "youtube.com"
-    "youtubeembeddedplayer.googleapis.com"
-    "youtubekids.com"
-    "youtubei.googleapis.com"
-    "youtu.be"
-    "yt-video-upload.l.google.com"
-    "ytimg.com"
-    "ytimg.l.google.com"
-    "rutracker.org"
-  ];
   hostlist = builtins.toFile "zapret_whitelist" (builtins.concatStringsSep "\n" whitelist);
+  whitelist = (import ./whitelist.nix {}).whitelist;
 in {
   programs.nekoray = {
     enable = true;
