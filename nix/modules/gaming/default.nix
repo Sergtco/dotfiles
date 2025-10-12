@@ -16,7 +16,7 @@
   home-manager.users.sergtco.programs.lutris = {
     enable = true;
     protonPackages = [pkgs.proton-ge-bin];
-    winePackages = [pkgs.wineWowPackages.stable];
+    winePackages = with pkgs; [wine wineWowPackages.stable];
     extraPackages = with pkgs; [
       winetricks
       mangohud
