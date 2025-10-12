@@ -1,10 +1,5 @@
 {pkgs, ...}: {
-  programs.chromium = {
+  programs.firefox = {
     enable = true;
-    package = pkgs.brave;
-    commandLineArgs = [
-      "--enable-features=UseOzonePlatform"
-      "--ozone-platform=wayland"
-    ];
   };
 }

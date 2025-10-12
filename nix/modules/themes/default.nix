@@ -22,10 +22,6 @@ in {
       sizes.terminal = 13;
       sizes.popups = 14;
     };
-
-    targets = {
-      chromium.enable = false;
-    };
   };
 
   home-manager.users.sergtco.stylix = {
@@ -42,6 +38,7 @@ in {
 
     targets = {
       waybar.enable = false;
+      firefox.enable = false;
     };
   };
 }
