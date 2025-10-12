@@ -15,6 +15,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     stylix.url = "github:danth/stylix/release-25.05";
   };
 
@@ -22,6 +27,7 @@
     determinate,
     nixpkgs,
     home-manager,
+    nix-index-database,
     stylix,
     ...
   } @ inputs: let
@@ -33,6 +39,7 @@
         hostname = "sergt-pc";
         extraModules = [
           stylix.nixosModules.stylix
+          nix-index-database.nixosModules.nix-index
           determinate.nixosModules.default
         ];
       };
@@ -41,6 +48,7 @@
         hostname = "lep-tep";
         extraModules = [
           stylix.nixosModules.stylix
+          nix-index-database.nixosModules.nix-index
           determinate.nixosModules.default
         ];
       };
