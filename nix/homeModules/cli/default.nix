@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./tmux.nix
+    inputs.nix-index-database.homeModules.nix-index
   ];
 
   home.packages = with pkgs; [
@@ -45,5 +46,7 @@
     fzf.enable = true;
     yazi.enable = true;
     zoxide.enable = true;
+    nix-index.enable = true;
+    nix-index-database.comma.enable = true;
   };
 }
