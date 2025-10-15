@@ -6,7 +6,6 @@
     clock24 = true;
     newSession = true;
     disableConfirmationPrompt = true;
-    sensibleOnTop = true;
     focusEvents = true;
     escapeTime = 0;
     mouse = true;
@@ -24,6 +23,8 @@
     ];
     extraConfig = ''
       # Set new panes in current dir
+      set -gu default-command
+      set -g default-shell "$SHELL"
       bind c new-window -c "#{pane_current_path}"
       bind '"' split-window -c "#{pane_current_path}"
       bind % split-window -h -c "#{pane_current_path}"
