@@ -10,6 +10,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-darwin = {
+      url = "https://flakehub.com/f/nix-darwin/nix-darwin/0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,6 +36,7 @@
     nixpkgs,
     home-manager,
     nix-index-database,
+    nix-darwin,
     stylix,
     ...
   } @ inputs: let
@@ -55,6 +61,19 @@
           determinate.nixosModules.default
         ];
       };
+    };
+    darwinConfigurations."MacBook-Pro-user" = nix-darwin.lib.darwinSystem {
+      specialArgs = {inherit inputs;};
+      modules = [
+        ./hosts/work/configuration.nix
+        inputs.home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = {inherit inputs;};
+          home-manager.users.user = import ./hosts/work/home.nix;
+        }
+      ];
     };
   };
 }
