@@ -14,6 +14,6 @@ return {
 			{ "[m", "<cmd>Grapple cycle_tags prev<cr>", desc = "Grapple cycle_tags prev" },
 			{ "]m", "<cmd>Grapple cycle_tags next<cr>", desc = "Grapple cycle_tags next" },
 		},
-		opts = {},
+		opts = { icons = false },
 	},
 }
