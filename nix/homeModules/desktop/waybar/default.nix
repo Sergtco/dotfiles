@@ -22,7 +22,7 @@
           ++ ["battery"]
           ++ [
             "idle_inhibitor"
-            "hyprland/workspaces"
+            "niri/workspaces"
             "tray"
           ];
         modules-center = [
@@ -54,7 +54,7 @@
             "󰂁"
           ];
         };
-        "hyprland/workspaces" = {
+        "niri/workspaces" = {
           format = "{icon}";
           all-outputs = true;
           format-icons = {

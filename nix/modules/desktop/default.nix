@@ -40,24 +40,31 @@ in {
       pcmanfm
       rar
       gimp3
+      xwayland-satellite
     ];
 
     programs = {
-      hyprland = {
-        enable = true;
-        package = pkgs.hyprland;
-        xwayland.enable = true;
-        withUWSM = true;
-      };
+      # hyprland = {
+      #   enable = true;
+      #   withUWSM = true;
+      # };
+      niri.enable = true;
       hyprlock.enable = true;
     };
-    xdg.portal.enable = true;
+    xdg.portal = {
+      enable = true;
+      extraPortals = [
+        pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-gnome
+        pkgs.xdg-desktop-portal-hyprland
+      ];
+    };
 
     ### LOGIN ###
     services.greetd = {
       enable = true;
       settings.initial_session = lib.mkIf cfg.autologin {
-        command = "${pkgs.uwsm}/bin/uwsm start -- hyprland-uwsm.desktop";
+        command = "/run/current-system/sw/bin/niri-session";
         user = "sergtco";
       };
     };
