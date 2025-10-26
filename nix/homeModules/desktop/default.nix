@@ -19,14 +19,19 @@
     };
 
     swayosd.enable = true;
+    hyprpaper.enable = true;
     hyprpolkitagent.enable = true;
   };
 
-  wayland.windowManager.hyprland = {
-    enable = true;
-    extraConfig = ''
-      ${builtins.readFile ../../../config/hypr/hyprland.conf}
-    '';
+  # wayland.windowManager.hyprland = {
+  #   enable = true;
+  #   extraConfig = ''
+  #     ${builtins.readFile ../../../config/hypr/hyprland.conf}
+  #   '';
+  # };
+  xdg.configFile = {
+    "niri/config.kdl".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/niri/config.kdl";
   };
 
   services.hypridle = {

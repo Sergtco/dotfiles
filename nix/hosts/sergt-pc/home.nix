@@ -26,7 +26,7 @@
     hyprpicker
     grimblast
     vial
-    libreoffice-fresh
+    onlyoffice-desktopeditors
   ];
 
   programs.home-manager.enable = true;
