@@ -35,6 +35,11 @@
           condition = "gitdir:~/work/";
         }
       ];
+      extraConfig = {
+        core = {
+          editor = "nvim";
+        };
+      };
     };
     gh = {
       enable = true;
