@@ -14,7 +14,7 @@
         position = "bottom";
         height = 30;
         mode = "dock";
-        start_hidden = false;
+        start_hidden = true;
         modules-left =
           [
             "clock"

@@ -8,6 +8,7 @@
     settings = {
       main = {
         terminal = "${pkgs.foot}/bin/foot";
+        dpi-aware = "yes";
       };
       colors = {
         border = lib.mkForce "080808FF";
