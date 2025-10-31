@@ -39,6 +39,12 @@
         core = {
           editor = "nvim";
         };
+        diff = {
+          tool = "nvimdiff";
+        };
+        merge = {
+          tool = "nvimdiff";
+        };
       };
     };
     gh = {

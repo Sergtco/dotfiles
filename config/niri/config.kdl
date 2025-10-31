@@ -94,7 +94,7 @@ binds {
 
     Mod+X hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Mod+B hotkey-overlay-title="Toggle waybar" {spawn-sh "killall waybar || killall .waybar-wrapped || waybar";}
+    Mod+B hotkey-overlay-title="Toggle waybar" {spawn-sh "killall -SIGUSR1 -r waybar";}
 
     XF86AudioRaiseVolume  allow-when-locked=true { spawn-sh "swayosd-client --output-volume raise ";}
     XF86AudiolowerVolume  allow-when-locked=true { spawn-sh "swayosd-client --output-volume lower";}
