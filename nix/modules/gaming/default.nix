@@ -13,6 +13,10 @@
 
   environment.systemPackages = with pkgs; [r2modman];
 
+  services.joycond.enable = true;
+  services.udev.packages = [pkgs.game-devices-udev-rules];
+  hardware.uinput.enable = true;
+
   home-manager.users.sergtco.programs.lutris = {
     enable = true;
     protonPackages = [pkgs.proton-ge-bin];

@@ -23,12 +23,8 @@
     hyprpolkitagent.enable = true;
   };
 
-  # wayland.windowManager.hyprland = {
-  #   enable = true;
-  #   extraConfig = ''
-  #     ${builtins.readFile ../../../config/hypr/hyprland.conf}
-  #   '';
-  # };
+  home.sessionVariables.NIXOS_OZONE_WL = "1";
+
   xdg.configFile = {
     "niri/config.kdl".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/niri/config.kdl";
