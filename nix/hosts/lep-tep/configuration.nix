@@ -12,6 +12,7 @@
     ../../modules/themes
     ../../modules/virtualization
     ../../modules/vpn
+    ../../modules/music
     ../../modules/kanata.nix
   ];
 
