@@ -14,7 +14,6 @@
     ../../modules/desktop
     ../../modules/themes
     ../../modules/vpn
-    ../../modules/ai
   ];
 
   ### BOOTLOADER ###
