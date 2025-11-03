@@ -15,7 +15,7 @@ in {
         ExecStart = "${no-rgb}/bin/no-rgb";
         Type = "oneshot";
       };
-      wantedBy = ["multi-user.target"];
+      wantedBy = ["default.target"];
     };
   };
 }

@@ -11,6 +11,8 @@
 
     shellAliases = {
       nv = "nvim";
+      d = "docker";
+      dc = "docker compose";
     };
 
     initContent = ''
