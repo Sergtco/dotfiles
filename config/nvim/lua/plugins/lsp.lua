@@ -14,7 +14,6 @@ return {
 			local null_ls = require("null-ls")
 			return {
 				servers = {
-					basedpyright = {},
 					clangd = {},
 					gopls = { settings = { gopls = { gofumpt = true } } },
 					lua_ls = { settings = { Lua = { format = { enable = false } } } },
@@ -22,6 +21,7 @@ return {
 					rust_analyzer = {},
 					zls = {},
 					tinymist = {},
+					basedpyright = { settings = { basedpyright = { analysis = { typeCheckingMode = "standard" } } } },
 				},
 
 				null_ls = {
