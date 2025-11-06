@@ -29,6 +29,7 @@
     "yt3.googleusercontent.com"
     "googlevideo.com"
     "jnn-pa.googleapis.com"
+    "stable.dl2.discordapp.net"
     "wide-youtube.l.google.com"
     "youtube-nocookie.com"
     "youtube-ui.l.google.com"
@@ -40,6 +41,5 @@
     "yt-video-upload.l.google.com"
     "ytimg.com"
     "ytimg.l.google.com"
-    "rutracker.org"
   ];
 }

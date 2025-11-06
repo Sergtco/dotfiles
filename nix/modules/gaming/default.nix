@@ -19,6 +19,7 @@
 
   home-manager.users.sergtco.programs.lutris = {
     enable = true;
+    package = pkgs.unstable.lutris;
     protonPackages = [pkgs.proton-ge-bin];
     winePackages = with pkgs; [wine wineWowPackages.stable];
     extraPackages = with pkgs; [
