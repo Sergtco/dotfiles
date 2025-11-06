@@ -27,15 +27,6 @@ in {
   home-manager.users.sergtco.stylix = {
     enable = true;
 
-    iconTheme = {
-      enable = true;
-      package = pkgs.papirus-icon-theme.override {
-        color = "black";
-      };
-      dark = "Papirus-Dark";
-      light = "Papirus-Light";
-    };
-
     targets = {
       waybar.enable = false;
       firefox.enable = false;
