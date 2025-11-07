@@ -24,6 +24,7 @@
     "discordsays.com"
     "discordsez.com"
     "stable.dl2.discordapp.net"
+    "ggpht.com"
     "yt3.ggpht.com"
     "yt4.ggpht.com"
     "yt3.googleusercontent.com"
