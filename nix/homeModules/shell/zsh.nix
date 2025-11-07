@@ -1,4 +1,4 @@
-{...}: {
+{config, ...}: {
   home.shell.enableZshIntegration = true;
 
   programs.zsh = {
@@ -21,8 +21,8 @@
   };
 
   home.sessionPath = [
-    "/home/sergtco/.cargo/bin/"
-    "/home/sergtco/go/bin/"
+    "${config.home.homeDirectory}/.cargo/bin/"
+    "${config.home.homeDirectory}/go/bin/"
   ];
 
   programs = {
