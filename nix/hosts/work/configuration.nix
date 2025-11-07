@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./kanata.nix
+    ./dev.nix
   ];
   environment.systemPackages = with pkgs; [
     gitMinimal
@@ -13,29 +14,6 @@
     telegram-desktop
     rio
     betterdisplay
-
-    docker
-    utm
-    #compilers
-    clang
-    python3
-    uv
-    go
-
-    #utils
-    jq
-    gnumake
-
-    #manuals
-    man-pages
-    man-pages-posix
-    tlrc
-
-    # language utils
-    stylua
-    alejandra
-    gofumpt
-    delve
   ];
 
   fonts.packages = with pkgs; [
