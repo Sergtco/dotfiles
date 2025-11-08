@@ -19,7 +19,7 @@ output "DP-2" {
 }
 
 window-rule {
-    geometry-corner-radius 10
+    geometry-corner-radius 0
     clip-to-geometry true
 }
 
@@ -36,7 +36,7 @@ layout {
     default-column-width { proportion 0.5; }
     
     focus-ring {
-        width 2
+        width 1
         active-color "#708090"
         inactive-color "#505050"
     }
@@ -211,6 +211,8 @@ binds {
 
     Mod+W { toggle-column-tabbed-display; }
 
+    Mod+N {spawn-sh "fnottctl action";}
+    Mod+Shift+N {spawn-sh "toggle-notification";}
 
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }

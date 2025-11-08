@@ -14,8 +14,16 @@
   xdg.userDirs.enable = true;
   services = {
     udiskie.enable = true;
-    swaync = {
+    fnott = {
       enable = true;
+      settings = {
+        main = {
+          default-timeout = 5;
+          max-timeout = 10;
+          selection-helper = "fuzzel --dmenu";
+          layer = "overlay";
+        };
+      };
     };
 
     swayosd.enable = true;
@@ -61,10 +69,13 @@
     pavucontrol
     mpv
     gedit
-    unstable.swayimg
+    swayimg
     brightnessctl
     vesktop
-    unstable.thunderbird
+    thunderbird
+
+    libnotify
+    (pkgs.writeShellScriptBin "toggle-notification" (builtins.readFile ./scripts/toggle-notification.sh))
   ];
 
   home.file = {
