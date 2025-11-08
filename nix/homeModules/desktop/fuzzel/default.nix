@@ -10,11 +10,8 @@
         terminal = "${pkgs.foot}/bin/foot";
         dpi-aware = "no";
       };
-      colors = {
-        border = lib.mkForce "080808FF";
-      };
       border = {
-        radius = 3;
+        radius = 0;
       };
     };
   };
