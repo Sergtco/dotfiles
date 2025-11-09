@@ -27,6 +27,13 @@ in {
   home-manager.users.sergtco.stylix = {
     enable = true;
 
+    iconTheme = {
+      enable = true;
+      package = pkgs.tela-icon-theme;
+      dark = "Tela-black-dark";
+      light = "Tela-black-light";
+    };
+
     targets = {
       waybar.enable = false;
       firefox.enable = false;

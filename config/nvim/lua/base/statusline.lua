@@ -2,7 +2,7 @@ Statusline = {}
 
 function Statusline.statusline()
 	return table.concat({
-		"[%<%f]",
+		"%<%f",
 		"%h%m%r%=",
 		"%-14.(%l,%c%V%)",
 		"%P",
