@@ -5,7 +5,7 @@
 }: {
   imports = [
     ../../homeModules/nvim
-    ../../homeModules/shell/zsh.nix
+    ../../homeModules/shell
     ../../homeModules/cli
     ../../homeModules/desktop/browser
     inputs.stylix.homeModules.stylix

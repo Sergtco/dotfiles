@@ -7,7 +7,7 @@
     ../../homeModules/cli
     ../../homeModules/desktop
     ../../homeModules/nvim
-    ../../homeModules/shell/zsh.nix
+    ../../homeModules/shell
     ../../homeModules/terminal
   ];
   home.homeDirectory = "/home/sergtco";
@@ -27,6 +27,7 @@
     grimblast
     vial
     onlyoffice-desktopeditors
+    blender
   ];
 
   programs.home-manager.enable = true;
