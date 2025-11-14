@@ -28,6 +28,7 @@
       bind c new-window -c "#{pane_current_path}"
       bind '"' split-window -c "#{pane_current_path}"
       bind % split-window -h -c "#{pane_current_path}"
+      set-window-option -g window-status-current-style 'fg=white,bg=black'
     '';
   };
 }
