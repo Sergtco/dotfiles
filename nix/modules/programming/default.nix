@@ -27,7 +27,7 @@
     tlrc
 
     # language utils
-    black
+    ruff
     stylua
     alejandra
     gofumpt

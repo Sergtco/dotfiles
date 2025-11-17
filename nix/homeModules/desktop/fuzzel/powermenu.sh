@@ -8,7 +8,7 @@ case $SELECTION in
 	*"Suspend")
 		systemctl suspend;;
 	*"Log out")
-        loginctl terminate-session ${XDG_SESSION_ID-};;
+        niri msg quit;;
 	*"Reboot")
 		systemctl reboot;;
 	*"Reboot to UEFI")

@@ -21,7 +21,9 @@ return {
 					rust_analyzer = {},
 					zls = {},
 					tinymist = {},
-					basedpyright = { settings = { basedpyright = { analysis = { typeCheckingMode = "standard" } } } },
+					ruff = {},
+					pyrefly = {},
+                    tsgo = {},
 				},
 
 				null_ls = {
@@ -29,7 +31,6 @@ return {
 						null_ls.builtins.diagnostics.golangci_lint,
 						null_ls.builtins.formatting.alejandra,
 						null_ls.builtins.formatting.typstyle,
-						null_ls.builtins.formatting.black,
 						null_ls.builtins.formatting.clang_format,
 						null_ls.builtins.formatting.prettier,
 						null_ls.builtins.formatting.stylua,

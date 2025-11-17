@@ -65,13 +65,13 @@
     };
   };
 
+  programs.vesktop.enable = true;
   home.packages = with pkgs; [
     pavucontrol
     mpv
     gedit
     swayimg
     brightnessctl
-    vesktop
     thunderbird
 
     libnotify

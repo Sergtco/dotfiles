@@ -11,8 +11,9 @@
     enable = true;
     package = pkgs.neovim-unwrapped;
     extraPackages = with pkgs.unstable; [
-      basedpyright
+      pyrefly
       lua-language-server
+      typescript-go
       gopls
       clang-tools
       marksman
