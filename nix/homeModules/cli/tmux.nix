@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+  home.packages = with pkgs; [unstable.sesh];
   programs.tmux = {
     enable = true;
     keyMode = "vi";
@@ -11,16 +12,6 @@
     mouse = true;
     customPaneNavigationAndResize = true;
     terminal = "tmux-256color";
-    plugins = with pkgs; [
-      {
-        plugin = tmuxPlugins.resurrect;
-        extraConfig = "set -g @resurrect-strategy-nvim 'session'";
-      }
-      {
-        plugin = tmuxPlugins.continuum;
-        extraConfig = "set -g @continuum-restore 'on'";
-      }
-    ];
     extraConfig = ''
       # Set new panes in current dir
       set -gu default-command
@@ -29,6 +20,14 @@
       bind '"' split-window -c "#{pane_current_path}"
       bind % split-window -h -c "#{pane_current_path}"
       set-window-option -g window-status-current-style 'fg=white,bg=black'
+
+      bind-key "f" run-shell "sesh connect \"$(
+        sesh list --icons | fzf-tmux -p 80%,70% \
+          --no-sort --ansi --border-label ' sesh ' --prompt '>  ' \
+          --bind 'ctrl-d:execute(tmux kill-session -t {2..})+change-prompt(>  )+reload(sesh list --icons)' \
+          --preview-window 'right:55%' \
+          --preview 'sesh preview {}'
+      )\""
     '';
   };
 }
