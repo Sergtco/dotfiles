@@ -12,7 +12,6 @@
 in {
   programs.nekoray = {
     enable = true;
-    package = pkgs.unstable.nekoray;
     tunMode.enable = true;
     tunMode.setuid = true;
   };
