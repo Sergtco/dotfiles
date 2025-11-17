@@ -14,9 +14,17 @@ input {
     focus-follows-mouse max-scroll-amount="0%"
 }
 
+// pc
 output "DP-2" {
     mode "1920x1080@165.000"
 }
+
+//laptop
+output "eDP-1" {
+    mode "1920x1080@60.000"
+    scale 1
+}
+
 
 window-rule {
     geometry-corner-radius 0
