@@ -6,7 +6,7 @@ return {
 			local ts_spec = require("mini.ai").gen_spec.treesitter
 			return {
 				custom_textobjects = {
-					F = ts_spec({ a = "@function.outer", i = "@function.inner" }),
+					F = ts_spec({ a = "@function.outer", i = "@function.inner" }, { use_nvim_treesitter = true }),
 					C = ts_spec({ a = "@class.outer", i = "@class.inner" }),
 					a = ts_spec({ a = "@parameter.outer", i = "@parameter.inner" }),
 					o = ts_spec({
