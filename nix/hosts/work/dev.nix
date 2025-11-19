@@ -2,8 +2,10 @@
   environment.systemPackages = with pkgs.unstable; [
     docker
     utm
+    go-swag
+    colima
+
     #compilers
-    clang
     python3
     uv
     go
@@ -23,16 +25,4 @@
     gofumpt
     delve
   ];
-
-  launchd.daemons.colima = {
-    command = "${pkgs.colima}/bin/colima start --foreground";
-    serviceConfig = {
-      Label = "com.colima.default";
-      RunAtLoad = true;
-      KeepAlive = true;
-
-      StandardOutPath = "/tmp/.colima.out.log";
-      StandardErrorPath = "/tmp/.colima.err.log";
-    };
-  };
 }
