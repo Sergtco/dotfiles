@@ -10,10 +10,10 @@
   environment.systemPackages = with pkgs; [
     gitMinimal
     neovim
-    aerospace
     telegram-desktop
     rio
     betterdisplay
+    colima
   ];
 
   fonts.packages = with pkgs; [

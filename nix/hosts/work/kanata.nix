@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   launchd.daemons.kanata = {
-    command = "${pkgs.kanata}/bin/kanata -c ${./home-row.kbd}";
+    command = "${pkgs.unstable.kanata}/bin/kanata -c ${./home-row.kbd}";
     serviceConfig = {
       KeepAlive = true;
       RunAtLoad = true;
