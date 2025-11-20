@@ -26,7 +26,7 @@
     hyprpicker
     grimblast
     vial
-    onlyoffice-desktopeditors
+    libreoffice-fresh
     blender
   ];
 

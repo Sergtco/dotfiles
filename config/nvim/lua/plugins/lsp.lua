@@ -23,7 +23,7 @@ return {
 					tinymist = {},
 					ruff = {},
 					pyrefly = {},
-                    tsgo = {},
+					ts_ls = {},
 				},
 
 				null_ls = {

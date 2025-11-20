@@ -13,7 +13,7 @@
     extraPackages = with pkgs.unstable; [
       pyrefly
       lua-language-server
-      typescript-go
+      typescript-language-server
       gopls
       clang-tools
       marksman
