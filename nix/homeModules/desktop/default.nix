@@ -65,6 +65,19 @@
     };
   };
 
+  systemd.user.services.wlsunset = {
+    Unit = {
+      Description = "Night ligth";
+    };
+    Service = {
+      Restart = "always";
+      ExecStart = "${pkgs.wlsunset}/bin/wlsunset";
+    };
+    Install = {
+      WantedBy = ["graphical-session.target"];
+    };
+  };
+
   programs.vesktop.enable = true;
   home.packages = with pkgs; [
     pavucontrol
