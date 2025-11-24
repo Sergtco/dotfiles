@@ -82,7 +82,7 @@ window-rule {
 }
 
 
-spawn-at-startup "thunderbird" "--headless" 
+spawn-at-startup "thunderbird"  
 spawn-at-startup "telegram-desktop"
 window-rule {
     match at-startup=true app-id="^org.telegram.desktop$"
