@@ -67,11 +67,11 @@
 
   systemd.user.services.wlsunset = {
     Unit = {
-      Description = "Night ligth";
+      Description = "Night light";
     };
     Service = {
       Restart = "always";
-      ExecStart = "${pkgs.wlsunset}/bin/wlsunset";
+      ExecStart = "${pkgs.wlsunset}/bin/wlsunset -S 7:00 -s 22:00";
     };
     Install = {
       WantedBy = ["graphical-session.target"];

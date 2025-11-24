@@ -18,6 +18,5 @@
   home.packages = [
     pkgs.nerd-fonts.fira-code
     (pkgs.writeShellScriptBin "fuzzel-power" (builtins.readFile ./powermenu.sh))
-    (pkgs.writeShellScriptBin "fuzzel-windows" (builtins.readFile ./windows.sh))
   ];
 }
