@@ -9,6 +9,7 @@
   ];
   environment.systemPackages = with pkgs; [
     gitMinimal
+    firefox
     neovim
     telegram-desktop
     rio

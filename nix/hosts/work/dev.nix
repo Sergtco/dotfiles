@@ -1,8 +1,8 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs.unstable; [
+    gitMinimal
     docker
     utm
-    go-swag
     colima
 
     #compilers
