@@ -39,7 +39,6 @@
   networking.hostName = "lep-tep";
 
   networking.networkmanager.enable = true;
-  networking.nameservers = ["8.8.8.8" "1.1.1.1" "4.4.4.4"];
 
   programs.ssh.startAgent = true;
 
@@ -67,16 +66,6 @@
   ### POWER ###
   powerManagement.enable = true;
   services.auto-cpufreq.enable = true;
-  services.auto-cpufreq.settings = {
-    battery = {
-      governor = "powersave";
-      turbo = "never";
-    };
-    charger = {
-      governor = "performance";
-      turbo = "auto";
-    };
-  };
   ### HARDWARE ###
   services.libinput.touchpad.naturalScrolling = true;
 
