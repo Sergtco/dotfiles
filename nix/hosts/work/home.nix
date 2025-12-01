@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }: {
   imports = [
@@ -17,5 +18,11 @@
     base16Scheme = themes.lackluster;
   };
   programs.home-manager.enable = true;
+  programs.rio = {
+    enable = true;
+    settings = {
+      fonts.family = lib.mkForce "FiraCode Nerd Font Mono";
+    };
+  };
   home.stateVersion = "25.05";
 }

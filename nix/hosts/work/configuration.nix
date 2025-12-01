@@ -12,9 +12,7 @@
     firefox
     neovim
     telegram-desktop
-    rio
     betterdisplay
-    colima
   ];
 
   fonts.packages = with pkgs; [
