@@ -27,7 +27,6 @@
     grimblast
     vial
     libreoffice-fresh
-    blender
   ];
 
   programs.home-manager.enable = true;
