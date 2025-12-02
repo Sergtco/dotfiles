@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [unstable.sesh];
+  home.packages = with pkgs; [sesh];
   programs.tmux = {
     enable = true;
     keyMode = "vi";

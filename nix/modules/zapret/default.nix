@@ -10,7 +10,7 @@
   hostlist = builtins.toFile "zapret_whitelist" (builtins.concatStringsSep "\n" whitelist);
   whitelist = (import ./whitelist.nix {}).whitelist;
 in {
-  programs.nekoray = {
+  programs.throne = {
     enable = true;
     tunMode.enable = true;
     tunMode.setuid = true;

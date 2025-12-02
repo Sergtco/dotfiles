@@ -21,21 +21,17 @@
   programs = {
     git = {
       enable = true;
-      userName = "Ivan Nizelnik";
-      userEmail = "iva.nizelnik@gmail.com";
-      aliases = {
-        sw = "switch";
-        co = "checkout";
-        cm = "commit";
-        st = "status";
-      };
-      includes = [
-        {
-          path = "~/work/.gitconfig";
-          condition = "gitdir:~/work/";
-        }
-      ];
-      extraConfig = {
+      settings = {
+        user = {
+          name = "Ivan Nizelnik";
+          email = "iva.nizelnik@gmail.com";
+        };
+        alias = {
+          sw = "switch";
+          co = "checkout";
+          cm = "commit";
+          st = "status";
+        };
         core = {
           editor = "nvim";
         };
@@ -46,6 +42,12 @@
           tool = "nvimdiff";
         };
       };
+      includes = [
+        {
+          path = "~/work/.gitconfig";
+          condition = "gitdir:~/work/";
+        }
+      ];
     };
     gh = {
       enable = true;

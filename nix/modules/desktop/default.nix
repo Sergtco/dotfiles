@@ -41,16 +41,18 @@ in {
       rar
       gimp3
       xwayland-satellite
+      wl-clipboard
+      xclip
     ];
 
     programs = {
-      # hyprland = {
-      #   enable = true;
-      #   withUWSM = true;
-      # };
-      niri.enable = true;
+      niri = {
+        enable = true;
+        useNautilus = false;
+      };
       hyprlock.enable = true;
     };
+    services.gnome.gcr-ssh-agent.enable = false;
     xdg.portal = {
       enable = true;
       extraPortals = [

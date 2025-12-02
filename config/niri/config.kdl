@@ -226,6 +226,8 @@ binds {
     Mod+N {spawn-sh "fnottctl action";}
     Mod+Shift+N {spawn-sh "toggle-notification";}
 
+    Mod+S {spawn-sh "settings ~/.config/settings.ini";}
+
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }

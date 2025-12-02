@@ -19,14 +19,14 @@
 
   home-manager.users.sergtco.programs.lutris = {
     enable = true;
-    package = pkgs.unstable.lutris;
+    package = pkgs.lutris;
     protonPackages = [pkgs.proton-ge-bin];
     winePackages = with pkgs; [wine wineWowPackages.stable];
     extraPackages = with pkgs; [
       winetricks
       mangohud
       umu-launcher
-      unstable.gamescope
+      gamescope
       gamemode
     ];
   };

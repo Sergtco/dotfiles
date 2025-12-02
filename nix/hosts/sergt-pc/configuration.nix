@@ -157,8 +157,6 @@
     git
     killall
     wget
-    wl-clipboard
-    xclip
   ];
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
