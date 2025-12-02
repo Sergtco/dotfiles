@@ -47,7 +47,7 @@
         before_sleep_cmd = "hyprlock;";
       };
 
-      listeners = [
+      listener = [
         {
           timeout = 300;
           on-timeout = "hyprlock";

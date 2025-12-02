@@ -74,6 +74,7 @@ prefer-no-csd
 
 spawn-sh-at-startup "foot -e tmux a"
 spawn-at-startup "firefox"
+spawn-at-startup "waybar"
 window-rule {
     match at-startup=true app-id="^foot$"
     match at-startup=true app-id="^firefox$"
@@ -83,7 +84,7 @@ window-rule {
 
 
 spawn-at-startup "thunderbird"  
-spawn-at-startup "telegram-desktop"
+spawn-at-startup "Telegram"
 window-rule {
     match at-startup=true app-id="^org.telegram.desktop$"
     match at-startup=true app-id="^thunderbird$"
