@@ -16,6 +16,7 @@ input {
 
 // pc
 output "DP-2" {
+    variable-refresh-rate
     mode "1920x1080@165.000"
 }
 
@@ -74,7 +75,6 @@ prefer-no-csd
 
 spawn-sh-at-startup "foot -e tmux a"
 spawn-at-startup "firefox"
-spawn-at-startup "waybar"
 window-rule {
     match at-startup=true app-id="^foot$"
     match at-startup=true app-id="^firefox$"

@@ -45,6 +45,7 @@ return {
 			}
 			dap.configurations.rust = dap.configurations.c
 			dap.configurations.cpp = dap.configurations.c
+			dap.configurations.zig = dap.configurations.c
 
 			-- Keymaps --
 			vim.keymap.set("n", "<leader>gn", function()

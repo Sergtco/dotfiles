@@ -74,6 +74,9 @@
   ### NETWORKING ###
   networking.hostName = "sergt-pc";
   networking.networkmanager.enable = true;
+  networking.networkmanager.plugins = with pkgs; [
+    networkmanager-openvpn
+  ];
 
   programs.ssh.startAgent = true;
 
@@ -193,6 +196,11 @@
       "nix-command"
       "flakes"
     ];
+  };
+
+  nix.optimise = {
+    automatic = true;
+    dates = "weekly";
   };
 
   nix.gc = {

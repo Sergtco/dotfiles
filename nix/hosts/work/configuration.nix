@@ -36,6 +36,8 @@
   system.stateVersion = 6;
   nix.settings.experimental-features = "nix-command flakes";
   nix.enable = false;
+  nix.optimise.automatic = true;
+  nix.gc.automatic = true;
 
   nixpkgs.hostPlatform = "aarch64-darwin";
   nixpkgs.config = {

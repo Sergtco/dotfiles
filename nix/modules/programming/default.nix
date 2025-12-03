@@ -20,6 +20,7 @@
     #utils
     jq
     gnumake
+    perf
     nixos-firewall-tool
 
     #manuals
