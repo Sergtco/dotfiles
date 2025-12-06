@@ -2,9 +2,9 @@
   lackluster = {
     scheme = "Lackluster dark";
     base00 = "#101010";
-    base01 = "#080808";
-    base02 = "#191919";
-    base03 = "#2a2a2a";
+    base01 = "#191919";
+    base02 = "#2a2a2a";
+    base03 = "#444444";
     base04 = "#555555";
     base05 = "#deeeed";
     base06 = "#f0f0f0";
