@@ -60,6 +60,14 @@ in {
         pkgs.xdg-desktop-portal-gnome
         pkgs.xdg-desktop-portal-hyprland
       ];
+      config = {
+        niri = {
+          default = ["gtk" "gnome"];
+          "org.freedesktop.portal.ScreenCast" = ["gnome"];
+          "org.freedesktop.impl.portal.ScreenCast" = ["gnome"];
+        };
+      };
+      xdgOpenUsePortal = true;
     };
 
     ### LOGIN ###

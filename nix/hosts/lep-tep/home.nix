@@ -22,7 +22,7 @@
   home.packages = with pkgs; [
     playerctl
     telegram-desktop
-    transmission_4
+    transmission_4-gtk
     libreoffice-fresh
     wdisplays
   ];
