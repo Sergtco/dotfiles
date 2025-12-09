@@ -4,7 +4,7 @@ return {
 	{ "backdround/improved-ft.nvim", opts = { use_default_mappings = true } },
 	{
 		"smoka7/hop.nvim",
-		keys = { { "gh", "<cmd>HopWord<cr>", desc = "Hop to word", mode = { "n", "v" } } },
+		keys = { { "gh", "<cmd>HopWordMW<cr>", desc = "Hop to word", mode = { "n", "v" } } },
 		opts = { keys = "etovxqpdygfblzhckisuran" },
 	},
 	{ "folke/snacks.nvim", opts = { input = { enabled = true } } },

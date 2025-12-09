@@ -8,31 +8,16 @@
     enable = true;
     systemd.enable = true;
     style = ./style.css;
-    settings = [
-      {
+    settings = {
+      default = {
         layer = "top";
         position = "bottom";
         height = 30;
         mode = "dock";
         start_hidden = true;
-        modules-left =
-          [
-            "clock"
-          ]
-          ++ ["battery"]
-          ++ [
-            "idle_inhibitor"
-            "niri/workspaces"
-            "tray"
-          ];
-        modules-center = [
-          "mpris"
-        ];
-        modules-right = [
-          "wireplumber"
-          "bluetooth"
-          "network"
-        ];
+        modules-left = ["clock" "battery" "idle_inhibitor" "niri/workspaces" "tray"];
+        modules-center = ["mpris"];
+        modules-right = ["wireplumber" "bluetooth" "network"];
         tray = {
           icon-size = 20;
           spacing = 10;
@@ -114,7 +99,7 @@
           tooltip = true;
           tooltip-format = "{:%d %B %H:%M}";
         };
-      }
-    ];
+      };
+    };
   };
 }

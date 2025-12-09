@@ -1,3 +1,7 @@
+local function edit(path)
+	path = string.gsub(path, "#", "\\#")
+	vim.cmd.edit(path)
+end
 return {
 	{
 		"cbochs/grapple.nvim",
@@ -14,6 +18,9 @@ return {
 			{ "[m", "<cmd>Grapple cycle_tags prev<cr>", desc = "Grapple cycle_tags prev" },
 			{ "]m", "<cmd>Grapple cycle_tags next<cr>", desc = "Grapple cycle_tags next" },
 		},
-		opts = { icons = false },
+		opts = {
+			icons = false,
+			command = edit,
+		},
 	},
 }
