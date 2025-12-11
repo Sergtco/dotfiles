@@ -16,6 +16,12 @@
   in {
     enable = true;
     base16Scheme = themes.lackluster;
+    fonts = {
+      emoji = {
+        package = pkgs.noto-fonts-color-emoji;
+        name = "Apple Color Emoji";
+      };
+    };
   };
   programs.home-manager.enable = true;
   programs.rio = {

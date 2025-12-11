@@ -11,6 +11,7 @@
     python3
     uv
     go
+    rustup
 
     #utils
     jq

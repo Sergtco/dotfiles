@@ -13,6 +13,7 @@
     neovim
     telegram-desktop
     betterdisplay
+    rio
   ];
 
   fonts.packages = with pkgs; [
@@ -23,11 +24,14 @@
   users.groups.docker.members = ["user"];
 
   system.primaryUser = "user";
+  users.knownUsers = ["user"];
   users.users.user = {
     name = "user";
     home = "/Users/user";
+    uid = 501;
     shell = pkgs.zsh;
   };
+  programs.zsh.enable = true;
 
   environment.variables = {
     LANG = "en_US.UTF-8";
@@ -36,8 +40,6 @@
   system.stateVersion = 6;
   nix.settings.experimental-features = "nix-command flakes";
   nix.enable = false;
-  nix.optimise.automatic = true;
-  nix.gc.automatic = true;
 
   nixpkgs.hostPlatform = "aarch64-darwin";
   nixpkgs.config = {
