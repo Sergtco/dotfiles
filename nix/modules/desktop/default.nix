@@ -40,6 +40,7 @@ in {
       pcmanfm
       rar
       gimp3
+      zathura
       xwayland-satellite
       wl-clipboard
       xclip
