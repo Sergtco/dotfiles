@@ -8,7 +8,6 @@ return {
 				version = "v2.*",
 				build = "make install_jsregexp",
 			},
-			"rafamadriz/friendly-snippets",
 		},
 
 		event = { "InsertEnter" },

@@ -10,6 +10,21 @@ return {
 			},
 			{ "leoluz/nvim-dap-go", opts = {} },
 		},
+		keys = {
+			{ "<A-n>" },
+			{ "<A-i>" },
+			{ "<A-o>" },
+			{ "<Leader>gb" },
+			{ "<Leader>gw" },
+			{ "<leader>gr" },
+			{ "<leader>gt" },
+		},
+		cmd = {
+			"DapViewOpen",
+			"DapContinue",
+			"DapNew",
+			"DapTerminate",
+		},
 		config = function()
 			local dap = require("dap")
 			local dv = require("dap-view")
@@ -48,31 +63,25 @@ return {
 			dap.configurations.zig = dap.configurations.c
 
 			-- Keymaps --
-			vim.keymap.set("n", "<leader>gn", function()
+			vim.keymap.set("n", "<A-n>", function()
 				dap.step_over()
 			end)
-			vim.keymap.set("n", "<leader>gi", function()
+			vim.keymap.set("n", "<A-i>", function()
 				dap.step_into()
 			end)
-			vim.keymap.set("n", "<leader>go", function()
+			vim.keymap.set("n", "<A-o>", function()
 				dap.step_out()
 			end)
 
 			vim.keymap.set("n", "<Leader>gb", function()
 				dap.toggle_breakpoint()
 			end)
-			vim.keymap.set("n", "<Leader>gl", function()
-				dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
-			end)
 			vim.keymap.set("n", "<Leader>gw", function()
 				dv.add_expr()
 			end)
 
-			vim.keymap.set("n", "<leader>grr", function()
+			vim.keymap.set("n", "<leader>gr", function()
 				dap.continue()
-			end)
-			vim.keymap.set("n", "<Leader>grl", function()
-				dap.run_last()
 			end)
 
 			dap.listeners.before.attach["dap-view-config"] = function()

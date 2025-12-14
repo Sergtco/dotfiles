@@ -5,11 +5,7 @@ return {
 			"nvimtools/none-ls.nvim",
 			"nvim-lua/plenary.nvim",
 		},
-		wants = {
-			"saghen/blink.cmp",
-			"ibhagwan/fzf-lua",
-		},
-
+		event = { "BufReadPre", "BufNewFile" },
 		opts = function()
 			local null_ls = require("null-ls")
 			return {

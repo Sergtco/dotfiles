@@ -2,9 +2,11 @@
   imports = [./zsh.nix];
   home.shellAliases = {
     v = "nvim";
+    vv = "nvim +FzfLua\\ live_grep";
     y = "yazi";
     d = "docker";
     dc = "docker compose";
+    g = "git";
   };
 
   home.sessionPath = [

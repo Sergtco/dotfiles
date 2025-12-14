@@ -27,9 +27,11 @@
           email = "iva.nizelnik@gmail.com";
         };
         alias = {
+          a = "add";
           sw = "switch";
           co = "checkout";
-          cm = "commit";
+          cc = "commit";
+          ca = "commit --amend";
           st = "status";
         };
         core = {
