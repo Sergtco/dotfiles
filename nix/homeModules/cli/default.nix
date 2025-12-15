@@ -32,6 +32,8 @@
           co = "checkout";
           cc = "commit";
           ca = "commit --amend";
+          p = "push";
+          f = "fetch";
           st = "status";
         };
         core = {
