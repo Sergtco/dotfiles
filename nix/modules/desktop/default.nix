@@ -68,7 +68,6 @@ in {
           "org.freedesktop.impl.portal.ScreenCast" = ["gnome"];
         };
       };
-      xdgOpenUsePortal = true;
     };
 
     ### LOGIN ###
