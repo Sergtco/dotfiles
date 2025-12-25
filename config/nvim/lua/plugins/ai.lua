@@ -19,17 +19,17 @@ return {
 		opts = {
 			strategies = {
 				chat = {
-					adapter = "qwen3",
+					adapter = "work",
 				},
 				inline = {
-					adapter = "qwen3",
+					adapter = "work",
 					keymaps = {
 						accept_change = { modes = { n = "<leader>ca" } },
 						reject_change = { modes = { n = "<leader>cr" } },
 					},
 				},
 				cmd = {
-					adapter = "qwen3",
+					adapter = "work",
 				},
 			},
 			opts = {
@@ -39,16 +39,6 @@ return {
 				acp = { opts = { show_defaults = false } },
 				http = {
 					opts = { show_defaults = false },
-					qwen3 = function()
-						return require("codecompanion.adapters").extend("ollama", {
-							name = "qwen3",
-							opts = { vision = true, stream = true },
-							schema = {
-								model = { default = "qwen3:8b" },
-								think = { default = false },
-							},
-						})
-					end,
 					work = function()
 						return require("codecompanion.adapters").extend("ollama", {
 							name = "work",

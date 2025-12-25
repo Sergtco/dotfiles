@@ -10,6 +10,7 @@
   environment.systemPackages = with pkgs; [
     gitMinimal
     firefox
+    pkgs.nur.repos.forkprince.helium-nightly
     neovim
     telegram-desktop
     betterdisplay
@@ -47,6 +48,7 @@
   };
 
   nixpkgs.overlays = [
+    inputs.nur.overlays.default
     (final: _: {
       unstable = import inputs.nixpkgs-unstable {
         inherit (final.stdenv.hostPlatform) system;

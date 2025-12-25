@@ -141,6 +141,7 @@
     allowUnfree = true;
   };
   nixpkgs.overlays = [
+    inputs.nur.overlays.default
     (final: _: {
       unstable = import inputs.nixpkgs-unstable {
         inherit (final.stdenv.hostPlatform) system;

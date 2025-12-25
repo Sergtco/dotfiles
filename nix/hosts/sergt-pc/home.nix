@@ -14,7 +14,7 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    BROWSER = "firefox";
+    BROWSER = "helium";
     XDG_PICTURES_DIR = "${config.home.homeDirectory}/Pictures";
     XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}/Pictures/Screenshots";
   };

@@ -4,9 +4,9 @@
     enable = true;
     defaultApplications = {
       "inode/directory" = ["pcmanfm.desktop"];
-      "application/pdf" = ["firefox.destkop"];
+      "application/pdf" = ["org.pwmt.zathura.desktop"];
 
-      "text/html" = ["firefox.desktop"];
+      "text/html" = ["helium.desktop"];
       "text/plain" = ["nvim.desktop"];
       "text/markdown" = ["nvim.desktop"];
 

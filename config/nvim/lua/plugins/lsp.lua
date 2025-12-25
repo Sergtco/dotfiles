@@ -13,6 +13,7 @@ return {
 					clangd = {},
 					gopls = { settings = { gopls = { gofumpt = true } } },
 					lua_ls = { settings = { Lua = { format = { enable = false } } } },
+					svelte = {},
 					marksman = {},
 					rust_analyzer = {},
 					zls = {},
@@ -53,14 +54,14 @@ return {
 
 			for server, config in pairs(opts.servers) do
 				config.on_attach = on_attach
-				config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+				-- config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
 				vim.lsp.config(server, config)
 				vim.lsp.enable(server)
 			end
 
 			require("null-ls").setup({
 				sources = opts.null_ls.sources,
-				capabilities = require("blink.cmp").get_lsp_capabilities({}),
+				-- capabilities = require("blink.cmp").get_lsp_capabilities({}),
 				on_attach = on_attach,
 			})
 
