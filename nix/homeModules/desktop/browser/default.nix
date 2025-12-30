@@ -1,8 +1,5 @@
 {pkgs, ...}: let
 in {
-  programs.firefox = {
-    enable = true;
-  };
   programs.chromium = {
     enable = true;
     package = pkgs.nur.repos.forkprince.helium-nightly;

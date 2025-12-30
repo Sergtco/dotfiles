@@ -2,11 +2,14 @@
   programs.steam = {
     enable = true;
     extraCompatPackages = [pkgs.proton-ge-bin];
+    extraPackages = [
+      pkgs.mangohud
+    ];
   };
 
   programs.gamescope = {
     enable = true;
-    args = ["-W1920" "-H1080" "-r165" "-f" "--force-grab-cursor"];
+    args = ["-W1920" "-H1080" "--force-grab-cursor" "-f" "--force-composition"];
   };
 
   programs.gamemode.enable = true;

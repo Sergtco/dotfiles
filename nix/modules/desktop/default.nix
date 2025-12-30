@@ -78,6 +78,7 @@ in {
         user = "sergtco";
       };
     };
+    security.pam.services.greetd.enableGnomeKeyring = true;
 
     programs.regreet.enable = true;
   };
