@@ -78,7 +78,9 @@ in {
         user = "sergtco";
       };
     };
+    services.gnome.gnome-keyring.enable = true;
     security.pam.services.greetd.enableGnomeKeyring = true;
+    environment.variables.XDG_RUNTIME_DIR = "/run/user/$UID";
 
     programs.regreet.enable = true;
   };

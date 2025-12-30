@@ -2,38 +2,29 @@ return {
 	{
 		"mfussenegger/nvim-dap",
 		dependencies = {
-			{
-				"igorlfs/nvim-dap-view",
-				opts = {
-					windows = { terminal = { hide = { "go", "rust" } } },
-				},
-			},
+			"miroshQa/debugmaster.nvim",
 			{ "leoluz/nvim-dap-go", opts = {} },
 		},
 		keys = {
-			{ "<A-n>" },
-			{ "<A-i>" },
-			{ "<A-o>" },
-			{ "<Leader>gb" },
-			{ "<Leader>gw" },
-			{ "<leader>gr" },
-			{ "<leader>gt" },
+			{ "<Leader>gg" },
 		},
 		cmd = {
-			"DapViewOpen",
 			"DapContinue",
 			"DapNew",
 			"DapTerminate",
 		},
 		config = function()
+			local dm = require("debugmaster")
+			vim.keymap.set({ "n", "v" }, "<leader>gg", dm.mode.toggle, { nowait = true })
+			vim.keymap.set("n", "<Esc>", dm.mode.disable)
+
 			local dap = require("dap")
-			local dv = require("dap-view")
-			-- Adapters --
 			dap.adapters.gdb = {
 				type = "executable",
 				command = "gdb",
 				args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
 			}
+
 			-- Configs --
 			dap.configurations.c = {
 				{
@@ -61,41 +52,6 @@ return {
 			dap.configurations.rust = dap.configurations.c
 			dap.configurations.cpp = dap.configurations.c
 			dap.configurations.zig = dap.configurations.c
-
-			-- Keymaps --
-			vim.keymap.set("n", "<A-n>", function()
-				dap.step_over()
-			end)
-			vim.keymap.set("n", "<A-i>", function()
-				dap.step_into()
-			end)
-			vim.keymap.set("n", "<A-o>", function()
-				dap.step_out()
-			end)
-
-			vim.keymap.set("n", "<Leader>gb", function()
-				dap.toggle_breakpoint()
-			end)
-			vim.keymap.set("n", "<Leader>gw", function()
-				dv.add_expr()
-			end)
-
-			vim.keymap.set("n", "<leader>gr", function()
-				dap.continue()
-			end)
-
-			dap.listeners.before.attach["dap-view-config"] = function()
-				dv.open()
-			end
-			dap.listeners.before.launch["dap-view-config"] = function()
-				dv.open()
-			end
-			dap.listeners.before.event_terminated["dap-view-config"] = function()
-				dv.close()
-			end
-			dap.listeners.before.event_exited["dap-view-config"] = function()
-				dv.close()
-			end
 		end,
 	},
 }
