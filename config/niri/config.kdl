@@ -94,14 +94,11 @@ window-rule {
 
 
 window-rule {
-    match app-id=r#"helium$"# title="^[pP]icture-in-[pP]icture$"
+    match title="^[pP]icture[ -]in[ -][pP]icture$"
     match app-id=r#"thunderbird$"# title="Reminder[s]*$"
     open-floating true
 }
-window-rule {
-    match app-id=r#"helium$"#
-    scroll-factor 0.3
-}
+// TODO: Figure out how to handle per input device scroll
 window-rule {
     match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
     default-floating-position x=10 y=10 relative-to="bottom-right"
