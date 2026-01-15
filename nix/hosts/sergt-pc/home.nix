@@ -20,11 +20,6 @@
   };
 
   home.packages = with pkgs; [
-    playerctl
-    telegram-desktop
-    transmission_4-gtk
-    vial
-    libreoffice-fresh
   ];
 
   programs.home-manager.enable = true;

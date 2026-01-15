@@ -37,13 +37,20 @@ in {
       gpu-screen-recorder-gtk
       gnome-disk-utility
       xarchiver
-      pcmanfm
+      pcmanfm-qt
+      shared-mime-info # pcmanfm
       rar
       gimp3
       zathura
       xwayland-satellite
       wl-clipboard
       xclip
+
+      playerctl
+      telegram-desktop
+      transmission_4-qt
+      vial
+      libreoffice-fresh
     ];
 
     programs = {

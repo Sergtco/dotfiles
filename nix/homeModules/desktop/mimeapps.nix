@@ -3,7 +3,7 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "inode/directory" = ["pcmanfm.desktop"];
+      "inode/directory" = ["pcmanfm-qt.desktop"];
       "application/pdf" = ["org.pwmt.zathura.desktop"];
 
       "text/html" = ["helium.desktop"];

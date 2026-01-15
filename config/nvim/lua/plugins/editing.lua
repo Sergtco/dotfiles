@@ -15,5 +15,4 @@ return {
 		opts = { keys = "etovxqpdygfblzhckisuran" },
 	},
 	{ "liangxianzhe/floating-input.nvim" },
-    {"mg979/vim-visual-multi"},
 }
