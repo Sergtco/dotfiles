@@ -14,5 +14,4 @@ return {
 		keys = { { "gh", "<cmd>HopWordMW<cr>", desc = "Hop to word", mode = { "n", "v" } } },
 		opts = { keys = "etovxqpdygfblzhckisuran" },
 	},
-	{ "liangxianzhe/floating-input.nvim" },
 }

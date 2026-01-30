@@ -86,6 +86,7 @@
     swayimg
     brightnessctl
     thunderbird
+    spotify
 
     libnotify
     (pkgs.writeShellScriptBin "toggle-notification" (builtins.readFile ./scripts/toggle-notification.sh))

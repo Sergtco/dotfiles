@@ -50,7 +50,7 @@ in {
       telegram-desktop
       transmission_4-qt
       vial
-      libreoffice-fresh
+      libreoffice-qt-fresh
     ];
 
     programs = {
