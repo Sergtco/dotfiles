@@ -71,3 +71,6 @@ vim.opt.langmap = vim.fn.join({
 		.. escape(en_shift),
 	escape(ru) .. ";" .. escape(en),
 }, ",")
+
+-- cfilter
+vim.cmd("packadd cfilter")

@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  boot.initrd.kernelModules = [
+    "xpad"
+  ];
+
   programs.steam = {
     enable = true;
     extraCompatPackages = [pkgs.proton-ge-bin];
@@ -24,7 +28,7 @@
     enable = true;
     package = pkgs.lutris;
     protonPackages = [pkgs.proton-ge-bin];
-    winePackages = with pkgs; [wine wineWowPackages.stable];
+    winePackages = with pkgs; [wine];
     extraPackages = with pkgs; [
       winetricks
       mangohud
@@ -33,8 +37,4 @@
       gamemode
     ];
   };
-
-  boot.initrd.kernelModules = [
-    "xpad"
-  ];
 }

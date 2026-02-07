@@ -51,6 +51,7 @@ in {
       transmission_4-qt
       vial
       libreoffice-qt-fresh
+      wine
     ];
 
     programs = {
