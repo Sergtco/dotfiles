@@ -81,9 +81,11 @@ in {
     ### LOGIN ###
     services.greetd = {
       enable = true;
-      settings.initial_session = lib.mkIf cfg.autologin {
-        command = "/run/current-system/sw/bin/niri-session";
-        user = "sergtco";
+      settings = {
+        initial_session = lib.mkIf cfg.autologin {
+          command = "/run/current-system/sw/bin/niri-session";
+          user = "sergtco";
+        };
       };
     };
     services.gnome.gnome-keyring.enable = true;

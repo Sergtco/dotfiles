@@ -1,5 +1,5 @@
 -- Term
-vim.keymap.set("t", "<esc>", "<C-\\><C-N>")
+-- vim.keymap.set("t", "<esc>", "<C-\\><C-N>")
 
 -- global yank and paste
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')

@@ -7,6 +7,7 @@ return {
 	},
 	{
 		"ibhagwan/fzf-lua",
+		event = "VeryLazy",
 		keys = {
 			{ "<leader>z", "<cmd>FzfLua<cr>", desc = "FzfLua" },
 			{ "<leader>f", "<cmd>FzfLua files<cr>", desc = "find_files" },
