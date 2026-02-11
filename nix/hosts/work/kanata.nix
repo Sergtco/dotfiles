@@ -1,6 +1,6 @@
 {pkgs, ...}: {
-  launchd.daemons.kanata = {
-    command = "${pkgs.unstable.kanata}/bin/kanata -c ${./home-row.kbd}";
+  launchd.user.agents.kanata = {
+    command = "sudo ${pkgs.unstable.kanata}/bin/kanata -c ${./home-row.kbd}";
     serviceConfig = {
       ProcessType = "Interactive";
       KeepAlive = true;
@@ -9,4 +9,7 @@
       StandardErrorPath = "/tmp/kanata.err.log";
     };
   };
+  security.sudo.extraConfig = ''
+    %admin ALL=(root) NOPASSWD: ${pkgs.unstable.kanata}/bin/kanata -c ${./home-row.kbd}
+  '';
 }
