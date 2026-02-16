@@ -14,31 +14,31 @@ return {
 		keys = {
 			{ "<leader>ct", "<cmd>CodeCompanionChat Toggle<CR>", desc = "Open ai chat" },
 			{ "<leader>cy", "<cmd>CodeCompanionChat Add<CR>", mode = { "n", "v" }, desc = "Open ai chat" },
-			{ "<leader>cc", "<cmd>CodeCompanion<CR>", mode = { "n", "v" }, desc = "Inline companion" },
+			{ "<leader>cc", ":CodeCompanion ", mode = { "n", "v" }, desc = "Inline companion" },
 		},
 		opts = {
 			strategies = {
 				chat = {
-					adapter = "work",
+					adapter = "local",
 				},
 				inline = {
-					adapter = "work",
+					adapter = "local",
 					keymaps = {
 						accept_change = { modes = { n = "<leader>ca" } },
 						reject_change = { modes = { n = "<leader>cr" } },
 					},
 				},
 				cmd = {
-					adapter = "work",
+					adapter = "local",
 				},
 			},
 			opts = {
 				log_level = "DEBUG",
 			},
 			adapters = {
-				acp = { opts = { show_defaults = false } },
+				acp = { opts = { show_presets = false } },
 				http = {
-					opts = { show_defaults = false },
+					opts = { show_presets = false },
 					work = function()
 						return require("codecompanion.adapters").extend("ollama", {
 							name = "work",
@@ -48,7 +48,6 @@ return {
 							},
 							opts = { vision = true, stream = true },
 							schema = {
-								model = { default = "qwen3:32b" },
 								think = { default = false },
 							},
 							headers = {
@@ -58,11 +57,18 @@ return {
 							parameters = { sync = true },
 						})
 					end,
+					["local"] = function()
+						return require("codecompanion.adapters").extend("ollama", {
+							name = "local",
+							schema = {
+								model = { default = "gpt-oss" },
+							},
+							parameters = { sync = true },
+						})
+					end,
 				},
 			},
+			display = { chat = { window = { width = 0.3 } } },
 		},
-		config = function(_, opts)
-			require("codecompanion").setup(opts)
-		end,
 	},
 }

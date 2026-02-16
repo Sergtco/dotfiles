@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }: let
   cfg = config.custom.desktop;
@@ -62,6 +63,7 @@ in {
       hyprlock.enable = true;
     };
     services.gnome.gcr-ssh-agent.enable = false;
+
     xdg.portal = {
       enable = true;
       extraPortals = [

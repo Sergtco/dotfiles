@@ -38,6 +38,7 @@
         };
         core = {
           editor = "nvim";
+          quotePath = false;
         };
         diff = {
           tool = "nvimdiff";
