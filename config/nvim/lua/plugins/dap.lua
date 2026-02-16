@@ -1,12 +1,8 @@
 return {
 	{
 		"mfussenegger/nvim-dap",
-		dependencies = {
-			"miroshQa/debugmaster.nvim",
-			{ "leoluz/nvim-dap-go", opts = {} },
-		},
 		keys = {
-			{ "<Leader>gg" },
+			{ "<Leader>gd" },
 		},
 		cmd = {
 			"DapContinue",
@@ -15,7 +11,7 @@ return {
 		},
 		config = function()
 			local dm = require("debugmaster")
-			vim.keymap.set({ "n", "v" }, "<leader>gg", dm.mode.toggle, { nowait = true })
+			vim.keymap.set({ "n", "v" }, "<leader>gd", dm.mode.toggle, { nowait = true })
 			vim.keymap.set("n", "<Esc>", dm.mode.disable)
 
 			local dap = require("dap")
@@ -80,5 +76,12 @@ return {
 				},
 			}
 		end,
+		dependencies = {
+			"miroshQa/debugmaster.nvim",
+			{
+				"leoluz/nvim-dap-go",
+				opts = {},
+			},
+		},
 	},
 }

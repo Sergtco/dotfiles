@@ -10,7 +10,6 @@ return {
 			},
 		},
 
-		event = { "InsertEnter" },
 		version = "1.*",
 		opts = {
 			sources = { default = { "lsp", "path", "snippets", "buffer" } },

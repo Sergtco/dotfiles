@@ -18,7 +18,7 @@ return {
 			{ "<leader>s", "<cmd>FzfLua lsp_document_symbols<cr>", desc = "lsp_document_symbols" },
 			{ "<leader>S", "<cmd>FzfLua lsp_live_workspace_symbols<cr>", desc = "lsp_workspace_symbols_symbols" },
 		},
-		opts = { { "borderless" }, fzf_colors = true },
+		opts = { { "ivy", "borderless" }, fzf_colors = true },
 		init = function()
 			require("fzf-lua").register_ui_select()
 		end,

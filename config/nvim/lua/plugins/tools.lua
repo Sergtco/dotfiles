@@ -1,5 +1,11 @@
 return {
-	{ "tpope/vim-fugitive" },
+	{
+		"tpope/vim-fugitive",
+		lazy = false,
+		keys = {
+			{ "<leader>gg", "<cmd>G<cr>", "Open fugitive" },
+		},
+	},
 	{
 		"mistweaverco/kulala.nvim",
 		keys = {
@@ -20,7 +26,7 @@ return {
 			"MunifTanjim/nui.nvim",
 		},
 		keys = {
-			{ "<leader>gd", "<cmd>Dbee toggle<cr>", desc = "toggle database" },
+			{ "<leader>gb", "<cmd>Dbee toggle<cr>", desc = "toggle database" },
 		},
 		build = function()
 			require("dbee").install()
