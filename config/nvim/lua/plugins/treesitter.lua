@@ -1,6 +1,7 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		branch = "master",
 		opts = {
 			ensure_installed = { "vim", "vimdoc", "query", "comment", "markdown", "markdown_inline" },
 			sync_install = true,
@@ -10,5 +11,8 @@ return {
 			},
 			indent = { enable = true },
 		},
+		config = function(_, opts)
+			require("nvim-treesitter.configs").setup(opts)
+		end,
 	},
 }

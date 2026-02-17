@@ -11,7 +11,6 @@
     enable = true;
     package = pkgs.neovim-unwrapped;
     extraPackages = with pkgs.unstable; [
-      tree-sitter
       pyrefly
       lua-language-server
       typescript-language-server

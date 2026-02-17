@@ -15,7 +15,7 @@ return {
 		"uga-rosa/ccc.nvim",
 		opts = {
 			highlighter = {
-                auto_enable = true,
+				auto_enable = true,
 				filetypes = { "css" },
 			},
 		},
