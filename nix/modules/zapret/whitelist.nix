@@ -42,5 +42,6 @@
     "yt-video-upload.l.google.com"
     "ytimg.com"
     "ytimg.l.google.com"
+    "deadlockmods.app"
   ];
 }

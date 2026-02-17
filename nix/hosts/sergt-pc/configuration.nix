@@ -184,6 +184,10 @@
     autologin = true;
   };
 
+  custom.gaming.extraPackages = with pkgs.unstable; [
+    deadlock-mod-manager
+  ];
+
   ### NIX ###
   nix.settings = {
     builders-use-substitutes = true;
