@@ -16,7 +16,6 @@ return {
 		opts = {
 			highlighter = {
 				auto_enable = true,
-				filetypes = { "css" },
 			},
 		},
 	},

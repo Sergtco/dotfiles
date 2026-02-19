@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: {
   home.sessionVariables = {
@@ -9,7 +10,7 @@
 
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim-unwrapped;
+    package = pkgs.unstable.neovim-unwrapped;
     extraPackages = with pkgs.unstable; [
       pyrefly
       lua-language-server

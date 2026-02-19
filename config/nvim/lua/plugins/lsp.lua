@@ -45,7 +45,7 @@ return {
 				vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
 				vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
 				vim.keymap.set({ "n", "i" }, "<C-s>", vim.lsp.buf.signature_help, bufopts)
-				vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, bufopts)
+				vim.keymap.set("n", "grt", vim.lsp.buf.type_definition, bufopts)
 				vim.keymap.set("n", "grn", vim.lsp.buf.rename, bufopts)
 				vim.keymap.set("n", "grr", fzf.lsp_references, bufopts)
 				vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, bufopts)
@@ -54,14 +54,14 @@ return {
 
 			for server, config in pairs(opts.servers) do
 				config.on_attach = on_attach
-				-- config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+				config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
 				vim.lsp.config(server, config)
 				vim.lsp.enable(server)
 			end
 
 			require("null-ls").setup({
 				sources = opts.null_ls.sources,
-				-- capabilities = require("blink.cmp").get_lsp_capabilities({}),
+				capabilities = require("blink.cmp").get_lsp_capabilities({}),
 				on_attach = on_attach,
 			})
 

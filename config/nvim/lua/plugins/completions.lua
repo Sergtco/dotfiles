@@ -1,6 +1,7 @@
 return {
 	{
 		"saghen/blink.cmp",
+		enabled = true,
 		dependencies = {
 			{
 				"L3MON4D3/LuaSnip",
@@ -9,15 +10,16 @@ return {
 				build = "make install_jsregexp",
 			},
 		},
-
 		version = "1.*",
 		opts = {
 			sources = { default = { "lsp", "path", "snippets", "buffer" } },
 			snippets = { preset = "luasnip" },
+
 			completion = {
 				keyword = { range = "prefix" },
 				menu = { draw = { treesitter = { "lsp" } } },
 			},
+
 			cmdline = { completion = { menu = { auto_show = true } } },
 			signature = { enabled = true },
 			keymap = {
