@@ -165,6 +165,7 @@
   ];
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
+    nerd-fonts.zed-mono
     nerd-fonts.jetbrains-mono
     corefonts
     noto-fonts-color-emoji

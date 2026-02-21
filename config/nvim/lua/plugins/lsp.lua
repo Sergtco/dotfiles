@@ -54,14 +54,12 @@ return {
 
 			for server, config in pairs(opts.servers) do
 				config.on_attach = on_attach
-				config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
 				vim.lsp.config(server, config)
 				vim.lsp.enable(server)
 			end
 
 			require("null-ls").setup({
 				sources = opts.null_ls.sources,
-				capabilities = require("blink.cmp").get_lsp_capabilities({}),
 				on_attach = on_attach,
 			})
 

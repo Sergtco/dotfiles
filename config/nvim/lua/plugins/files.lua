@@ -10,6 +10,7 @@ return {
 		event = "VeryLazy",
 		keys = {
 			{ "<leader>z", "<cmd>FzfLua<cr>", desc = "FzfLua" },
+			{ "<F1>", "<cmd>FzfLua helptags<cr>", desc = "Help" },
 			{ "<leader>f", "<cmd>FzfLua files<cr>", desc = "find_files" },
 			{ "<leader>/", "<cmd>FzfLua live_grep<cr>", desc = "live_grep" },
 			{ "<leader>b", "<cmd>FzfLua buffers<cr>", desc = "buffers" },

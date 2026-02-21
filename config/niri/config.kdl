@@ -46,8 +46,8 @@ layout {
     
     focus-ring {
         width 1
-        active-color "#C4693D"
-        inactive-color "#535353"
+        active-color "#85cd85"
+        inactive-color "#414141"
     }
 
     tab-indicator {

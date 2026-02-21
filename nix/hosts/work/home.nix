@@ -27,7 +27,7 @@
   programs.rio = {
     enable = true;
     settings = {
-      fonts.family = lib.mkForce "FiraCode Nerd Font Mono";
+      fonts.family = lib.mkForce "NerdMono Nerd Font Mono";
     };
   };
   home.stateVersion = "25.05";

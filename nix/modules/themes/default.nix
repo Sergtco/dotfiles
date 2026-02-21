@@ -4,7 +4,7 @@ in {
   stylix = {
     enable = true;
     image = ../../../wallpaper/nixos.jpg;
-    base16Scheme = themes.ashen;
+    base16Scheme = themes.xeno;
     polarity = "dark";
 
     cursor = {
@@ -15,8 +15,8 @@ in {
 
     fonts = {
       monospace = {
-        package = pkgs.nerd-fonts.fira-code;
-        name = "FiraCode Nerd Font Mono";
+        package = pkgs.nerd-fonts.zed-mono;
+        name = "ZedMono Nerd Font Mono";
       };
       sizes.desktop = 13;
       sizes.terminal = 13;

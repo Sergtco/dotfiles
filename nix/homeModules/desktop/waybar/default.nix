@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     playerctl
-    nerd-fonts.fira-code
   ];
 
   programs.waybar = {

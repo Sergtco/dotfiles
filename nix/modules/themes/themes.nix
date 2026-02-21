@@ -37,4 +37,23 @@
     base0E = "#B14242"; # red_ember
     base0F = "#89492a"; # brown
   };
+  xeno = {
+    scheme = "xeno-lillypad";
+    base00 = "#131313";
+    base01 = "#1a1a1a";  
+    base02 = "#292929";  
+    base03 = "#414141";  
+    base04 = "#797979";  
+    base05 = "#9b9b9b";  
+    base06 = "#a9a9a9";  
+    base07 = "#c5c5c5";  
+    base08 = "#9b9b9b"; 
+    base09 = "#85cd85"; 
+    base0A = "#2e302e"; 
+    base0B = "#adddad"; 
+    base0C = "#72c472"; 
+    base0D = "#85cd85"; 
+    base0E = "#adddad"; 
+    base0F = "#eaf4ea"; 
+  };
 }
