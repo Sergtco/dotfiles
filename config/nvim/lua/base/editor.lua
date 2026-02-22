@@ -7,7 +7,7 @@ opt.smartcase = true
 opt.shortmess:append("I")
 
 -- diff
-vim.opt.diffopt:remove("linematch:40")
+opt.diffopt:remove("linematch:40")
 
 -- file system
 opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
