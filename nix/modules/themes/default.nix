@@ -4,7 +4,7 @@ in {
   stylix = {
     enable = true;
     image = ../../../wallpaper/nixos.jpg;
-    base16Scheme = themes.xeno;
+    base16Scheme = themes.lackluster;
     polarity = "dark";
 
     cursor = {

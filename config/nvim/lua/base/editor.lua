@@ -34,7 +34,7 @@ opt.scrolloff = 8
 opt.splitbelow = true
 opt.splitright = true
 opt.laststatus = 2
-opt.wrap = true
+opt.wrap = false
 opt.showbreak = "󱞶"
 
 -- colors
