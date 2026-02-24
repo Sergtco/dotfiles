@@ -4,6 +4,8 @@
       TERMINAL = "alacritty";
     };
   };
+  xdg.terminal-exec.enable = true;
+  xdg.terminal-exec.settings.default = ["alacritty.desktop"];
   programs.alacritty = {
     enable = true;
     package = pkgs.alacritty-graphics;

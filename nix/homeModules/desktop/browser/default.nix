@@ -1,5 +1,9 @@
 {pkgs, ...}: let
 in {
+  home.sessionVariables = {
+    BROWSER = "helium";
+  };
+
   programs.chromium = {
     enable = true;
     package = pkgs.nur.repos.forkprince.helium-nightly;

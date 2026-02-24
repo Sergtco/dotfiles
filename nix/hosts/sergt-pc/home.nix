@@ -13,14 +13,9 @@
   home.homeDirectory = "/home/sergtco";
 
   home.sessionVariables = {
-    EDITOR = "nvim";
-    BROWSER = "helium";
     XDG_PICTURES_DIR = "${config.home.homeDirectory}/Pictures";
     XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}/Pictures/Screenshots";
   };
-
-  home.packages = with pkgs; [
-  ];
 
   programs.home-manager.enable = true;
   home.stateVersion = "25.05";
