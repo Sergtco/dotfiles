@@ -14,7 +14,7 @@
     neovim
     telegram-desktop
     betterdisplay
-    rio
+    alacritty-graphics;
   ];
 
   fonts.packages = with pkgs; [

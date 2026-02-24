@@ -8,6 +8,7 @@
     ../../homeModules/nvim
     ../../homeModules/shell
     ../../homeModules/cli
+    ../../homeModules/terminal
     ../../homeModules/desktop/browser
     inputs.stylix.homeModules.stylix
   ];

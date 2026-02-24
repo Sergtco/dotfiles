@@ -73,10 +73,10 @@ workspace "comms" {}
 
 prefer-no-csd
 
-spawn-sh-at-startup "foot -e tmux a"
+spawn-sh-at-startup "alacritty -e tmux a"
 spawn-at-startup "helium"
 window-rule {
-    match at-startup=true app-id="^foot$"
+    match at-startup=true app-id="^alacritty$"
     match at-startup=true app-id="^helium$"
     open-on-workspace "main"
     open-focused true
@@ -107,7 +107,7 @@ window-rule {
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+X hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
+    Mod+X hotkey-overlay-title="Open a Terminal" { spawn "alacritty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Mod+B hotkey-overlay-title="Toggle waybar" {spawn-sh "killall -SIGUSR1 -r waybar";}
 

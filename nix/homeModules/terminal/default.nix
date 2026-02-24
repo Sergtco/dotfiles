@@ -1,15 +1,14 @@
-{...}: {
+{pkgs, ...}: {
   home = {
     sessionVariables = {
-      TERMINAL = "foot";
+      TERMINAL = "alacritty";
     };
   };
-  programs.foot = {
+  programs.alacritty = {
     enable = true;
+    package = pkgs.alacritty-graphics;
     settings = {
-      cursor.blink = true;
-      mouse.hide-when-typing = "yes";
-      key-bindings.spawn-terminal = "none";
+      window.dynamic_padding = true;
     };
   };
 }

@@ -7,7 +7,7 @@
     enable = true;
     settings = {
       main = {
-        terminal = "${pkgs.foot}/bin/foot";
+        terminal = pkgs.lib.getExe pkgs.alacritty-graphics;
         dpi-aware = "no";
         font = lib.mkForce "ZedMono Nerd Font Mono";
       };
