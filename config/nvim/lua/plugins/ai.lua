@@ -19,10 +19,10 @@ return {
 		opts = {
 			strategies = {
 				chat = {
-					adapter = "local",
+					adapter = "openrouter",
 				},
 				inline = {
-					adapter = "local",
+					adapter = "openrouter",
 					keymaps = {
 						accept_change = { modes = { n = "<leader>ca" } },
 						reject_change = { modes = { n = "<leader>cr" } },
@@ -55,6 +55,18 @@ return {
 								["Authorization"] = "Bearer ${api_key}",
 							},
 							parameters = { sync = true },
+						})
+					end,
+					["openrouter"] = function()
+						return require("codecompanion.adapters").extend("openai_compatible", {
+							env = {
+								url = "https://openrouter.ai/api",
+								api_key = "cmd:cat ~/chat/ai.key",
+								chat_url = "/v1/chat/completions",
+							},
+							schema = {
+								model = { default = "gpt-oss-120b" },
+							},
 						})
 					end,
 					["local"] = function()

@@ -22,6 +22,7 @@
     gnumake
     perf
     nixos-firewall-tool
+    postgresql
 
     #manuals
     man-pages

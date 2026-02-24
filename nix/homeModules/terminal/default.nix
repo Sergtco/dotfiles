@@ -11,6 +11,7 @@
     package = pkgs.alacritty-graphics;
     settings = {
       window.dynamic_padding = true;
+      mouse.hide_when_typing = true;
     };
   };
 }

@@ -21,18 +21,21 @@ return {
 		},
 	},
 	{
-		"kndndrj/nvim-dbee",
+		"kristijanhusak/vim-dadbod-ui",
 		dependencies = {
-			"MunifTanjim/nui.nvim",
+			{ "tpope/vim-dadbod", lazy = true },
 		},
 		keys = {
-			{ "<leader>gb", "<cmd>Dbee toggle<cr>", desc = "toggle database" },
+			{ "<leader>gb", "<cmd>DBUIToggle<cr>", desc = "Toggle database" },
 		},
-		build = function()
-			require("dbee").install()
+		cmd = {
+			"DBUI",
+			"DBUIToggle",
+			"DBUIAddConnection",
+			"DBUIFindBuffer",
+		},
+		init = function()
+			vim.g.db_ui_use_nerd_fonts = 1
 		end,
-		opts = {
-			result = { focus_result = false },
-		},
 	},
 }
