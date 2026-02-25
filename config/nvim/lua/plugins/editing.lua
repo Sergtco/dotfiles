@@ -13,10 +13,6 @@ return {
 	},
 	{
 		"uga-rosa/ccc.nvim",
-		opts = {
-			highlighter = {
-				auto_enable = true,
-			},
-		},
+		opts = { highlighter = { auto_enable = true } },
 	},
 }

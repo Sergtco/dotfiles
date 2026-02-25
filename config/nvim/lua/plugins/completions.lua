@@ -19,7 +19,7 @@ return {
 			keymap = {
 				["<Tab>"] = {},
 				["<S-Tab>"] = {},
-				["<C-l>"] = { "accept", "snippet_forward" },
+				["<C-l>"] = { "snippet_forward" },
 				["<C-j>"] = { "snippet_backward" },
 				["<C-n>"] = { "show", "select_next", "fallback_to_mappings" },
 			},

@@ -12,7 +12,7 @@
 
   programs.neovim = {
     enable = true;
-    package = pkgs.unstable.neovim-unwrapped;
+    package = inputs.neovim-nightly.packages.${pkgs.system}.default;
     extraPackages = with pkgs.unstable; [
       pyrefly
       lua-language-server
@@ -21,6 +21,8 @@
       clang-tools
       marksman
       zls
+      inputs.tree-sitter.packages.${pkgs.system}.default
+      nodejs-slim
     ];
     defaultEditor = true;
   };

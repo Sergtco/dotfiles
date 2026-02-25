@@ -77,3 +77,13 @@ vim.opt.langmap = vim.fn.join({
 
 -- cfilter
 vim.cmd("packadd cfilter")
+
+-- cmd
+opt.cmdheight = 0
+require("vim._core.ui2").enable({
+	enable = true,
+	msg = {
+		target = "msg",
+		timeout = 4000, -- Time a message is visible in the message window.
+	},
+})
