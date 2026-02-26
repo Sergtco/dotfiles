@@ -11,7 +11,7 @@ return {
 						vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 						vim.wo.foldmethod = "expr"
 						vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-                        vim.opt.foldenable = false
+						vim.opt.foldenable = false
 					end
 				end,
 			})
