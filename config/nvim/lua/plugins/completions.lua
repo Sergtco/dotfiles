@@ -12,7 +12,7 @@ return {
 				per_filetype = {
 					sql = { "snippets", "dadbod", "buffer" },
 				},
-				providers = { dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" } },
+				providers = { dadbod = { module = "vim_dadbod_completion.blink" }, lsp = { fallbacks = {} } },
 			},
 			cmdline = { completion = { menu = { auto_show = true } } },
 			signature = { enabled = true },

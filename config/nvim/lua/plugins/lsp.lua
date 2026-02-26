@@ -42,13 +42,8 @@ return {
 				vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, bufopts)
 				vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
 				vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-				vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-				vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
 				vim.keymap.set({ "n", "i" }, "<C-s>", vim.lsp.buf.signature_help, bufopts)
-				vim.keymap.set("n", "grt", vim.lsp.buf.type_definition, bufopts)
-				vim.keymap.set("n", "grn", vim.lsp.buf.rename, bufopts)
 				vim.keymap.set("n", "grr", fzf.lsp_references, bufopts)
-				vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, bufopts)
 				vim.keymap.set("n", "<leader>w", vim.lsp.buf.format, bufopts)
 			end
 
@@ -62,7 +57,6 @@ return {
 				sources = opts.null_ls.sources,
 				on_attach = on_attach,
 			})
-
 			vim.diagnostic.config({
 				virtual_text = true,
 			})

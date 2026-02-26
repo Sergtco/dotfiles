@@ -6,6 +6,7 @@
   imports = [
     ./kanata.nix
     ./dev.nix
+    ../../modules/fonts.nix
   ];
   environment.systemPackages = with pkgs; [
     gitMinimal
@@ -15,12 +16,6 @@
     telegram-desktop
     betterdisplay
     alacritty-graphics;
-  ];
-
-  fonts.packages = with pkgs; [
-    nerd-fonts.fira-code
-    nerd-fonts.zed-mono
-    nerd-fonts.jetbrains-mono
   ];
 
   users.groups.docker.members = ["user"];

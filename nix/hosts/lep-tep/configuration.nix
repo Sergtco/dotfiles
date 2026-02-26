@@ -14,6 +14,7 @@
     ../../modules/vpn
     ../../modules/music
     ../../modules/kanata.nix
+    ../../modules/fonts.nix
   ];
 
   ### BOOTLOADER ###
@@ -138,14 +139,6 @@
     wget
     wl-clipboard
     xclip
-  ];
-
-  fonts.packages = with pkgs; [
-    nerd-fonts.fira-code
-    nerd-fonts.zed-mono
-    nerd-fonts.jetbrains-mono
-    corefonts
-    noto-fonts-color-emoji
   ];
 
   ### GRAPHICS ###

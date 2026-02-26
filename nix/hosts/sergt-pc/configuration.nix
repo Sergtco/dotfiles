@@ -16,6 +16,7 @@
     ../../modules/themes/no_rgb.nix
     ../../modules/vpn
     ../../modules/ai
+    ../../modules/fonts.nix
   ];
 
   ### BOOTLOADER ###
@@ -163,13 +164,7 @@
     killall
     wget
   ];
-  fonts.packages = with pkgs; [
-    nerd-fonts.fira-code
-    nerd-fonts.zed-mono
-    nerd-fonts.jetbrains-mono
-    corefonts
-    noto-fonts-color-emoji
-  ];
+
   ### GRAPHICS ###
   services.xserver.enable = true;
   services.xserver.videoDrivers = ["amdgpu"];

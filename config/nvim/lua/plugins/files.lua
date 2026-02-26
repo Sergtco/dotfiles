@@ -11,7 +11,7 @@ return {
 		keys = {
 			{ "<F1>", "<cmd>FzfLua helptags<cr>", desc = "Pick Help" },
 			{ "<C-g>", "<cmd>FzfLua live_grep<cr>", desc = "Pick grep" },
-			{ "<C-/>", "<cmd>FzfLua buffers<cr>", desc = "Pick buffers" },
+			{ "<C-\\>", "<cmd>FzfLua buffers<cr>", desc = "Pick buffers" },
 			{ "<leader>z", "<cmd>FzfLua<cr>", desc = "Pick" },
 			{ "<A-z>", "<cmd>FzfLua resume<cr>", desc = "Pick resume last picker" },
 			{ "<leader>f", "<cmd>FzfLua files<cr>", desc = "Pick find_files" },

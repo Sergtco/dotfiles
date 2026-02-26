@@ -8,10 +8,10 @@ return {
 			harpoon:setup({
 				settings = {
 					sync_on_ui_close = true,
+					save_on_toggle = true,
 				},
 			})
 			local set = vim.keymap.set
-
             -- stylua: ignore start
             set("n", "<leader>m", function() harpoon:list():add() end)
             set("n", "<C-h>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)

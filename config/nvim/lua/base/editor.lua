@@ -84,6 +84,6 @@ require("vim._core.ui2").enable({
 	enable = true,
 	msg = {
 		target = "msg",
-		timeout = 4000, -- Time a message is visible in the message window.
+		timeout = 3000, -- Time a message is visible in the message window.
 	},
 })
