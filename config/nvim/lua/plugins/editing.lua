@@ -11,8 +11,4 @@ return {
 		keys = { { "gh", "<cmd>HopWordMW<cr>", desc = "Hop to word", mode = { "n", "v" } } },
 		opts = { keys = "etovxqpdygfblzhckisuran" },
 	},
-	{
-		"uga-rosa/ccc.nvim",
-		opts = { highlighter = { auto_enable = true } },
-	},
 }

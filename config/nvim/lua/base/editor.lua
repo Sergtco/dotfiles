@@ -87,3 +87,21 @@ require("vim._core.ui2").enable({
 		timeout = 3000, -- Time a message is visible in the message window.
 	},
 })
+
+-- insert mode completion options
+opt.autocomplete = true
+opt.complete = "o,.,w,b,u"
+opt.completeopt = "fuzzy,menuone,noinsert,popup"
+opt.pumheight = 7
+opt.pummaxwidth = 80
+
+vim.api.nvim_create_autocmd("LspAttach", { command = "setlocal complete=o" })
+
+vim.api.nvim_create_autocmd("CmdlineChanged", {
+	pattern = "[:\\/\\?]",
+	callback = function()
+		vim.cmd("call wildtrigger()")
+	end,
+})
+opt.wildmode = "noselect:lastused,full"
+opt.wildoptions = "pum"

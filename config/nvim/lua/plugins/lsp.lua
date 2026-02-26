@@ -12,7 +12,7 @@ return {
 				servers = {
 					clangd = {},
 					gopls = { settings = { gopls = { gofumpt = true } } },
-					lua_ls = { settings = { Lua = { format = { enable = false } } } },
+					lua_ls = { settings = { Lua = { completion = { keywordSnippet = "Replace" } } } },
 					svelte = {},
 					marksman = {},
 					rust_analyzer = {},
@@ -36,7 +36,7 @@ return {
 			}
 		end,
 		config = function(_, opts)
-			local on_attach = function(_, bufnr)
+			local on_attach = function(client, bufnr)
 				local bufopts = { noremap = true, silent = true, buffer = bufnr }
 				local fzf = require("fzf-lua")
 				vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, bufopts)
@@ -45,6 +45,7 @@ return {
 				vim.keymap.set({ "n", "i" }, "<C-s>", vim.lsp.buf.signature_help, bufopts)
 				vim.keymap.set("n", "grr", fzf.lsp_references, bufopts)
 				vim.keymap.set("n", "<leader>w", vim.lsp.buf.format, bufopts)
+				vim.lsp.completion.enable(true, client.id, bufnr)
 			end
 
 			for server, config in pairs(opts.servers) do
