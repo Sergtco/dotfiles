@@ -57,7 +57,6 @@ vim.opt.langmap = vim.fn.join({
 vim.cmd("packadd cfilter")
 
 -- cmd
-o.cmdheight = 0
 require("vim._core.ui2").enable({
 	enable = true,
 	msg = {
@@ -78,7 +77,7 @@ o.wildoptions = "pum"
 -- insert mode completion options
 o.autocomplete = true
 o.complete = "o,.,w,b,u"
-o.completeopt = "fuzzy,menuone,noinsert,popup"
+o.completeopt = "fuzzy,menuone,noselect,popup"
 o.pumheight = 7
 o.pummaxwidth = 80
 
