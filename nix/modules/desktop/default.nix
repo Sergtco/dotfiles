@@ -48,6 +48,7 @@ in {
       xclip
 
       playerctl
+      localsend
       telegram-desktop
       transmission_4-qt
       vial

@@ -24,6 +24,7 @@
       grub = {
         efiSupport = true;
         device = "nodev";
+        timeoutStyle = "hidden";
       };
     };
   };
