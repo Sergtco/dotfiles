@@ -40,10 +40,10 @@ in {
 
     home-manager.users.sergtco.programs.lutris = {
       enable = true;
-      package = pkgs.lutris;
+      package = pkgs.unstable.lutris;
       protonPackages = [pkgs.proton-ge-bin];
-      winePackages = with pkgs; [wine];
-      extraPackages = with pkgs; [
+      winePackages = with pkgs.unstable; [wine];
+      extraPackages = with pkgs.unstable; [
         winetricks
         mangohud
         umu-launcher

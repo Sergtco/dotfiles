@@ -157,6 +157,9 @@
 
   ### NIX ###
   nix.settings = {
+    trusted-users = [
+      "sergtco"
+    ];
     builders-use-substitutes = true;
     substituters = [
       "https://cache.nixos.org/"

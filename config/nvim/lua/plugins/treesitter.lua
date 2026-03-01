@@ -2,6 +2,9 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		branch = "main",
+		config = function()
+			require("nvim-treesitter").install("markdown", "vim", "vimdoc", "markdown-inline", "comment")
+		end,
 		init = function()
 			vim.api.nvim_create_autocmd("FileType", {
 				desc = "Enable Treesitter",
