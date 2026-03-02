@@ -12,7 +12,7 @@ return {
 				servers = {
 					clangd = {},
 					gopls = { settings = { gopls = { gofumpt = true } } },
-					lua_ls = { settings = { Lua = { completion = { keywordSnippet = "Replace" } } } },
+					emmylua_ls = { settings = { Lua = { completion = { keywordSnippet = "Replace" } } } },
 					svelte = {},
 					marksman = {},
 					rust_analyzer = {},
@@ -20,7 +20,7 @@ return {
 					tinymist = {},
 					ruff = {},
 					pyrefly = {},
-					ts_ls = {},
+					tsgo = {},
 				},
 
 				null_ls = {

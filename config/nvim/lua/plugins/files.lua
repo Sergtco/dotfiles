@@ -7,7 +7,6 @@ return {
 	},
 	{
 		"ibhagwan/fzf-lua",
-		event = "VeryLazy",
 		keys = {
 			{ "<F1>", "<cmd>FzfLua helptags<cr>", desc = "Pick Help" },
 			{ "<C-g>", "<cmd>FzfLua live_grep<cr>", desc = "Pick grep" },

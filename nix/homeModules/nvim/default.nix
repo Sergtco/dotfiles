@@ -15,8 +15,8 @@
     package = inputs.neovim-nightly.packages.${pkgs.system}.default;
     extraPackages = with pkgs.unstable; [
       pyrefly
-      lua-language-server
-      typescript-language-server
+      emmylua-ls
+      typescript-go
       gopls
       clang-tools
       marksman
