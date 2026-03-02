@@ -5,6 +5,9 @@ return {
 		keys = {
 			{ "<leader>gg", "<cmd>G<cr>", "Open fugitive" },
 		},
+		init = function()
+			vim.opt.statusline:append("%{FugitiveStatusline()}")
+		end,
 	},
 	{
 		"mistweaverco/kulala.nvim",
@@ -16,8 +19,6 @@ return {
 		ft = { "http", "rest" },
 		opts = {
 			global_keymaps = "<leader>R",
-			global_keymaps_prefix = "<leader>R",
-			kulala_keymaps_prefix = "",
 		},
 	},
 	{
