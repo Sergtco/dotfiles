@@ -65,7 +65,7 @@ return {
 								chat_url = "/v1/chat/completions",
 							},
 							schema = {
-								model = { default = "gpt-oss-120b" },
+								model = { default = "qwen/qwen3.5-flash-02-23" },
 							},
 						})
 					end,

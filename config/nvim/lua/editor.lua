@@ -64,21 +64,3 @@ require("vim._core.ui2").enable({
 		timeout = 3000,
 	},
 })
-
-vim.api.nvim_create_autocmd("CmdlineChanged", {
-	pattern = "[:\\/\\?]",
-	callback = function()
-		vim.cmd("call wildtrigger()")
-	end,
-})
-o.wildmode = "noselect:lastused,full"
-o.wildoptions = "pum"
-
--- insert mode completion options
-o.autocomplete = true
-o.complete = "o,.,w,b,u"
-o.completeopt = "fuzzy,menuone,noselect,popup"
-o.pumheight = 7
-o.pummaxwidth = 80
-
-vim.api.nvim_create_autocmd("LspAttach", { command = "setlocal complete=o" })

@@ -11,6 +11,7 @@ return {
 		{ "<A-s>" },
 		{ "<A-S>" },
 		{ "<c-q>" },
+		{ "<C-s>", mode = { "x" } },
 	},
 	config = function()
 		local mc = require("multicursor-nvim")
@@ -33,6 +34,7 @@ return {
 
         -- Disable and enable cursors.
         set({ "n", "x" }, "<c-q>", mc.toggleCursor)
+        set("x", "<C-s>", mc.splitCursors)
 
         mc.addKeymapLayer(function(layerSet)
             -- Select a different cursor as the main one.

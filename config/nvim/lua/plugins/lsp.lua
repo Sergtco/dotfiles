@@ -39,13 +39,14 @@ return {
 			local on_attach = function(client, bufnr)
 				local bufopts = { noremap = true, silent = true, buffer = bufnr }
 				local fzf = require("fzf-lua")
-				vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, bufopts)
-				vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-				vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-				vim.keymap.set({ "n", "i" }, "<C-s>", vim.lsp.buf.signature_help, bufopts)
-				vim.keymap.set("n", "grr", fzf.lsp_references, bufopts)
-				vim.keymap.set("n", "<leader>w", vim.lsp.buf.format, bufopts)
-				vim.lsp.completion.enable(true, client.id, bufnr)
+				local set = vim.keymap.set
+				set("n", "<leader>e", vim.diagnostic.open_float, bufopts)
+				set("n", "gD", vim.lsp.buf.declaration, bufopts)
+				set("n", "gd", vim.lsp.buf.definition, bufopts)
+				set({ "n", "i" }, "<C-s>", vim.lsp.buf.signature_help, bufopts)
+				set("n", "grr", fzf.lsp_references, bufopts)
+				set("n", "<leader>w", vim.lsp.buf.format, bufopts)
+
 			end
 
 			for server, config in pairs(opts.servers) do
