@@ -37,6 +37,7 @@ in {
       gpu-screen-recorder
       gpu-screen-recorder-gtk
       gnome-disk-utility
+      calibre
       xarchiver
       pcmanfm-qt
       shared-mime-info # pcmanfm

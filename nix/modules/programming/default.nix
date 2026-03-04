@@ -7,6 +7,8 @@
     autoPrune.enable = true;
   };
 
+  users.groups.dialout.members = ["sergtco"];
+
   environment.systemPackages = with pkgs.unstable; [
     #compilers
     gcc
