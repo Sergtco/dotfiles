@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  inputs,
+  ...
+}: let
 in {
   home.sessionVariables = {
     BROWSER = "helium";

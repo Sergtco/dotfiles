@@ -4,7 +4,7 @@
   ...
 }: {
   programs.fuzzel = {
-    enable = true;
+    enable = false;
     settings = {
       main = {
         dpi-aware = "no";

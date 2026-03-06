@@ -18,6 +18,7 @@
       "image/png" = ["swayimg"];
       "image/jpeg" = ["swayimg"];
       "image/gif" = ["swayimg"];
+      "x-scheme-handler/terminal" = ["Alacritty.desktop"];
     };
   };
 }

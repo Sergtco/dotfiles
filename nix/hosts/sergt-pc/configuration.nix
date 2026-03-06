@@ -17,6 +17,7 @@
     ../../modules/vpn
     ../../modules/ai
     ../../modules/fonts.nix
+    ../../modules/nix.nix
   ];
 
   ### BOOTLOADER ###
@@ -183,37 +184,6 @@
   custom.gaming.extraPackages = with pkgs.unstable; [
     deadlock-mod-manager
   ];
-
-  ### NIX ###
-  nix.settings = {
-    trusted-users = [
-      "sergtco"
-    ];
-    builders-use-substitutes = true;
-    substituters = [
-      "https://cache.nixos.org/"
-      "https://nix-community.cachix.org/"
-      "https://install.determinate.systems/"
-    ];
-    trusted-public-keys = [
-      "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM="
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    ];
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-  };
-
-  nix.optimise = {
-    automatic = true;
-    dates = "weekly";
-  };
-
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-  };
 
   system.stateVersion = "25.05";
 }

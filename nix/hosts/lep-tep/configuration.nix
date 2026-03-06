@@ -15,6 +15,7 @@
     ../../modules/music
     ../../modules/kanata.nix
     ../../modules/fonts.nix
+    ../../modules/nix.nix
   ];
 
   ### BOOTLOADER ###
@@ -153,35 +154,6 @@
 
   custom.desktop = {
     enable = true;
-  };
-
-  ### NIX ###
-  nix.settings = {
-    trusted-users = [
-      "sergtco"
-    ];
-    builders-use-substitutes = true;
-    substituters = [
-      "https://cache.nixos.org/"
-      "https://install.determinate.systems"
-    ];
-    trusted-public-keys = [
-      "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM="
-    ];
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-  };
-
-  nix.optimise = {
-    automatic = true;
-    dates = "weekly";
-  };
-
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
   };
 
   system.stateVersion = "25.05";

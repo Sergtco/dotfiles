@@ -6,10 +6,11 @@
 }: {
   imports = [
     ./mimeapps.nix
-    ./browser
+    ./browser.nix
     ./waybar
     ./fuzzel
     ./music.nix
+    ./vicinae.nix
   ];
   xdg.userDirs.enable = true;
   services = {
@@ -20,7 +21,7 @@
         main = {
           default-timeout = 5;
           max-timeout = 10;
-          selection-helper = "fuzzel --dmenu";
+          selection-helper = "vicinae dmenu";
           layer = "overlay";
         };
       };
