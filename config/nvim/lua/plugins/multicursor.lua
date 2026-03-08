@@ -43,7 +43,7 @@ return {
 
             layerSet({ "n", "x" }, "<leader>a", mc.alignCursors)
 
-            layerSet({ "n", "x" }, "<leader>x", mc.deleteCursor)
+            layerSet({ "n", "x" }, "<A-x>", mc.deleteCursor)
 
             layerSet("n", "<esc>", function()
                 if not mc.cursorsEnabled() then
