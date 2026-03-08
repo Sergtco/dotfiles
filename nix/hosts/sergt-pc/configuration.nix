@@ -6,7 +6,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/gaming
+    # ../../modules/gaming
     ../../modules/programming
     ../../modules/music
     ../../modules/zapret
@@ -181,9 +181,9 @@
     autologin = true;
   };
 
-  custom.gaming.extraPackages = with pkgs.unstable; [
-    deadlock-mod-manager
-  ];
+  # custom.gaming.extraPackages = with pkgs.unstable; [
+  #   deadlock-mod-manager
+  # ];
 
   system.stateVersion = "25.05";
 }
