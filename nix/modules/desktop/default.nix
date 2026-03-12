@@ -49,7 +49,6 @@ in {
       xclip
 
       playerctl
-      localsend
       telegram-desktop
       transmission_4-qt
       vial
@@ -57,6 +56,7 @@ in {
       wine
     ];
 
+    programs.localsend.enable = true;
     programs = {
       niri = {
         enable = true;

@@ -47,6 +47,7 @@ return {
 				set("n", "grr", fzf.lsp_references, bufopts)
 				set("n", "<leader>w", vim.lsp.buf.format, bufopts)
 
+				vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.MiniCompletion.completefunc_lsp")
 			end
 
 			for server, config in pairs(opts.servers) do

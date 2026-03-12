@@ -47,11 +47,8 @@ in {
 
       "--filter-udp=443 --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic=${quic_google} --ipset ${ipset_all} --new"
       "--filter-tcp=80,443,8443 --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fooling=ts --dpi-desync-fake-tls=${stun} --dpi-desync-fake-tls=${client_hello} --dpi-desync-fake-http=${client_hello_max} --ipset ${ipset_all} --new"
-      "--filter-tcp=1024-65535 --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-any-protocol=1 --dpi-desync-cutoff=n4 --dpi-desync-fooling=ts --dpi-desync-fake-tls=${stun} --dpi-desync-fake-tls=${client_hello} --dpi-desync-fake-http=${client_hello_max} --ipset ${ipset_all} --new"
-      "--filter-udp=1024-65535 --dpi-desync=fake --dpi-desync-repeats=12 --dpi-desync-any-protocol=1 --dpi-desync-fake-unknown-udp=${quic_google} --dpi-desync-cutoff=n3 --ipset ${ipset_all} --new"
-
-      # --filter-udp=444-6694,6706-65535 --ipset="%LISTS%ipset-amazon.txt" --dpi-desync-ttl=8 --dpi-desync-repeats=20 --dpi-desync-fooling=none --dpi-desync-any-protocol=1 --dpi-desync-fake-unknown-udp="%BIN%quic_initial_www_google_com.bin" --dpi-desync=fake --dpi-desync-cutoff=n10 --new ^
-      # --filter-tcp=6695-6705 --dpi-desync=fake,split2 --dpi-desync-repeats=8 --dpi-desync-fooling=md5sig --dpi-desync-autottl=2 --dpi-desync-fake-tls="%BIN%tls_clienthello_www_google_com.bin"
+      # "--filter-tcp=1024-65535 --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-any-protocol=1 --dpi-desync-cutoff=n4 --dpi-desync-fooling=ts --dpi-desync-fake-tls=${stun} --dpi-desync-fake-tls=${client_hello} --dpi-desync-fake-http=${client_hello_max} --ipset ${ipset_all} --new"
+      # "--filter-udp=1024-65535 --dpi-desync=fake --dpi-desync-repeats=12 --dpi-desync-any-protocol=1 --dpi-desync-fake-unknown-udp=${quic_google} --dpi-desync-cutoff=n3 --ipset ${ipset_all} --new"
     ];
   };
 }

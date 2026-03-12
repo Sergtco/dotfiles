@@ -3,7 +3,7 @@
 in {
   stylix = {
     enable = true;
-    image = ../../../wallpaper/nixos.jpg;
+    image = ../../../wallpaper/dayspring_by_bisbiswas.jpg;
     base16Scheme = themes.lackluster;
     polarity = "dark";
 

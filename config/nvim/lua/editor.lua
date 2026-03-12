@@ -9,6 +9,7 @@ o.diffopt:remove("linematch:40")
 -- file system
 o.undofile = true
 o.swapfile = false
+o.exrc = true
 
 --indent
 local indent = 4

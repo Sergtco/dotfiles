@@ -29,7 +29,7 @@ return {
 					},
 				},
 				cmd = {
-					adapter = "local",
+					adapter = "openrouter",
 				},
 			},
 			opts = {
@@ -65,7 +65,7 @@ return {
 								chat_url = "/v1/chat/completions",
 							},
 							schema = {
-								model = { default = "qwen/qwen3.5-flash-02-23" },
+								model = { default = "xiaomi/mimo-v2-flash" },
 							},
 						})
 					end,
