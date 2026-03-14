@@ -1,19 +1,20 @@
+local set = vim.keymap.set
 -- Term
-vim.keymap.set("t", "<esc>", "<C-\\><C-N>")
+set("t", "<esc>", "<C-\\><C-N>")
 
 -- global yank and paste
-vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
-vim.keymap.set({ "n", "v" }, "<leader>Y", '"+y$')
-vim.keymap.set({ "n", "v" }, "<leader>p", '"+p')
-vim.keymap.set({ "n", "v" }, "<leader>P", '"+P')
+set({ "n", "v" }, "<leader>y", '"+y', { desc = "Global yank" })
+set({ "n", "v" }, "<leader>Y", '"+y$', { desc = "Global yank end" })
+set({ "n", "v" }, "<leader>p", '"+p', { desc = "Global paste" })
+set({ "n", "v" }, "<leader>P", '"+P', { desc = "Global paste end" })
 
-vim.keymap.set("n", "]t", "<cmd>tabnext<cr>", { desc = "Tab next" })
-vim.keymap.set("n", "[t", "<cmd>tabprevious<cr>", { desc = "Tab prev" })
-vim.keymap.set("n", "<A-t>", "<cmd>tabclose<cr>", { desc = "Tab close" })
-vim.keymap.set("n", "<A-b>", "<cmd>bdelete<cr>", { desc = "Buffer close" })
-vim.keymap.set("n", "<A-B>", "<cmd>bdelete!<cr>", { desc = "Buffer close" })
+set("n", "]t", "<cmd>tabnext<cr>", { desc = "Tab next" })
+set("n", "[t", "<cmd>tabprevious<cr>", { desc = "Tab prev" })
+set("n", "<A-t>", "<cmd>tabclose<cr>", { desc = "Tab close" })
+set("n", "<A-b>", "<cmd>bdelete<cr>", { desc = "Buffer close" })
+set("n", "<A-B>", "<cmd>bdelete!<cr>", { desc = "Buffer close" })
 
-vim.keymap.set("n", "<A-q>", function()
+set("n", "<A-q>", function()
 	if vim.fn.getwininfo(vim.api.nvim_get_current_win())[1].quickfix == 1 then
 		vim.cmd("cclose")
 	else
@@ -21,3 +22,7 @@ vim.keymap.set("n", "<A-q>", function()
 	end
 end, { desc = "Toggle Quickfix" })
 
+set("o", "ir", "i[")
+set("o", "ar", "a[")
+set("o", "ia", "i<")
+set("o", "aa", "a<")

@@ -56,6 +56,8 @@ vim.opt.langmap = vim.fn.join({
 
 -- cfilter
 vim.cmd("packadd cfilter")
+vim.cmd("packadd nvim.undotree")
+vim.cmd("packadd nvim.difftool")
 
 -- cmd
 require("vim._core.ui2").enable({
@@ -67,13 +69,13 @@ require("vim._core.ui2").enable({
 })
 
 vim.o.completeopt = "menuone,noinsert,fuzzy"
-vim.o.wildoptions = "pum,fuzzy"
 vim.o.pumheight = 10
+
 vim.api.nvim_create_autocmd("CmdlineChanged", {
-    pattern = "[:/\\?]",
-    callback = function()
-        vim.fn.wildtrigger()
-    end,
+	pattern = "[:/\\?]",
+	callback = function()
+		vim.fn.wildtrigger()
+	end,
 })
 vim.o.wildmode = "noselect:lastused,full"
 vim.o.wildoptions = "pum,fuzzy"

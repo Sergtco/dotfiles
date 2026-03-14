@@ -17,10 +17,6 @@
       "src": "https://github.com/ThePrimeagen/harpoon",
       "version": "'harpoon2'"
     },
-    "hop.nvim": {
-      "rev": "707049feaca9ae65abb3696eff9aefc7879e66aa",
-      "src": "https://github.com/smoka7/hop.nvim"
-    },
     "kulala.nvim": {
       "rev": "6656c9d332735ca6a27725e0fb45a1715c4372d9",
       "src": "https://github.com/mistweaverco/kulala.nvim"
@@ -29,13 +25,13 @@
       "rev": "70dd682e564784893b984deb51dd5ddd263c8cc7",
       "src": "https://github.com/slugbyte/lackluster.nvim"
     },
+    "leap.nvim": {
+      "rev": "774c452da3521d4434f912b6ca6dd97318aca4b0",
+      "src": "https://codeberg.org/andyg/leap.nvim"
+    },
     "mini.completion": {
       "rev": "4f94cafdeef02bf3ef9997cd6862658801caa22c",
       "src": "https://github.com/nvim-mini/mini.completion"
-    },
-    "mini.pairs": {
-      "rev": "b7fde3719340946feb75017ef9d75edebdeb0566",
-      "src": "https://github.com/echasnovski/mini.pairs"
     },
     "mini.snippets": {
       "rev": "0d0b435e3f9563965f73703a6a6d17acb432a93c",
@@ -49,6 +45,10 @@
       "rev": "c9317c2a8629d4e39e7cf47be74cb67f3ab37cda",
       "src": "https://github.com/nvimtools/none-ls.nvim"
     },
+    "nvim-autopairs": {
+      "rev": "59bce2eef357189c3305e25bc6dd2d138c1683f5",
+      "src": "https://github.com/windwp/nvim-autopairs"
+    },
     "nvim-dap": {
       "rev": "a9d8cb68ee7184111dc66156c4a2ebabfbe01bc5",
       "src": "https://github.com/mfussenegger/nvim-dap"
@@ -58,7 +58,7 @@
       "src": "https://github.com/leoluz/nvim-dap-go"
     },
     "nvim-dap-view": {
-      "rev": "4f9069096f5616f12a73b9287586d21eb1e4fdb0",
+      "rev": "cd14d34150b05d633610ff8d39d6934110696923",
       "src": "https://github.com/igorlfs/nvim-dap-view"
     },
     "nvim-lspconfig": {
@@ -70,7 +70,7 @@
       "src": "https://github.com/kylechui/nvim-surround"
     },
     "nvim-treesitter": {
-      "rev": "f873ec2955098fc4b7c3abfe891bdd49fa7947e2",
+      "rev": "2f5d4c3f3c675962242096bcc8e586d76dd72eb2",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "oil.nvim": {
