@@ -81,6 +81,27 @@ return {
 				},
 			},
 			display = { chat = { window = { width = 0.3 } } },
+			interactions = { chat = { opts = { completion_provider = "default" } } },
 		},
+		init = function()
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = "codecompanion",
+				callback = function()
+					vim.api.nvim_create_autocmd("InsertCharPre", {
+						callback = function()
+							local char = vim.v.char
+							if char == "/" or char == "@" or char == "#" then
+								vim.api.nvim_feedkeys(
+									vim.api.nvim_replace_termcodes("<C-x><C-o>", true, false, true),
+									"i",
+									false
+								)
+							end
+						end,
+					})
+					vim.cmd([[setlocal complete=o,.,w,b,u]])
+				end,
+			})
+		end,
 	},
 }
