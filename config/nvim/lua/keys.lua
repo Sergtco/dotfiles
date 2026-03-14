@@ -21,10 +21,3 @@ vim.keymap.set("n", "<A-q>", function()
 	end
 end, { desc = "Toggle Quickfix" })
 
-vim.keymap.set("i", "<CR>", function()
-	if vim.fn.pumvisible() == 1 then
-		return "<C-e><CR>"
-	else
-		return require("mini.pairs").cr()
-	end
-end, { expr = true, noremap = true })

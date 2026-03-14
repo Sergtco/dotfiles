@@ -37,6 +37,7 @@ in {
     targets = {
       waybar.enable = false;
       firefox.enable = false;
+      neovim.enable = false;
     };
   };
 }
