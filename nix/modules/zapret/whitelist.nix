@@ -66,7 +66,5 @@
     "ytimg.com"
     "ytimg.l.google.com"
     "deadlockmods.app"
-    "t.me"
-    "telegram.com"
   ];
 }

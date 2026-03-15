@@ -68,7 +68,7 @@ require("vim._core.ui2").enable({
 	},
 })
 
-vim.o.completeopt = "menuone,noinsert,fuzzy"
+vim.o.completeopt = "menuone,noselect,fuzzy"
 vim.o.pumheight = 10
 
 vim.api.nvim_create_autocmd("CmdlineChanged", {

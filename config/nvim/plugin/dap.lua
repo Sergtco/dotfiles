@@ -40,7 +40,8 @@ vim.schedule(function()
 	}
 	dap.configurations.cpp = dap.configurations.c
 	dap.configurations.zig = dap.configurations.c
-	dap.configurations.rust = vim.tbl_deep_extend("force", dap.configurations.c, { { type = "rust-gdb" }, { type = "rust-gdb" } })
+	dap.configurations.rust =
+		vim.tbl_deep_extend("force", dap.configurations.c, { { type = "rust-gdb" }, { type = "rust-gdb" } })
 
 	local dv = require("dap-view")
 
@@ -59,10 +60,10 @@ vim.schedule(function()
 
 	local set = vim.keymap.set
     -- stylua: ignore start
-	set("n", "<A-n>", function() require("dap").step_over() end, { desc = "DAP step over" })
-	set("n", "<A-i>", function() require("dap").step_into() end, { desc = "DAP step into" })
-	set("n", "<A-o>", function() require("dap").step_out() end, { desc = "DAP step out" })
-	set("n", "<C-t>", function() require("dap").toggle_breakpoint() end, { desc = "DAP toggle breakpoint" })
+    set("n", "<A-n>", function() require("dap").step_over() end, { desc = "DAP step over" })
+    set("n", "<A-i>", function() require("dap").step_into() end, { desc = "DAP step into" })
+    set("n", "<A-o>", function() require("dap").step_out() end, { desc = "DAP step out" })
+    set("n", "<C-t>", function() require("dap").toggle_breakpoint() end, { desc = "DAP toggle breakpoint" })
     set("n", "<Leader>gw", function() require("dap-view").add_expr() end, { desc = "DAP view add expression" })
-    -- stylua: ignore end
+	-- stylua: ignore end
 end)

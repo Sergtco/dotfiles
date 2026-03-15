@@ -83,7 +83,6 @@ vim.schedule(function()
 					end
 				end,
 			})
-			vim.cmd([[setlocal complete=o,.,w,b,u]])
 		end,
 	})
 end)

@@ -50,6 +50,7 @@ in {
 
       playerctl
       telegram-desktop
+      element-desktop
       transmission_4-qt
       vial
       libreoffice-qt-fresh

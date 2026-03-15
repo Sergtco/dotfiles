@@ -26,3 +26,11 @@ set("o", "ir", "i[")
 set("o", "ar", "a[")
 set("o", "ia", "i<")
 set("o", "aa", "a<")
+
+vim.keymap.set("i", "<C-y>", function()
+	if vim.fn.pumvisible() == 1 and vim.fn.complete_info().selected == -1 then
+		return vim.fn["repeat"]("<C-n>", 1) .. "<C-y>"
+	end
+
+	return "<C-y>"
+end, { expr = true, remap = false, desc = "Smart <C-y>: accept first if nothing selected" })

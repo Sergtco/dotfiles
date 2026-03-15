@@ -1,63 +1,73 @@
 vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
-    callback = function(_)
-        vim.pack.add({
-            "https://github.com/neovim/nvim-lspconfig",
-            "https://github.com/nvimtools/none-ls.nvim",
-            "https://github.com/nvim-lua/plenary.nvim",
-        })
+	callback = function()
+		vim.pack.add({
+			"https://github.com/neovim/nvim-lspconfig",
+			"https://github.com/mfussenegger/nvim-lint",
+			"https://github.com/stevearc/conform.nvim",
+			"https://github.com/nvim-lua/plenary.nvim",
+		})
+		local set = vim.keymap.set
 
-        local servers = {
-            clangd = {},
-            gopls = { settings = { gopls = { gofumpt = true } } },
-            emmylua_ls = { settings = { Lua = { completion = { keywordSnippet = "Replace" } } } },
-            svelte = {},
-            marksman = {},
-            rust_analyzer = {},
-            zls = {},
-            tinymist = {},
-            ruff = {},
-            -- pyrefly = {},
-            ty = {},
-            tsgo = {},
-        }
+		local servers = {
+			clangd = {},
+			gopls = {},
+			emmylua_ls = { settings = { Lua = { completion = { callSnippet = true } } } },
+			svelte = {},
+			marksman = {},
+			rust_analyzer = {},
+			zls = {},
+			tinymist = {},
+			ruff = {},
+			ty = {},
+			tsgo = {},
+		}
 
-        local null_ls = require("null-ls")
-        local null_ls_sources = {
-            null_ls.builtins.diagnostics.golangci_lint,
-            null_ls.builtins.formatting.alejandra,
-            null_ls.builtins.formatting.typstyle,
-            null_ls.builtins.formatting.clang_format,
-            null_ls.builtins.formatting.prettier,
-            null_ls.builtins.formatting.stylua,
-        }
+		local linters_by_ft = {
+			go = { "golangcilint" },
+		}
 
-        local on_attach = function(client, bufnr)
-            local bufopts = { noremap = true, silent = true, buffer = bufnr }
-            local fzf = require("fzf-lua")
-            local set = vim.keymap.set
-            set("n", "gD", vim.lsp.buf.declaration, bufopts)
-            set("n", "gd", vim.lsp.buf.definition, bufopts)
-            set("n", "grr", fzf.lsp_references, bufopts)
-            set("n", "<leader>w", vim.lsp.buf.format, bufopts)
+		local formatters_by_ft = {
+			nix = { "alejandra" },
+			typst = { "typstyle" },
+			c = { "clang_format" },
+			cpp = { "clang_format" },
+			js = { "prettier" },
+			ts = { "prettier" },
+			json = { "prettier" },
+			lua = { "stylua" },
+		}
 
-            if client:supports_method(vim.lsp.protocol.Methods.textDocument_completion, bufnr) then
-                vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.MiniCompletion.completefunc_lsp")
-            end
-        end
+		require("lint").linters_by_ft = linters_by_ft
+		vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+			callback = function()
+				require("lint").try_lint()
+			end,
+		})
 
-        for server, config in pairs(servers) do
-            config.on_attach = on_attach
-            vim.lsp.config(server, config)
-            vim.lsp.enable(server)
-        end
+		require("conform").setup({
+			formatters_by_ft = formatters_by_ft,
+			default_format_opts = { lsp_format = "fallback" },
+		})
 
-        require("null-ls").setup({
-            sources = null_ls_sources,
-            on_attach = on_attach,
-        })
+		set("n", "<leader>w", require("conform").format)
 
-        vim.diagnostic.config({
-            virtual_text = true,
-        })
-    end,
+		local on_attach = function(_, bufnr)
+			local bufopts = { noremap = true, silent = true, buffer = bufnr }
+			local fzf = require("fzf-lua")
+
+			set("n", "gD", vim.lsp.buf.declaration, bufopts)
+			set("n", "gd", vim.lsp.buf.definition, bufopts)
+			set("n", "grr", fzf.lsp_references, bufopts)
+		end
+
+		for server, config in pairs(servers) do
+			config.on_attach = on_attach
+			vim.lsp.config(server, config)
+			vim.lsp.enable(server)
+		end
+
+		vim.diagnostic.config({
+			virtual_text = true,
+		})
+	end,
 })

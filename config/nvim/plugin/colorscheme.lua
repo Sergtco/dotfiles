@@ -1,4 +1,6 @@
-vim.pack.add({ "https://github.com/slugbyte/lackluster.nvim" })
+vim.pack.add({
+	"https://github.com/slugbyte/lackluster.nvim",
+})
 
 require("lackluster").setup({
 	tweak_ui = {
