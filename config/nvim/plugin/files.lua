@@ -23,3 +23,4 @@ set("n", "<leader>d", "<cmd>FzfLua diagnostics_document<cr>", { desc = "Pick doc
 set("n", "<leader>D", "<cmd>FzfLua diagnostics_workspace<cr>", { desc = "Pick workspace diagnostics" })
 set("n", "<leader>s", "<cmd>FzfLua lsp_document_symbols<cr>", { desc = "Pick lsp_document_symbols" })
 set("n", "<leader>S", "<cmd>FzfLua lsp_live_workspace_symbols<cr>", { desc = "Pick lsp_workspace_symbols_symbols" })
+set("n", "<leader>r", "<cmd>FzfLua lsp_references<cr>", { desc = "Pick lsp_references" })

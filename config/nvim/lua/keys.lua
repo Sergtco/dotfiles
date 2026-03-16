@@ -1,6 +1,4 @@
 local set = vim.keymap.set
--- Term
-set("t", "<esc>", "<C-\\><C-N>")
 
 -- global yank and paste
 set({ "n", "v" }, "<leader>y", '"+y', { desc = "Global yank" })
