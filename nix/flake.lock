@@ -589,6 +589,26 @@
         "type": "github"
       }
     },
+    "paneru": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1770467589,
+        "narHash": "sha256-VyKzfnXfnIkyjbg1RQTDaIbMdPQjNBD5dxVL6OZQf2U=",
+        "owner": "karinushka",
+        "repo": "paneru",
+        "rev": "66c94493cc99ee7715b4beb1e5cf455ada60213a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "karinushka",
+        "repo": "paneru",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "determinate": "determinate",
@@ -602,7 +622,8 @@
         "stylix": "stylix",
         "tree-sitter": "tree-sitter",
         "vicinae": "vicinae",
-        "vicinae-extensions": "vicinae-extensions"
+        "vicinae-extensions": "vicinae-extensions",
+        "paneru": "paneru"
       }
     },
     "stylix": {

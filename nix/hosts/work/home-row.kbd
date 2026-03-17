@@ -24,7 +24,7 @@
   tab  esc
   lmet tab
   spc  (tap-hold $tap-time $hold-time spc (layer-while-held nav))
-  rmet (tap-hold $tap-time $hold-time rmet (layer-while-held layers))
+  rmet (tap-hold $tap-time $hold-time bspc (layer-while-held layers))
   a    (tap-hold $tap-time $hold-time a   lmet)
   s    (tap-hold $tap-time $hold-time s   lalt)
   d    (tap-hold $tap-time $hold-time d   lctl)

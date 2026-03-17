@@ -15,7 +15,7 @@
     neovim
     telegram-desktop
     betterdisplay
-    alacritty-graphics;
+    alacritty-graphics
   ];
 
   users.groups.docker.members = ["user"];

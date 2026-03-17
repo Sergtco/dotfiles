@@ -3,6 +3,7 @@
     gitMinimal
     docker
     colima
+    k9s
 
     clang
     darwin.libresolv
