@@ -17,7 +17,7 @@ vim.schedule(function()
 
     local mc = require("multicursor-nvim")
     mc.setup()
-    -- stylua: ignore start
+
     set({ "n", "x" }, "<c-j>", function() mc.lineAddCursor(1) end)
     set({ "n", "x" }, "<c-k>", function() mc.lineAddCursor(-1) end)
 
@@ -32,6 +32,8 @@ vim.schedule(function()
     mc.addKeymapLayer(function(layerSet)
         layerSet({ "n", "x" }, "<A-h>", mc.prevCursor)
         layerSet({ "n", "x" }, "<A-l>", mc.nextCursor)
+        layerSet({ "n", "x" }, "<A-j>", function() mc.lineSkipCursor(1) end)
+        layerSet({ "n", "x" }, "<A-k>", function() mc.lineSkipCursor(-1) end)
 
         layerSet({ "n", "x" }, "<leader>a", mc.alignCursors)
 
@@ -45,5 +47,4 @@ vim.schedule(function()
             end
         end)
     end)
-    -- stylua: ignore end
 end)

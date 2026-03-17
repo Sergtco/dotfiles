@@ -22,6 +22,10 @@ o.shiftwidth = indent
 o.softtabstop = indent
 o.tabstop = indent
 
+-- fold
+vim.wo.foldmethod = "indent"
+vim.wo.foldlevel = 99 
+
 --ui
 o.relativenumber = true
 o.number = true

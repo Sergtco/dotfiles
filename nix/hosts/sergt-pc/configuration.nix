@@ -6,7 +6,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    # ../../modules/gaming
+    ../../modules/gaming
     ../../modules/programming
     ../../modules/music
     ../../modules/zapret

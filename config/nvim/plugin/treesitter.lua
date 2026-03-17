@@ -10,12 +10,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
 	end,
 })
 
-vim.pack.add({
-	{
-		src = "https://github.com/nvim-treesitter/nvim-treesitter",
-		version = "main",
-	},
-})
+vim.pack.add({ "https://github.com/nvim-treesitter/nvim-treesitter", })
 require("nvim-treesitter").install("markdown", "vim", "vimdoc", "markdown-inline", "comment")
 
 vim.api.nvim_create_autocmd("FileType", {
@@ -25,8 +20,8 @@ vim.api.nvim_create_autocmd("FileType", {
 		if pcall(vim.treesitter.start) then
 			vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 			vim.wo.foldmethod = "expr"
+            vim.wo.foldlevel = 99 
 			vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-			vim.opt.foldenable = false
 		end
 	end,
 })
