@@ -18,6 +18,7 @@
       ty
       emmylua-ls
       typescript-go
+      typescript-language-server
       gopls
       clang-tools
       marksman

@@ -8,7 +8,7 @@ vim.pack.add({
 	"https://github.com/nvim-lua/plenary.nvim",
 })
 
-local servers = { "clangd", "gopls", "rust_analyzer", "tinymist", "ruff", "ty", "tsgo" }
+local servers = { "clangd", "gopls", "rust_analyzer", "tinymist", "ruff", "ty", "ts_ls" }
 
 local linters_by_ft = {
 	go = { "golangcilint" },

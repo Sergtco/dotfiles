@@ -23,14 +23,18 @@
         package = pkgs.noto-fonts-color-emoji;
         name = "Apple Color Emoji";
       };
+      sizes.desktop = 13;
+      sizes.terminal = 13;
+      sizes.popups = 14;
     };
+    targets.neovim.enable = false;
   };
   programs.home-manager.enable = true;
-  programs.rio = {
+  programs.alacritty = {
     enable = true;
     settings = {
-      fonts.family = lib.mkForce "NerdMono Nerd Font Mono";
-      window.decorations = "Disabled";
+      font.normal.family = lib.mkForce "ZedMono Nerd Font Mono";
+      window.decorations = "None";
     };
   };
   fonts.fontconfig.enable = true;
