@@ -1,6 +1,3 @@
--- vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
--- 	callback = function() end,
--- })
 vim.pack.add({
 	"https://github.com/neovim/nvim-lspconfig",
 	"https://github.com/mfussenegger/nvim-lint",
@@ -23,6 +20,8 @@ local conform_opts = {
 		js    = { "prettier" },
 		ts    = { "prettier" },
 		json  = { "prettier" },
+		yaml  = { "prettier" },
+		md    = { "prettier" },
 	},
 	default_format_opts = { lsp_format = "fallback" },
 }
@@ -36,8 +35,7 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 })
 
 require("conform").setup(conform_opts)
-
-vim.keymap.set("n", "<leader>w", require("conform").format)
+vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
 vim.lsp.enable(servers)
 

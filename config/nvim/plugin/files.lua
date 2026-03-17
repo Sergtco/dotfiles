@@ -5,10 +5,10 @@ local set = vim.keymap.set
 require("oil").setup()
 set("n", "-", "<cmd>Oil<cr>", { desc = "Open Oil" })
 
+
 require("fzf-lua").setup({
 	{ "ivy", "borderless", "hide" },
 	fzf_colors = true,
-	winopts = { preview = { hidden = true } },
 	keymap = { builtin = { ["<A-p>"] = "toggle-preview" } },
 })
 require("fzf-lua").register_ui_select()

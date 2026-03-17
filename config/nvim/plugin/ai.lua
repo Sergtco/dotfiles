@@ -58,4 +58,9 @@ vim.schedule(function()
 		display = { chat = { window = { width = 0.3 } } },
 		interactions = { chat = { opts = { completion_provider = "default" } } },
 	})
+
+	local set = vim.keymap.set
+	set("n", "<leader>ct", "<cmd>CodeCompanionChat Toggle<CR>", { desc = "Open ai chat" })
+	set({ "n", "v" }, "<leader>cy", "<cmd>CodeCompanionChat Add<CR>", { desc = "Open ai chat" })
+	set({ "n", "v" }, "<leader>cc", ":CodeCompanion ", { desc = "Inline companion" })
 end)

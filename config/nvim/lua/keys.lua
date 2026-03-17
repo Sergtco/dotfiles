@@ -12,6 +12,25 @@ set("n", "<A-t>", "<cmd>tabclose<cr>", { desc = "Tab close" })
 set("n", "<A-b>", "<cmd>bdelete<cr>", { desc = "Buffer close" })
 set("n", "<A-B>", "<cmd>bdelete!<cr>", { desc = "Buffer close" })
 
+set("o", "ir", "i[")
+set("o", "ar", "a[")
+set("o", "ia", "i<")
+set("o", "aa", "a<")
+
+set("i", "<C-y>", function()
+	if vim.fn.pumvisible() == 1 and vim.fn.complete_info().selected == -1 then
+		return vim.fn["repeat"]("<C-n>", 1) .. "<C-y>"
+	end
+
+	return "<C-y>"
+end, { expr = true, remap = false, desc = "Smart <C-y>: accept first if nothing selected" })
+
+set('n', 'gQ', function()
+    local cursor_pos = vim.fn.getpos('.')
+    vim.cmd('normal! gggqG')
+    vim.fn.setpos('.', cursor_pos)
+end, { noremap = true, silent = true })
+
 set("n", "<A-q>", function()
 	if vim.fn.getwininfo(vim.api.nvim_get_current_win())[1].quickfix == 1 then
 		vim.cmd("cclose")
@@ -20,15 +39,3 @@ set("n", "<A-q>", function()
 	end
 end, { desc = "Toggle Quickfix" })
 
-set("o", "ir", "i[")
-set("o", "ar", "a[")
-set("o", "ia", "i<")
-set("o", "aa", "a<")
-
-vim.keymap.set("i", "<C-y>", function()
-	if vim.fn.pumvisible() == 1 and vim.fn.complete_info().selected == -1 then
-		return vim.fn["repeat"]("<C-n>", 1) .. "<C-y>"
-	end
-
-	return "<C-y>"
-end, { expr = true, remap = false, desc = "Smart <C-y>: accept first if nothing selected" })

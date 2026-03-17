@@ -33,7 +33,6 @@
 
     # language utils
     ruff
-    stylua
     alejandra
     gofumpt
     nodePackages.prettier
