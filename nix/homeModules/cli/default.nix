@@ -11,6 +11,7 @@
   home.packages = with pkgs; [
     ripgrep
     fd
+    bat
     file
     usbutils
     ffmpeg
@@ -61,7 +62,8 @@
   };
 
   programs = {
-    fzf.enable = true;
+    # fzf.enable = true;
+    skim.enable = true;
     yazi.enable = true;
     zoxide.enable = true;
     nix-index.enable = true;

@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [sesh];
+  home.packages = with pkgs; [sesh skim];
   programs.tmux = {
     enable = true;
     keyMode = "vi";
@@ -22,8 +22,8 @@
       set-window-option -g window-status-current-style 'fg=white,bg=black'
 
       bind-key "f" run-shell "sesh connect \"$(
-        sesh list --icons | fzf-tmux -p 80%,70% \
-          --no-sort --ansi --border-label ' sesh ' --prompt '>  ' \
+        sesh list --icons | sk --tmux center,80%,70% \
+          --no-sort --ansi  --prompt '>  ' \
           --bind 'ctrl-d:execute(tmux kill-session -t {2..})+change-prompt(>  )+reload(sesh list --icons)' \
           --preview-window 'right:55%' \
           --preview 'sesh preview {}'

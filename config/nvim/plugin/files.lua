@@ -7,7 +7,7 @@ set("n", "-", "<cmd>Oil<cr>", { desc = "Open Oil" })
 
 
 require("fzf-lua").setup({
-	{ "ivy", "borderless", "hide" },
+	{ "skim", "ivy", "borderless", "hide" },
 	fzf_colors = true,
 	keymap = { builtin = { ["<A-p>"] = "toggle-preview" } },
 })
