@@ -5,6 +5,7 @@ vim.schedule(function()
 		"https://github.com/leoluz/nvim-dap-go",
 	})
 
+    require("dap-go").setup()
 	local dap = require("dap")
 	dap.adapters.gdb = {
 		type = "executable",
