@@ -12,10 +12,6 @@
       "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
-    "fzf-lua": {
-      "rev": "6e41ba7505f35a6f054ca682b043aa0cea36c2ef",
-      "src": "https://github.com/ibhagwan/fzf-lua"
-    },
     "harpoon": {
       "rev": "87b1a3506211538f460786c23f98ec63ad9af4e5",
       "src": "https://github.com/ThePrimeagen/harpoon",
@@ -36,6 +32,14 @@
     "mini.completion": {
       "rev": "4f94cafdeef02bf3ef9997cd6862658801caa22c",
       "src": "https://github.com/nvim-mini/mini.completion"
+    },
+    "mini.extra": {
+      "rev": "0ccc67319240cf8712f5f614db50c262eccd9db3",
+      "src": "https://github.com/nvim-mini/mini.extra"
+    },
+    "mini.pick": {
+      "rev": "8f196683edb7e199dc392a5830cced4ba05671db",
+      "src": "https://github.com/nvim-mini/mini.pick"
     },
     "mini.snippets": {
       "rev": "0d0b435e3f9563965f73703a6a6d17acb432a93c",

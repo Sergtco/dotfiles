@@ -12,6 +12,9 @@ require("lackluster").setup({
 			fg = "white",
 			bg = "#708090",
 		},
+		["MiniPickMatchCurrent"] = {
+			bg = "black",
+		},
 	},
 })
 
