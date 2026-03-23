@@ -3,14 +3,9 @@
   inputs,
   ...
 }: {
-  perSystem = {pkgs, ...}: {
+  perSystem = {pkgs, lib, ...}: {
     packages.tmux = inputs.wrapper-modules.wrappers.tmux.wrap {
       inherit pkgs;
-
-      extraPackages = with pkgs; [
-        skim
-        sesh
-      ];
 
       baseIndex = 1;
       clock24 = true;
@@ -20,18 +15,19 @@
       shell = "$SHELL";
       configAfter = ''
         # Set new panes in current dir
+        set-window-option -g mode-keys vi 
         set -gu default-command
         bind c new-window -c "#{pane_current_path}"
         bind '"' split-window -c "#{pane_current_path}"
         bind % split-window -h -c "#{pane_current_path}"
         set-window-option -g window-status-current-style 'fg=white,bg=black'
 
-        bind-key "f" run-shell "sesh connect \"$(
-          sesh list --icons | sk --tmux center,80%,70% \
+        bind-key "f" run-shell "${lib.getExe pkgs.sesh} connect \"$(
+          sesh list --icons | ${lib.getExe pkgs.skim} --tmux center,80%,70% \
             --no-sort --ansi  --prompt '>  ' \
             --bind 'ctrl-d:execute(tmux kill-session -t {2..})+change-prompt(>  )+reload(sesh list --icons)' \
             --preview-window 'right:55%' \
-            --preview 'sesh preview {}'
+            --preview '${lib.getExe pkgs.sesh} preview {}'
         )\""
       '';
 

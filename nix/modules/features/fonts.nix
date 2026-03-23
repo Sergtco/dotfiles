@@ -2,8 +2,8 @@
   self,
   inputs,
   ...
-}: {
-  flake.nixosModules.fonts = {pkgs, ...}: {
+}: let
+  fonts = {pkgs, ...}: {
     fonts.packages = with pkgs; [
       nerd-fonts.fira-code
       nerd-fonts.zed-mono
@@ -14,4 +14,7 @@
       noto-fonts-color-emoji
     ];
   };
+in {
+  flake.nixosModules.fonts = fonts;
+  flake.darwinModules.fonts = fonts;
 }

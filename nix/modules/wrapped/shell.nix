@@ -3,7 +3,12 @@
   inputs,
   ...
 }: {
-  perSystem = {pkgs, self', ...}: {
+  perSystem = {
+    pkgs,
+    lib,
+    self',
+    ...
+  }: {
     packages.shell = inputs.wrapper-modules.wrappers.zsh.wrap {
       inherit pkgs;
       zshAliases = {
@@ -20,19 +25,19 @@
       '';
 
       zshrc.content = ''
-        eval "$(oh-my-posh init zsh --config pure)"
-        source <(sk --shell zsh)
+        bindkey -v
+        source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+        source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+        eval "$(${lib.getExe pkgs.oh-my-posh} init zsh --config pure)"
+        source <(${lib.getExe pkgs.skim} --shell zsh)
         source ${pkgs.skim}/share/skim/key-bindings.zsh
-        eval "$(direnv hook zsh)"
-        eval "$(zoxide init zsh)"
+
+        eval "$(${lib.getExe pkgs.direnv} hook zsh)"
+        eval "$(${lib.getExe pkgs.zoxide} init zsh)"
       '';
 
       extraPackages = with pkgs; [
         skim
-        direnv
-        zoxide
-        oh-my-posh
-        sesh
 
         ripgrep
         fd
@@ -40,11 +45,20 @@
         file
         usbutils
         ffmpeg
+        bottom
         imagemagick
         progress
 
+        bash
+        curl
+        p7zip
+        zip
+        unzip
+        killall
+        wget
+
         yazi
-         
+
         self'.packages.tmux
         self'.packages.nvim
         self'.packages.git

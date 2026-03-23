@@ -3,29 +3,27 @@
   self,
   ...
 }: {
-  flake.nixosConfigurations.sergt-pc = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.lep-tep = inputs.nixpkgs.lib.nixosSystem {
     modules = [
-      self.nixosModules.sergt-pc
+      self.nixosModules.lep-tep
     ];
   };
-  flake.nixosModules.sergt-pc = {
+  flake.nixosModules.lep-tep = {
     pkgs,
-    config,
+    inputs,
     ...
   }: let
     selfpkgs = self.packages.${pkgs.stdenv.hostPlatform.system};
   in {
     imports = [
-      # self.nixosModules.gaming
-      self.nixosModules.theme
-      self.nixosModules.no-rgb
+      self.nixosModules.gaming
       self.nixosModules.programming
-      self.nixosModules.music
       self.nixosModules.zapret
-      self.nixosModules.virtualization
       self.nixosModules.desktop
+      self.nixosModules.theme
       self.nixosModules.vpn
-      self.nixosModules.ai
+      self.nixosModules.music
+      self.nixosModules.kanata
       self.nixosModules.fonts
       self.nixosModules.nix
     ];
@@ -43,49 +41,16 @@
     };
 
     ### KERNEL ###
-    boot = {
-      extraModulePackages = [config.boot.kernelPackages.ddcci-driver];
-      initrd.kernelModules = ["amdgpu"];
-      kernelModules = ["ddcci_backlight"];
-    };
-
+    boot.initrd.kernelModules = ["amdgpu"];
     services.udev.packages = with pkgs; [via];
-
-    ### DISPLAY ###
-    services.udev.extraRules = let
-      bash = "${pkgs.bash}/bin/bash";
-      ddcciDev = "AMDGPU DM aux hw bus 1";
-      ddcciNode = "/sys/bus/i2c/devices/i2c-7/new_device";
-    in ''
-      SUBSYSTEM=="i2c", ACTION=="add", ATTR{name}=="${ddcciDev}", RUN+="${bash} -c 'echo ddcci 0x37 > ${ddcciNode}'"
-    '';
 
     ### DRIVES ###
     services.udisks2.enable = true;
     services.gvfs.enable = true;
-    fileSystems."/mnt/hard" = {
-      label = "hard";
-      fsType = "ext4";
-      options = ["defaults" "x-gvfs-show"];
-      noCheck = true;
-    };
-
-    fileSystems."/mnt/chonky" = {
-      label = "chonky";
-      fsType = "ext4";
-      options = ["defaults" "x-gvfs-show"];
-      noCheck = true;
-    };
-
-    fileSystems."/mnt/fasty" = {
-      label = "fasty";
-      fsType = "ext4";
-      options = ["defaults" "x-gvfs-show"];
-      noCheck = true;
-    };
 
     ### NETWORKING ###
-    networking.hostName = "sergt-pc";
+    networking.hostName = "lep-tep";
+
     networking.networkmanager.enable = true;
     networking.networkmanager.plugins = with pkgs; [
       networkmanager-openvpn
@@ -114,6 +79,12 @@
       settings.General.Experimental = true;
     };
 
+    ### POWER ###
+    powerManagement.enable = true;
+    services.auto-cpufreq.enable = true;
+    ### HARDWARE ###
+    services.libinput.touchpad.naturalScrolling = true;
+
     ### LOCALE ###
     time.timeZone = "Europe/Moscow";
 
@@ -133,14 +104,18 @@
 
     ### ADMINISTRATION ###
     users.extraGroups = {
-      video.members = ["sergtco"];
-      i2c.members = ["sergtco"];
+      video = {};
     };
-
     users.users.sergtco = {
       isNormalUser = true;
       description = "sergtco";
-      extraGroups = ["networkmanager" "wheel"];
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "video"
+        "uinput"
+        "input"
+      ];
       shell = selfpkgs.shell;
     };
     programs.zsh.enable = true;
@@ -175,8 +150,6 @@
       enable = true;
       enable32Bit = true;
     };
-
-    preferences.login.autologin = true;
 
     system.stateVersion = "25.05";
   };
