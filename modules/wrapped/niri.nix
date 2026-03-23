@@ -25,7 +25,7 @@
           "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent"
           ["${pkgs.wlsunset}/bin/wlsunset" "-S 7:00" "-s 22:00"]
           ["vicinae" "server"]
-          ["swaybg" "-i" "${../../../wallpaper/dayspring_by_bisbiswas.jpg}"]
+          ["swaybg" "-i" "${../../wallpaper/dayspring_by_bisbiswas.jpg}"]
           "fnott"
           "swayosd-server"
           "helium"
