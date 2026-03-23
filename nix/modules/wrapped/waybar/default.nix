@@ -1,14 +1,16 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    playerctl
-  ];
-
-  programs.waybar = {
-    enable = true;
-    systemd.enable = true;
-    style = ./style.css;
-    settings = {
-      default = {
+{
+  self,
+  inputs,
+  ...
+}: {
+  perSystem = {pkgs, ...}: {
+    packages.waybar = inputs.wrapper-modules.wrappers.waybar.wrap {
+      inherit pkgs;
+      extraPackages = with pkgs;[
+        playerctl
+      ];
+      "style.css".path = ./style.css;
+      settings = {
         layer = "top";
         position = "bottom";
         height = 30;

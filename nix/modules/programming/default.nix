@@ -1,49 +1,53 @@
-{pkgs, ...}: {
-  users.users.sergtco.extraGroups = ["docker"];
+{
+  self,
+  inputs,
+  ...
+}: {
+  flake.nixosModules.programming = {pkgs, ...}: {
+    users.users.sergtco.extraGroups = ["docker"];
 
-  virtualisation.docker = {
-    enable = true;
-    enableOnBoot = false;
-    autoPrune.enable = true;
+    virtualisation.docker = {
+      enable = true;
+      enableOnBoot = false;
+      autoPrune.enable = true;
+    };
+
+    users.groups.dialout.members = ["sergtco"];
+
+    environment.systemPackages = with pkgs.unstable; [
+      #compilers
+      gcc
+      clang
+      python3
+      uv
+      go
+      rustup
+      zig
+
+      #utils
+      jq
+      gnumake
+      perf
+      nixos-firewall-tool
+      postgresql
+
+      #manuals
+      man-pages
+      man-pages-posix
+      tlrc
+
+      # language utils
+      ruff
+      alejandra
+      gofumpt
+      nodePackages.prettier
+      clang-tools
+      gdb
+      delve
+      typst
+      tinymist
+      typstyle
+    ];
+    documentation.dev.enable = true;
   };
-
-  users.groups.dialout.members = ["sergtco"];
-
-  environment.systemPackages = with pkgs.unstable; [
-    #compilers
-    gcc
-    clang
-    python3
-    uv
-    go
-    rustup
-    zig
-
-    #utils
-    jq
-    gnumake
-    perf
-    nixos-firewall-tool
-    postgresql
-
-    #manuals
-    man-pages
-    man-pages-posix
-    tlrc
-
-    # language utils
-    ruff
-    alejandra
-    gofumpt
-    nodePackages.prettier
-    clang-tools
-    gdb
-    delve
-    typst
-    tinymist
-    typstyle
-  ];
-
-  documentation.dev.enable = true;
-  documentation.man.generateCaches = true;
 }

@@ -1,5 +1,5 @@
-{}: {
-  lackluster = {
+{...}: let
+  theme = {
     scheme = "Lackluster dark";
     base00 = "#101010";
     base01 = "#191919";
@@ -18,42 +18,54 @@
     base0E = "#b86cd4";
     base0F = "#e64a6b";
   };
-  ashen = {
-    scheme = "ashen dark";
-    base00 = "#121212"; # ---- dark
-    base01 = "#191919"; # ---
-    base02 = "#212121"; # --
-    base03 = "#535353"; # -
-    base04 = "#949494"; # +
-    base05 = "#a7a7a7"; # ++
-    base06 = "#b4b4b4"; # +++
-    base07 = "#d5d5d5"; # ++++ light
-    base08 = "#B14242"; # red_ember
-    base09 = "#4A8B8B"; # blue
-    base0A = "#C4693D"; # orange_blaze
-    base0B = "#DF6464"; # red_glowing
-    base0C = "#E49A44"; # orange_smolder
-    base0D = "#D87C4A"; # orange_glow
-    base0E = "#B14242"; # red_ember
-    base0F = "#89492a"; # brown
-  };
-  xeno = {
-    scheme = "xeno-lillypad";
-    base00 = "#131313";
-    base01 = "#1a1a1a";  
-    base02 = "#292929";  
-    base03 = "#414141";  
-    base04 = "#797979";  
-    base05 = "#9b9b9b";  
-    base06 = "#a9a9a9";  
-    base07 = "#c5c5c5";  
-    base08 = "#9b9b9b"; 
-    base09 = "#85cd85"; 
-    base0A = "#2e302e"; 
-    base0B = "#adddad"; 
-    base0C = "#72c472"; 
-    base0D = "#85cd85"; 
-    base0E = "#adddad"; 
-    base0F = "#eaf4ea"; 
+  stripHash = str:
+    if builtins.substring 0 1 str == "#"
+    then builtins.substring 1 (builtins.stringLength str - 1) str
+    else str;
+  themeNoHash = builtins.mapAttrs (_: v: stripHash v) theme;
+in {
+  flake = {
+    inherit theme themeNoHash;
+
+    nixosModules.theme = {pkgs, lib, ...}: let
+      icon-theme-package = pkgs.tela-icon-theme;
+      icon-theme-name = "Tela-black-dark";
+      theme-name = "Adwaita-dark";
+      gtksettings = ''
+        gtk-icon-theme-name = ${icon-theme-name}
+        gtk-theme-name = ${theme-name}
+      '';
+    in {
+      qt = {
+        enable = true;
+        style = "adwaita-dark";
+      };
+      environment = {
+        etc = {
+          "xdg/gtk-3.0/settings.ini".text = gtksettings;
+          "xdg/gtk-4.0/settings.ini".text = gtksettings;
+        };
+      };
+      environment.sessionVariables = {
+        GTK_THEME = theme-name;
+      };
+      programs.dconf = {
+        enable = lib.mkDefault true;
+        profiles = {
+          user.databases = [
+            {
+              lockAll = false;
+              settings = {
+                "org/gnome/desktop/interface" = {
+                  gtk-theme = theme-name;
+                  icon-theme = icon-theme-name;
+                  color-scheme = "prefer-dark";
+                };
+              };
+            }
+          ];
+        };
+      };
+    };
   };
 }

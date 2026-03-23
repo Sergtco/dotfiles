@@ -1,4 +1,4 @@
-{...}: {
+{...}: let
   whitelist = [
     "cloudflare-ech.com"
     "encryptedsni.com"
@@ -67,4 +67,6 @@
     "ytimg.l.google.com"
     "deadlockmods.app"
   ];
+in {
+  flake = {inherit whitelist;};
 }

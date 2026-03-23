@@ -1,21 +1,16 @@
 {
-  pkgs,
-  lib,
-  config,
+  self,
   inputs,
   ...
-}: let
-  cfg = config.custom.desktop;
-in {
-  options.custom.desktop = {
-    enable = lib.mkEnableOption "Desktop parts";
-    autologin = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
-
-  config = lib.mkIf cfg.enable {
+}: {
+  flake.nixosModules.desktop = {
+    pkgs,
+    lib,
+    config,
+    ...
+  }: let
+    selfpkgs = self.packages.${pkgs.stdenv.hostPlatform.system};
+  in {
     services = {
       blueman.enable = true;
 
@@ -53,8 +48,23 @@ in {
       element-desktop
       transmission_4-qt
       vial
+      vesktop
       libreoffice-qt-fresh
       wine
+
+      pavucontrol
+      mpv
+      gedit
+      swayimg
+      brightnessctl
+      thunderbird
+      spotify
+
+      selfpkgs.helium
+      selfpkgs.alacritty
+
+      libnotify
+      (pkgs.writeShellScriptBin "toggle-notification" (builtins.readFile ../../../scripts/toggle-notification.sh))
     ];
 
     programs.localsend.enable = true;
@@ -62,10 +72,19 @@ in {
       niri = {
         enable = true;
         useNautilus = false;
+        package = selfpkgs.niri;
       };
       hyprlock.enable = true;
     };
-    services.gnome.gcr-ssh-agent.enable = false;
+
+    services = {
+      hypridle = {
+        enable = true;
+        package = selfpkgs.hypridle;
+      };
+      gnome.gcr-ssh-agent.enable = false;
+      udisks2.enable = true;
+    };
 
     xdg.portal = {
       enable = true;
@@ -87,7 +106,7 @@ in {
     services.greetd = {
       enable = true;
       settings = {
-        initial_session = lib.mkIf cfg.autologin {
+        initial_session = lib.mkIf config.preferences.login.autologin {
           command = "/run/current-system/sw/bin/niri-session";
           user = "sergtco";
         };
@@ -104,5 +123,6 @@ in {
     services.dbus.packages = [pkgs.gnome-keyring pkgs.gcr];
 
     programs.regreet.enable = true;
+    programs.regreet.settings.GTK.application_prefer_dark_theme = true;
   };
 }

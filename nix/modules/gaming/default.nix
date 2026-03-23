@@ -1,18 +1,14 @@
 {
-  pkgs,
-  config,
-  lib,
+  self,
+  inputs,
   ...
-}: let
-  cfg = config.custom.gaming;
-in {
-  options.custom.gaming = {
-    extraPackages = lib.mkOption {
-      type = (lib.types.listOf lib.types.package);
-      default = [];
-    };
-  };
-  config = {
+}: {
+  flake.nixosModules.gaming = {
+    pkgs,
+    config,
+    lib,
+    ...
+  }: {
     boot.initrd.kernelModules = [
       "xpad"
     ];
@@ -32,7 +28,7 @@ in {
 
     programs.gamemode.enable = true;
 
-    environment.systemPackages = with pkgs.unstable; [r2modman] ++ cfg.extraPackages;
+    environment.systemPackages = with pkgs.unstable; [r2modman];
 
     services.joycond.enable = true;
     services.udev.packages = [pkgs.game-devices-udev-rules];
