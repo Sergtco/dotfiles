@@ -22,7 +22,7 @@
       selfpkgs.shell
       selfpkgs.helium
       selfpkgs.git
-      selfpkgs.nvim
+      selfpkgs.neovim
     ];
 
     users.groups.docker.members = ["user"];

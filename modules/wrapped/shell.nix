@@ -60,7 +60,7 @@
         yazi
 
         self'.packages.tmux
-        self'.packages.nvim
+        self'.packages.neovim
         self'.packages.git
       ];
     };

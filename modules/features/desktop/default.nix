@@ -64,7 +64,7 @@
       selfpkgs.alacritty
 
       libnotify
-      (pkgs.writeShellScriptBin "toggle-notification" (builtins.readFile ../../../../scripts/toggle-notification.sh))
+      (pkgs.writeShellScriptBin "toggle-notification" (builtins.readFile ../../../scripts/toggle-notification.sh))
     ];
 
     programs.localsend.enable = true;
