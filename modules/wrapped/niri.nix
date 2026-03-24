@@ -354,6 +354,20 @@
 
           "Mod+Shift+P".spawn-sh = "niri msg action power-off-monitors && loginctl lock-session";
         };
+        layer-rule = {
+          match._attrs.namespace = "^wallpaper$";
+          place-within-backdrop = true;
+        };
+
+        layout = {
+          background-color = "transparent";
+        };
+
+        overview = {
+          workspace-shadow = {
+            off = null;
+          };
+        };
       };
       env = {
         NIXOS_OZONE_WL = "1";
