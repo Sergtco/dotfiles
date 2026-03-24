@@ -65,7 +65,7 @@
         yazi
 
         self'.packages.tmux
-        self'.packages.neovim
+        self'.packages.neovimDynamic
         self'.packages.git
       ];
     };

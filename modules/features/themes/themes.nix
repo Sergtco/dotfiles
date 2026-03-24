@@ -27,11 +27,16 @@ in {
   flake = {
     inherit theme themeNoHash;
 
-    nixosModules.theme = {pkgs, lib, ...}: let
+    nixosModules.theme = {
+      pkgs,
+      lib,
+      ...
+    }: let
       icon-theme-package = pkgs.tela-icon-theme;
       icon-theme-name = "Tela-black-dark";
       theme-name = "Adwaita-dark";
       gtksettings = ''
+        [Settings]
         gtk-icon-theme-name = ${icon-theme-name}
         gtk-theme-name = ${theme-name}
       '';
