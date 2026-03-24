@@ -49,6 +49,8 @@
         imagemagick
         progress
 
+        jq
+
         bash
         curl
         p7zip
