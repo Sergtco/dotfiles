@@ -38,6 +38,7 @@
       shell = selfpkgs.shell;
     };
     programs.zsh.enable = true;
+    environment.pathsToLink = [ "/share/zsh" ];
 
     environment.variables = {
       LANG = "en_US.UTF-8";
