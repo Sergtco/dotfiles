@@ -13,7 +13,7 @@
         window.dynamic_padding = true;
         mouse.hide_when_typing = true;
         colors = {
-          primary.background = "#0A0A0A";
+          primary.background = "#101010";
           normal = {
             black = "#080808";
             red = "#D70000";

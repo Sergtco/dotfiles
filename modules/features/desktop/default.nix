@@ -78,10 +78,7 @@
     };
 
     services = {
-      hypridle = {
-        enable = true;
-        package = selfpkgs.hypridle;
-      };
+      hypridle.enable = true;
       gnome.gcr-ssh-agent.enable = false;
       udisks2.enable = true;
     };
