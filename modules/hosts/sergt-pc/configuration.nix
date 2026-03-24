@@ -6,6 +6,7 @@
   flake.nixosConfigurations.sergt-pc = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       self.nixosModules.sergt-pc
+      inputs.hjem.nixosModules.default
     ];
   };
   flake.nixosModules.sergt-pc = {
@@ -15,6 +16,7 @@
   }: let
     selfpkgs = self.packages.${pkgs.stdenv.hostPlatform.system};
   in {
+    hjem.users.sergtco.directory = "/home/sergtco";
     imports = [
       # self.nixosModules.gaming
       self.nixosModules.theme

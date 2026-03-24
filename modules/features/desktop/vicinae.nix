@@ -25,5 +25,7 @@
   in {
     environment.etc."chromium/native-messaging-hosts/com.vicinae.vicinae.json".text = conf_text;
     environment.etc."net.imput.helium/native-messaging-hosts/com.vicinae.vicinae.json".text = conf_text;
+    hjem.users.sergtco.files.".config/net.imput.helium/NativeMessagingHosts/com.vicinae.vicinae.json".text = conf_text;
+    hjem.users.sergtco.files.".config/chromium/NativeMessagingHosts/com.vicinae.vicinae.json".text = conf_text;
   };
 }

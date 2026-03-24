@@ -13,7 +13,7 @@ local linters_by_ft = {
 
 local conform_opts = {
 	formatters_by_ft = {
-		nix   = { "alejandra" },
+		nix   = { "nixfmt" },
 		typst = { "typstyle" },
 		c     = { "clang_format" },
 		cpp   = { "clang_format" },

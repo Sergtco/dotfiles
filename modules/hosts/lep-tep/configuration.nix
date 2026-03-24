@@ -6,6 +6,7 @@
   flake.nixosConfigurations.lep-tep = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       self.nixosModules.lep-tep
+      inputs.hjem.nixosModules.default
     ];
   };
   flake.nixosModules.lep-tep = {
@@ -15,6 +16,7 @@
   }: let
     selfpkgs = self.packages.${pkgs.stdenv.hostPlatform.system};
   in {
+    hjem.users.sergtco.directory = "/home/sergtco";
     imports = [
       self.nixosModules.gaming
       self.nixosModules.programming

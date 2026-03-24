@@ -24,7 +24,7 @@
 
       # language utils
       ruff
-      alejandra
+      nixfmt
       gofumpt
       nodePackages.prettier
       clang-tools

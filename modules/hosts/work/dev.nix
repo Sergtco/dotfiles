@@ -29,7 +29,7 @@
 
       # language utils
       stylua
-      alejandra
+      nixfmt
       gofumpt
       delve
     ];

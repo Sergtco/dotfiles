@@ -6,11 +6,13 @@
   flake.darwinConfigurations."MacBook-Pro-user" = inputs.nix-darwin.lib.darwinSystem {
     modules = [
       self.modules.darwin."MacBook-Pro-user"
+      inputs.hjem.darwinModules.default
     ];
   };
   flake.darwinModules."MacBook-Pro-user" = {pkgs, ...}: let
     selfpkgs = self.packages.${pkgs.stdenv.hostPlatform.system};
   in {
+    hjem.users.sergtco.directory = "/Users/user";
     imports = [
       self.darwinModules.kanata
       self.darwinModules.fonts

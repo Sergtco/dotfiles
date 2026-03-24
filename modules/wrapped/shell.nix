@@ -69,6 +69,11 @@
         self'.packages.neovimDynamic
         self'.packages.git
       ];
+
+      env = {
+        EDITOR = "${lib.getExe self'.packages.neovimDynamic}";
+        MANPAGER = "${lib.getExe self'.packages.neovimDynamic} +Man!";
+      };
     };
   };
 }
