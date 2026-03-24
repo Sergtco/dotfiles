@@ -6,6 +6,11 @@
   perSystem = {pkgs, lib, ...}: {
     packages.tmux = inputs.wrapper-modules.wrappers.tmux.wrap {
       inherit pkgs;
+      extraPackages = with pkgs; [
+        skim
+        sesh
+        zoxide
+      ];
 
       baseIndex = 1;
       clock24 = true;

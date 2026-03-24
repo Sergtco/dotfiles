@@ -37,7 +37,10 @@
       '';
 
       extraPackages = with pkgs; [
+        sesh
         skim
+        direnv
+        zoxide
 
         ripgrep
         fd
