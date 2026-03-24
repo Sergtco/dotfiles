@@ -29,17 +29,14 @@
     programs.gpu-screen-recorder.enable = true;
 
     environment.systemPackages = with pkgs; [
-      gpu-screen-recorder
       gpu-screen-recorder-gtk
       gnome-disk-utility
       calibre
       xarchiver
       pcmanfm-qt
       shared-mime-info # pcmanfm
-      rar
       gimp3
       zathura
-      xwayland-satellite
       wl-clipboard
       xclip
 
@@ -79,6 +76,7 @@
 
     services = {
       hypridle.enable = true;
+      hypridle.package = selfpkgs.hypridle;
       gnome.gcr-ssh-agent.enable = false;
       udisks2.enable = true;
     };

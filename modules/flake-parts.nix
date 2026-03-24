@@ -19,7 +19,9 @@
             };
           })
         ];
-        config = {};
+        config = {
+          allowUnfree = true;
+        };
       };
     };
   };

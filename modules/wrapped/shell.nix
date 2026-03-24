@@ -59,6 +59,7 @@
         p7zip
         zip
         unzip
+        rar
         killall
         wget
 

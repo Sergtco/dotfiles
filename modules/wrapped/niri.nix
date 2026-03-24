@@ -12,6 +12,7 @@
       inherit pkgs;
       extraPackages = with pkgs; [
         wlsunset
+        xwayland-satellite
         hackneyed
         swaybg
         swayosd
