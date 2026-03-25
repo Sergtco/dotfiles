@@ -16,7 +16,7 @@ vim.keymap.set("n", "<leader>gb", "<cmd>DBUIToggle<cr>", { desc = "Toggle databa
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "sql" ,
     callback = function(_)
-        vim.cmd([[setlocal omnifunc=vim_dadbod_completion#omni]])
+        vim.bo.omnifunc = "vim_dadbod_completion#omni"
     end,
 })
 
