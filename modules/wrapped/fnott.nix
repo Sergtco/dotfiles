@@ -28,7 +28,7 @@
   in {
     packages.fnott = inputs.wrapper-modules.lib.wrapPackage ({...}: {
       inherit pkgs;
-      package = pkgs.unstable.fnott;
+      package = pkgs.fnott;
       flags = {
         "-c" = ini.generate "fnott.ini" settings;
       };

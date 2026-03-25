@@ -15,9 +15,11 @@
     ...
   }: let
     selfpkgs = self.packages.${pkgs.stdenv.hostPlatform.system};
+    user = config.preferences.user.name;
   in {
-    hjem.users.sergtco.directory = "/home/sergtco";
+    hjem.users.${user}.directory = "/home/${user}";
     imports = [
+      self.nixosModules.base
       # self.nixosModules.gaming
       self.nixosModules.theme
       self.nixosModules.no-rgb
@@ -134,15 +136,10 @@
     };
 
     ### ADMINISTRATION ###
-    users.extraGroups = {
-      video.members = ["sergtco"];
-      i2c.members = ["sergtco"];
-    };
-
-    users.users.sergtco = {
+    users.users.${user} = {
       isNormalUser = true;
-      description = "sergtco";
-      extraGroups = ["networkmanager" "wheel"];
+      description = "${user}";
+      extraGroups = ["networkmanager" "wheel" "video" "i2c"];
       shell = selfpkgs.shell;
     };
     programs.zsh.enable = true;
