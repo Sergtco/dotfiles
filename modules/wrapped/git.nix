@@ -13,7 +13,7 @@
     {
       packages.git = inputs.wrapper-modules.wrappers.git.wrap {
         inherit pkgs;
-        configFile.content = /*git_config*/''
+        configFile.content = /* git_config */ ''
           [user]
           	email = "iva.nizelnik@gmail.com"
           	name = "Ivan Nizelnik"
@@ -35,11 +35,15 @@
           [merge]
           	tool = "nvimdiff"
 
+          [difftool "nvim_difftool"]
+            cmd = "nvim -c \"packadd nvim.difftool\" -d \"$LOCAL\" \"$REMOTE\""
+
           [diff]
-          	tool = "nvimdiff"
+          	tool = "nvim_difftool"
+
 
           [includeIf "gitdir:~/work/"]
-          	path = "~/work/.gitconfig"
+            path = "~/work/.gitconfig"
         '';
       };
     };
