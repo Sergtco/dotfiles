@@ -20,7 +20,7 @@
     hjem.users.${user}.directory = "/home/${user}";
     imports = [
       self.nixosModules.base
-      # self.nixosModules.gaming
+      self.nixosModules.gaming
       self.nixosModules.theme
       self.nixosModules.no-rgb
       self.nixosModules.programming
