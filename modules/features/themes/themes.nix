@@ -1,4 +1,5 @@
-{...}: let
+{ ... }:
+let
   theme = {
     scheme = "Lackluster dark";
     base00 = "#101010";
@@ -18,59 +19,73 @@
     base0E = "#b86cd4";
     base0F = "#e64a6b";
   };
-  stripHash = str:
-    if builtins.substring 0 1 str == "#"
-    then builtins.substring 1 (builtins.stringLength str - 1) str
-    else str;
+  stripHash =
+    str:
+    if builtins.substring 0 1 str == "#" then
+      builtins.substring 1 (builtins.stringLength str - 1) str
+    else
+      str;
   themeNoHash = builtins.mapAttrs (_: v: stripHash v) theme;
-in {
+in
+{
   flake = {
     inherit theme themeNoHash;
 
-    nixosModules.theme = {
-      pkgs,
-      lib,
-      ...
-    }: let
-      icon-theme-package = pkgs.tela-icon-theme;
-      icon-theme-name = "Tela-black-dark";
-      theme-name = "Adwaita-dark";
-      gtksettings = ''
-        [Settings]
-        gtk-icon-theme-name = ${icon-theme-name}
-        gtk-theme-name = ${theme-name}
-      '';
-    in {
-      qt = {
-        enable = true;
-        style = "adwaita-dark";
-      };
-      environment = {
-        etc = {
-          "xdg/gtk-3.0/settings.ini".text = gtksettings;
-          "xdg/gtk-4.0/settings.ini".text = gtksettings;
+    nixosModules.theme =
+      {
+        pkgs,
+        lib,
+        config,
+        ...
+      }:
+      let
+        icon-theme-package = pkgs.tela-icon-theme;
+        icon-theme-name = "Tela-black-dark";
+        theme-name = "Adwaita-dark";
+        gtksettings = ''
+          [Settings]
+          gtk-icon-theme-name = ${icon-theme-name}
+          gtk-theme-name = ${theme-name}
+        '';
+        user = config.preferences.user.name;
+      in
+      {
+        qt = {
+          enable = true;
+          style = "adwaita-dark";
         };
-      };
-      environment.sessionVariables = {
-        GTK_THEME = theme-name;
-      };
-      programs.dconf = {
-        enable = lib.mkDefault true;
-        profiles = {
-          user.databases = [
-            {
-              lockAll = false;
-              settings = {
-                "org/gnome/desktop/interface" = {
-                  gtk-theme = theme-name;
-                  icon-theme = icon-theme-name;
-                  color-scheme = "prefer-dark";
+        environment = {
+          etc = {
+            "xdg/gtk-3.0/settings.ini".text = gtksettings;
+            "xdg/gtk-4.0/settings.ini".text = gtksettings;
+          };
+        };
+        environment.systemPackages = with pkgs; [
+          hackneyed
+        ];
+        environment.sessionVariables = {
+          GTK_THEME = theme-name;
+          XCURSOR_NAME = "Hackneyed";
+          XCURSOR_SIZE = "24";
+        };
+        xdg.icons.fallbackCursorThemes = [ "Hackneyed" ];
+        programs.dconf = {
+          enable = lib.mkDefault true;
+          profiles = {
+            user.databases = [
+              {
+                lockAll = false;
+                settings = {
+                  "org/gnome/desktop/interface" = {
+                    gtk-theme = theme-name;
+                    icon-theme = icon-theme-name;
+                    color-scheme = "prefer-dark";
+                  };
                 };
-              };
-            }
-          ];
+              }
+            ];
+          };
         };
       };
-    };
   };
 }
