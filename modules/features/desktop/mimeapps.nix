@@ -6,7 +6,7 @@
   flake.nixosModules.desktop = {...}: {
     xdg.mime = {
       defaultApplications = {
-        "inode/directory" = ["pcmanfm-qt.desktop"];
+        "inode/directory" = ["pcmanfm.desktop"];
         "application/pdf" = ["org.pwmt.zathura.desktop"];
 
         "text/html" = ["helium.desktop"];

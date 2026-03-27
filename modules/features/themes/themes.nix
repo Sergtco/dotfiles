@@ -1,4 +1,4 @@
-{ ... }:
+{ self, ... }:
 let
   theme = {
     scheme = "Lackluster dark";
@@ -41,6 +41,8 @@ in
       let
         icon-theme-package = pkgs.tela-icon-theme;
         icon-theme-name = "Tela-black-dark";
+        cursor-theme-package = pkgs.hackneyed;
+        cursor-theme-name = "Hackneyed";
         theme-name = "Adwaita-dark";
         gtksettings = ''
           [Settings]
@@ -54,21 +56,20 @@ in
           enable = true;
           style = "adwaita-dark";
         };
-        environment = {
-          etc = {
-            "xdg/gtk-3.0/settings.ini".text = gtksettings;
-            "xdg/gtk-4.0/settings.ini".text = gtksettings;
-          };
+        hjem.users.${user}.xdg.config.files = {
+          "gtk-3.0/settings.ini".text = gtksettings;
+          "gtk-4.0/settings.ini".text = gtksettings;
         };
         environment.systemPackages = with pkgs; [
-          hackneyed
+          cursor-theme-package
+          icon-theme-package
         ];
         environment.sessionVariables = {
           GTK_THEME = theme-name;
-          XCURSOR_NAME = "Hackneyed";
+          XCURSOR_NAME = cursor-theme-name;
           XCURSOR_SIZE = "24";
         };
-        xdg.icons.fallbackCursorThemes = [ "Hackneyed" ];
+        xdg.icons.fallbackCursorThemes = [ cursor-theme-name ];
         programs.dconf = {
           enable = lib.mkDefault true;
           profiles = {

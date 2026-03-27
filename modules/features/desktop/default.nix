@@ -33,7 +33,7 @@
       gnome-disk-utility
       calibre
       xarchiver
-      pcmanfm-qt
+      pcmanfm
       shared-mime-info # pcmanfm
       gimp3
       zathura
