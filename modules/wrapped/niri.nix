@@ -14,37 +14,19 @@
       packages.niri = inputs.wrapper-modules.wrappers.niri.wrap {
         inherit pkgs;
         extraPackages = with pkgs; [
-          wlsunset
           xwayland-satellite
           hackneyed
-          swaybg
-          swayosd
+          unstable.vicinae
           self'.packages.waybar
-          self'.packages.fnott
-          self'.packages.vicinae
         ];
 
         settings = {
           spawn-at-startup = [
-            "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent"
-            [
-              "${pkgs.wlsunset}/bin/wlsunset"
-              "-S 7:00"
-              "-s 22:00"
-            ]
             [
               "vicinae"
               "server"
             ]
-            [
-              "swaybg"
-              "-i"
-              "${../../wallpaper/dayspring_by_bisbiswas.jpg}"
-            ]
-            "fnott"
-            "swayosd-server"
             "helium"
-            "waybar"
             "thunderbird"
             "Telegram"
           ];

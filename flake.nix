@@ -25,12 +25,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    vicinae.url = "github:vicinaehq/vicinae";
-    vicinae-extensions = {
-      url = "github:vicinaehq/extensions";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     tree-sitter.url = "github:tree-sitter/tree-sitter";
 
