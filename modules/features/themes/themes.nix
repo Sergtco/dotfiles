@@ -43,11 +43,13 @@ in
         icon-theme-name = "Tela-black-dark";
         cursor-theme-package = pkgs.hackneyed;
         cursor-theme-name = "Hackneyed";
-        theme-name = "Adwaita-dark";
+        theme-name = "adw-gtk3-dark";
+        theme-package = pkgs.adw-gtk3;
         gtksettings = ''
           [Settings]
           gtk-icon-theme-name = ${icon-theme-name}
           gtk-theme-name = ${theme-name}
+          gtk-application-prefer-dark-theme = true
         '';
         user = config.preferences.user.name;
       in
@@ -56,20 +58,37 @@ in
           enable = true;
           style = "adwaita-dark";
         };
-        hjem.users.${user}.xdg.config.files = {
-          "gtk-3.0/settings.ini".text = gtksettings;
-          "gtk-4.0/settings.ini".text = gtksettings;
+        hjem.users.${user}.xdg = {
+          config.files = {
+            "gtk-3.0/settings.ini".text = gtksettings;
+            "gtk-4.0/settings.ini".text = gtksettings;
+            "gtk-3.0/gtk.css".text = self.gtkColors;
+            "gtk-4.0/gtk.css".text = self.gtkColors;
+          };
+          data.files."icons/default" = {
+            source = "${cursor-theme-package}/share/icons/Hackneyed";
+          };
         };
         environment.systemPackages = with pkgs; [
           cursor-theme-package
           icon-theme-package
+          theme-package
         ];
         environment.sessionVariables = {
           GTK_THEME = theme-name;
+          QT_QPA_PLATFORMTHEME = "gtk3";
+          QT_QPA_PLATFORMTHEME_QT6 = "gtk3";
           XCURSOR_NAME = cursor-theme-name;
           XCURSOR_SIZE = "24";
         };
         xdg.icons.fallbackCursorThemes = [ cursor-theme-name ];
+
+        environment.etc = {
+          "xdg/gtk-3.0/settings.ini".text = gtksettings;
+          "xdg/gtk-4.0/settings.ini".text = gtksettings;
+          "xdg/gtk-3.0/gtk.css".text = self.gtkColors;
+          "xdg/gtk-4.0/gtk.css".text = self.gtkColors;
+        };
         programs.dconf = {
           enable = lib.mkDefault true;
           profiles = {

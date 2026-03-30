@@ -119,7 +119,12 @@
             command = "/run/current-system/sw/bin/niri-session";
             user = "sergtco";
           };
+          default_session = {
+            command = "${lib.getExe pkgs.tuigreet} --remember --remember-user-session --cmd niri-session";
+            user = "greeter";
+          };
         };
+        useTextGreeter = true;
       };
 
       programs.seahorse.enable = true;
@@ -133,8 +138,5 @@
         pkgs.gnome-keyring
         pkgs.gcr
       ];
-
-      programs.regreet.enable = true;
-      programs.regreet.settings.GTK.application_prefer_dark_theme = true;
     };
 }
