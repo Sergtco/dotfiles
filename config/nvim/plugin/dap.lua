@@ -64,7 +64,7 @@ vim.schedule(function()
     set("n", "<A-n>", function() require("dap").step_over() end, { desc = "DAP step over" })
     set("n", "<A-i>", function() require("dap").step_into() end, { desc = "DAP step into" })
     set("n", "<A-o>", function() require("dap").step_out() end, { desc = "DAP step out" })
-    set("n", "<C-t>", function() require("dap").toggle_breakpoint() end, { desc = "DAP toggle breakpoint" })
+    set("n", "<leader>gb", function() require("dap").toggle_breakpoint() end, { desc = "DAP toggle breakpoint" })
     set("n", "<Leader>gw", function() require("dap-view").add_expr() end, { desc = "DAP view add expression" })
 	-- stylua: ignore end
 end)

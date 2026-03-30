@@ -69,13 +69,14 @@
         yazi
 
         self'.packages.tmux
-        self'.packages.neovimDynamic
+        self'.packages.neovim
+        self'.packages.neovimDev
         self'.packages.git
       ];
 
       env = {
-        EDITOR = "${lib.getExe self'.packages.neovimDynamic}";
-        MANPAGER = "${lib.getExe self'.packages.neovimDynamic} +Man!";
+        EDITOR = "${lib.getExe self'.packages.neovim}";
+        MANPAGER = "${lib.getExe self'.packages.neovim} +Man!";
       };
     };
   };

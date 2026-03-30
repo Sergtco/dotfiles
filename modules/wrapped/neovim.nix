@@ -49,23 +49,12 @@
       imports = [self.nvimWrapper];
     };
 
-    packages.neovim-dev = inputs.wrapper-modules.wrappers.neovim.wrap {
+    packages.neovimDev = inputs.wrapper-modules.wrappers.neovim.wrap {
       inherit pkgs;
       package = inputs'.neovim-nightly.packages.default;
       binName = "neodev";
       settings.config_directory = lib.generators.mkLuaInline "vim.uv.os_homedir() .. '/dotfiles/config/nvim'";
       imports = [self.nvimWrapper];
-    };
-
-    packages.neovimDynamic = pkgs.writeShellApplication {
-      name = "nvim";
-      text = ''
-        if [ -d ~/dotfiles/config/nvim ]; then
-            ${lib.getExe self'.packages.neovim-dev} "$@"
-        else
-            ${lib.getExe self'.packages.neovim} "$@"
-        fi
-      '';
     };
   };
 }
