@@ -28,12 +28,6 @@
     whitelist = self.whitelist;
     hostlist = builtins.toFile "zapret_whitelist" (builtins.concatStringsSep "\n" whitelist);
   in {
-    programs.throne = {
-      enable = true;
-      tunMode.enable = true;
-      tunMode.setuid = true;
-    };
-    networking.nameservers = ["1.1.1.1" "8.8.8.8" "8.8.4.4"];
     services.zapret = {
       enable = true;
       package = pkgs.unstable.zapret;

@@ -16,6 +16,8 @@
         extraPackages = with pkgs; [
           xwayland-satellite
           hackneyed
+          swayosd
+          fnott
           unstable.vicinae
           self'.packages.waybar
         ];

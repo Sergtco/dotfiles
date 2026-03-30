@@ -60,7 +60,7 @@
     packages.neovimDynamic = pkgs.writeShellApplication {
       name = "nvim";
       text = ''
-        if [ -d ~/dotfiles/config/neovim ]; then
+        if [ -d ~/dotfiles/config/nvim ]; then
             ${lib.getExe self'.packages.neovim-dev} "$@"
         else
             ${lib.getExe self'.packages.neovim} "$@"
