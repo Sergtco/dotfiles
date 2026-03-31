@@ -21,10 +21,6 @@ vim.schedule(function()
 							url = "https://webui.txix.ru/ollama",
 							api_key = "cmd:cat ~/work/ai.key",
 						},
-						opts = { vision = true, stream = true },
-						schema = {
-							think = { default = false },
-						},
 						headers = {
 							["Content-Type"] = "application/json",
 							["Authorization"] = "Bearer ${api_key}",
@@ -42,6 +38,7 @@ vim.schedule(function()
 						schema = {
 							model = { default = "xiaomi/mimo-v2-flash" },
 						},
+            parameters = { sync = true },
 					})
 				end,
 				["local"] = function()

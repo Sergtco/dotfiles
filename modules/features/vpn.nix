@@ -3,13 +3,14 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.vpn = {...}: {
+  flake.nixosModules.vpn = {pkgs, ...}: {
     services.xray = {
       enable = true;
       settingsFile = "/etc/v2ray/v2ray_config.json";
     };
     programs.throne = {
       enable = true;
+      package = pkgs.unstable.throne;
       tunMode.enable = true;
       tunMode.setuid = true;
     };

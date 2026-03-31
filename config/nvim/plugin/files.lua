@@ -10,7 +10,9 @@ require("oil").setup()
 set("n", "-", "<cmd>Oil<cr>", { desc = "Open Oil" })
 
 require("mini.extra").setup()
-require("mini.pick").setup()
+require("mini.pick").setup({
+    window = { config = { border = "none" } }
+})
 
 set("n", "<F1>", "<cmd>Pick help<cr>", { desc = "Pick Help" })
 set("n", "<C-g>", "<cmd>Pick grep_live<cr>", { desc = "Pick grep" })
