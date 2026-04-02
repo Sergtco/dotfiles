@@ -3,11 +3,13 @@ vim.schedule(function()
         "https://codeberg.org/andyg/leap.nvim",
         "https://github.com/jake-stewart/multicursor.nvim",
         "https://github.com/kylechui/nvim-surround",
+        "https://github.com/nvim-mini/mini.align",
         "https://github.com/windwp/nvim-autopairs",
     })
 
     require("nvim-surround").setup()
     require("nvim-autopairs").setup()
+    require("mini.align").setup()
 
     
     local set = vim.keymap.set

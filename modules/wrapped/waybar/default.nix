@@ -3,11 +3,14 @@
   inputs,
   ...
 }: {
-  perSystem = {pkgs, ...}: {
+  perSystem = {pkgs, self', ...}: {
     packages.waybar = inputs.wrapper-modules.wrappers.waybar.wrap {
       inherit pkgs;
       extraPackages = with pkgs;[
         playerctl
+        bluetui
+        wiremix
+        self'.packages.alacritty
       ];
       "style.css".path = ./style.css;
       settings = {
@@ -80,13 +83,13 @@
             ""
             ""
           ];
-          on-click = "pavucontrol";
+          on-click = "alacritty -e wiremix";
         };
         bluetooth = {
           format = " {device_battery_percentage}%";
           format-on = "";
           format-off = "󰂲";
-          on-click = "blueman-manager";
+          on-click = "alacritty -e bluetui";
         };
         mpris = {
           format = "{status_icon} <b>{artist}</b> - {title}";

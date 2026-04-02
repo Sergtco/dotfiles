@@ -29,6 +29,10 @@
       "rev": "774c452da3521d4434f912b6ca6dd97318aca4b0",
       "src": "https://codeberg.org/andyg/leap.nvim"
     },
+    "mini.align": {
+      "rev": "4d45e0e4f1fd8baefb6ae52a44659704fe7ebe8b",
+      "src": "https://github.com/nvim-mini/mini.align"
+    },
     "mini.completion": {
       "rev": "4f94cafdeef02bf3ef9997cd6862658801caa22c",
       "src": "https://github.com/nvim-mini/mini.completion"

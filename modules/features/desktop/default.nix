@@ -17,8 +17,6 @@
     in
     {
       services = {
-        blueman.enable = true;
-
         printing.enable = true;
         printing.drivers = with pkgs; [
           canon-cups-ufr2
@@ -54,7 +52,8 @@
         libreoffice-qt-fresh
         wine
 
-        pavucontrol
+        wiremix
+        bluetui
         mpv
         gedit
         swayimg
