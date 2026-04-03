@@ -45,20 +45,22 @@
               };
             };
             touchpad = {
-              tap = null;
-              natural-scroll = null;
+              tap = (_: { });
+              natural-scroll = (_: { });
               scroll-factor = 0.5;
             };
-            warp-mouse-to-focus = null;
-            focus-follows-mouse._attrs = {
-              max-scroll-amount = "0%";
+            warp-mouse-to-focus = (_: { });
+            focus-follows-mouse = _: {
+              props = {
+                max-scroll-amount = "0%";
+              };
             };
           };
 
           # Output configuration is typically a list of sets
           outputs = {
             DP-2 = {
-              variable-refresh-rate = null;
+              variable-refresh-rate = (_: { });
               mode = "1920x1080@165.000";
             };
             # Laptop
@@ -86,14 +88,18 @@
             }
             # Steam notifications
             {
-              match._attrs = {
-                app-id = "steam";
-                title = "^notificationtoasts_\d+_desktop$";
-              };
-              default-floating-position._attrs = {
-                x = 10;
-                y = 10;
-                relative-to = "bottom-right";
+              matches = [
+                {
+                  app-id = "steam";
+                  title = "^notificationtoasts_\d+_desktop$";
+                }
+              ];
+              default-floating-position = _: {
+                props = {
+                  x = 10;
+                  y = 10;
+                  relative-to = "bottom-right";
+                };
               };
             }
             # Startup apps
@@ -147,8 +153,8 @@
               place-within-column = true;
               gap = 3;
               width = 3;
-              length._attrs = {
-                total-proportion = 0.95;
+              length = _: {
+                props.total-proportion = 0.95;
               };
               position = "right";
               gaps-between-tabs = 2;
@@ -164,11 +170,11 @@
           screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
 
           workspaces = {
-            "1main" = null;
-            "2comms" = null;
+            "1main" = (_: { });
+            "2comms" = (_: { });
           };
 
-          hotkey-overlay.skip-at-startup = null;
+          hotkey-overlay.skip-at-startup = (_: { });
 
           prefer-no-csd = true;
 
@@ -186,116 +192,115 @@
               spawn-sh = "killall -SIGUSR1 -r waybar";
             };
 
-            "XF86AudioRaiseVolume" = {
-              _attrs.allow-when-locked = true;
-              spawn-sh = "swayosd-client --output-volume raise";
+            "XF86AudioRaiseVolume" = _: {
+              props.allow-when-locked = true;
+              content.spawn-sh = "swayosd-client --output-volume raise";
             };
-            "XF86AudiolowerVolume" = {
-              _attrs.allow-when-locked = true;
-              spawn-sh = "swayosd-client --output-volume lower";
+            "XF86AudioLowerVolume" = _: {
+              props.allow-when-locked = true;
+              content.spawn-sh = "swayosd-client --output-volume lower";
             };
-            "XF86AudioMute" = {
-              _attrs.allow-when-locked = true;
-              spawn-sh = "swayosd-client --output-volume mute-toggle";
+            "XF86AudioMute" = _: {
+              props.allow-when-locked = true;
+              content.spawn-sh = "swayosd-client --output-volume mute-toggle";
             };
-            "CTRL+XF86AudioMute" = {
-              _attrs.allow-when-locked = true;
-              spawn-sh = "swayosd-client --input-volume mute-toggle";
+            "CTRL+XF86AudioMute" = _: {
+              props.allow-when-locked = true;
+              content.spawn-sh = "swayosd-client --input-volume mute-toggle";
             };
-            "XF86AudioMicMute" = {
-              _attrs.allow-when-locked = true;
-              spawn-sh = "swayosd-client --input-volume mute-toggle";
+            "XF86AudioMicMute" = _: {
+              props.allow-when-locked = true;
+              content.spawn-sh = "swayosd-client --input-volume mute-toggle";
             };
-            "XF86AudioNext" = {
-              _attrs.allow-when-locked = true;
-              spawn-sh = "playerctl next";
+            "XF86AudioNext" = _: {
+              props.allow-when-locked = true;
+              content.spawn-sh = "playerctl next";
             };
-            "XF86AudioPrev" = {
-              _attrs.allow-when-locked = true;
-              spawn-sh = "playerctl previous";
+            "XF86AudioPrev" = _: {
+              props.allow-when-locked = true;
+              content.spawn-sh = "playerctl previous";
             };
-            "XF86AudioPlay" = {
-              _attrs.allow-when-locked = true;
-              spawn-sh = "playerctl play-pause";
+            "XF86AudioPlay" = _: {
+              props.allow-when-locked = true;
+              content.spawn-sh = "playerctl play-pause";
             };
-            "XF86MonBrightnessUp" = {
-              _attrs.allow-when-locked = true;
-              spawn-sh = "swayosd-client --brightness raise";
+            "XF86MonBrightnessUp" = _: {
+              props.allow-when-locked = true;
+              content.spawn-sh = "swayosd-client --brightness raise";
             };
-            "XF86MonBrightnessDown" = {
-              _attrs.allow-when-locked = true;
-              spawn-sh = "swayosd-client --brightness lower";
+            "XF86MonBrightnessDown" = _: {
+              props.allow-when-locked = true;
+              content.spawn-sh = "swayosd-client --brightness lower";
             };
-
-            "Mod+O" = {
-              _attrs.repeat = false;
-              toggle-overview = null;
+            "Mod+O" = _: {
+              props.repeat = false;
+              content.toggle-overview = (_: { });
             };
-            "Mod+Q" = {
-              _attrs.repeat = false;
-              close-window = null;
-            };
-
-            "Mod+H".focus-column-left = null;
-            "Mod+J".focus-window-down = null;
-            "Mod+K".focus-window-up = null;
-            "Mod+L".focus-column-right = null;
-
-            "Mod+Ctrl+H".move-column-left = null;
-            "Mod+Ctrl+J".move-window-down = null;
-            "Mod+Ctrl+K".move-window-up = null;
-            "Mod+Ctrl+L".move-column-right = null;
-
-            "Mod+Home".focus-column-first = null;
-            "Mod+End".focus-column-last = null;
-            "Mod+Ctrl+Home".move-column-to-first = null;
-            "Mod+Ctrl+End".move-column-to-last = null;
-
-            "Mod+Shift+H".focus-monitor-left = null;
-            "Mod+Shift+J".focus-monitor-down = null;
-            "Mod+Shift+K".focus-monitor-up = null;
-            "Mod+Shift+L".focus-monitor-right = null;
-
-            "Mod+Shift+Ctrl+H".move-column-to-monitor-left = null;
-            "Mod+Shift+Ctrl+J".move-column-to-monitor-down = null;
-            "Mod+Shift+Ctrl+K".move-column-to-monitor-up = null;
-            "Mod+Shift+Ctrl+L".move-column-to-monitor-right = null;
-
-            "Mod+U".focus-workspace-down = null;
-            "Mod+I".focus-workspace-up = null;
-
-            "Mod+Ctrl+U".move-column-to-workspace-down = null;
-            "Mod+Ctrl+I".move-column-to-workspace-up = null;
-
-            "Mod+Shift+U".move-workspace-down = null;
-            "Mod+Shift+I".move-workspace-up = null;
-
-            "Mod+WheelScrollDown" = {
-              _attrs.cooldown-ms = 150;
-              focus-workspace-down = null;
-            };
-            "Mod+WheelScrollUp" = {
-              _attrs.cooldown-ms = 150;
-              focus-workspace-up = null;
-            };
-            "Mod+Ctrl+WheelScrollDown" = {
-              _attrs.cooldown-ms = 150;
-              move-column-to-workspace-down = null;
-            };
-            "Mod+Ctrl+WheelScrollUp" = {
-              _attrs.cooldown-ms = 150;
-              move-column-to-workspace-up = null;
+            "Mod+Q" = _: {
+              props.repeat = false;
+              content.close-window = (_: { });
             };
 
-            "Mod+WheelScrollRight".focus-column-right = null;
-            "Mod+WheelScrollLeft".focus-column-left = null;
-            "Mod+Ctrl+WheelScrollRight".move-column-right = null;
-            "Mod+Ctrl+WheelScrollLeft".move-column-left = null;
+            "Mod+H".focus-column-left = (_: { });
+            "Mod+J".focus-window-down = (_: { });
+            "Mod+K".focus-window-up = (_: { });
+            "Mod+L".focus-column-right = (_: { });
 
-            "Mod+Shift+WheelScrollDown".focus-column-right = null;
-            "Mod+Shift+WheelScrollUp".focus-column-left = null;
-            "Mod+Ctrl+Shift+WheelScrollDown".move-column-right = null;
-            "Mod+Ctrl+Shift+WheelScrollUp".move-column-left = null;
+            "Mod+Ctrl+H".move-column-left = (_: { });
+            "Mod+Ctrl+J".move-window-down = (_: { });
+            "Mod+Ctrl+K".move-window-up = (_: { });
+            "Mod+Ctrl+L".move-column-right = (_: { });
+
+            "Mod+Home".focus-column-first = (_: { });
+            "Mod+End".focus-column-last = (_: { });
+            "Mod+Ctrl+Home".move-column-to-first = (_: { });
+            "Mod+Ctrl+End".move-column-to-last = (_: { });
+
+            "Mod+Shift+H".focus-monitor-left = (_: { });
+            "Mod+Shift+J".focus-monitor-down = (_: { });
+            "Mod+Shift+K".focus-monitor-up = (_: { });
+            "Mod+Shift+L".focus-monitor-right = (_: { });
+
+            "Mod+Shift+Ctrl+H".move-column-to-monitor-left = (_: { });
+            "Mod+Shift+Ctrl+J".move-column-to-monitor-down = (_: { });
+            "Mod+Shift+Ctrl+K".move-column-to-monitor-up = (_: { });
+            "Mod+Shift+Ctrl+L".move-column-to-monitor-right = (_: { });
+
+            "Mod+U".focus-workspace-down = (_: { });
+            "Mod+I".focus-workspace-up = (_: { });
+
+            "Mod+Ctrl+U".move-column-to-workspace-down = (_: { });
+            "Mod+Ctrl+I".move-column-to-workspace-up = (_: { });
+
+            "Mod+Shift+U".move-workspace-down = (_: { });
+            "Mod+Shift+I".move-workspace-up = (_: { });
+
+            "Mod+WheelScrollDown" = _: {
+              props.cooldown-ms = 150;
+              content.focus-workspace-down = (_: { });
+            };
+            "Mod+WheelScrollUp" = _: {
+              props.cooldown-ms = 150;
+              content.focus-workspace-up = (_: { });
+            };
+            "Mod+Ctrl+WheelScrollDown" = _: {
+              props.cooldown-ms = 150;
+              content.move-column-to-workspace-down = (_: { });
+            };
+            "Mod+Ctrl+WheelScrollUp" = _: {
+              props.cooldown-ms = 150;
+              content.move-column-to-workspace-up = (_: { });
+            };
+
+            "Mod+WheelScrollRight".focus-column-right = (_: { });
+            "Mod+WheelScrollLeft".focus-column-left = (_: { });
+            "Mod+Ctrl+WheelScrollRight".move-column-right = (_: { });
+            "Mod+Ctrl+WheelScrollLeft".move-column-left = (_: { });
+
+            "Mod+Shift+WheelScrollDown".focus-column-right = (_: { });
+            "Mod+Shift+WheelScrollUp".focus-column-left = (_: { });
+            "Mod+Ctrl+Shift+WheelScrollDown".move-column-right = (_: { });
+            "Mod+Ctrl+Shift+WheelScrollUp".move-column-left = (_: { });
 
             "Mod+1".focus-workspace = "1main";
             "Mod+2".focus-workspace = "2comms";
@@ -317,22 +322,22 @@
             "Mod+Ctrl+8".move-column-to-workspace = "8";
             "Mod+Ctrl+9".move-column-to-workspace = "9";
 
-            "Mod+BracketLeft".consume-or-expel-window-left = null;
-            "Mod+BracketRight".consume-or-expel-window-right = null;
+            "Mod+BracketLeft".consume-or-expel-window-left = (_: { });
+            "Mod+BracketRight".consume-or-expel-window-right = (_: { });
 
-            "Mod+Comma".consume-window-into-column = null;
-            "Mod+Period".expel-window-from-column = null;
+            "Mod+Comma".consume-window-into-column = (_: { });
+            "Mod+Period".expel-window-from-column = (_: { });
 
-            "Mod+R".switch-preset-column-width = null;
-            "Mod+Shift+R".switch-preset-window-height = null;
-            "Mod+Ctrl+R".reset-window-height = null;
+            "Mod+R".switch-preset-column-width = (_: { });
+            "Mod+Shift+R".switch-preset-window-height = (_: { });
+            "Mod+Ctrl+R".reset-window-height = (_: { });
 
-            "Mod+F".maximize-column = null;
-            "Mod+Shift+F".fullscreen-window = null;
-            "Mod+Ctrl+F".expand-column-to-available-width = null;
+            "Mod+F".maximize-column = (_: { });
+            "Mod+Shift+F".fullscreen-window = (_: { });
+            "Mod+Ctrl+F".expand-column-to-available-width = (_: { });
 
-            "Mod+C".center-column = null;
-            "Mod+Ctrl+C".center-visible-columns = null;
+            "Mod+C".center-column = (_: { });
+            "Mod+Ctrl+C".center-visible-columns = (_: { });
 
             "Mod+Minus".set-column-width = "-10%";
             "Mod+Equal".set-column-width = "+10%";
@@ -340,29 +345,29 @@
             "Mod+Shift+Minus".set-window-height = "-10%";
             "Mod+Shift+Equal".set-window-height = "+10%";
 
-            "Mod+V".toggle-window-floating = null;
-            "Mod+Shift+V".switch-focus-between-floating-and-tiling = null;
+            "Mod+V".toggle-window-floating = (_: { });
+            "Mod+Shift+V".switch-focus-between-floating-and-tiling = (_: { });
 
-            "Mod+W".toggle-column-tabbed-display = null;
+            "Mod+W".toggle-column-tabbed-display = (_: { });
 
             "Mod+N".spawn-sh = "fnottctl action";
             "Mod+Shift+N".spawn-sh = "toggle-notification";
 
-            "Print".screenshot = null;
-            "Ctrl+Print".screenshot-screen = null;
-            "Alt+Print".screenshot-window = null;
+            "Print".screenshot = (_: { });
+            "Ctrl+Print".screenshot-screen = (_: { });
+            "Alt+Print".screenshot-window = (_: { });
 
-            "Mod+Escape" = {
-              _attrs.allow-inhibiting = false;
-              toggle-keyboard-shortcuts-inhibit = null;
+            "Mod+Escape" = _: {
+              props.allow-inhibiting = false;
+              content.toggle-keyboard-shortcuts-inhibit = (_: { });
             };
 
-            "Mod+Shift+E".quit = null;
+            "Mod+Shift+E".quit = (_: { });
 
             "Mod+Shift+P".spawn-sh = "niri msg action power-off-monitors && loginctl lock-session";
           };
           layer-rule = {
-            match._attrs.namespace = "^wallpaper$";
+            match = _: { props.namespace = "^wallpaper$"; };
             place-within-backdrop = true;
           };
 
@@ -372,7 +377,7 @@
 
           overview = {
             workspace-shadow = {
-              off = null;
+              off = (_: { });
             };
           };
         };

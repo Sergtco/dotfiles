@@ -47,7 +47,7 @@
         ruff
         nixfmt
         gofumpt
-        nodePackages.prettier
+        prettier
         clang-tools
         gdb
         delve
