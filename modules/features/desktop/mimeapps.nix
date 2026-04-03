@@ -3,7 +3,9 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.desktop = {...}: {
+  flake.nixosModules.desktop = {config, ...}: let 
+    user = config.preferences.user.name;
+  in{
     xdg.mime = {
       defaultApplications = {
         "inode/directory" = ["pcmanfm.desktop"];
@@ -24,5 +26,6 @@
         "x-scheme-handler/terminal" = ["Alacritty.desktop"];
       };
     };
+    hjem.users.${user}.xdg.config.files."xdg-terminals.list".text = "Alacritty.desktop";
   };
 }

@@ -62,6 +62,7 @@
         spotify
 
         selfpkgs.helium
+        selfpkgs.neovim
         selfpkgs.alacritty
 
         libnotify
