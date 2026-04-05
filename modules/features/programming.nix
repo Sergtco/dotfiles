@@ -57,14 +57,7 @@
       ];
       documentation.dev.enable = true;
 
-      hjem.users.${user}.xdg.config.files."direnv/direnv.toml".text = ''
-        [global]
-        hide_env_diff=true
-      '';
-      environment.etc = {
-        "direnv/direnvrc".text = ''
-          source ${pkgs.nix-direnv}/share/nix-direnv/direnvrc
-        '';
-      };
+      programs.direnv.enable = true;
+      programs.direnv.settings.global.hide_env_diff = true;
     };
 }

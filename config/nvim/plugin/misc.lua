@@ -3,13 +3,11 @@ vim.schedule(function()
         "https://codeberg.org/andyg/leap.nvim",
         "https://github.com/jake-stewart/multicursor.nvim",
         "https://github.com/kylechui/nvim-surround",
-        "https://github.com/nvim-mini/mini.align",
         "https://github.com/windwp/nvim-autopairs",
     })
 
     require("nvim-surround").setup()
     require("nvim-autopairs").setup()
-    require("mini.align").setup()
 
     
     local set = vim.keymap.set
@@ -20,8 +18,10 @@ vim.schedule(function()
     local mc = require("multicursor-nvim")
     mc.setup()
 
+
     set({ "n", "x" }, "<c-j>", function() mc.lineAddCursor(1) end)
     set({ "n", "x" }, "<c-k>", function() mc.lineAddCursor(-1) end)
+    
 
     set({ "n", "x" }, "<c-n>", function() mc.matchAddCursor(1) end)
     set({ "n", "x" }, "<c-s>", function() mc.matchSkipCursor(1) end)
