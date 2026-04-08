@@ -11,7 +11,14 @@ vim.schedule(function()
 			cmd = { adapter = "openrouter", },
 		},
 		adapters = {
-			acp = { opts = { show_presets = false } },
+			acp = { 
+                opts = { show_presets = false },
+                opencode = require("codecompanion.adapters").extend("opencode", {
+                    defaults = {
+                        mcpServers = "inherit_from_config",
+                    }
+                }),
+            },
 			http = {
 				opts = { show_presets = false },
 				work = function()
@@ -28,7 +35,7 @@ vim.schedule(function()
 						parameters = { sync = true },
 					})
 				end,
-				["openrouter"] = function()
+				openrouter = function()
 					return require("codecompanion.adapters").extend("openai_compatible", {
 						env = {
 							url = "https://openrouter.ai/api",
@@ -36,16 +43,16 @@ vim.schedule(function()
 							chat_url = "/v1/chat/completions",
 						},
 						schema = {
-							model = { default = "xiaomi/mimo-v2-flash" },
+							model = { default = "moonshotai/kimi-k2.5" },
 						},
-            parameters = { sync = true },
+                        parameters = { sync = true },
 					})
 				end,
 				["local"] = function()
 					return require("codecompanion.adapters").extend("ollama", {
 						name = "local",
 						schema = {
-							model = { default = "gpt-oss" },
+							model = { default = "qwen3.5" },
 						},
 						parameters = { sync = true },
 					})
