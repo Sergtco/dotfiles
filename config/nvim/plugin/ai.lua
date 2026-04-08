@@ -5,10 +5,19 @@ vim.schedule(function()
 		"https://github.com/nvim-treesitter/nvim-treesitter",
 	})
 	require("codecompanion").setup({
-		strategies = {
+		interactions = {
 			chat = { adapter = "openrouter", },
 			inline = { adapter = "openrouter", },
 			cmd = { adapter = "openrouter", },
+            cli = {
+                agent = "opencode",
+                agents = {
+                    opencode = {
+                        cmd = "opencode",
+                        provider = "terminal",
+                    },
+                },
+            },
 		},
 		adapters = {
 			acp = { 
@@ -60,7 +69,6 @@ vim.schedule(function()
 			},
 		},
 		display = { chat = { window = { width = 0.3 } } },
-		interactions = { chat = { opts = { completion_provider = "default" } } },
 	})
 
 	local set = vim.keymap.set
