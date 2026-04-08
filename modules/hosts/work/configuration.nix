@@ -53,8 +53,9 @@
       };
 
       system.stateVersion = 6;
+
       nix.settings.experimental-features = "nix-command flakes";
-      nix.enable = false;
+      nix.package = pkgs.lixPackageSets.stable.lix;
 
       nixpkgs.hostPlatform = "aarch64-darwin";
       nixpkgs.config = {

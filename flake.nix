@@ -2,17 +2,12 @@
   description = "Sergtco's flake";
 
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/*";
-    nixpkgs-unstable.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-
-    determinate = {
-      url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-darwin = {

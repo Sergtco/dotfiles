@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.nix = {...}: {
+  flake.nixosModules.nix = {pkgs, ...}: {
     imports = [
       inputs.nix-index-database.nixosModules.default
     ];
@@ -14,7 +14,6 @@
       builders-use-substitutes = true;
       substituters = [
         "https://cache.nixos.org/"
-        "https://install.determinate.systems"
         "https://vicinae.cachix.org"
         "https://nix-community.cachix.org"
       ];
@@ -28,6 +27,8 @@
         "flakes"
       ];
     };
+
+    nix.package = pkgs.lixPackageSets.stable.lix;
 
     nix.optimise = {
       automatic = true;
