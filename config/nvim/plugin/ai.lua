@@ -1,78 +1,13 @@
 vim.schedule(function()
 	vim.pack.add({
-		"https://github.com/olimorris/codecompanion.nvim",
-		"https://github.com/nvim-lua/plenary.nvim",
-		"https://github.com/nvim-treesitter/nvim-treesitter",
+        "https://github.com/sudo-tee/opencode.nvim",
+        "https://github.com/nvim-lua/plenary.nvim",
 	})
-	require("codecompanion").setup({
-		interactions = {
-			chat = { adapter = "openrouter", },
-			inline = { adapter = "openrouter", },
-			cmd = { adapter = "openrouter", },
-            cli = {
-                agent = "opencode",
-                agents = {
-                    opencode = {
-                        cmd = "opencode",
-                        provider = "terminal",
-                    },
-                },
-            },
-		},
-		adapters = {
-			acp = { 
-                opts = { show_presets = false },
-                opencode = require("codecompanion.adapters").extend("opencode", {
-                    defaults = {
-                        mcpServers = "inherit_from_config",
-                    }
-                }),
-            },
-			http = {
-				opts = { show_presets = false },
-				work = function()
-					return require("codecompanion.adapters").extend("ollama", {
-						name = "work",
-						env = {
-							url = "https://webui.txix.ru/ollama",
-							api_key = "cmd:cat ~/work/ai.key",
-						},
-						headers = {
-							["Content-Type"] = "application/json",
-							["Authorization"] = "Bearer ${api_key}",
-						},
-						parameters = { sync = true },
-					})
-				end,
-				openrouter = function()
-					return require("codecompanion.adapters").extend("openai_compatible", {
-						env = {
-							url = "https://openrouter.ai/api",
-							api_key = "cmd:cat ~/chat/ai.key",
-							chat_url = "/v1/chat/completions",
-						},
-						schema = {
-							model = { default = "moonshotai/kimi-k2.5" },
-						},
-                        parameters = { sync = true },
-					})
-				end,
-				["local"] = function()
-					return require("codecompanion.adapters").extend("ollama", {
-						name = "local",
-						schema = {
-							model = { default = "qwen3.5" },
-						},
-						parameters = { sync = true },
-					})
-				end,
-			},
-		},
-		display = { chat = { window = { width = 0.3 } } },
-	})
-
-	local set = vim.keymap.set
-	set("n", "<leader>ct", "<cmd>CodeCompanionChat Toggle<CR>", { desc = "Open ai chat" })
-	set({ "n", "v" }, "<leader>cy", "<cmd>CodeCompanionChat Add<CR>", { desc = "Open ai chat" })
-	set({ "n", "v" }, "<leader>cc", ":CodeCompanion ", { desc = "Inline companion" })
+    require("opencode").setup({
+        keymap = {
+            input_window = {
+                ['<esc>'] = false,
+            }
+        }
+    })
 end)
