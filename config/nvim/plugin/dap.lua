@@ -5,7 +5,22 @@ vim.schedule(function()
 		"https://github.com/leoluz/nvim-dap-go",
 	})
 
-    require("dap-go").setup()
+    require('dap-go').setup({
+        dap_configurations = {
+            {
+                type = "go",
+                name = "Attach remote",
+                mode = "remote",
+                request = "attach",
+                host = function()
+                    return vim.fn.input("Hostname: ")
+                end,
+                port = function()
+                    return vim.fn.input("Port: ")
+                end 
+            },
+        }
+    })
 	local dap = require("dap")
 	dap.adapters.gdb = {
 		type = "executable",
@@ -64,8 +79,9 @@ vim.schedule(function()
     set("n", "<A-n>", function() require("dap").step_over() end, { desc = "DAP step over" })
     set("n", "<A-i>", function() require("dap").step_into() end, { desc = "DAP step into" })
     set("n", "<A-o>", function() require("dap").step_out() end, { desc = "DAP step out" })
-    set("n", "<leader>gb", function() require("dap").toggle_breakpoint() end, { desc = "DAP toggle breakpoint" })
-    set("n", "<Leader>gw", function() require("dap-view").add_expr() end, { desc = "DAP view add expression" })
-    set("n", "<Leader>gc", function() require("dap").continue() end, { desc = "DAP continue" })
+    set("n", "<leader>b", function() require("dap").toggle_breakpoint() end, { desc = "DAP toggle breakpoint" })
+    set("n", "<Leader>w", function() require("dap-view").add_expr() end, { desc = "DAP view add expression" })
+    set("n", "<Leader>c", function() require("dap").continue() end, { desc = "DAP continue" })
 	-- stylua: ignore end
+
 end)
