@@ -36,6 +36,8 @@
         typst
         tinymist
         typstyle
+
+        fzf
       ];
     };
   perSystem =
