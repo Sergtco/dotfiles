@@ -6,7 +6,7 @@ vim.pack.add({
     "https://github.com/mistweaverco/kulala.nvim",
 })
 
-vim.opt.statusline:append("%{FugitiveStatusline()}")
+vim.opt.statusline:append(" %{FugitiveStatusline()}")
 vim.keymap.set("n", "<leader>gg", "<cmd>G<cr>", { desc = "Open fugitive" })
 
 

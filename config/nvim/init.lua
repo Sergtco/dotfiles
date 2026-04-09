@@ -80,3 +80,5 @@ vim.opt.langmap = vim.fn.join({
 	escape(ru) .. ";" .. escape(en),
 }, ",")
 
+vim.o.cmdheight = 0
+vim.o.statusline = "%{v:lua.vim.fn.reg_recording() != '' ? '[@' . v:lua.vim.fn.reg_recording() . '] ' : ''}" .. vim.o.statusline
