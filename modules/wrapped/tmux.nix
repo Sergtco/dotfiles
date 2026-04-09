@@ -7,7 +7,7 @@
     packages.tmux = inputs.wrapper-modules.wrappers.tmux.wrap {
       inherit pkgs;
       extraPackages = with pkgs; [
-        skim
+        fzf
         sesh
         zoxide
       ];
@@ -28,7 +28,7 @@
         set-window-option -g window-status-current-style 'fg=white,bg=black'
 
         bind-key "f" run-shell "${lib.getExe pkgs.sesh} connect \"$(
-          sesh list --icons | ${lib.getExe pkgs.skim} --tmux center,80%,70% \
+          sesh list --icons | ${lib.getExe pkgs.fzf} --tmux center,80%,70% \
             --no-sort --ansi  --prompt '>  ' \
             --bind 'ctrl-d:execute(tmux kill-session -t {2..})+change-prompt(>  )+reload(sesh list --icons)' \
             --preview-window 'right:55%' \

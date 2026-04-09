@@ -29,8 +29,7 @@
         source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
         source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
         source <(${lib.getExe pkgs.oh-my-posh} init zsh --config ${pkgs.oh-my-posh}/share/oh-my-posh/themes/pure.omp.json)
-        source <(${lib.getExe pkgs.skim} --shell zsh)
-        source ${pkgs.skim}/share/skim/key-bindings.zsh
+        source <(${lib.getExe pkgs.fzf} --zsh)
 
         source <(${lib.getExe pkgs.direnv} hook zsh)
         source <(${lib.getExe pkgs.zoxide} init zsh)
@@ -41,7 +40,7 @@
 
       extraPackages = with pkgs; [
         sesh
-        skim
+        fzf
         direnv
         zoxide
 
