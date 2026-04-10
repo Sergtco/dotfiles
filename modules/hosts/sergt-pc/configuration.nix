@@ -164,7 +164,7 @@
     ];
 
     environment.systemPackages = with pkgs; [
-      unstable.opencode
+      opencode
       selfpkgs.shell
     ];
 
