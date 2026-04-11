@@ -26,6 +26,9 @@ o.tabstop = indent
 vim.wo.foldmethod = "indent"
 vim.wo.foldlevel = 99 
 
+--inc
+vim.o.nrformats = vim.o.nrformats .. ",unsigned"
+
 --ui
 o.relativenumber = true
 o.number = true
