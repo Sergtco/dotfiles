@@ -27,7 +27,7 @@
         self.darwinModules.dev
       ];
       environment.systemPackages = with pkgs; [
-        telegram-desktop
+        unstable.telegram-desktop
         betterdisplay
         selfpkgs.shell
         selfpkgs.helium

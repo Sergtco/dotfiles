@@ -44,7 +44,7 @@
         xclip
 
         playerctl
-        telegram-desktop
+        unstable.telegram-desktop
         element-desktop
         transmission_4-qt
         vial
