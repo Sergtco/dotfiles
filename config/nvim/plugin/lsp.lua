@@ -17,6 +17,7 @@ local conform_opts = {
 		typst = { "typstyle" },
 		c     = { "clang_format" },
 		cpp   = { "clang_format" },
+        lua   = { "stylua"},
 		js    = { "prettier" },
 		ts    = { "prettier" },
 		json  = { "prettier" },
@@ -40,6 +41,7 @@ vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 vim.api.nvim_create_autocmd({ "LspAttach" }, {
 	callback = function()
         vim.keymap.set("n", "grc", function() vim.lsp.codelens.run() end)
+        vim.keymap.set("n", "gre", function() vim.lsp.codelens.enable(not vim.lsp.codelens.is_enabled()) end)
 	end,
 })
 

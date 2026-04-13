@@ -36,6 +36,7 @@
         typst
         tinymist
         typstyle
+        stylua
 
         fzf
       ];
