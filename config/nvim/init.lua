@@ -54,7 +54,7 @@ require("vim._core.ui2").enable({
 })
 
 -- completions
-vim.o.completeopt = "menuone,noselect,fuzzy"
+vim.o.completeopt = "menuone,noselect,fuzzy,nosort"
 vim.o.pumheight = 10
 vim.o.complete = "o,.,w,b,u,t"
 

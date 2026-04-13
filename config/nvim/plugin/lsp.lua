@@ -34,12 +34,6 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	end,
 })
 
-vim.api.nvim_create_autocmd({"LspAttach"}, {
-    callback = function()
-        vim.bo.complete = "o"
-    end
-})
-
 require("conform").setup(conform_opts)
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
