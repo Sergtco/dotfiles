@@ -37,6 +37,12 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 require("conform").setup(conform_opts)
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
+vim.api.nvim_create_autocmd({ "LspAttach" }, {
+	callback = function()
+        vim.keymap.set("n", "grc", function() vim.lsp.codelens.run() end)
+	end,
+})
+
 vim.lsp.enable(servers)
 
 vim.diagnostic.config({
