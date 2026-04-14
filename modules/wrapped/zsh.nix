@@ -9,7 +9,7 @@
     self',
     ...
   }: {
-    packages.shell = inputs.wrapper-modules.wrappers.zsh.wrap {
+    packages.zsh = inputs.wrapper-modules.wrappers.zsh.wrap {
       inherit pkgs;
       zshAliases = {
         v = "nvim";
@@ -37,46 +37,6 @@
         autoload -Uz compinit && compinit
         zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
       '';
-
-      extraPackages = with pkgs; [
-        sesh
-        fzf
-        direnv
-        zoxide
-
-        ripgrep
-        fd
-        bat
-        file
-        usbutils
-        ffmpeg
-        bottom
-        imagemagick
-        progress
-
-        jq
-
-        bash
-        curl
-        p7zip
-        zip
-        unzip
-        rar
-        killall
-        wget
-
-        yazi
-
-        self'.packages.tmux
-        self'.packages.neovim
-        self'.packages.neovimDev
-        self'.packages.git
-      ];
-
-      env = {
-        EDITOR = "${lib.getExe self'.packages.neovim}";
-        MANPAGER = "${lib.getExe self'.packages.neovim} +Man!";
-      };
     };
   };
 }

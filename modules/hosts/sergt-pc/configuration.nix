@@ -12,6 +12,7 @@
   flake.nixosModules.sergt-pc = {
     pkgs,
     config,
+    lib,
     ...
   }: let
     selfpkgs = self.packages.${pkgs.stdenv.hostPlatform.system};
@@ -140,10 +141,8 @@
       isNormalUser = true;
       description = "${user}";
       extraGroups = ["networkmanager" "wheel" "video" "i2c"];
-      shell = selfpkgs.shell;
+      shell = "${lib.getExe selfpkgs.env}";
     };
-    programs.zsh.enable = true;
-    environment.pathsToLink = [ "/share/zsh" ];
 
     environment.localBinInPath = true;
 
@@ -165,7 +164,7 @@
 
     environment.systemPackages = with pkgs; [
       opencode
-      selfpkgs.shell
+      selfpkgs.env
     ];
 
     ### GRAPHICS ###

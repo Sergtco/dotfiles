@@ -11,7 +11,7 @@
     ];
   };
   flake.darwinModules."MacBook-Pro-user" =
-    { pkgs, config, ... }:
+    { pkgs, config, lib, ... }:
     let
       selfpkgs = self.packages.${pkgs.stdenv.hostPlatform.system};
       user = config.preferences.user.name;
@@ -29,7 +29,7 @@
       environment.systemPackages = with pkgs; [
         unstable.telegram-desktop
         betterdisplay
-        selfpkgs.shell
+        selfpkgs.env
         selfpkgs.helium
         selfpkgs.git
         selfpkgs.neovim
@@ -43,10 +43,8 @@
         name = "${user}";
         home = "/Users/${user}";
         uid = 501;
-        shell = selfpkgs.shell;
+        shell = "${lib.getExe selfpkgs.env}";
       };
-      programs.zsh.enable = true;
-      environment.pathsToLink = [ "/share/zsh" ];
 
       environment.variables = {
         LANG = "en_US.UTF-8";

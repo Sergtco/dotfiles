@@ -116,11 +116,11 @@
         enable = true;
         settings = {
           initial_session = lib.mkIf config.preferences.login.autologin {
-            command = "/run/current-system/sw/bin/niri-session";
+            command = "/run/current-system/sw/bin/niri-session -l";
             user = "sergtco";
           };
           default_session = {
-            command = "${lib.getExe pkgs.tuigreet} --remember --remember-user-session --cmd niri-session";
+            command = "${lib.getExe pkgs.tuigreet} --remember --remember-user-session --cmd 'niri-session -l'";
             user = "greeter";
           };
         };

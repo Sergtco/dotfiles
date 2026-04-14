@@ -8,6 +8,7 @@
     {
       pkgs,
       self',
+      lib,
       ...
     }:
     {
@@ -19,6 +20,8 @@
           swayosd
           fnott
           unstable.vicinae
+          self'.packages.alacritty
+          self'.packages.tmux
           self'.packages.waybar
         ];
 
@@ -28,13 +31,14 @@
               "vicinae"
               "server"
             ]
+            [
+              "alacritty"
+              "-e"
+              "tmux"
+            ]
             "helium"
             "thunderbird"
             "Telegram"
-          ];
-
-          spawn-sh-at-startup = [
-            "alacritty -e tmux || tmux a"
           ];
 
           input = {
@@ -189,7 +193,7 @@
               ];
             };
             "Mod+B" = {
-              spawn-sh = "killall -SIGUSR1 -r waybar";
+              spawn-sh = "${lib.getExe pkgs.killall} -SIGUSR1 -r waybar";
             };
 
             "XF86AudioRaiseVolume" = _: {

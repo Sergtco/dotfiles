@@ -14,6 +14,7 @@
     {
       pkgs,
       config,
+      lib,
       ...
     }:
     let
@@ -124,10 +125,8 @@
           "uinput"
           "input"
         ];
-        shell = selfpkgs.shell;
+        shell = "${lib.getExe selfpkgs.env}";
       };
-      programs.zsh.enable = true;
-      environment.pathsToLink = [ "/share/zsh" ];
 
       environment.localBinInPath = true;
 
@@ -148,7 +147,7 @@
       ];
 
       environment.systemPackages = with pkgs; [
-        selfpkgs.shell
+        selfpkgs.env
       ];
 
       ### GRAPHICS ###
