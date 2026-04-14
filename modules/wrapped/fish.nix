@@ -31,6 +31,12 @@
         ${lib.getExe pkgs.direnv} hook fish | source
         ${lib.getExe pkgs.fzf} --fish | source
         ${lib.getExe pkgs.zoxide} init fish | source
+
+        set --universal fish_transient_prompt 1
+
+        set --universal pure_show_numbered_git_indicator true
+        set --universal pure_enable_nixdevshell true
+        set --universal pure_symbol_nixdevshell_prefix '󱄅'
       '';
       extraPackages = with pkgs; [
 
