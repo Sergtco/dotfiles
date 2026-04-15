@@ -16,6 +16,7 @@
 
             pluginPkgs = with pkgs.fishPlugins; [
               pure
+              async-prompt
             ];
 
             shellAliases = {
@@ -36,6 +37,8 @@
               ${lib.getExe pkgs.zoxide} init fish | source
 
               set --universal fish_transient_prompt 1
+
+              set -g async_prompt_functions _pure_prompt_git
 
               set --universal pure_show_numbered_git_indicator true
               set --universal pure_enable_nixdevshell true
