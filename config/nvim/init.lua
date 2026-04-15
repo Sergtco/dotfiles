@@ -77,6 +77,3 @@ local langmap_keys = {
   'яЯ;zZ', 'чЧ;xX', 'сС;cC', 'мМ;vV', 'иИ;bB', 'тТ;nN', 'ьЬ;mM', [[бБ;\,<]], 'юЮ;.>',
 }
 vim.o.langmap = table.concat(langmap_keys, ',')
-
-vim.o.cmdheight = 0
-vim.o.statusline = "%{v:lua.vim.fn.reg_recording() != '' ? '[@' . v:lua.vim.fn.reg_recording() . '] ' : ''}" .. vim.o.statusline
