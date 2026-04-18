@@ -5,9 +5,7 @@
 }: {
   flake.nixosModules.desktop = {config, ...}: let 
     user = config.preferences.user.name;
-  in{
-    xdg.mime = {
-      defaultApplications = {
+    defaultApps = {
         "inode/directory" = ["pcmanfm.desktop"];
         "application/pdf" = ["org.pwmt.zathura.desktop"];
 
@@ -25,7 +23,13 @@
         "image/gif" = ["swayimg"];
         "x-scheme-handler/terminal" = ["Alacritty.desktop"];
       };
+  in{
+    xdg.mime = {
+      defaultApplications = defaultApps;
     };
-    hjem.users.${user}.xdg.config.files."xdg-terminals.list".text = "Alacritty.desktop";
+    hjem.users.${user}.xdg = {
+      config.files."xdg-terminals.list".text = "Alacritty.desktop";
+      mime-apps.default-applications = defaultApps;
+    };
   };
 }
