@@ -7,6 +7,8 @@ local o = vim.opt
 -- diff
 o.diffopt:remove("linematch:40")
 
+o.shortmess:append("c")
+
 -- file system
 o.undofile = true
 o.swapfile = false
