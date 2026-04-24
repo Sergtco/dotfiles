@@ -8,6 +8,7 @@
     defaultApps = {
         "inode/directory" = ["pcmanfm.desktop"];
         "application/pdf" = ["org.pwmt.zathura.desktop"];
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = ["writer.desktop"];
 
         "text/html" = ["helium.desktop"];
         "text/plain" = ["nvim.desktop"];
