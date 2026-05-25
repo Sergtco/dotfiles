@@ -42,7 +42,7 @@
       hardware.uinput.enable = true;
       environment.systemPackages = with pkgs; [
         r2modman
-        (pkgs.unstable.lutris.override {
+        (pkgs.lutris.override {
           extraPkgs = pkgs: with pkgs; [
             proton-ge-bin
             wine

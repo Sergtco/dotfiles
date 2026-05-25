@@ -15,7 +15,7 @@
 
           package = self'.packages.fish;
 
-          extraPackages = with pkgs; [
+          runtimePkgs = with pkgs; [
             sesh
             fzf
             direnv

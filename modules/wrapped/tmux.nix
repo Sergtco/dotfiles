@@ -6,7 +6,7 @@
   perSystem = {pkgs, lib, ...}: {
     packages.tmux = inputs.wrapper-modules.wrappers.tmux.wrap {
       inherit pkgs;
-      extraPackages = with pkgs; [
+      runtimePkgs = with pkgs; [
         fzf
         sesh
         zoxide

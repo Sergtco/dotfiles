@@ -48,7 +48,7 @@
         element-desktop
         transmission_4-qt
         vial
-        vesktop
+        unstable.vesktop
         libreoffice-qt-fresh
         wine
 
@@ -60,6 +60,7 @@
         brightnessctl
         thunderbird
         spotify
+        packet
 
         selfpkgs.helium
         selfpkgs.neovim
@@ -70,8 +71,13 @@
           builtins.readFile ../../../scripts/toggle-notification.sh
         ))
       ];
+      networking.firewall.allowedTCPPorts = [
+        9300 # packet quickshare
+      ];
+      networking.firewall.allowedUDPPorts = [
+        9300 # packet quickshare
+      ];
 
-      programs.localsend.enable = true;
       programs = {
         niri = {
           enable = true;

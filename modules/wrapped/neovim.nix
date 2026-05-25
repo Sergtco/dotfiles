@@ -12,7 +12,7 @@
     }:
     {
       imports = [ wlib.wrapperModules.neovim ];
-      config.extraPackages = with pkgs.unstable; [
+      config.runtimePkgs = with pkgs.unstable; [
         pyrefly
         ty
         emmylua-ls

@@ -14,7 +14,7 @@
     {
       packages.niri = inputs.wrapper-modules.wrappers.niri.wrap {
         inherit pkgs;
-        extraPackages = with pkgs; [
+        runtimePkgs = with pkgs; [
           xwayland-satellite
           hackneyed
           swayosd

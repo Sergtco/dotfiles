@@ -6,7 +6,7 @@
   perSystem = {pkgs, self', ...}: {
     packages.waybar = inputs.wrapper-modules.wrappers.waybar.wrap {
       inherit pkgs;
-      extraPackages = with pkgs;[
+      runtimePkgs = with pkgs;[
         playerctl
         bluetui
         wiremix
