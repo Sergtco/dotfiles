@@ -18,7 +18,7 @@
     environment.systemPackages = with pkgs; [
       guitarix
       gxplugins-lv2
-      helvum
+      crosspipe
     ];
   };
 }

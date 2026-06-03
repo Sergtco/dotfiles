@@ -3,51 +3,46 @@
   perSystem =
     { pkgs, lib, ... }:
     {
-      packages.fish = inputs.wrapper-modules.lib.wrapPackage (
-        { ... }:
-        {
-          inherit pkgs;
-          package = pkgs.wrapFish {
-            runtimeInputs = with pkgs; [
-              direnv
-              fzf
-              zoxide
-            ];
+      packages.fish = inputs.wrapper-modules.wrappers.fish.wrap {
+        inherit pkgs;
+        runtimePkgs = with pkgs; [
+          direnv
+          fzf
+          zoxide
+        ];
 
-            pluginPkgs = with pkgs.fishPlugins; [
-              pure
-              async-prompt
-            ];
+        plugins = with pkgs.fishPlugins; [
+          pure
+          async-prompt
+        ];
 
-            shellAliases = {
-              v = "nvim";
-              y = "yazi";
-              d = "docker";
-              dc = "docker compose";
-              g = "git";
-            };
+        shellAliases = {
+          v = "nvim";
+          y = "yazi";
+          d = "docker";
+          dc = "docker compose";
+          g = "git";
+        };
 
-            localConfig = /* fish */ ''
-              fish_vi_key_bindings
+        flags."--no-config" = false;
 
-              fish_add_path ~/.cargo/bin ~/go/bin
+        configFile.content = /* fish */ ''
+          fish_vi_key_bindings
 
-              ${lib.getExe pkgs.direnv} hook fish | source
-              ${lib.getExe pkgs.fzf} --fish | source
-              ${lib.getExe pkgs.zoxide} init fish | source
+          fish_add_path ~/.cargo/bin ~/go/bin
 
-              set --universal fish_transient_prompt 1
+          ${lib.getExe pkgs.direnv} hook fish | source
+          ${lib.getExe pkgs.fzf} --fish | source
+          ${lib.getExe pkgs.zoxide} init fish | source
 
-              set -g async_prompt_functions _pure_prompt_git
+          set --universal fish_transient_prompt 1
 
-              set --universal pure_show_numbered_git_indicator true
-              set --universal pure_enable_nixdevshell true
-              set --universal pure_symbol_nixdevshell_prefix '󱄅'
-            '';
-          };
+          set -g async_prompt_functions _pure_prompt_git
 
-          wrapperImplementation = "binary";
-        }
-      );
+          set --universal pure_show_numbered_git_indicator true
+          set --universal pure_enable_nixdevshell true
+          set --universal pure_symbol_nixdevshell_prefix '󱄅'
+        '';
+      };
     };
 }

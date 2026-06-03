@@ -22,7 +22,7 @@
         clang-tools
         marksman
         zls
-        inputs.tree-sitter.packages.${pkgs.stdenv.hostPlatform.system}.default
+        tree-sitter
         nodejs-slim
 
         # language utils

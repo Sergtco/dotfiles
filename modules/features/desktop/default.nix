@@ -45,10 +45,9 @@
 
         playerctl
         unstable.telegram-desktop
-        element-desktop
         transmission_4-qt
         vial
-        unstable.vesktop
+        vesktop
         libreoffice-qt-fresh
         wine
 
@@ -100,17 +99,8 @@
 
       xdg.portal = {
         enable = true;
-        extraPortals = [
-          pkgs.xdg-desktop-portal-gtk
-          pkgs.xdg-desktop-portal-gnome
-          pkgs.xdg-desktop-portal-hyprland
-        ];
         config = {
           niri = {
-            default = [
-              "gtk"
-              "gnome"
-            ];
             "org.freedesktop.portal.ScreenCast" = [ "gnome" ];
             "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
           };
