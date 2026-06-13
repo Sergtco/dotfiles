@@ -36,10 +36,7 @@
         wantedBy = [ "graphical-session.target" ];
         path = ["/run/current-system/sw"];
         environment = {
-          HTTP_PROXY = "http://127.0.0.1:10809";
-          HTTPS_PROXY = "http://127.0.0.1:10809";
           USE_LAYER_SHELL = "1";
-          NODE_USE_ENV_PROXY = "1";
         };
         serviceConfig = {
           Type = "simple";

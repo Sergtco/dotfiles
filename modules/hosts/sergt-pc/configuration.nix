@@ -163,7 +163,7 @@
     ];
 
     environment.systemPackages = with pkgs; [
-      opencode
+      unstable.deadlock-mod-manager
       selfpkgs.env
     ];
 

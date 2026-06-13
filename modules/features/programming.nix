@@ -54,6 +54,8 @@
         typst
         tinymist
         typstyle
+
+        opencode
       ];
       documentation.dev.enable = true;
 

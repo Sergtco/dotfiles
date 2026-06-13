@@ -20,8 +20,10 @@
       "sd_mod"
     ];
     boot.initrd.kernelModules = [];
-    boot.kernelModules = ["kvm-intel"];
+    boot.kernelModules = ["kvm-intel" "iwlwifi"];
     boot.extraModulePackages = [];
+
+    hardware.enableRedistributableFirmware = true;
 
     fileSystems."/" = {
       device = "/dev/disk/by-uuid/9b784cf8-8b28-4195-b30d-34cee5ccad11";
