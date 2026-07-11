@@ -4,6 +4,7 @@ vim.schedule(function()
         "https://github.com/nvim-lua/plenary.nvim",
 	})
     require("opencode").setup({
+        opencode_executable = "/home/sergtco/.local/bin/opencode",
         keymap = {
             input_window = {
                 ['<esc>'] = false,

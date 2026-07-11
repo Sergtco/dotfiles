@@ -8,6 +8,7 @@
     { pkgs, config, ... }:
     let
       user = config.preferences.user.name;
+      meridian = inputs.meridian.packages.${pkgs.stdenv.hostPlatform.system}.meridian;
     in
     {
       users.users.${user}.extraGroups = [
@@ -56,10 +57,15 @@
         typstyle
 
         opencode
+        claude-code
+        nodejs_26
+
+        devenv
       ];
       documentation.dev.enable = true;
 
       programs.direnv.enable = true;
       programs.direnv.settings.global.hide_env_diff = true;
+
     };
 }

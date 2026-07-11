@@ -36,7 +36,7 @@
           set -U fish_greeting
           fish_vi_key_bindings
 
-          fish_add_path ~/.cargo/bin ~/go/bin
+          fish_add_path ~/.cargo/bin ~/go/bin ~/.npm-global/bin
 
           ${lib.getExe pkgs.direnv} hook fish | source
           ${lib.getExe pkgs.fzf} --fish | source

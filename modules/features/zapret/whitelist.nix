@@ -1,4 +1,5 @@
-{...}: let
+{ ... }:
+let
   whitelist = [
     "cloudflare-ech.com"
     "encryptedsni.com"
@@ -66,7 +67,27 @@
     "ytimg.com"
     "ytimg.l.google.com"
     "deadlockmods.app"
+    "ubisoft.com"
+    "uplay.com"
+    "ubi.com"
+    "connect.ubisoft.com"
+    "public-ubiservices.ubi.com"
+    "api-uplay.ubi.com"
+    "ubisoft-orbit.s3.amazonaws.com"
+    "ubi.li"
   ];
-in {
-  flake = {inherit whitelist;};
+  ipset = [
+    "52.222.149.31"
+    "52.6.7.14"
+    "54.76.54.196"
+    "18.209.141.203"
+    "99.83.188.134"
+    "3.33.249.140"
+    "2.23.89.244"
+    "2.23.89.92"
+    "203.132.26.89"
+  ];
+in
+{
+  flake = { inherit whitelist ipset; };
 }

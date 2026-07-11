@@ -43,16 +43,20 @@
       environment.systemPackages = with pkgs; [
         r2modman
         (pkgs.lutris.override {
-          extraPkgs = pkgs: with pkgs; [
-            proton-ge-bin
-            wine
-            winetricks
-            mangohud
-            umu-launcher
-            gamescope
-            gamemode
-          ];
+          extraPkgs =
+            pkgs: with pkgs; [
+              proton-ge-bin
+              wine
+              winetricks
+              mangohud
+              umu-launcher
+              gamescope
+              gamemode
+            ];
         })
       ];
+
+      programs.corectrl.enable = true;
+
     };
 }
