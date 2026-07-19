@@ -2,12 +2,6 @@
 {
   perSystem =
     { pkgs, lib, ... }:
-    let
-      theme = builtins.fetchurl {
-        url = "https://raw.githubusercontent.com/slugbyte/lackluster.nvim/refs/heads/main/extra/fish/lackluster.fish";
-        sha256 = "1nfx989v2fg1bkb81y7p4a5hrxqm5gr78ik9glj3z8kh0zxzzvvi";
-      };
-    in
     {
       packages.fish = inputs.wrapper-modules.wrappers.fish.wrap {
         inherit pkgs;
@@ -49,7 +43,7 @@
           set --universal pure_show_numbered_git_indicator true
           set --universal pure_enable_nixdevshell true
           set --universal pure_symbol_nixdevshell_prefix '󱄅'
-          ${builtins.readFile theme}
+          ${builtins.readFile ./lackluster.fish}
         '';
       };
     };
