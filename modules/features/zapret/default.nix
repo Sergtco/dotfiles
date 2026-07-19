@@ -8,29 +8,14 @@
   flake.nixosModules.zapret =
     { pkgs, ... }:
     let
-      quic_google = builtins.fetchurl {
-        url = "https://github.com/bol-van/zapret/raw/refs/heads/master/files/fake/quic_initial_www_google_com.bin";
-        sha256 = "02n5v8fya194ww3lffvjm2qgh1bh3m97l69q0nrnp5czfibrqn7l";
-      };
-      client_hello = builtins.fetchurl {
-        url = "https://github.com/bol-van/zapret/raw/refs/heads/master/files/fake/tls_clienthello_www_google_com.bin";
-        sha256 = "0p172hxcfsf5knap4wdimp8vqgsbhg6cnbbb88yam07v9kp2nv4k";
-      };
-      client_hello_max = builtins.fetchurl {
-        url = "https://github.com/Flowseal/zapret-discord-youtube/raw/refs/heads/main/bin/tls_clienthello_max_ru.bin";
-        sha256 = "0916jb7lkzssfay67ycbmq6j27dshycii5801dh2h08apq58gq2f";
-      };
-      stun = builtins.fetchurl {
-        url = "https://github.com/Flowseal/zapret-discord-youtube/raw/refs/heads/main/bin/stun.bin";
-        sha256 = "0hcnlmhb486bzsf1ghq2km9fxis89996cwnr1dnaa33q169ldmcw";
-      };
+      quic_google = ./quic_initial_www_google_com.bin;
+      quic_dbank = ./quic_initial_dbankcloud_ru.bin;
+      client_hello = ./tls_clienthello_www_google_com.bin;
+      client_hello_max = ./tls_clienthello_max_ru.bin;
+      stun = ./stun.bin;
 
-      ipset_all = builtins.readFile (
-        builtins.fetchurl {
-          url = "https://github.com/Flowseal/zapret-discord-youtube/raw/9a1ce92593bd9af4e2e0b4af4d9db69c71e4af00/lists/ipset-all.txt.backup";
-          sha256 = "0y33sq6gk9n12mgr28m1hwwzy1wjhwkdqgjmll4m3szpgf9cfkcv";
-        }
-      );
+      ipset_all = builtins.readFile ./ipset-all.txt;
+      google_hostlist = builtins.toFile "zapret_google" (builtins.readFile ./list-google.txt);
 
       hostlist = builtins.toFile "zapret_whitelist" (builtins.concatStringsSep "\n" self.whitelist);
       ipset = builtins.toFile "ipset" (
@@ -55,14 +40,23 @@
         ];
         httpSupport = true;
         params = [
-          "--filter-tcp=443 --ip-id=zero --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fooling=ts --dpi-desync-fake-tls=${client_hello} --hostlist ${hostlist} --new"
-          "--filter-udp=443 --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic=${quic_google} --hostlist ${hostlist} --new"
-          "--filter-udp=19294-19344,50000-50099 --filter-l7=discord,stun --dpi-desync=fake --dpi-desync-repeats=6 --new"
+          # old params
+          # "--filter-tcp=443 --ip-id=zero --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fooling=ts --dpi-desync-fake-tls=${client_hello} --hostlist ${hostlist} --new"
+          # "--filter-udp=443 --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic=${quic_google} --hostlist ${hostlist} --new"
+          # "--filter-udp=19294-19344,50000-50099 --filter-l7=discord,stun --dpi-desync=fake --dpi-desync-repeats=6 --new"
+          # "--filter-udp=443 --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic=${quic_google} --ipset ${ipset} --new"
+          # "--filter-tcp=80,443,8443 --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fooling=ts --dpi-desync-fake-tls=${stun} --dpi-desync-fake-tls=${client_hello} --dpi-desync-fake-http=${client_hello_max} --ipset ${ipset} --new"
 
-          "--filter-udp=443 --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic=${quic_google} --ipset ${ipset} --new"
-          "--filter-tcp=80,443,8443 --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fooling=ts --dpi-desync-fake-tls=${stun} --dpi-desync-fake-tls=${client_hello} --dpi-desync-fake-http=${client_hello_max} --ipset ${ipset} --new"
-          # "--filter-tcp=1024-65535 --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-any-protocol=1 --dpi-desync-cutoff=n4 --dpi-desync-fooling=ts --dpi-desync-fake-tls=${stun} --dpi-desync-fake-tls=${client_hello} --dpi-desync-fake-http=${client_hello_max} --ipset ${ipset} --new"
-          # "--filter-udp=1024-65535 --dpi-desync=fake --dpi-desync-repeats=12 --dpi-desync-any-protocol=1 --dpi-desync-fake-unknown-udp=${quic_google} --dpi-desync-cutoff=n3 --ipset ${ipset} --new"
+          # SIMPLE FAKE ALT from zapret-discord-youtube-1.9.9d
+          "--filter-udp=443 --hostlist ${hostlist} --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic=${quic_google} --new"
+          "--filter-udp=19294-19344,50000-50099 --filter-l7=discord,stun --dpi-desync=fake --dpi-desync-fake-discord=${quic_dbank} --dpi-desync-fake-stun=${quic_dbank} --dpi-desync-repeats=6 --new"
+          "--filter-tcp=2053,2083,2087,2096,8443 --hostlist-domains=discord.media --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fooling=badseq --dpi-desync-badseq-increment=2 --dpi-desync-fake-tls=${client_hello} --new"
+          "--filter-tcp=443 --hostlist ${google_hostlist} --ip-id=zero --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fooling=badseq --dpi-desync-badseq-increment=2 --dpi-desync-fake-tls=${client_hello} --new"
+          "--filter-tcp=80,443 --hostlist ${hostlist} --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fooling=badseq --dpi-desync-badseq-increment=2 --dpi-desync-fake-tls=${stun} --dpi-desync-fake-tls=${client_hello} --dpi-desync-fake-http=${client_hello_max} --new"
+          "--filter-udp=443 --ipset ${ipset} --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic=${quic_google} --new"
+          "--filter-tcp=80,443,8443 --ipset ${ipset} --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fooling=badseq --dpi-desync-badseq-increment=2 --dpi-desync-fake-tls=${stun} --dpi-desync-fake-tls=${client_hello} --dpi-desync-fake-http=${client_hello_max} --new"
+          # "--filter-tcp=1024-65535 --ipset ${ipset} --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-any-protocol=1 --dpi-desync-cutoff=n3 --dpi-desync-fooling=badseq --dpi-desync-badseq-increment=2 --dpi-desync-fake-tls=${stun} --dpi-desync-fake-tls=${client_hello} --dpi-desync-fake-http=${client_hello_max} --new"
+          # "--filter-udp=1024-65535 --ipset ${ipset} --dpi-desync=fake --dpi-desync-repeats=10 --dpi-desync-any-protocol=1 --dpi-desync-fake-unknown-udp=${quic_dbank} --dpi-desync-cutoff=n2 --new"
         ];
       };
     };

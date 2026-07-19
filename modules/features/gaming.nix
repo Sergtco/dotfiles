@@ -15,10 +15,16 @@
       boot.initrd.kernelModules = [
         "xpad"
       ];
+      boot.kernelModules = [ "ntsync" ];
 
       programs.steam = {
         enable = true;
-        extraCompatPackages = [ pkgs.proton-ge-bin ];
+        package = pkgs.steam.override {
+          extraProfile = ''
+            export PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1
+          '';
+        };
+        extraCompatPackages = [ pkgs.unstable.proton-ge-bin ];
         extraPackages = [
           pkgs.mangohud
         ];
@@ -57,6 +63,5 @@
       ];
 
       programs.corectrl.enable = true;
-
     };
 }

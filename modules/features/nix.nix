@@ -2,20 +2,31 @@
   self,
   inputs,
   ...
-}: {
-  flake.nixosModules.nix = {pkgs, ...}: {
+}:
+{
+  flake.nixosModules.nix = { pkgs, ... }: {
     imports = [
       inputs.nix-index-database.nixosModules.default
     ];
+
     nix.settings = {
       trusted-users = [
         "sergtco"
       ];
       builders-use-substitutes = true;
       substituters = [
-        "https://cache.nixos.org/"
-        "https://vicinae.cachix.org"
+        "https://cache.garnix.io"
+        "https://cache.m7.rs"
+        "https://cache.soopy.moe"
+        "https://chaotic-nyx.cachix.org"
+        "https://colmena.cachix.org"
+        "https://hyprland.cachix.org"
+        "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+        "https://mirrors.ustc.edu.cn/nix-channels/store"
         "https://nix-community.cachix.org"
+        "https://nix-gaming.cachix.org"
+        "https://nixos-cache-proxy.cofob.dev"
+        "https://nixos.snix.store"
       ];
       trusted-public-keys = [
         "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM="
@@ -26,6 +37,12 @@
         "nix-command"
         "flakes"
       ];
+      auto-optimise-store = true;
+      connect-timeout = 5;
+      download-attempts = 3;
+      fallback = true;
+      http-connections = 16;
+      stalled-download-timeout = 30;
     };
 
     nix.package = pkgs.lixPackageSets.stable.lix;
@@ -39,7 +56,6 @@
       automatic = true;
       dates = "weekly";
     };
-
     programs = {
       nix-index.enable = true;
       nix-index-database.comma.enable = true;

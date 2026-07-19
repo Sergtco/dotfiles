@@ -10,7 +10,7 @@
     };
 
     programs.throne = {
-      package = pkgs.unstable.throne;
+      package = pkgs.throne;
       enable = true;
       tunMode.enable = true;
       tunMode.setuid = true;

@@ -11,6 +11,9 @@
       lib,
       ...
     }:
+    let
+      terminal = self'.packages.alacritty;
+    in
     {
       packages.niri = inputs.wrapper-modules.wrappers.niri.wrap {
         inherit pkgs;
@@ -20,7 +23,7 @@
           swayosd
           fnott
           unstable.vicinae
-          self'.packages.alacritty
+          terminal
           self'.packages.tmux
           self'.packages.waybar
         ];
@@ -193,8 +196,17 @@
                 "toggle"
               ];
             };
+
             "Mod+B" = {
               spawn-sh = "${lib.getExe pkgs.killall} -SIGUSR1 -r waybar";
+            };
+
+            "Mod+Shift+B" = {
+              spawn-sh = "$TERMINAL -e bluetui";
+            };
+
+            "Mod+Shift+S" = {
+              spawn-sh = "$TERMINAL -e wiremix";
             };
 
             "XF86AudioRaiseVolume" = _: {
@@ -387,6 +399,7 @@
           };
         };
         env = {
+          TERMINAL = "${lib.getExe terminal}";
           NIXOS_OZONE_WL = "1";
           XCURSOR_NAME = "Hackneyed";
           XCURSOR_SIZE = "24";
