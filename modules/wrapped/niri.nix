@@ -67,7 +67,11 @@
           # Output configuration is typically a list of sets
           outputs = {
             DP-1 = {
-              variable-refresh-rate = (_: { });
+              variable-refresh-rate = _: {
+                porps = {
+                  on-demand = true;
+                };
+              };
               mode = "2560x1440@239.970";
             };
             # Laptop

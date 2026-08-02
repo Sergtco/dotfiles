@@ -1,6 +1,9 @@
 { ... }:
 let
   whitelist = [
+    "1047games.com"
+    "repo.hex.pm"
+    "hex.pm"
     "flakehub.com"
     "github.com"
     "cachix.org"
@@ -183,7 +186,6 @@ let
     "кubi.com"
   ];
   ipset = [
-
     "13.225.177.4"
     "13.74.108.192"
     "16.15.191.85"

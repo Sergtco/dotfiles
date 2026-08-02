@@ -58,20 +58,34 @@
         initrd.kernelModules = [ "amdgpu" ];
         kernelModules = [
           "i2c-dev"
-          "ddcci_backlight"
+          "ddcci"
+          "ddcci-backlight"
         ];
       };
 
       services.udev.packages = with pkgs; [ via ];
 
-    ### DISPLAY ###
-    # services.udev.extraRules = let
-    #   bash = "${pkgs.bash}/bin/bash";
-    #   ddcciDev = "*AMDGPU*";
-    #   ddcciNode = "/sys/bus/i2c/devices/i2c-6/new_device";
-    # in ''
-    #   SUBSYSTEM=="i2c", ACTION=="add", ATTR{name}=="${ddcciDev}", RUN+="${bash} -c 'echo ddcci 0x37 > ${ddcciNode}'"
-    # '';
+      ### DISPLAY ###
+      services.udev.extraRules = ''
+        SUBSYSTEM=="i2c-dev", ACTION=="add",\
+          ATTR{name}=="AMDGPU DM*",\
+          TAG+="ddcci",\
+          TAG+="systemd",\
+          ENV{SYSTEMD_WANTS}+="ddcci@$kernel.service"
+      '';
+      systemd.services."ddcci@" = {
+        scriptArgs = "%i";
+        script = ''
+          bus=''${1##*-}          # "i2c-6" -> "6"
+          echo "Trying to attach ddcci to bus $bus"
+          if ${pkgs.i2c-tools}/bin/i2cget -y "$bus" 0x37 >/dev/null 2>&1; then
+            echo ddcci 0x37 > "/sys/bus/i2c/devices/i2c-$bus/new_device"
+          else
+            echo "No DDC/CI device answering on bus $bus"
+          fi
+        '';
+        serviceConfig.Type = "oneshot";
+      };
 
       ### DRIVES ###
       services.udisks2.enable = true;

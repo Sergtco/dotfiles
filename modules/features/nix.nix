@@ -1,6 +1,7 @@
 {
   self,
   inputs,
+  lib,
   ...
 }:
 {
@@ -14,23 +15,12 @@
         "sergtco"
       ];
       builders-use-substitutes = true;
-      substituters = [
-        "https://cache.garnix.io"
-        "https://cache.m7.rs"
-        "https://cache.soopy.moe"
-        "https://chaotic-nyx.cachix.org"
-        "https://colmena.cachix.org"
-        "https://hyprland.cachix.org"
-        "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-        "https://mirrors.ustc.edu.cn/nix-channels/store"
+      substituters = lib.mkForce [
+        "https://mirror.yandex.ru/nixos"
         "https://nix-community.cachix.org"
-        "https://nix-gaming.cachix.org"
-        "https://nixos-cache-proxy.cofob.dev"
-        "https://nixos.snix.store"
       ];
       trusted-public-keys = [
         "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM="
-        "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
       experimental-features = [
