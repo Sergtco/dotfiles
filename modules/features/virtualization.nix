@@ -1,9 +1,4 @@
-{
-  self,
-  inputs,
-  ...
-}:
-{
+_: {
   flake.nixosModules.virtualization =
     { config, ... }:
     let

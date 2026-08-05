@@ -1,19 +1,9 @@
-{
-  self,
-  inputs,
-  ...
-}:
+{ self, ... }:
 {
   flake.nixosModules.desktop =
-    {
-      pkgs,
-      lib,
-      config,
-      ...
-    }:
+    { pkgs, lib, ... }:
     let
       selfpkgs = self.packages.${pkgs.stdenv.hostPlatform.system};
-      user = config.preferences.user.name;
       mkBaseService = command: {
         after = [ "graphical-session.target" ];
         partOf = [ "graphical-session.target" ];

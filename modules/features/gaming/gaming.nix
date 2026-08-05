@@ -1,16 +1,6 @@
-{
-  self,
-  inputs,
-  ...
-}:
-{
+_: {
   flake.nixosModules.gaming =
-    {
-      pkgs,
-      config,
-      lib,
-      ...
-    }:
+    { pkgs, ... }:
     {
       boot.initrd.kernelModules = [
         "xpad"

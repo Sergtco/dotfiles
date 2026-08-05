@@ -1,14 +1,10 @@
-{
-  self,
-  inputs,
-  ...
-}: {
-  flake.nixosModules.kanata = {...}: {
+_: {
+  flake.nixosModules.kanata = _: {
     services.kanata = {
       enable = true;
       keyboards = {
         internal = {
-          devices = ["/dev/input/by-path/platform-i8042-serio-0-event-kbd"];
+          devices = [ "/dev/input/by-path/platform-i8042-serio-0-event-kbd" ];
           extraDefCfg = "process-unmapped-keys yes";
           config = ''
             (defsrc

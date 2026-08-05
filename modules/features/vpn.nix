@@ -1,9 +1,5 @@
-{
-  self,
-  inputs,
-  ...
-}: {
-  flake.nixosModules.vpn = {pkgs, ...}: {
+_: {
+  flake.nixosModules.vpn = { pkgs, ... }: {
     services.xray = {
       enable = true;
       settingsFile = "/etc/v2ray/v2ray_config.json";

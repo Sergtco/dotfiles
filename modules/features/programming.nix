@@ -1,14 +1,8 @@
-{
-  self,
-  inputs,
-  ...
-}:
-{
+_: {
   flake.nixosModules.programming =
     { pkgs, config, ... }:
     let
       user = config.preferences.user.name;
-      meridian = inputs.meridian.packages.${pkgs.stdenv.hostPlatform.system}.meridian;
     in
     {
       users.users.${user}.extraGroups = [

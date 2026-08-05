@@ -1,54 +1,56 @@
+{ inputs, ... }:
 {
-  self,
-  inputs,
-  lib,
-  ...
-}:
-{
-  flake.nixosModules.nix = { pkgs, ... }: {
-    imports = [
-      inputs.nix-index-database.nixosModules.default
-    ];
-
-    nix.settings = {
-      trusted-users = [
-        "sergtco"
+  flake.nixosModules.nix =
+    {
+      pkgs,
+      lib,
+      config,
+      ...
+    }:
+    {
+      imports = [
+        inputs.nix-index-database.nixosModules.default
       ];
-      builders-use-substitutes = true;
-      substituters = lib.mkForce [
-        "https://mirror.yandex.ru/nixos"
-        "https://nix-community.cachix.org"
-      ];
-      trusted-public-keys = [
-        "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM="
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-      auto-optimise-store = true;
-      connect-timeout = 5;
-      download-attempts = 3;
-      fallback = true;
-      http-connections = 16;
-      stalled-download-timeout = 30;
-    };
 
-    nix.package = pkgs.lixPackageSets.stable.lix;
+      nix.settings = {
+        trusted-users = [
+          config.preferences.user.name
+        ];
+        builders-use-substitutes = true;
+        substituters = lib.mkForce [
+          "https://mirror.yandex.ru/nixos"
+          "https://nix-community.cachix.org"
+        ];
+        trusted-public-keys = [
+          "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM="
+          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        ];
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
+        auto-optimise-store = true;
+        connect-timeout = 5;
+        download-attempts = 3;
+        fallback = true;
+        http-connections = 16;
+        stalled-download-timeout = 30;
+      };
 
-    nix.optimise = {
-      automatic = true;
-      dates = "weekly";
-    };
+      nix.package = pkgs.lixPackageSets.stable.lix;
 
-    nix.gc = {
-      automatic = true;
-      dates = "weekly";
+      nix.optimise = {
+        automatic = true;
+        dates = "weekly";
+      };
+
+      nix.gc = {
+        automatic = true;
+        dates = "weekly";
+      };
+      programs = {
+        nix-index.enable = true;
+        nix-index-database.comma.enable = true;
+      };
     };
-    programs = {
-      nix-index.enable = true;
-      nix-index-database.comma.enable = true;
-    };
-  };
 }

@@ -1,8 +1,4 @@
-{
-  self,
-  inputs,
-  ...
-}:
+{ self, ... }:
 {
   flake.nixosModules.desktop =
     {
@@ -24,9 +20,13 @@
           nssmdns4 = true;
           openFirewall = true;
         };
-      };
 
-      programs.gpu-screen-recorder.enable = true;
+        hypridle.enable = true;
+        hypridle.package = selfpkgs.hypridle;
+
+        # gnome-keyring provides the ssh agent instead, see below.
+        gnome.gcr-ssh-agent.enable = false;
+      };
 
       environment.systemPackages = with pkgs; [
         gpu-screen-recorder-gtk
@@ -85,13 +85,7 @@
           enable = true;
           package = selfpkgs.waybar;
         };
-      };
-
-      services = {
-        hypridle.enable = true;
-        hypridle.package = selfpkgs.hypridle;
-        gnome.gcr-ssh-agent.enable = false;
-        udisks2.enable = true;
+        gpu-screen-recorder.enable = true;
       };
 
       xdg.portal = {
@@ -110,7 +104,7 @@
         settings = {
           initial_session = lib.mkIf config.preferences.login.autologin {
             command = "/run/current-system/sw/bin/niri-session -l";
-            user = "sergtco";
+            inherit user;
           };
           default_session = {
             command = "${lib.getExe pkgs.tuigreet} --remember --remember-user-session --cmd 'niri-session -l'";

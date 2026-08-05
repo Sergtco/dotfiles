@@ -1,24 +1,25 @@
-{
-  self,
-  inputs,
-  ...
-}: {
-  flake.nixosModules.music = {pkgs, ...}: {
-    users.groups = {
-      realtime = {};
-      audio = {};
+_: {
+  flake.nixosModules.music =
+    { pkgs, config, ... }:
+    let
+      user = config.preferences.user.name;
+    in
+    {
+      users.groups = {
+        realtime = { };
+        audio = { };
+      };
+      users.users.${user}.extraGroups = [
+        "realtime"
+        "audio"
+      ];
+      services.pipewire = {
+        jack.enable = true;
+      };
+      environment.systemPackages = with pkgs; [
+        guitarix
+        gxplugins-lv2
+        crosspipe
+      ];
     };
-    users.users.sergtco.extraGroups = [
-      "realtime"
-      "audio"
-    ];
-    services.pipewire = {
-      jack.enable = true;
-    };
-    environment.systemPackages = with pkgs; [
-      guitarix
-      gxplugins-lv2
-      crosspipe
-    ];
-  };
 }
