@@ -35,7 +35,6 @@
         self.nixosModules.virtualization
         self.nixosModules.desktop
         self.nixosModules.vpn
-        self.nixosModules.ai
         self.nixosModules.fonts
         self.nixosModules.nix
       ];

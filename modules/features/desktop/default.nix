@@ -18,9 +18,6 @@
     {
       services = {
         printing.enable = true;
-        printing.drivers = with pkgs; [
-          canon-cups-ufr2
-        ];
 
         avahi = {
           enable = true;

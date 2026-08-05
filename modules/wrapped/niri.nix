@@ -7,6 +7,7 @@
   perSystem =
     {
       pkgs,
+      inputs',
       self',
       lib,
       ...
@@ -17,6 +18,7 @@
     {
       packages.niri = inputs.wrapper-modules.wrappers.niri.wrap {
         inherit pkgs;
+        package = pkgs.unstable.niri;
         runtimePkgs = with pkgs; [
           xwayland-satellite
           hackneyed
@@ -72,7 +74,7 @@
                   on-demand = true;
                 };
               };
-              mode = "2560x1440@239.970";
+              mode = "2560x1440@237.970";
             };
             # Laptop
             eDP-1 = {

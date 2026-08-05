@@ -65,5 +65,19 @@
           };
       };
 
+      security.pam.loginLimits = [
+        {
+          domain = "@users";
+          item = "rtprio";
+          type = "-";
+          value = "99";
+        }
+        {
+          domain = "@users";
+          item = "memlock";
+          type = "-";
+          value = "unlimited";
+        }
+      ];
     };
 }
