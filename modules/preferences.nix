@@ -17,6 +17,34 @@
           default = false;
           description = "Skip the greeter and log the primary user straight into wm.";
         };
+
+        brightness = {
+          backend = lib.mkOption {
+            type = lib.types.enum [
+              "brightnessctl"
+              "ddcci"
+            ];
+            default = "brightnessctl";
+            description = ''
+              How the brightness keys drive the display.
+
+              `brightnessctl` writes to the kernel backlight class, which only
+              exists for internal panels. `ddcci` talks DDC/CI to an external
+              monitor over i2c with ddcutil, and needs `brightness.i2cBus`.
+            '';
+          };
+
+          i2cBus = lib.mkOption {
+            type = lib.types.nullOr lib.types.int;
+            default = null;
+            example = 6;
+            description = ''
+              i2c bus the monitor answers DDC/CI on, for the `ddcci` backend.
+              Find it with `ddcutil detect`; a bare `i2cget` probe is not a
+              reliable test on DisplayPort, where DDC is tunneled over AUX.
+            '';
+          };
+        };
       };
     };
 

@@ -24,7 +24,6 @@
         hyprpolkitagent = mkBaseService "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent";
         swaybg = mkBaseService "${lib.getExe pkgs.swaybg} -i ${../../../wallpaper/dayspring_by_bisbiswas.jpg}";
         fnott = mkBaseService "${lib.getExe selfpkgs.fnott}";
-        swayosd = mkBaseService "${pkgs.swayosd}/bin/swayosd-server";
       };
     };
 }

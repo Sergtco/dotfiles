@@ -53,7 +53,6 @@
         mpv
         gedit
         swayimg
-        brightnessctl
         thunderbird
         spotify
         packet

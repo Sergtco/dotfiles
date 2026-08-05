@@ -13,13 +13,10 @@
   flake.nixosModules.sergt-pc =
     {
       pkgs,
-      config,
       lib,
       ...
     }:
     let
-      user = config.preferences.user.name;
-
       # Bulk data drives, all shown in the file manager via gvfs.
       dataDrive = label: {
         name = "/mnt/${label}";
@@ -55,41 +52,22 @@
 
       preferences.login.autologin = true;
 
-      # i2c: needed to talk DDC/CI to the monitors, see below.
-      users.users.${user}.extraGroups = [ "i2c" ];
-
       ### DISPLAY ###
-      # Control monitor brightness over DDC/CI, which needs the ddcci kernel
-      # driver bound to whichever i2c bus the monitor actually answers on.
-      boot = {
-        extraModulePackages = [ config.boot.kernelPackages.ddcci-driver ];
-        kernelModules = [
-          "i2c-dev"
-          "ddcci"
-          "ddcci-backlight"
-        ];
+      # The only display is an external monitor, so brightness goes over DDC/CI
+      # rather than a backlight class device. ddcutil drives it from userspace,
+      # which avoids the kernel ddcci driver entirely: that one has to be bound
+      # by hand to the DP AUX bus and only after the link is trained, so it
+      # needed a timed udev rule that lost the race often enough to matter.
+      #
+      # The bus is stable across reboots; re-check with `ddcutil detect` if the
+      # keys ever stop working. Note an `i2cget` probe of 0x37 false-negatives
+      # on an AUX-backed bus, so don't use one to look for it.
+      preferences.brightness = {
+        backend = "ddcci";
+        i2cBus = 6;
       };
 
-      services.udev.extraRules = ''
-        SUBSYSTEM=="i2c-dev", ACTION=="add",\
-          ATTR{name}=="AMDGPU DM*",\
-          TAG+="ddcci",\
-          TAG+="systemd",\
-          ENV{SYSTEMD_WANTS}+="ddcci@$kernel.service"
-      '';
-      systemd.services."ddcci@" = {
-        scriptArgs = "%i";
-        script = ''
-          bus=''${1##*-}          # "i2c-6" -> "6"
-          echo "Trying to attach ddcci to bus $bus"
-          if ${pkgs.i2c-tools}/bin/i2cget -y "$bus" 0x37 >/dev/null 2>&1; then
-            echo ddcci 0x37 > "/sys/bus/i2c/devices/i2c-$bus/new_device"
-          else
-            echo "No DDC/CI device answering on bus $bus"
-          fi
-        '';
-        serviceConfig.Type = "oneshot";
-      };
+      boot.kernelModules = [ "i2c-dev" ];
 
       ### DRIVES ###
       fileSystems = lib.listToAttrs (

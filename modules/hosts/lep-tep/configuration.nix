@@ -38,6 +38,10 @@
         "input"
       ];
 
+      ### DISPLAY ###
+      # Internal panel, so the kernel backlight class is the thing to write to.
+      preferences.brightness.backend = "brightnessctl";
+
       ### POWER ###
       powerManagement.enable = true;
       services.auto-cpufreq.enable = true;

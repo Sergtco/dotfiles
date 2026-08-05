@@ -22,7 +22,6 @@
         runtimePkgs = with pkgs; [
           xwayland-satellite
           hackneyed
-          swayosd
           fnott
           unstable.vicinae
           terminal
@@ -217,23 +216,23 @@
 
             "XF86AudioRaiseVolume" = _: {
               props.allow-when-locked = true;
-              content.spawn-sh = "swayosd-client --output-volume raise";
+              content.spawn-sh = "osd-volume up";
             };
             "XF86AudioLowerVolume" = _: {
               props.allow-when-locked = true;
-              content.spawn-sh = "swayosd-client --output-volume lower";
+              content.spawn-sh = "osd-volume down";
             };
             "XF86AudioMute" = _: {
               props.allow-when-locked = true;
-              content.spawn-sh = "swayosd-client --output-volume mute-toggle";
+              content.spawn-sh = "osd-volume mute";
             };
             "CTRL+XF86AudioMute" = _: {
               props.allow-when-locked = true;
-              content.spawn-sh = "swayosd-client --input-volume mute-toggle";
+              content.spawn-sh = "osd-volume mic-mute";
             };
             "XF86AudioMicMute" = _: {
               props.allow-when-locked = true;
-              content.spawn-sh = "swayosd-client --input-volume mute-toggle";
+              content.spawn-sh = "osd-volume mic-mute";
             };
             "XF86AudioNext" = _: {
               props.allow-when-locked = true;
@@ -249,11 +248,11 @@
             };
             "XF86MonBrightnessUp" = _: {
               props.allow-when-locked = true;
-              content.spawn-sh = "swayosd-client --brightness raise";
+              content.spawn-sh = "osd-brightness up";
             };
             "XF86MonBrightnessDown" = _: {
               props.allow-when-locked = true;
-              content.spawn-sh = "swayosd-client --brightness lower";
+              content.spawn-sh = "osd-brightness down";
             };
             "Mod+O" = _: {
               props.repeat = false;
