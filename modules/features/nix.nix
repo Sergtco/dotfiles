@@ -37,6 +37,11 @@
         stalled-download-timeout = 30;
       };
 
+      programs.nh = {
+        enable = true;
+        flake = config.preferences.user.flake;
+      };
+
       nix.package = pkgs.lixPackageSets.stable.lix;
 
       nix.optimise = {

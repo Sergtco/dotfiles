@@ -12,6 +12,12 @@
           description = "Login name of the primary user of the host.";
         };
 
+        user.flake = lib.mkOption {
+          type = lib.types.str;
+          default = "/home/sergtco/dotfiles";
+          description = "Path to system's flake";
+        };
+
         login.autologin = lib.mkOption {
           type = lib.types.bool;
           default = false;

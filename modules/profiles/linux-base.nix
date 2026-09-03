@@ -28,10 +28,14 @@
       ### BOOTLOADER ###
       boot.loader = {
         efi.canTouchEfiVariables = true;
-        grub = {
-          efiSupport = true;
-          device = "nodev";
-          timeoutStyle = "hidden";
+        # 0 skips the menu wait entirely; hold Space during POST to bring the
+        # menu back for a rollback.
+        timeout = 0;
+        systemd-boot = {
+          enable = true;
+          # Kernels and initrds sit on the ESP, which is 639M on sergt-pc, so
+          # the NixOS default of 100 generations does not come close to fitting.
+          configurationLimit = 10;
         };
       };
 

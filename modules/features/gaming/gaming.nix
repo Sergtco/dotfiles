@@ -46,7 +46,7 @@ _: {
 
       programs.gamescope = {
         enable = true;
-        capSysNice = true;
+        capSysNice = false;
         args = [
           "--force-grab-cursor"
           "-f"

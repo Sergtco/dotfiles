@@ -45,6 +45,7 @@
         self.nixosModules.music
         self.nixosModules.zapret
         self.nixosModules.virtualization
+        self.nixosModules.triton
         self.nixosModules.vpn
       ];
 

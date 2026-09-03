@@ -73,7 +73,7 @@
                   on-demand = true;
                 };
               };
-              mode = "2560x1440@237.970";
+              mode = "2560x1440@239.970";
             };
             # Laptop
             eDP-1 = {
