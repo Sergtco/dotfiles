@@ -15,6 +15,7 @@
           overlays = [
             self.overlays.nur
             self.overlays.unstable
+            self.overlays.xwayland-satellite
           ];
           config = {
             allowUnfree = true;

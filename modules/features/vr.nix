@@ -20,7 +20,6 @@
         unstable.sidequest
         unstable.wayvr
         unstable.ydotool
-        unstable.looking-glass-client
         android-tools
         selfpkgs.cyberdeck
       ];

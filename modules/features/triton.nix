@@ -209,6 +209,21 @@
           smp="''${TRITON_SMP:-8}"
           hostmem="''${TRITON_HOSTMEM:-8G}"
 
+          # The guest's scanout must stay under 4,194,304 pixels or it
+          # bugchecks the VM, so the advertised EDID is pinned here.
+          #
+          # viogpu3d sizes its frame segment from BAR 0, but only when the
+          # registry value UsePhysicalMemory is set -- and the shipped INF sets
+          # it to 0, so viogpu_adapter.cpp HWInit always takes the fallback and
+          # the segment is the hard-coded 16MiB `req_size`. A mode whose
+          # framebuffer exceeds that reaches the "segment too small" branch of
+          # VioGpuObj::Init, which logs through a still-NULL m_pSegment
+          # (upstream PR osy/kvm-guest-drivers-windows#3) and takes the guest
+          # down instead of failing the mode. 16MiB / 4 bytes caps it at
+          # 2560x1600; 4K needs 31.6MiB and cannot work until that is fixed.
+          xres="''${TRITON_XRES:-1920}"
+          yres="''${TRITON_YRES:-1080}"
+
           export NPT_D3D11_LIBRARY_PATH="${triton-dxvk}/lib/libdxvk_d3d11.so"
           export NPT_DXGI_LIBRARY_PATH="${triton-dxvk}/lib/libdxvk_dxgi.so"
 
@@ -219,10 +234,55 @@
           if [ -n "''${TRITON_NO3D:-}" ]; then
             gpu=(-vga std -display gtk)
           else
+            # The 3D path is OFF by default because it does not currently boot:
+            # `blob=on` alone -- venus and neptune both off, at every hostmem
+            # size from 128M to 8G -- bugchecks the guest in dxgmms2.sys before
+            # it issues a single virtio-gpu resource command. Enabling blob is
+            # what makes the device expose a shmem region, which is the sole
+            # trigger for the KMD reporting its second, CPU-visible segment to
+            # the Windows video memory manager (QUERYSEGMENT3/4 in
+            # viogpu_adapter.cpp, whose Aperture flag carries the author's own
+            # "FIXME: is this correct?"). Since neptune requires blob, there is
+            # no working D3D configuration with viogpu3d v0.3.
+            #
+            # TRITON_3D=1 opts back in -- use it to retest once the driver is
+            # fixed. TRITON_GPUOPTS overrides the suboptions outright.
+            if [ -n "''${TRITON_3D:-}" ]; then
+              default_opts="venus=on,neptune=on,blob=on,hostmem=$hostmem"
+            else
+              default_opts="venus=off,neptune=off"
+            fi
+            opts="''${TRITON_GPUOPTS:-$default_opts}"
             gpu=(
               -vga none
-              -device "virtio-vga-gl,venus=on,neptune=on,blob=on,hostmem=$hostmem"
+              -device "virtio-vga-gl,$opts,xres=$xres,yres=$yres"
               -display "gtk,gl=on"
+            )
+          fi
+
+          # TRITON_TRACE=/path/to/log records the virtio-gpu command stream, so
+          # a guest crash leaves behind what the driver asked for last.
+          trace=()
+          if [ -n "''${TRITON_TRACE:-}" ]; then
+            trace=(-trace "virtio_gpu_*,file=$TRITON_TRACE")
+          fi
+
+          # TRITON_UEFI=1 boots via OVMF instead of SeaBIOS. Upstream develops
+          # against UTM, which is UEFI-only, so the blob/hostmem path has
+          # probably never run under a legacy BIOS -- and Windows on legacy BIOS
+          # is historically poor at handling the multi-gigabyte 64-bit BAR this
+          # device exposes. The guest install must already be UEFI/GPT (convert
+          # an existing MBR install in-place with Windows' own `mbr2gpt`).
+          fw=()
+          if [ -n "''${TRITON_UEFI:-}" ]; then
+            vars="''${TRITON_UEFI_VARS:-$HOME/.local/share/triton/OVMF_VARS.fd}"
+            if [ ! -f "$vars" ]; then
+              mkdir -p "$(dirname "$vars")"
+              install -m600 ${pkgs.OVMF.fd}/FV/OVMF_VARS.fd "$vars"
+            fi
+            fw=(
+              -drive "if=pflash,format=raw,readonly=on,file=${pkgs.OVMF.fd}/FV/OVMF_CODE.fd"
+              -drive "if=pflash,format=raw,file=$vars"
             )
           fi
 
@@ -230,7 +290,9 @@
             -accel kvm,honor-guest-pat=auto -cpu host -smp "$smp" -m "$mem" \
             -object memory-backend-memfd,id=mem1,size="$mem",share=on \
             -machine q35,memory-backend=mem1 \
+            "''${fw[@]}" \
             "''${gpu[@]}" \
+            "''${trace[@]}" \
             -device qemu-xhci -device usb-tablet \
             -audiodev pipewire,id=snd0 -device intel-hda -device hda-duplex,audiodev=snd0 \
             -drive file=${triton-guest-drivers}/viogpu3d.iso,media=cdrom \
@@ -361,6 +423,10 @@
                 <qemu:property name='venus' type='bool' value='true'/>
                 <qemu:property name='neptune' type='bool' value='true'/>
                 <qemu:property name='hostmem' type='unsigned' value='8589934592'/>
+                <!-- Keeps the scanout under viogpu3d's 16MiB frame segment;
+                     see the comment in triton-vm. Do not exceed 2560x1600. -->
+                <qemu:property name='xres' type='unsigned' value='1920'/>
+                <qemu:property name='yres' type='unsigned' value='1080'/>
               </qemu:frontend>
             </qemu:device>
           </qemu:override>

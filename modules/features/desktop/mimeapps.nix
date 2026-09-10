@@ -20,9 +20,9 @@
         "video/x-matroska" = ["mpv.desktop"];
         "image/*" = ["swayimg"];
 
-        "image/png" = ["swayimg"];
-        "image/jpeg" = ["swayimg"];
-        "image/gif" = ["swayimg"];
+        "image/png" = ["swayimg.desktop"];
+        "image/jpeg" = ["swayimg.desktop"];
+        "image/gif" = ["swayimg.desktop"];
         "x-scheme-handler/terminal" = ["Alacritty.desktop"];
       };
   in{

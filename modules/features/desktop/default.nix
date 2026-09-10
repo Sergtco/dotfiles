@@ -34,7 +34,9 @@
         calibre
         xarchiver
         pcmanfm
+        lxmenu-data
         shared-mime-info # pcmanfm
+        desktop-file-utils
         gimp3
         zathura
         wl-clipboard
@@ -53,6 +55,23 @@
         mpv
         gedit
         swayimg
+        (pkgs.makeDesktopItem {
+          name = "swayimg";
+          desktopName = "swayimg";
+          exec = "${pkgs.swayimg}/bin/swayimg %F";
+          icon = "image-x-generic";
+          mimeTypes = [
+            "image/png"
+            "image/jpeg"
+            "image/gif"
+            "image/webp"
+          ];
+          categories = [
+            "Graphics"
+            "Viewer"
+          ];
+        })
+
         thunderbird
         spotify
         packet
@@ -96,6 +115,9 @@
           };
         };
       };
+
+      xdg.menus.enable = true;
+      environment.sessionVariables.XDG_MENU_PREFIX = "lxde-";
 
       ### LOGIN ###
       services.greetd = {
