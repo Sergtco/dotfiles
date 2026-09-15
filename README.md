@@ -16,6 +16,7 @@ and standalone tools are packaged with
 | ----------- | ------------ | ---------------------------- |
 | `sergt-pc`  | NixOS        | Desktop (gaming, VR, AI)     |
 | `lep-tep`   | NixOS        | Laptop                       |
+| `steamdeck` | NixOS        | Steam Deck (Jovian / SteamOS UI) |
 | `work`      | nix-darwin   | macOS MacBook (`MacBook-Pro-user`) |
 
 ## Layout
@@ -27,6 +28,7 @@ modules/
   hosts/               # per-machine configurations
     sergt-pc/          #   NixOS desktop
     lep-tep/           #   NixOS laptop
+    steamdeck/         #   Steam Deck, Jovian-NixOS (tracks nixpkgs-unstable)
     work/              #   nix-darwin MacBook
   features/            # composable feature modules (see below)
   wrapped/             # nix-wrapper-modules packages (exported as flake packages)
@@ -43,7 +45,9 @@ Each host imports the feature modules it needs. Available features:
 
 - `base` — shared options (e.g. `preferences.user.name`)
 - `desktop` — [niri](https://github.com/YaLTeR/niri) Wayland session, waybar, vicinae, mimeapps
-- `gaming` — Steam + Proton GE, MangoHud
+- `gaming` — Steam + Proton GE, MangoHud (desktop hosts; the Steam Deck gets
+  Gaming Mode from [Jovian-NixOS](https://github.com/Jovian-Experiments/Jovian-NixOS)
+  instead)
 - `vr` — WiVRn / Monado VR runtime
 - `ai` — Ollama (ROCm)
 - `programming` — dev toolchains
@@ -73,7 +77,7 @@ nix run .#fish
 
 ```sh
 sudo nixos-rebuild switch --flake .#sergt-pc
-# or: .#lep-tep
+# or: .#lep-tep, .#steamdeck
 ```
 
 **macOS (nix-darwin):**

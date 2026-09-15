@@ -35,6 +35,7 @@
 
             bash
             curl
+            aria2
             p7zip
             zip
             unzip

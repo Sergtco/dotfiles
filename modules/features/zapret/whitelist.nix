@@ -61,6 +61,7 @@ let
     "deadbydaylight.com"
     "deadbydaylight.fandom.com"
     "deadlockmods.app"
+    "deadlockmods.com"
     "dis.gd"
     "discord-activities.com"
     "discord-attachments-uploads-prd.storage.googleapis.com"
