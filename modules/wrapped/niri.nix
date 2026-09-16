@@ -115,6 +115,29 @@
               };
               open-focused = false;
             }
+            # Steam Input's on-screen keyboard, the one the Deck summons with
+            # Steam+X. Parked across the bottom rather than wherever Steam drops
+            # it, and never focused: extest turns its key events into uinput
+            # input, which niri delivers to the focused window — so a focused
+            # keyboard would type into itself. Matched on title alone because
+            # the app-id differs between the Steam client and steamwebhelper;
+            # `niri msg windows` prints both if this ever stops matching. The
+            # Russian spelling is there because the title follows Steam's own
+            # UI language rather than the system locale.
+            {
+              matches = [
+                { title = "(?i)(on-screen keyboard|steam keyboard|экранная клавиатура)"; }
+              ];
+              open-floating = true;
+              default-floating-position = _: {
+                props = {
+                  x = 0;
+                  y = 0;
+                  relative-to = "bottom";
+                };
+              };
+              open-focused = false;
+            }
             # Startup apps
             {
               matches = [

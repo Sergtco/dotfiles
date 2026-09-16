@@ -24,9 +24,9 @@
     }:
     let
       user = config.preferences.user.name;
-      # sergt-pc and lep-tep: the machines that build and push to this one.
+      # The machines that build and push to this one.
       adminKeys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIONQl57Uy5ozD/s+dZM2q99uj3q1GZK5hw8gDxAU3hZa sergt-pc"
+        "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCqz3UYJM7p/GvmFFXChZ42qmX2N3ZJ6nCHuxttCz9ZaXOR8NNQEYrEny7Kfmdr7n7cR1EHs3oMY1KN4cptKsNGH0ZIvTtRDcfRP2+4tHDj1A4Z3chxUF9CJzveOVITpphSCSh9LjXaqBpT/xRqB+ka4hD/v85cKfeRlvF2/SGlQQhaXXoRPZy3AxRXhEZujrzHGBrcPEH70G39j7yLxUbyJ5heOVnoq7NwpjUU+HNAn5ww1YmSu3OcAEM9lXvuDSjxEtVrbcoTOlIqudQFhGKc6IZoQFZV0bqD6mLeDZ+I/u2aQmnXU3FhFwC52NSqBgDz2ucNpQbnOe8j5RLse1/URx7C4obdZcAG9c9aCJeGScg7x0WBsqvqnoo/Xsc17ApkI3HE6ceVlKzG+s2MKWLsV1jzL3hacZRgMtGfzW4BFFopujQOgHnMzhuiyULGEx6uHp4Sm9WKprPGGDeBrnt7rtCMp2j+UQJx5zh8IyEtvgDu0R06WvHHBoZOhx5d5L0= home"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIbsx8ktNrZIqWALY8dX36CWhCC9jrDhFlqMxVhK6ko6 lep-tep"
       ];
     in
@@ -74,6 +74,23 @@
           # "Switch to Desktop" lands in niri; quitting niri (Mod+Shift+E)
           # comes back here.
           desktopSession = "niri";
+
+          # Written into /etc/xdg/gamescope-session/environment, which the
+          # session sources before starting Steam.
+          #
+          # Gaming Mode gets no XDG_DATA_DIRS otherwise: NixOS sets it in
+          # /etc/profile, and gamescope-session is a plain systemd user unit
+          # that never sources one — the niri session only has it because
+          # niri-session re-execs through a login shell. Without it Steam scans
+          # nothing but the FHS sandbox's own /usr/share/applications, so "Add
+          # a Non-Steam Game" comes up empty and shortcuts have no icons.
+          environment.XDG_DATA_DIRS = lib.concatStringsSep ":" [
+            "/home/${user}/.nix-profile/share"
+            "/etc/profiles/per-user/${user}/share"
+            "/run/current-system/sw/share"
+            "/usr/local/share"
+            "/usr/share"
+          ];
         };
 
         # zram, earlyoom, the SteamOS sysctls and bluetooth defaults, SD card
@@ -97,7 +114,19 @@
       programs.steam = {
         extraCompatPackages = [ pkgs.proton-ge-bin ];
         protontricks.enable = true;
+        # Steam Input — the on-screen keyboard included — fakes key events
+        # through XTEST, which under Wayland only ever reaches XWayland
+        # clients. extest is LD_PRELOADed into Steam and replays them through
+        # uinput instead, so they arrive as ordinary kernel input events and
+        # niri hands them to whatever is focused. Gaming Mode does not need it
+        # (gamescope injects its own), but the preload is harmless there.
+        extest.enable = true;
       };
+
+      # What extest writes to. Jovian's udev rules already hand the session
+      # user /dev/uinput via uaccess; this makes sure the module is loaded to
+      # be opened in the first place.
+      hardware.uinput.enable = true;
 
       environment.systemPackages = [
         # The updaters `autoUpdate` runs at boot, in PATH as well, so
@@ -107,8 +136,71 @@
         # `pkgs` is nixpkgs-unstable on this host, so this is already the
         # unstable build; going through the `unstable` overlay instead would
         # fetch a second webkitgtk rather than share the system's.
-        pkgs.stremio-linux-shell
+        #
+        # --no-window-decorations hides the libadwaita header bar, which is
+        # wasted height on a 1280x800 handheld. It is an app flag rather than a
+        # compositor setting because GTK4 never implements the wayland
+        # decoration protocol, so niri's `prefer-no-csd` cannot reach it.
+        #
+        # Wrapped to drop LC_ALL: libmpv refuses to initialise unless
+        # LC_NUMERIC is C, nixpkgs wraps the binary to set exactly that, and
+        # `locale.nix` exports LC_ALL — which POSIX says overrides every other
+        # LC_*, so the packaged wrapper never takes effect and mpv_create()
+        # returns null. Unsetting it here lets that wrapper do its job.
+        #
+        # FFMPEG_BIN/FFPROBE_BIN because the bundled server.js shells out to
+        # `ffprobe` to inspect a stream, and the package only puts nodejs on
+        # PATH — fine from a shell that happens to have ffmpeg, but launched
+        # from Steam it exits 127 and no stream ever loads.
+        #
+        # LD_LIBRARY_PATH because Steam launches everything inside its scout
+        # runtime's library path, which ships libva 2.10; mpv then loads that
+        # instead of the system's 2.24 and cannot open a Mesa 26 VA driver, so
+        # hardware decoding dies with "Could not create a VA display". The
+        # packaged wrapper re-adds /run/opengl-driver/lib right after, which is
+        # all a Nix-built binary needs.
+        (pkgs.symlinkJoin {
+          name = "stremio-linux-shell-no-lc-all";
+          paths = [ pkgs.stremio-linux-shell ];
+          nativeBuildInputs = [ pkgs.makeWrapper ];
+          postBuild = ''
+            wrapProgram $out/bin/stremio \
+              --add-flags --no-window-decorations \
+              --unset LC_ALL \
+              --unset LD_LIBRARY_PATH \
+              --set-default FFMPEG_BIN ${lib.getBin pkgs.ffmpeg-headless}/bin/ffmpeg \
+              --set-default FFPROBE_BIN ${lib.getBin pkgs.ffmpeg-headless}/bin/ffprobe
+          '';
+        })
       ];
+
+      # Stremio ships `DBusActivatable=true` plus a D-Bus service file that
+      # hardcodes the *unwrapped* binary, so anything launching it through
+      # activation skips the wrapper above and gets the mpv locale crash back.
+      # Both are overridden per-user, pointed at the generation symlink so they
+      # survive a rebuild, with activation off so the Exec line always wins.
+      hjem.users.${user}.xdg.data.files = {
+        "applications/com.stremio.Stremio.desktop".text = ''
+          [Desktop Entry]
+          Name=Stremio
+          Comment=Freedom To Stream
+          Icon=com.stremio.Stremio
+          Categories=Utility;AudioVideo;Video;Player;
+          Keywords=Stremio;Media;Play;
+          Type=Application
+          Exec=/run/current-system/sw/bin/stremio %u
+          MimeType=x-scheme-handler/stremio;
+          Terminal=false
+          StartupNotify=true
+          DBusActivatable=false
+        '';
+
+        "dbus-1/services/com.stremio.Stremio.service".text = ''
+          [D-BUS Service]
+          Name=com.stremio.Stremio
+          Exec=/run/current-system/sw/bin/stremio --gapplication-service
+        '';
+      };
 
       ### REMOTE ACCESS ###
       # The one host here without a keyboard of its own: Gaming Mode has no
