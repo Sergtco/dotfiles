@@ -73,6 +73,8 @@ _: {
               gamemode
             ];
         })
+        lsfg-vk
+        lsfg-vk-ui
         gamescope-wsi
         (pkgs.writeShellScriptBin "steamos-session-select" ''
           set -eu

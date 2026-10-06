@@ -35,6 +35,13 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    # Touchscreen-gesture patchset for niri, applied on top of nixpkgs' niri
+    # for the steamdeck host. Only its `pkg/*.patch` series is used.
+    niri-tablet = {
+      url = "github:GGEZUS/niri-tablet";
+      flake = false;
+    };
+
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";

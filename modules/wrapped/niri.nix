@@ -32,10 +32,6 @@
         settings = {
           spawn-at-startup = [
             [
-              "vicinae"
-              "server"
-            ]
-            [
               "alacritty"
               "-e"
               "tmux"

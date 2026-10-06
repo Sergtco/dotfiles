@@ -16,7 +16,7 @@
         pyrefly
         ty
         emmylua-ls
-        typescript-go
+        typescript
         typescript-language-server
         gopls
         clang-tools

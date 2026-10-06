@@ -135,6 +135,7 @@
         useTextGreeter = true;
       };
 
+      services.cloudflare-warp.enable = true;
       programs.seahorse.enable = true;
       services.gnome.gnome-keyring.enable = true;
       security.pam.services = {
@@ -144,7 +145,7 @@
       };
       services.dbus.packages = [
         pkgs.gnome-keyring
-        pkgs.gcr
+        pkgs.gcr_4
       ];
       services.xserver.displayManager.sessionCommands = ''
         eval $(gnome-keyring-daemon --start --daemonize --components=ssh,secrets)

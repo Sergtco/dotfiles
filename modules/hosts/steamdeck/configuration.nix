@@ -23,6 +23,7 @@
       ...
     }:
     let
+      selfpkgs = self.packages.${pkgs.stdenv.hostPlatform.system};
       user = config.preferences.user.name;
       # The machines that build and push to this one.
       adminKeys = [
@@ -84,6 +85,14 @@
           # niri-session re-execs through a login shell. Without it Steam scans
           # nothing but the FHS sandbox's own /usr/share/applications, so "Add
           # a Non-Steam Game" comes up empty and shortcuts have no icons.
+          # Gaming Mode does not use `programs.steam.package`: Jovian's
+          # gamescope-session hardcodes the steam it launches in
+          # lib/steamos/steam-launcher, so extraCompatPackages (and
+          # extraPackages, and extest) never reach it. Handing the compat tool
+          # path to the session is what actually puts GE-Proton in the Deck
+          # UI's compatibility list.
+          environment.STEAM_EXTRA_COMPAT_TOOLS_PATHS = "${lib.getOutput "steamcompattool" pkgs.proton-ge-bin}";
+
           environment.XDG_DATA_DIRS = lib.concatStringsSep ":" [
             "/home/${user}/.nix-profile/share"
             "/etc/profiles/per-user/${user}/share"
@@ -98,7 +107,15 @@
         # makes this a SteamOS-alike rather than NixOS with Steam on it.
         steamos.useSteamOSConfig = true;
 
-        decky-loader.enable = true;
+        decky-loader = {
+          enable = true;
+          # Run plugins as the login user rather than the `decky` system user
+          # upstream defaults to. Decky derives DECKY_USER_HOME from this
+          # account's passwd entry, and plugins read the Steam library out of
+          # it — with the default they look in /var/lib/decky-loader and find
+          # no games. SteamOS runs them as the Steam user for the same reason.
+          user = user;
+        };
       };
 
       # Jovian forwards these into the gamescope session, which is the only way
@@ -113,6 +130,9 @@
       # other hosts get from `gaming`.
       programs.steam = {
         extraCompatPackages = [ pkgs.proton-ge-bin ];
+        # Inside the Steam FHS env, so `mangohud %command%` works as a launch
+        # option. Jovian overrides this package with Valve's build.
+        extraPackages = [ pkgs.mangohud ];
         protontricks.enable = true;
         # Steam Input — the on-screen keyboard included — fakes key events
         # through XTEST, which under Wayland only ever reaches XWayland
@@ -133,6 +153,9 @@
         # `sudo jupiter-biosupdate` and `sudo jupiter-controller-update` can be
         # run by hand between reboots.
         pkgs.steamdeck-firmware
+        # The CLI for putting things in the Steam library without a keyboard
+        # and a Desktop Mode file picker.
+        selfpkgs.steam-add-nonsteam-game
         # `pkgs` is nixpkgs-unstable on this host, so this is already the
         # unstable build; going through the `unstable` overlay instead would
         # fetch a second webkitgtk rather than share the system's.
@@ -142,11 +165,11 @@
         # compositor setting because GTK4 never implements the wayland
         # decoration protocol, so niri's `prefer-no-csd` cannot reach it.
         #
-        # Wrapped to drop LC_ALL: libmpv refuses to initialise unless
+        # LC_ALL is unset because libmpv refuses to initialise unless
         # LC_NUMERIC is C, nixpkgs wraps the binary to set exactly that, and
         # `locale.nix` exports LC_ALL — which POSIX says overrides every other
         # LC_*, so the packaged wrapper never takes effect and mpv_create()
-        # returns null. Unsetting it here lets that wrapper do its job.
+        # returns null.
         #
         # FFMPEG_BIN/FFPROBE_BIN because the bundled server.js shells out to
         # `ffprobe` to inspect a stream, and the package only puts nodejs on
@@ -172,29 +195,17 @@
               --set-default FFPROBE_BIN ${lib.getBin pkgs.ffmpeg-headless}/bin/ffprobe
           '';
         })
+        pkgs.r2modman
       ];
 
-      # Stremio ships `DBusActivatable=true` plus a D-Bus service file that
-      # hardcodes the *unwrapped* binary, so anything launching it through
-      # activation skips the wrapper above and gets the mpv locale crash back.
-      # Both are overridden per-user, pointed at the generation symlink so they
-      # survive a rebuild, with activation off so the Exec line always wins.
+      # Stremio's packaged D-Bus service file hardcodes the *unwrapped*
+      # binary, so launching it through activation — the stremio:// handler,
+      # the browser extension — would skip the wrapper above and bring the mpv
+      # locale crash back. Overridden per-user, pointed at the generation
+      # symlink so it survives a rebuild. The packaged .desktop entry needs no
+      # such treatment: its `Exec=stremio` resolves through PATH, which finds
+      # the wrapper.
       hjem.users.${user}.xdg.data.files = {
-        "applications/com.stremio.Stremio.desktop".text = ''
-          [Desktop Entry]
-          Name=Stremio
-          Comment=Freedom To Stream
-          Icon=com.stremio.Stremio
-          Categories=Utility;AudioVideo;Video;Player;
-          Keywords=Stremio;Media;Play;
-          Type=Application
-          Exec=/run/current-system/sw/bin/stremio %u
-          MimeType=x-scheme-handler/stremio;
-          Terminal=false
-          StartupNotify=true
-          DBusActivatable=false
-        '';
-
         "dbus-1/services/com.stremio.Stremio.service".text = ''
           [D-BUS Service]
           Name=com.stremio.Stremio
@@ -230,6 +241,9 @@
       # Internal panel, so the kernel backlight class is the thing to write to.
       # Jovian already loosens the permissions on those device nodes.
       preferences.brightness.backend = "brightnessctl";
+
+      # niri with the niri-tablet touchscreen gestures, for the Deck's panel.
+      programs.niri.package = lib.mkForce selfpkgs.niri-tablet;
 
       # Nothing rotates the panel here on purpose. It scans out 800x1280, but
       # the kernel quirk table reports its orientation for both Jupiter and
