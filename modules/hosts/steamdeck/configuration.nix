@@ -205,11 +205,32 @@
       # symlink so it survives a rebuild. The packaged .desktop entry needs no
       # such treatment: its `Exec=stremio` resolves through PATH, which finds
       # the wrapper.
-      hjem.users.${user}.xdg.data.files = {
-        "dbus-1/services/com.stremio.Stremio.service".text = ''
+      hjem.users.${user}.xdg = {
+        data.files."dbus-1/services/com.stremio.Stremio.service".text = ''
           [D-BUS Service]
           Name=com.stremio.Stremio
           Exec=/run/current-system/sw/bin/stremio --gapplication-service
+        '';
+
+        config.files."kanshi/config".text = /* kdl */ ''
+          profile {
+              output eDP-1 enable
+          }
+
+          profile {
+              output eDP-1 disable
+              output HDMI-A-1 enable
+          }
+
+          profile {
+              output eDP-1 disable
+              output DP-1 enable
+          }
+
+          profile {
+              output eDP-1 disable
+              output DP-2 enable
+          }
         '';
       };
 
@@ -244,7 +265,7 @@
 
       # niri with the niri-tablet touchscreen gestures, for the Deck's panel.
       programs.niri.package = lib.mkForce selfpkgs.niri-tablet;
-
+      services.kanshi.enable = true;
       # Nothing rotates the panel here on purpose. It scans out 800x1280, but
       # the kernel quirk table reports its orientation for both Jupiter and
       # Galileo, and niri reads that DRM property and *composes* it with the
@@ -279,5 +300,6 @@
       # reachable docked — still worth the three seconds for a rollback.
       # (The firmware boot menu is Volume Down + Power.)
       boot.loader.timeout = lib.mkForce 3;
+      boot.plymouth.enable = true;
     };
 }

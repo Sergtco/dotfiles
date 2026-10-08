@@ -46,13 +46,8 @@ _: {
         clang-tools
         gdb
         delve
-        typst
-        tinymist
-        typstyle
 
-        opencode
-        claude-code
-        nodejs_26
+        pi-coding-agent
 
         devenv
       ];

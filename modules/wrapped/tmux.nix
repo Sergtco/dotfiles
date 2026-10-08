@@ -27,6 +27,9 @@
         bind % split-window -h -c "#{pane_current_path}"
         set-window-option -g window-status-current-style 'fg=white,bg=black'
 
+        set -g extended-keys on
+        set -g extended-keys-format csi-u
+
         bind-key "f" run-shell "${lib.getExe pkgs.sesh} connect \"$(
           sesh list --icons | ${lib.getExe pkgs.fzf} --tmux center,80%,70% \
             --no-sort --ansi  --prompt '>  ' \
