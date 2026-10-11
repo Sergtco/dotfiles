@@ -299,7 +299,16 @@
       # There is no keyboard to hold Space on, so the menu is only really
       # reachable docked — still worth the three seconds for a rollback.
       # (The firmware boot menu is Volume Down + Power.)
+      boot.initrd.verbose = false;
+      boot.consoleLogLevel = 0;
       boot.loader.timeout = lib.mkForce 3;
       boot.plymouth.enable = true;
+      boot.kernelParams = [
+      "quiet"
+      "loglevel=3"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+      "udev.log_priority=3"
+    ];
     };
 }
